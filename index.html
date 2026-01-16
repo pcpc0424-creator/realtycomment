@@ -1,0 +1,959 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>부코맨트 - 부동산 경매 컨설팅 No.1</title>
+    <meta name="description" content="복잡하고 어려운 부동산 경매, 부코맨트와 함께 간편하게. 15년 경력 전문 컨설턴트가 최적의 물건을 추천해드립니다.">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;800;900&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- AOS Animation -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Preloader -->
+    <div class="preloader">
+        <div class="loader">
+            <div class="loader-inner"></div>
+            <span>BUCOMANT</span>
+        </div>
+    </div>
+
+    <!-- Floating Particles -->
+    <div class="particles" id="particles"></div>
+
+    <!-- Header -->
+    <header class="header" id="header">
+        <div class="container">
+            <div class="header-inner">
+                <a href="/realtycomment/" class="logo">
+                    <div class="logo-icon">
+                        <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="4" y="20" width="12" height="16" rx="1" fill="currentColor" opacity="0.8"/>
+                            <rect x="20" y="12" width="16" height="24" rx="1" fill="currentColor"/>
+                            <rect x="8" y="24" width="4" height="4" rx="0.5" fill="white"/>
+                            <rect x="24" y="16" width="4" height="4" rx="0.5" fill="white"/>
+                            <rect x="24" y="24" width="4" height="4" rx="0.5" fill="white"/>
+                            <rect x="30" y="16" width="4" height="4" rx="0.5" fill="white"/>
+                            <rect x="30" y="24" width="4" height="4" rx="0.5" fill="white"/>
+                        </svg>
+                    </div>
+                    <div class="logo-text">
+                        <span class="logo-main">부코맨트</span>
+                        <span class="logo-sub">BUCOMANT</span>
+                    </div>
+                </a>
+
+                <nav class="nav" id="nav">
+                    <ul class="nav-list">
+                        <li><a href="#about" class="nav-link">서비스 소개</a></li>
+                        <li><a href="#process" class="nav-link">컨설팅 절차</a></li>
+                        <li><a href="#success" class="nav-link">성공 사례</a></li>
+                        <li><a href="#contact" class="nav-link">상담 문의</a></li>
+                    </ul>
+                </nav>
+
+                <div class="header-right">
+                    <a href="tel:1588-0000" class="header-phone">
+                        <div class="phone-icon pulse">
+                            <i class="fas fa-phone-alt"></i>
+                        </div>
+                        <div class="phone-info">
+                            <span class="phone-label">무료상담</span>
+                            <span class="phone-number">1588-0000</span>
+                        </div>
+                    </a>
+                    <a href="#contact" class="btn-consultation">
+                        <span>상담신청</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+
+                <button class="menu-toggle" id="menuToggle" aria-label="메뉴">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-menu-inner">
+            <nav class="mobile-nav">
+                <a href="#about" class="mobile-nav-link">서비스 소개</a>
+                <a href="#process" class="mobile-nav-link">컨설팅 절차</a>
+                <a href="#success" class="mobile-nav-link">성공 사례</a>
+                <a href="#contact" class="mobile-nav-link">상담 문의</a>
+            </nav>
+            <div class="mobile-contact">
+                <a href="tel:1588-0000" class="mobile-phone">
+                    <i class="fas fa-phone-alt"></i>
+                    <span>1588-0000</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="hero-bg">
+            <div class="hero-gradient"></div>
+            <div class="hero-pattern"></div>
+            <div class="hero-glow"></div>
+        </div>
+
+        <div class="hero-content">
+            <div class="container">
+                <div class="hero-text" data-aos="fade-up" data-aos-duration="1000">
+                    <div class="hero-badge">
+                        <span class="badge-dot"></span>
+                        <span>부동산 경매 컨설팅 전문 기업</span>
+                    </div>
+                    <h1 class="hero-title">
+                        <span class="nowrap">부동산 경매,</span> <span class="nowrap"><span class="gradient-text">부코맨트</span>가 해결합니다</span>
+                    </h1>
+                    <p class="hero-desc">
+                        15년 이상 경력의 전문 컨설턴트가 고객님께 꼭 맞는 최적의 물건을 추천해드립니다
+                    </p>
+                    <div class="hero-cta">
+                        <a href="#contact" class="btn-primary-hero">
+                            <span>무료 상담받기</span>
+                            <div class="btn-shine"></div>
+                        </a>
+                        <a href="#about" class="btn-secondary-hero">
+                            <i class="fas fa-play-circle"></i>
+                            <span>서비스 알아보기</span>
+                        </a>
+                    </div>
+                    <div class="hero-trust">
+                        <div class="trust-avatars">
+                            <img src="https://i.pravatar.cc/100?img=1" alt="고객1">
+                            <img src="https://i.pravatar.cc/100?img=2" alt="고객2">
+                            <img src="https://i.pravatar.cc/100?img=3" alt="고객3">
+                            <img src="https://i.pravatar.cc/100?img=4" alt="고객4">
+                            <span class="trust-more">+</span>
+                        </div>
+                        <div class="trust-text">
+                            <strong>1,200+</strong> 고객이 신뢰하는 서비스
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Search Box -->
+                <div class="hero-search" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
+                    <div class="search-card">
+                        <div class="search-header">
+                            <div class="search-tabs">
+                                <button class="search-tab active" data-tab="auction">
+                                    <i class="fas fa-gavel"></i>
+                                    <span>경매물건</span>
+                                </button>
+                                <button class="search-tab" data-tab="public">
+                                    <i class="fas fa-landmark"></i>
+                                    <span>공매물건</span>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="search-body">
+                            <div class="search-field">
+                                <div class="field-icon">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                </div>
+                                <div class="field-content">
+                                    <label>지역선택</label>
+                                    <select>
+                                        <option>전체 지역</option>
+                                        <option>서울특별시</option>
+                                        <option>경기도</option>
+                                        <option>인천광역시</option>
+                                        <option>부산광역시</option>
+                                        <option>대구광역시</option>
+                                        <option>광주광역시</option>
+                                        <option>대전광역시</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="search-divider"></div>
+                            <div class="search-field">
+                                <div class="field-icon">
+                                    <i class="fas fa-building"></i>
+                                </div>
+                                <div class="field-content">
+                                    <label>물건종류</label>
+                                    <select>
+                                        <option>전체</option>
+                                        <option>아파트</option>
+                                        <option>빌라/다세대</option>
+                                        <option>오피스텔</option>
+                                        <option>상가/사무실</option>
+                                        <option>토지</option>
+                                        <option>공장/창고</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="search-divider"></div>
+                            <div class="search-field">
+                                <div class="field-icon">
+                                    <i class="fas fa-won-sign"></i>
+                                </div>
+                                <div class="field-content">
+                                    <label>감정가</label>
+                                    <select>
+                                        <option>전체</option>
+                                        <option>1억 이하</option>
+                                        <option>1억 ~ 3억</option>
+                                        <option>3억 ~ 5억</option>
+                                        <option>5억 ~ 10억</option>
+                                        <option>10억 이상</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <button class="search-submit">
+                                <i class="fas fa-search"></i>
+                                <span>검색하기</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scroll Indicator -->
+        <div class="scroll-indicator">
+            <div class="mouse">
+                <div class="wheel"></div>
+            </div>
+            <span>Scroll Down</span>
+        </div>
+    </section>
+
+    <!-- Stats Bar -->
+    <section class="stats-bar">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item" data-aos="fade-up" data-aos-delay="0">
+                    <div class="stat-value">
+                        <span class="counter" data-target="1200">0</span>
+                        <span class="stat-plus">+</span>
+                    </div>
+                    <div class="stat-label">누적 상담건수</div>
+                </div>
+                <div class="stat-item" data-aos="fade-up" data-aos-delay="100">
+                    <div class="stat-value">
+                        <span class="counter" data-target="847">0</span>
+                        <span class="stat-unit">건</span>
+                    </div>
+                    <div class="stat-label">낙찰 성공</div>
+                </div>
+                <div class="stat-item" data-aos="fade-up" data-aos-delay="200">
+                    <div class="stat-value">
+                        <span class="counter" data-target="94">0</span>
+                        <span class="stat-unit">%</span>
+                    </div>
+                    <div class="stat-label">고객 만족도</div>
+                </div>
+                <div class="stat-item" data-aos="fade-up" data-aos-delay="300">
+                    <div class="stat-value">
+                        <span class="counter" data-target="15">0</span>
+                        <span class="stat-unit">년</span>
+                    </div>
+                    <div class="stat-label">전문 경력</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about-section">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-label">OUR SERVICE</span>
+                <h2 class="section-title">
+                    컨설팅 의뢰만 해주시면, 고객님께 꼭 맞는 <span class="text-gradient">최적의 물건</span>을 추천드립니다
+                </h2>
+                <p class="section-desc">
+                    15년 이상 경력의 전문컨설턴트가 직접 상담해드립니다
+                </p>
+            </div>
+
+            <div class="services-grid">
+                <div class="service-card" data-aos="fade-up" data-aos-delay="0">
+                    <div class="card-glow"></div>
+                    <div class="card-content">
+                        <div class="card-icon">
+                            <div class="icon-bg"></div>
+                            <i class="fas fa-search-dollar"></i>
+                        </div>
+                        <h3 class="card-title">물건 분석</h3>
+                        <p class="card-desc">
+                            권리분석부터 시세분석까지<br>
+                            전문가가 꼼꼼히 분석합니다
+                        </p>
+                        <ul class="card-features">
+                            <li>
+                                <i class="fas fa-check-circle"></i>
+                                <span>등기부등본 권리분석</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-check-circle"></i>
+                                <span>실거래가 시세분석</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-check-circle"></i>
+                                <span>임대수익률 계산</span>
+                            </li>
+                        </ul>
+                        <div class="card-number">01</div>
+                    </div>
+                </div>
+
+                <div class="service-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="card-glow"></div>
+                    <div class="card-content">
+                        <div class="card-icon">
+                            <div class="icon-bg"></div>
+                            <i class="fas fa-gavel"></i>
+                        </div>
+                        <h3 class="card-title">입찰 대행</h3>
+                        <p class="card-desc">
+                            적정 입찰가 산정부터<br>
+                            입찰까지 대행해드립니다
+                        </p>
+                        <ul class="card-features">
+                            <li>
+                                <i class="fas fa-check-circle"></i>
+                                <span>적정 입찰가 산정</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-check-circle"></i>
+                                <span>입찰서류 작성</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-check-circle"></i>
+                                <span>법원 입찰 대행</span>
+                            </li>
+                        </ul>
+                        <div class="card-number">02</div>
+                    </div>
+                </div>
+
+                <div class="service-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="card-glow"></div>
+                    <div class="card-content">
+                        <div class="card-icon">
+                            <div class="icon-bg"></div>
+                            <i class="fas fa-handshake"></i>
+                        </div>
+                        <h3 class="card-title">명도 지원</h3>
+                        <p class="card-desc">
+                            낙찰 후 명도까지<br>
+                            원스톱으로 지원합니다
+                        </p>
+                        <ul class="card-features">
+                            <li>
+                                <i class="fas fa-check-circle"></i>
+                                <span>점유자 협상 대행</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-check-circle"></i>
+                                <span>명도소송 지원</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-check-circle"></i>
+                                <span>인도명령 신청</span>
+                            </li>
+                        </ul>
+                        <div class="card-number">03</div>
+                    </div>
+                </div>
+
+                <div class="service-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="card-glow"></div>
+                    <div class="card-content">
+                        <div class="card-icon">
+                            <div class="icon-bg"></div>
+                            <i class="fas fa-file-signature"></i>
+                        </div>
+                        <h3 class="card-title">사후 관리</h3>
+                        <p class="card-desc">
+                            등기이전부터 임대관리까지<br>
+                            끝까지 책임집니다
+                        </p>
+                        <ul class="card-features">
+                            <li>
+                                <i class="fas fa-check-circle"></i>
+                                <span>소유권이전등기</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-check-circle"></i>
+                                <span>임대차 관리</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-check-circle"></i>
+                                <span>세무 상담 연계</span>
+                            </li>
+                        </ul>
+                        <div class="card-number">04</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="about-cta" data-aos="fade-up">
+                <a href="#contact" class="btn-primary-large">
+                    <i class="fas fa-comments"></i>
+                    <span>무료 상담 신청하기</span>
+                </a>
+                <a href="tel:1588-0000" class="btn-outline-large">
+                    <i class="fas fa-phone-alt"></i>
+                    <span>전화 문의 1588-0000</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section id="process" class="process-section">
+        <div class="container">
+            <div class="section-header light" data-aos="fade-up">
+                <span class="section-label">PROCESS</span>
+                <h2 class="section-title">간단한 경매 컨설팅 절차</h2>
+                <p class="section-desc">복잡한 경매, 부코맨트가 쉽고 간편하게 도와드립니다</p>
+            </div>
+
+            <div class="process-wrapper">
+                <!-- Customer Flow -->
+                <div class="process-column" data-aos="fade-right">
+                    <div class="column-header customer">
+                        <div class="column-icon">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <h3>고객</h3>
+                    </div>
+                    <div class="process-steps">
+                        <div class="step-card">
+                            <div class="step-num">01</div>
+                            <div class="step-content">
+                                <h4>상담 신청</h4>
+                                <p>온라인 또는 전화로<br>무료 상담을 신청합니다</p>
+                            </div>
+                            <div class="step-connector"></div>
+                        </div>
+                        <div class="step-card">
+                            <div class="step-num">02</div>
+                            <div class="step-content">
+                                <h4>물건 검토</h4>
+                                <p>추천받은 물건을<br>검토하고 현장을 방문합니다</p>
+                            </div>
+                            <div class="step-connector"></div>
+                        </div>
+                        <div class="step-card">
+                            <div class="step-num">03</div>
+                            <div class="step-content">
+                                <h4>입찰 결정</h4>
+                                <p>입찰 여부와<br>입찰가를 최종 결정합니다</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Center Connection -->
+                <div class="process-center" data-aos="fade-up">
+                    <div class="center-line"></div>
+                    <div class="center-icon">
+                        <i class="fas fa-exchange-alt"></i>
+                    </div>
+                    <div class="center-line"></div>
+                </div>
+
+                <!-- Bucomant Flow -->
+                <div class="process-column" data-aos="fade-left">
+                    <div class="column-header bucomant">
+                        <div class="column-icon">
+                            <i class="fas fa-building"></i>
+                        </div>
+                        <h3>부코맨트</h3>
+                    </div>
+                    <div class="process-steps">
+                        <div class="step-card accent">
+                            <div class="step-num">01</div>
+                            <div class="step-content">
+                                <h4>요구사항 분석</h4>
+                                <p>예산, 지역, 용도 등<br>고객 니즈를 파악합니다</p>
+                            </div>
+                            <div class="step-connector"></div>
+                        </div>
+                        <div class="step-card accent">
+                            <div class="step-num">02</div>
+                            <div class="step-content">
+                                <h4>물건 추천</h4>
+                                <p>조건에 맞는 물건을<br>선별하고 분석을 제공합니다</p>
+                            </div>
+                            <div class="step-connector"></div>
+                        </div>
+                        <div class="step-card accent">
+                            <div class="step-num">03</div>
+                            <div class="step-content">
+                                <h4>입찰 진행</h4>
+                                <p>입찰서류 작성과<br>법원 입찰을 대행합니다</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Result -->
+            <div class="process-result" data-aos="fade-up">
+                <div class="result-arrow">
+                    <svg viewBox="0 0 24 80" fill="none">
+                        <path d="M12 0V60M12 60L2 50M12 60L22 50" stroke="url(#arrow-gradient)" stroke-width="2"/>
+                        <defs>
+                            <linearGradient id="arrow-gradient" x1="12" y1="0" x2="12" y2="60">
+                                <stop offset="0%" stop-color="#3b82f6"/>
+                                <stop offset="100%" stop-color="#f59e0b"/>
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                </div>
+                <div class="result-card">
+                    <div class="result-glow"></div>
+                    <div class="result-icon">
+                        <i class="fas fa-trophy"></i>
+                    </div>
+                    <h3>낙찰 성공</h3>
+                    <p>성공적인 낙찰과 함께 명도, 등기이전까지 원스톱 서비스를 제공합니다</p>
+                    <div class="result-badge">
+                        <i class="fas fa-check"></i>
+                        <span>평균 낙찰가 시세대비 20% 절감</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Success Section -->
+    <section id="success" class="success-section">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-label">SUCCESS SYSTEM</span>
+                <h2 class="section-title">
+                    <span class="text-gradient">낙찰가능</span> 서비스가 있습니다
+                </h2>
+                <p class="section-desc">
+                    최종 성공한 뒤에 수익률을 공유합니다. 고객의 성공이 곧 우리의 성공입니다
+                </p>
+            </div>
+
+            <div class="success-timeline" data-aos="fade-up">
+                <div class="timeline-track"></div>
+
+                <div class="timeline-step">
+                    <div class="step-marker">
+                        <div class="marker-ring"></div>
+                        <div class="marker-dot"></div>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-icon">
+                            <i class="fas fa-clipboard-list"></i>
+                        </div>
+                        <span class="step-label">STEP 01</span>
+                        <h4>상담 및 계약</h4>
+                        <p>고객 요구사항 파악 및 컨설팅 계약 체결</p>
+                    </div>
+                </div>
+
+                <div class="timeline-step">
+                    <div class="step-marker">
+                        <div class="marker-ring"></div>
+                        <div class="marker-dot"></div>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <span class="step-label">STEP 02</span>
+                        <h4>물건 분석</h4>
+                        <p>권리분석, 시세분석, 수익률 분석 진행</p>
+                    </div>
+                </div>
+
+                <div class="timeline-step">
+                    <div class="step-marker">
+                        <div class="marker-ring"></div>
+                        <div class="marker-dot"></div>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-icon">
+                            <i class="fas fa-gavel"></i>
+                        </div>
+                        <span class="step-label">STEP 03</span>
+                        <h4>입찰 진행</h4>
+                        <p>적정 입찰가 산정 및 입찰 대행</p>
+                    </div>
+                </div>
+
+                <div class="timeline-step">
+                    <div class="step-marker">
+                        <div class="marker-ring"></div>
+                        <div class="marker-dot"></div>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-icon">
+                            <i class="fas fa-key"></i>
+                        </div>
+                        <span class="step-label">STEP 04</span>
+                        <h4>명도 및 인도</h4>
+                        <p>점유자 협상 및 명도 완료</p>
+                    </div>
+                </div>
+
+                <div class="timeline-step highlight">
+                    <div class="step-marker">
+                        <div class="marker-ring"></div>
+                        <div class="marker-dot"></div>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-icon">
+                            <i class="fas fa-hand-holding-usd"></i>
+                        </div>
+                        <span class="step-label">STEP 05</span>
+                        <h4>수익 실현</h4>
+                        <p>임대 또는 매도를 통한 수익 실현</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="success-guarantee" data-aos="fade-up">
+                <div class="guarantee-card">
+                    <div class="guarantee-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <div class="guarantee-content">
+                        <h4>"입찰·시세·수익률·리스크를 종합적으로 분석"</h4>
+                        <p>"낙찰 이후까지 책임감" 있게 컨설팅을 진행합니다</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials-section">
+        <div class="container">
+            <div class="section-header light" data-aos="fade-up">
+                <span class="section-label">TESTIMONIALS</span>
+                <h2 class="section-title">고객 후기</h2>
+                <p class="section-desc">부코맨트와 함께한 고객들의 생생한 후기입니다</p>
+            </div>
+
+            <div class="testimonials-slider" data-aos="fade-up">
+                <div class="swiper testimonials-swiper">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <div class="testimonial-card">
+                                <div class="testimonial-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                                <p class="testimonial-text">
+                                    "처음 경매를 시작하는데 부코맨트 덕분에 시세보다 30% 저렴하게 아파트를 낙찰받았습니다. 명도까지 깔끔하게 처리해주셔서 정말 감사합니다."
+                                </p>
+                                <div class="testimonial-author">
+                                    <img src="https://i.pravatar.cc/100?img=11" alt="고객">
+                                    <div class="author-info">
+                                        <strong>김○○ 님</strong>
+                                        <span>서울 강남구 아파트 낙찰</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="testimonial-card">
+                                <div class="testimonial-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                                <p class="testimonial-text">
+                                    "복잡한 권리관계 때문에 망설였는데, 전문가의 정확한 분석으로 안전하게 투자할 수 있었습니다. 현재 월 150만원 임대수익 발생중입니다."
+                                </p>
+                                <div class="testimonial-author">
+                                    <img src="https://i.pravatar.cc/100?img=12" alt="고객">
+                                    <div class="author-info">
+                                        <strong>이○○ 님</strong>
+                                        <span>경기 수원시 상가 낙찰</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="testimonial-card">
+                                <div class="testimonial-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                                <p class="testimonial-text">
+                                    "3번의 유찰을 거쳐 최저가에 낙찰받을 수 있도록 전략을 세워주셨어요. 덕분에 예산보다 훨씬 좋은 물건을 얻었습니다!"
+                                </p>
+                                <div class="testimonial-author">
+                                    <img src="https://i.pravatar.cc/100?img=15" alt="고객">
+                                    <div class="author-info">
+                                        <strong>박○○ 님</strong>
+                                        <span>인천 빌라 낙찰</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-pagination"></div>
+                </div>
+                <div class="swiper-nav">
+                    <button class="swiper-prev"><i class="fas fa-chevron-left"></i></button>
+                    <button class="swiper-next"><i class="fas fa-chevron-right"></i></button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <div class="contact-wrapper">
+                <div class="contact-info" data-aos="fade-right">
+                    <span class="section-label">CONTACT US</span>
+                    <h2 class="contact-title">무료 상담 신청</h2>
+                    <p class="contact-desc">
+                        전문 컨설턴트가 친절하게 상담해드립니다. 부담없이 문의해주세요.
+                    </p>
+
+                    <div class="contact-cards">
+                        <div class="contact-card">
+                            <div class="contact-icon">
+                                <i class="fas fa-phone-alt"></i>
+                            </div>
+                            <div class="contact-text">
+                                <span>전화 상담</span>
+                                <strong>1588-0000</strong>
+                            </div>
+                        </div>
+                        <div class="contact-card">
+                            <div class="contact-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div class="contact-text">
+                                <span>상담 시간</span>
+                                <strong>평일 09:00 ~ 18:00</strong>
+                            </div>
+                        </div>
+                        <div class="contact-card">
+                            <div class="contact-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div class="contact-text">
+                                <span>오시는 길</span>
+                                <strong>서울시 강남구 테헤란로 123</strong>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="contact-social">
+                        <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fas fa-blog"></i></a>
+                    </div>
+                </div>
+
+                <div class="contact-form-wrapper" data-aos="fade-left">
+                    <form class="contact-form" id="contactForm">
+                        <div class="form-header">
+                            <h3>상담 신청서</h3>
+                            <p>아래 양식을 작성해주시면 빠르게 연락드리겠습니다</p>
+                        </div>
+
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label>
+                                    <i class="fas fa-user"></i>
+                                    이름 <span class="required">*</span>
+                                </label>
+                                <input type="text" name="name" placeholder="이름을 입력하세요" required>
+                            </div>
+                            <div class="form-group">
+                                <label>
+                                    <i class="fas fa-phone"></i>
+                                    연락처 <span class="required">*</span>
+                                </label>
+                                <input type="tel" name="phone" placeholder="010-0000-0000" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>
+                                <i class="fas fa-map-marker-alt"></i>
+                                관심 지역
+                            </label>
+                            <select name="region">
+                                <option value="">지역을 선택하세요</option>
+                                <option value="서울">서울</option>
+                                <option value="경기">경기</option>
+                                <option value="인천">인천</option>
+                                <option value="기타">기타 지역</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label>
+                                <i class="fas fa-edit"></i>
+                                문의 내용
+                            </label>
+                            <textarea name="message" rows="4" placeholder="문의하실 내용을 입력하세요"></textarea>
+                        </div>
+
+                        <div class="form-check">
+                            <input type="checkbox" id="privacy" name="privacy" required>
+                            <label for="privacy">
+                                개인정보 수집 및 이용에 동의합니다 <span class="required">*</span>
+                            </label>
+                        </div>
+
+                        <button type="submit" class="form-submit">
+                            <span>상담 신청하기</span>
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="cta-bg">
+            <div class="cta-pattern"></div>
+        </div>
+        <div class="container">
+            <div class="cta-content" data-aos="fade-up">
+                <h2>지금 바로 무료 상담을 받아보세요</h2>
+                <p>15년 경력의 전문가가 고객님의 성공적인 경매 투자를 도와드립니다</p>
+                <div class="cta-buttons">
+                    <a href="tel:1588-0000" class="btn-cta-primary">
+                        <i class="fas fa-phone-alt"></i>
+                        <span>1588-0000</span>
+                    </a>
+                    <a href="#contact" class="btn-cta-secondary">
+                        <span>온라인 상담</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-main">
+                <div class="footer-brand">
+                    <a href="/realtycomment/" class="footer-logo">
+                        <div class="logo-icon">
+                            <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect x="4" y="20" width="12" height="16" rx="1" fill="currentColor" opacity="0.8"/>
+                                <rect x="20" y="12" width="16" height="24" rx="1" fill="currentColor"/>
+                                <rect x="8" y="24" width="4" height="4" rx="0.5" fill="#0f172a"/>
+                                <rect x="24" y="16" width="4" height="4" rx="0.5" fill="#0f172a"/>
+                                <rect x="24" y="24" width="4" height="4" rx="0.5" fill="#0f172a"/>
+                                <rect x="30" y="16" width="4" height="4" rx="0.5" fill="#0f172a"/>
+                                <rect x="30" y="24" width="4" height="4" rx="0.5" fill="#0f172a"/>
+                            </svg>
+                        </div>
+                        <span>부코맨트</span>
+                    </a>
+                    <p class="footer-tagline">
+                        복잡한 부동산 경매,<br>
+                        부코맨트가 쉽게 도와드립니다
+                    </p>
+                    <div class="footer-social">
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fas fa-blog"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-links">
+                    <div class="footer-col">
+                        <h4>서비스</h4>
+                        <ul>
+                            <li><a href="#">경매 컨설팅</a></li>
+                            <li><a href="#">공매 컨설팅</a></li>
+                            <li><a href="#">물건 분석</a></li>
+                            <li><a href="#">명도 대행</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h4>고객지원</h4>
+                        <ul>
+                            <li><a href="#">자주 묻는 질문</a></li>
+                            <li><a href="#">상담 신청</a></li>
+                            <li><a href="#">오시는 길</a></li>
+                            <li><a href="#">공지사항</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h4>회사정보</h4>
+                        <ul>
+                            <li><a href="#">회사 소개</a></li>
+                            <li><a href="#">이용약관</a></li>
+                            <li><a href="#">개인정보처리방침</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <div class="footer-info">
+                    <p>
+                        <strong>부코맨트</strong> | 대표: 홍길동 | 사업자등록번호: 123-45-67890<br>
+                        주소: 서울시 강남구 테헤란로 123 부코맨트빌딩 5층 | 전화: 1588-0000
+                    </p>
+                </div>
+                <div class="footer-copyright">
+                    <p>&copy; 2024 BUCOMANT. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top -->
+    <button class="back-to-top" id="backToTop">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
