@@ -1,0 +1,1024 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>경매물건 상세 - 부코맨트</title>
+    <meta name="description" content="경매물건 상세 정보 - 권리분석, 시세분석, 입지분석을 통한 전문 컨설팅">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;800;900&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- AOS Animation -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/detail.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header scrolled" id="header">
+        <div class="container">
+            <div class="header-inner">
+                <a href="/realtycomment/" class="logo">
+                    <div class="logo-icon">
+                        <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="4" y="20" width="12" height="16" rx="1" fill="currentColor" opacity="0.8"/>
+                            <rect x="20" y="12" width="16" height="24" rx="1" fill="currentColor"/>
+                            <rect x="8" y="24" width="4" height="4" rx="0.5" fill="white"/>
+                            <rect x="24" y="16" width="4" height="4" rx="0.5" fill="white"/>
+                            <rect x="24" y="24" width="4" height="4" rx="0.5" fill="white"/>
+                            <rect x="30" y="16" width="4" height="4" rx="0.5" fill="white"/>
+                            <rect x="30" y="24" width="4" height="4" rx="0.5" fill="white"/>
+                        </svg>
+                    </div>
+                    <div class="logo-text">
+                        <span class="logo-main">부코맨트</span>
+                        <span class="logo-sub">BUCOMANT</span>
+                    </div>
+                </a>
+
+                <nav class="nav" id="nav">
+                    <ul class="nav-list">
+                        <li><a href="service.html" class="nav-link">서비스 소개</a></li>
+                        <li><a href="service.html#process" class="nav-link">컨설팅 절차</a></li>
+                        <li><a href="success-detail.html" class="nav-link">성공 사례</a></li>
+                        <li><a href="/realtycomment/#contact" class="nav-link">상담 문의</a></li>
+                    </ul>
+                </nav>
+
+                <div class="header-right">
+                    <a href="tel:1588-0000" class="header-phone">
+                        <div class="phone-icon pulse">
+                            <i class="fas fa-phone-alt"></i>
+                        </div>
+                        <div class="phone-info">
+                            <span class="phone-label">무료상담</span>
+                            <span class="phone-number">1588-0000</span>
+                        </div>
+                    </a>
+                    <a href="/realtycomment/#contact" class="btn-consultation">
+                        <span>상담신청</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+
+                <button class="menu-toggle" id="menuToggle" aria-label="메뉴">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-menu-inner">
+            <nav class="mobile-nav">
+                <a href="service.html" class="mobile-nav-link">서비스 소개</a>
+                <a href="service.html#process" class="mobile-nav-link">컨설팅 절차</a>
+                <a href="success-detail.html" class="mobile-nav-link">성공 사례</a>
+                <a href="/realtycomment/#contact" class="mobile-nav-link">상담 문의</a>
+            </nav>
+            <div class="mobile-contact">
+                <a href="tel:1588-0000" class="mobile-phone">
+                    <i class="fas fa-phone-alt"></i>
+                    <span>1588-0000</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Breadcrumb -->
+    <section class="breadcrumb-section">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="/realtycomment/"><i class="fas fa-home"></i></a>
+                <span class="separator"><i class="fas fa-chevron-right"></i></span>
+                <a href="#">경매물건</a>
+                <span class="separator"><i class="fas fa-chevron-right"></i></span>
+                <span class="current">서울 강남구 아파트</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Property Detail Hero -->
+    <section class="detail-hero">
+        <div class="container">
+            <div class="detail-hero-grid">
+                <!-- Image Gallery -->
+                <div class="property-gallery" data-aos="fade-right">
+                    <div class="gallery-main">
+                        <div class="swiper gallery-main-swiper">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide">
+                                    <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=800" alt="물건 이미지 1">
+                                </div>
+                                <div class="swiper-slide">
+                                    <img src="https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=800" alt="물건 이미지 2">
+                                </div>
+                                <div class="swiper-slide">
+                                    <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=800" alt="물건 이미지 3">
+                                </div>
+                                <div class="swiper-slide">
+                                    <img src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=800" alt="물건 이미지 4">
+                                </div>
+                            </div>
+                            <div class="swiper-button-prev"></div>
+                            <div class="swiper-button-next"></div>
+                        </div>
+                        <div class="gallery-badges">
+                            <span class="badge badge-auction">경매</span>
+                            <span class="badge badge-hot">관심급상승</span>
+                        </div>
+                    </div>
+                    <div class="gallery-thumbs">
+                        <div class="swiper gallery-thumbs-swiper">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide">
+                                    <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=200" alt="썸네일 1">
+                                </div>
+                                <div class="swiper-slide">
+                                    <img src="https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=200" alt="썸네일 2">
+                                </div>
+                                <div class="swiper-slide">
+                                    <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=200" alt="썸네일 3">
+                                </div>
+                                <div class="swiper-slide">
+                                    <img src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=200" alt="썸네일 4">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Property Info -->
+                <div class="property-info" data-aos="fade-left">
+                    <div class="property-header">
+                        <div class="property-type">
+                            <span class="type-badge">아파트</span>
+                            <span class="case-number">2024타경12345</span>
+                        </div>
+                        <h1 class="property-title">래미안 퍼스티지 102동 1502호</h1>
+                        <p class="property-address">
+                            <i class="fas fa-map-marker-alt"></i>
+                            서울특별시 강남구 도곡동 467-7
+                        </p>
+                    </div>
+
+                    <div class="property-price-box">
+                        <div class="price-row">
+                            <div class="price-item">
+                                <span class="price-label">감정가</span>
+                                <span class="price-value appraisal">15억 8,000만원</span>
+                            </div>
+                            <div class="price-item">
+                                <span class="price-label">최저가 (64%)</span>
+                                <span class="price-value minimum">10억 1,120만원</span>
+                            </div>
+                        </div>
+                        <div class="price-discount">
+                            <i class="fas fa-arrow-down"></i>
+                            <span>감정가 대비 <strong>36% 할인</strong></span>
+                        </div>
+                    </div>
+
+                    <div class="property-specs">
+                        <div class="spec-item">
+                            <i class="fas fa-vector-square"></i>
+                            <div class="spec-content">
+                                <span class="spec-label">전용면적</span>
+                                <span class="spec-value">84.99㎡ (25.7평)</span>
+                            </div>
+                        </div>
+                        <div class="spec-item">
+                            <i class="fas fa-building"></i>
+                            <div class="spec-content">
+                                <span class="spec-label">층수</span>
+                                <span class="spec-value">15층 / 32층</span>
+                            </div>
+                        </div>
+                        <div class="spec-item">
+                            <i class="fas fa-door-open"></i>
+                            <div class="spec-content">
+                                <span class="spec-label">방/욕실</span>
+                                <span class="spec-value">3룸 / 2욕실</span>
+                            </div>
+                        </div>
+                        <div class="spec-item">
+                            <i class="fas fa-calendar-alt"></i>
+                            <div class="spec-content">
+                                <span class="spec-label">매각기일</span>
+                                <span class="spec-value highlight">2024.03.15</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="property-meta">
+                        <div class="meta-item">
+                            <span class="meta-label">입찰방법</span>
+                            <span class="meta-value">기일입찰</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">유찰횟수</span>
+                            <span class="meta-value">2회</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">담당법원</span>
+                            <span class="meta-value">서울중앙지방법원</span>
+                        </div>
+                    </div>
+
+                    <div class="property-actions">
+                        <a href="#consultation-form" class="btn-primary-action">
+                            <i class="fas fa-comments"></i>
+                            <span>무료 상담 신청</span>
+                        </a>
+                        <a href="tel:1588-0000" class="btn-secondary-action">
+                            <i class="fas fa-phone-alt"></i>
+                            <span>1588-0000</span>
+                        </a>
+                        <button class="btn-icon-action" id="bookmarkBtn">
+                            <i class="far fa-heart"></i>
+                        </button>
+                        <button class="btn-icon-action" id="shareBtn">
+                            <i class="fas fa-share-alt"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Property Detail Content -->
+    <section class="detail-content">
+        <div class="container">
+            <div class="detail-grid">
+                <!-- Main Content -->
+                <div class="detail-main">
+                    <!-- Tab Navigation -->
+                    <div class="detail-tabs" data-aos="fade-up">
+                        <button class="tab-btn active" data-tab="basic">기본정보</button>
+                        <button class="tab-btn" data-tab="rights">권리분석</button>
+                        <button class="tab-btn" data-tab="market">시세분석</button>
+                        <button class="tab-btn" data-tab="location">입지분석</button>
+                        <button class="tab-btn" data-tab="opinion">전문가의견</button>
+                    </div>
+
+                    <!-- Tab Content -->
+                    <div class="tab-content">
+                        <!-- 기본정보 -->
+                        <div class="tab-pane active" id="basic" data-aos="fade-up">
+                            <div class="info-card">
+                                <h3 class="card-title-detail">
+                                    <i class="fas fa-info-circle"></i>
+                                    물건 기본 정보
+                                </h3>
+                                <div class="info-table">
+                                    <div class="info-row">
+                                        <span class="info-label">사건번호</span>
+                                        <span class="info-value">2024타경12345</span>
+                                    </div>
+                                    <div class="info-row">
+                                        <span class="info-label">물건종류</span>
+                                        <span class="info-value">아파트</span>
+                                    </div>
+                                    <div class="info-row">
+                                        <span class="info-label">소재지</span>
+                                        <span class="info-value">서울특별시 강남구 도곡동 467-7 래미안 퍼스티지 102동 1502호</span>
+                                    </div>
+                                    <div class="info-row">
+                                        <span class="info-label">대지권</span>
+                                        <span class="info-value">32.45㎡ (9.82평)</span>
+                                    </div>
+                                    <div class="info-row">
+                                        <span class="info-label">전용면적</span>
+                                        <span class="info-value">84.99㎡ (25.71평)</span>
+                                    </div>
+                                    <div class="info-row">
+                                        <span class="info-label">공급면적</span>
+                                        <span class="info-value">112.45㎡ (34.02평)</span>
+                                    </div>
+                                    <div class="info-row">
+                                        <span class="info-label">방향</span>
+                                        <span class="info-value">남향</span>
+                                    </div>
+                                    <div class="info-row">
+                                        <span class="info-label">사용승인일</span>
+                                        <span class="info-value">2010년 03월 15일</span>
+                                    </div>
+                                    <div class="info-row">
+                                        <span class="info-label">총세대수</span>
+                                        <span class="info-value">1,248세대</span>
+                                    </div>
+                                    <div class="info-row">
+                                        <span class="info-label">주차대수</span>
+                                        <span class="info-value">세대당 1.5대</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="info-card">
+                                <h3 class="card-title-detail">
+                                    <i class="fas fa-gavel"></i>
+                                    경매 진행 정보
+                                </h3>
+                                <div class="info-table">
+                                    <div class="info-row">
+                                        <span class="info-label">담당법원</span>
+                                        <span class="info-value">서울중앙지방법원 경매11계</span>
+                                    </div>
+                                    <div class="info-row">
+                                        <span class="info-label">매각기일</span>
+                                        <span class="info-value highlight">2024년 03월 15일 (금) 10:00</span>
+                                    </div>
+                                    <div class="info-row">
+                                        <span class="info-label">입찰방법</span>
+                                        <span class="info-value">기일입찰</span>
+                                    </div>
+                                    <div class="info-row">
+                                        <span class="info-label">입찰보증금</span>
+                                        <span class="info-value">최저매각가격의 10%</span>
+                                    </div>
+                                    <div class="info-row">
+                                        <span class="info-label">유찰횟수</span>
+                                        <span class="info-value">2회</span>
+                                    </div>
+                                    <div class="info-row">
+                                        <span class="info-label">청구금액</span>
+                                        <span class="info-value">8억 5,000만원</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="info-card">
+                                <h3 class="card-title-detail">
+                                    <i class="fas fa-won-sign"></i>
+                                    가격 변동 현황
+                                </h3>
+                                <div class="price-history">
+                                    <div class="history-item">
+                                        <div class="history-round">1회차</div>
+                                        <div class="history-info">
+                                            <span class="history-date">2024.01.15</span>
+                                            <span class="history-price">15억 8,000만원</span>
+                                            <span class="history-rate">(100%)</span>
+                                        </div>
+                                        <span class="history-status fail">유찰</span>
+                                    </div>
+                                    <div class="history-item">
+                                        <div class="history-round">2회차</div>
+                                        <div class="history-info">
+                                            <span class="history-date">2024.02.15</span>
+                                            <span class="history-price">12억 6,400만원</span>
+                                            <span class="history-rate">(80%)</span>
+                                        </div>
+                                        <span class="history-status fail">유찰</span>
+                                    </div>
+                                    <div class="history-item current">
+                                        <div class="history-round">3회차</div>
+                                        <div class="history-info">
+                                            <span class="history-date">2024.03.15</span>
+                                            <span class="history-price">10억 1,120만원</span>
+                                            <span class="history-rate">(64%)</span>
+                                        </div>
+                                        <span class="history-status active">진행중</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 권리분석 -->
+                        <div class="tab-pane" id="rights">
+                            <div class="info-card">
+                                <h3 class="card-title-detail">
+                                    <i class="fas fa-balance-scale"></i>
+                                    권리분석 요약
+                                </h3>
+                                <div class="rights-summary">
+                                    <div class="rights-status safe">
+                                        <i class="fas fa-shield-alt"></i>
+                                        <div class="rights-status-content">
+                                            <span class="status-label">권리분석 결과</span>
+                                            <span class="status-value">비교적 안전</span>
+                                        </div>
+                                    </div>
+                                    <p class="rights-desc">
+                                        본 물건은 근저당권 및 임차인 분석 결과 비교적 안전한 물건으로 판단됩니다.
+                                        다만, 임차인 1명이 대항력을 갖추고 있어 인수 여부에 대한 상세 검토가 필요합니다.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="info-card">
+                                <h3 class="card-title-detail">
+                                    <i class="fas fa-file-contract"></i>
+                                    등기부등본 분석
+                                </h3>
+                                <div class="registry-analysis">
+                                    <div class="registry-section">
+                                        <h4>갑구 (소유권에 관한 사항)</h4>
+                                        <div class="registry-table">
+                                            <div class="registry-row header">
+                                                <span>순위</span>
+                                                <span>접수일자</span>
+                                                <span>등기목적</span>
+                                                <span>권리자</span>
+                                            </div>
+                                            <div class="registry-row">
+                                                <span>1</span>
+                                                <span>2010.05.20</span>
+                                                <span>소유권이전</span>
+                                                <span>김○○</span>
+                                            </div>
+                                            <div class="registry-row">
+                                                <span>2</span>
+                                                <span>2024.01.05</span>
+                                                <span>임의경매개시결정</span>
+                                                <span>○○은행</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="registry-section">
+                                        <h4>을구 (소유권 이외의 권리에 관한 사항)</h4>
+                                        <div class="registry-table">
+                                            <div class="registry-row header">
+                                                <span>순위</span>
+                                                <span>접수일자</span>
+                                                <span>등기목적</span>
+                                                <span>채권최고액</span>
+                                            </div>
+                                            <div class="registry-row important">
+                                                <span>1</span>
+                                                <span>2018.03.15</span>
+                                                <span>근저당권설정</span>
+                                                <span>9억 6,000만원</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="info-card">
+                                <h3 class="card-title-detail">
+                                    <i class="fas fa-users"></i>
+                                    임차인 분석
+                                </h3>
+                                <div class="tenant-analysis">
+                                    <div class="tenant-card">
+                                        <div class="tenant-header">
+                                            <span class="tenant-number">임차인 1</span>
+                                            <span class="tenant-status caution">대항력 有</span>
+                                        </div>
+                                        <div class="tenant-info">
+                                            <div class="tenant-row">
+                                                <span class="tenant-label">전입일자</span>
+                                                <span class="tenant-value">2017.05.20</span>
+                                            </div>
+                                            <div class="tenant-row">
+                                                <span class="tenant-label">확정일자</span>
+                                                <span class="tenant-value">2017.05.22</span>
+                                            </div>
+                                            <div class="tenant-row">
+                                                <span class="tenant-label">보증금</span>
+                                                <span class="tenant-value">3억 5,000만원</span>
+                                            </div>
+                                            <div class="tenant-row">
+                                                <span class="tenant-label">배당요구</span>
+                                                <span class="tenant-value">신청완료</span>
+                                            </div>
+                                        </div>
+                                        <div class="tenant-result">
+                                            <i class="fas fa-exclamation-triangle"></i>
+                                            <span>말소기준권리(근저당권) 이전 전입으로 대항력 있음. 낙찰자 인수 가능성 검토 필요</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="info-card">
+                                <h3 class="card-title-detail">
+                                    <i class="fas fa-calculator"></i>
+                                    배당예상
+                                </h3>
+                                <div class="distribution-analysis">
+                                    <div class="distribution-table">
+                                        <div class="distribution-row header">
+                                            <span>순위</span>
+                                            <span>권리자</span>
+                                            <span>채권액</span>
+                                            <span>예상배당</span>
+                                        </div>
+                                        <div class="distribution-row">
+                                            <span>1</span>
+                                            <span>경매비용</span>
+                                            <span>약 2,000만원</span>
+                                            <span class="full">전액배당</span>
+                                        </div>
+                                        <div class="distribution-row">
+                                            <span>2</span>
+                                            <span>임차인 (대항력有)</span>
+                                            <span>3억 5,000만원</span>
+                                            <span class="full">전액배당</span>
+                                        </div>
+                                        <div class="distribution-row">
+                                            <span>3</span>
+                                            <span>○○은행 (근저당권)</span>
+                                            <span>8억 5,000만원</span>
+                                            <span class="partial">일부배당</span>
+                                        </div>
+                                    </div>
+                                    <p class="distribution-note">
+                                        * 낙찰가 10억 1,120만원 기준 예상 배당액이며, 실제 배당은 달라질 수 있습니다.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 시세분석 -->
+                        <div class="tab-pane" id="market">
+                            <div class="info-card">
+                                <h3 class="card-title-detail">
+                                    <i class="fas fa-chart-line"></i>
+                                    시세 분석
+                                </h3>
+                                <div class="market-summary">
+                                    <div class="market-item">
+                                        <span class="market-label">현재 시세</span>
+                                        <span class="market-value primary">14억 ~ 15억원</span>
+                                        <span class="market-sub">동일평형 기준</span>
+                                    </div>
+                                    <div class="market-item">
+                                        <span class="market-label">최저가 대비</span>
+                                        <span class="market-value accent">약 4억원 저렴</span>
+                                        <span class="market-sub">28% 할인 효과</span>
+                                    </div>
+                                    <div class="market-item">
+                                        <span class="market-label">예상 수익률</span>
+                                        <span class="market-value success">약 38.5%</span>
+                                        <span class="market-sub">시세 대비</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="info-card">
+                                <h3 class="card-title-detail">
+                                    <i class="fas fa-exchange-alt"></i>
+                                    최근 실거래가
+                                </h3>
+                                <div class="transaction-history">
+                                    <div class="transaction-item">
+                                        <div class="transaction-date">2024.01</div>
+                                        <div class="transaction-info">
+                                            <span class="transaction-unit">102동 1201호</span>
+                                            <span class="transaction-area">84.99㎡</span>
+                                        </div>
+                                        <span class="transaction-price">14억 8,000만원</span>
+                                    </div>
+                                    <div class="transaction-item">
+                                        <div class="transaction-date">2023.12</div>
+                                        <div class="transaction-info">
+                                            <span class="transaction-unit">103동 1803호</span>
+                                            <span class="transaction-area">84.99㎡</span>
+                                        </div>
+                                        <span class="transaction-price">14억 5,000만원</span>
+                                    </div>
+                                    <div class="transaction-item">
+                                        <div class="transaction-date">2023.11</div>
+                                        <div class="transaction-info">
+                                            <span class="transaction-unit">101동 2102호</span>
+                                            <span class="transaction-area">84.99㎡</span>
+                                        </div>
+                                        <span class="transaction-price">15억 2,000만원</span>
+                                    </div>
+                                    <div class="transaction-item">
+                                        <div class="transaction-date">2023.10</div>
+                                        <div class="transaction-info">
+                                            <span class="transaction-unit">102동 903호</span>
+                                            <span class="transaction-area">84.99㎡</span>
+                                        </div>
+                                        <span class="transaction-price">14억 3,000만원</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="info-card">
+                                <h3 class="card-title-detail">
+                                    <i class="fas fa-home"></i>
+                                    임대시세
+                                </h3>
+                                <div class="rental-analysis">
+                                    <div class="rental-type">
+                                        <h4>전세</h4>
+                                        <div class="rental-range">
+                                            <span class="rental-min">7억 5,000만원</span>
+                                            <span class="rental-separator">~</span>
+                                            <span class="rental-max">8억 5,000만원</span>
+                                        </div>
+                                    </div>
+                                    <div class="rental-type">
+                                        <h4>월세</h4>
+                                        <div class="rental-range">
+                                            <span class="rental-deposit">보증금 1억</span>
+                                            <span class="rental-separator">/</span>
+                                            <span class="rental-monthly">월 280~320만원</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="rental-yield">
+                                    <i class="fas fa-percentage"></i>
+                                    <div class="yield-content">
+                                        <span class="yield-label">예상 임대수익률</span>
+                                        <span class="yield-value">연 3.2% ~ 3.8%</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 입지분석 -->
+                        <div class="tab-pane" id="location">
+                            <div class="info-card">
+                                <h3 class="card-title-detail">
+                                    <i class="fas fa-map-marked-alt"></i>
+                                    위치 정보
+                                </h3>
+                                <div class="map-container">
+                                    <div id="map" class="property-map">
+                                        <div class="map-placeholder">
+                                            <i class="fas fa-map-marked-alt"></i>
+                                            <p>서울특별시 강남구 도곡동 467-7</p>
+                                            <a href="https://map.kakao.com/?q=서울특별시 강남구 도곡동 467-7" target="_blank" class="map-link">
+                                                <i class="fas fa-external-link-alt"></i>
+                                                카카오맵에서 보기
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="info-card">
+                                <h3 class="card-title-detail">
+                                    <i class="fas fa-subway"></i>
+                                    교통 분석
+                                </h3>
+                                <div class="transport-analysis">
+                                    <div class="transport-item">
+                                        <div class="transport-icon subway">
+                                            <i class="fas fa-subway"></i>
+                                        </div>
+                                        <div class="transport-content">
+                                            <span class="transport-name">도곡역 (3호선, 분당선)</span>
+                                            <span class="transport-distance">도보 5분 (약 350m)</span>
+                                        </div>
+                                    </div>
+                                    <div class="transport-item">
+                                        <div class="transport-icon subway">
+                                            <i class="fas fa-subway"></i>
+                                        </div>
+                                        <div class="transport-content">
+                                            <span class="transport-name">매봉역 (3호선)</span>
+                                            <span class="transport-distance">도보 10분 (약 700m)</span>
+                                        </div>
+                                    </div>
+                                    <div class="transport-item">
+                                        <div class="transport-icon bus">
+                                            <i class="fas fa-bus"></i>
+                                        </div>
+                                        <div class="transport-content">
+                                            <span class="transport-name">래미안퍼스티지 정류장</span>
+                                            <span class="transport-distance">도보 2분 (약 100m)</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="info-card">
+                                <h3 class="card-title-detail">
+                                    <i class="fas fa-store"></i>
+                                    주변 편의시설
+                                </h3>
+                                <div class="facilities-grid">
+                                    <div class="facility-category">
+                                        <h4><i class="fas fa-graduation-cap"></i> 교육</h4>
+                                        <ul>
+                                            <li>도곡초등학교 (도보 5분)</li>
+                                            <li>숙명여자중학교 (도보 8분)</li>
+                                            <li>단국대학교부속고등학교 (도보 10분)</li>
+                                        </ul>
+                                    </div>
+                                    <div class="facility-category">
+                                        <h4><i class="fas fa-shopping-cart"></i> 편의</h4>
+                                        <ul>
+                                            <li>이마트 도곡점 (도보 7분)</li>
+                                            <li>롯데백화점 강남점 (차량 10분)</li>
+                                            <li>코스트코 양재점 (차량 15분)</li>
+                                        </ul>
+                                    </div>
+                                    <div class="facility-category">
+                                        <h4><i class="fas fa-hospital"></i> 의료</h4>
+                                        <ul>
+                                            <li>강남세브란스병원 (차량 5분)</li>
+                                            <li>삼성서울병원 (차량 10분)</li>
+                                        </ul>
+                                    </div>
+                                    <div class="facility-category">
+                                        <h4><i class="fas fa-tree"></i> 공원</h4>
+                                        <ul>
+                                            <li>양재시민의숲 (차량 5분)</li>
+                                            <li>대모산 (차량 10분)</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 전문가 의견 -->
+                        <div class="tab-pane" id="opinion">
+                            <div class="info-card">
+                                <h3 class="card-title-detail">
+                                    <i class="fas fa-user-tie"></i>
+                                    부코맨트 전문가 의견
+                                </h3>
+                                <div class="expert-opinion">
+                                    <div class="expert-header">
+                                        <img src="https://i.pravatar.cc/100?img=60" alt="전문가">
+                                        <div class="expert-info">
+                                            <span class="expert-name">김경매 컨설턴트</span>
+                                            <span class="expert-career">경매 컨설팅 15년 경력</span>
+                                        </div>
+                                    </div>
+                                    <div class="opinion-content">
+                                        <div class="opinion-rating">
+                                            <span class="rating-label">투자 추천도</span>
+                                            <div class="rating-stars">
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="far fa-star"></i>
+                                            </div>
+                                            <span class="rating-value">4.0 / 5.0</span>
+                                        </div>
+                                        <div class="opinion-text">
+                                            <p>
+                                                래미안 퍼스티지는 강남구 도곡동의 대표적인 브랜드 아파트로,
+                                                입지와 학군, 교통 모든 면에서 우수한 물건입니다.
+                                            </p>
+                                            <p>
+                                                <strong>장점:</strong><br>
+                                                - 도곡역 도보 5분 거리의 더블역세권 프리미엄<br>
+                                                - 강남 대표 학군으로 실거주 및 투자 수요 풍부<br>
+                                                - 3회차 진행으로 시세 대비 36% 저렴한 가격에 낙찰 가능<br>
+                                                - 단지 내 커뮤니티 시설 우수
+                                            </p>
+                                            <p>
+                                                <strong>유의사항:</strong><br>
+                                                - 임차인 1명이 대항력을 보유하고 있어 배당 후 인수 여부 검토 필요<br>
+                                                - 입찰 경쟁이 예상되어 적정 입찰가 산정 중요<br>
+                                                - 명도 시 임차인 협의 필요할 수 있음
+                                            </p>
+                                            <p>
+                                                <strong>결론:</strong><br>
+                                                강남권 우량 아파트를 시세 대비 저렴하게 취득할 수 있는 좋은 기회입니다.
+                                                임차인 관련 리스크는 있지만, 배당을 통해 해결 가능성이 높아
+                                                적극적인 입찰을 권장합니다.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="info-card">
+                                <h3 class="card-title-detail">
+                                    <i class="fas fa-clipboard-check"></i>
+                                    투자 포인트 요약
+                                </h3>
+                                <div class="investment-points">
+                                    <div class="point-item positive">
+                                        <i class="fas fa-plus-circle"></i>
+                                        <span>시세 대비 약 4억원 저렴한 취득 가능</span>
+                                    </div>
+                                    <div class="point-item positive">
+                                        <i class="fas fa-plus-circle"></i>
+                                        <span>더블역세권(3호선, 분당선) 우수한 교통</span>
+                                    </div>
+                                    <div class="point-item positive">
+                                        <i class="fas fa-plus-circle"></i>
+                                        <span>강남 대표 브랜드 아파트, 안정적 시세</span>
+                                    </div>
+                                    <div class="point-item positive">
+                                        <i class="fas fa-plus-circle"></i>
+                                        <span>우수한 학군으로 실거주 수요 풍부</span>
+                                    </div>
+                                    <div class="point-item caution">
+                                        <i class="fas fa-exclamation-circle"></i>
+                                        <span>대항력 있는 임차인 존재 - 인수 검토 필요</span>
+                                    </div>
+                                    <div class="point-item caution">
+                                        <i class="fas fa-exclamation-circle"></i>
+                                        <span>입찰 경쟁 예상 - 적정가 산정 중요</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sidebar -->
+                <aside class="detail-sidebar">
+                    <!-- Consultation Form -->
+                    <div class="sidebar-card consultation-card" id="consultation-form" data-aos="fade-left">
+                        <div class="sidebar-card-header">
+                            <h3>
+                                <i class="fas fa-comments"></i>
+                                무료 상담 신청
+                            </h3>
+                            <p>이 물건에 대해 전문가 상담을 받아보세요</p>
+                        </div>
+                        <form class="sidebar-form" id="sidebarForm">
+                            <div class="form-group">
+                                <input type="text" name="name" placeholder="이름" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="tel" name="phone" placeholder="연락처 (010-0000-0000)" required>
+                            </div>
+                            <div class="form-group">
+                                <textarea name="message" rows="3" placeholder="문의 내용 (선택사항)"></textarea>
+                            </div>
+                            <div class="form-check">
+                                <input type="checkbox" id="sidebar-privacy" required>
+                                <label for="sidebar-privacy">개인정보 수집 및 이용 동의</label>
+                            </div>
+                            <button type="submit" class="form-submit-btn">
+                                <span>상담 신청하기</span>
+                                <i class="fas fa-paper-plane"></i>
+                            </button>
+                        </form>
+                        <div class="quick-contact">
+                            <a href="tel:1588-0000" class="quick-phone">
+                                <i class="fas fa-phone-alt"></i>
+                                <span>1588-0000</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Similar Properties -->
+                    <div class="sidebar-card" data-aos="fade-left" data-aos-delay="100">
+                        <div class="sidebar-card-header">
+                            <h3>
+                                <i class="fas fa-th-list"></i>
+                                유사 물건
+                            </h3>
+                        </div>
+                        <div class="similar-list">
+                            <a href="#" class="similar-item">
+                                <img src="https://images.unsplash.com/photo-1580587771525-78b9dba3b914?w=200" alt="유사물건1">
+                                <div class="similar-content">
+                                    <span class="similar-title">래미안 도곡 카운티</span>
+                                    <span class="similar-price">최저가 8억 5,000만원</span>
+                                    <span class="similar-info">84㎡ · 강남구</span>
+                                </div>
+                            </a>
+                            <a href="#" class="similar-item">
+                                <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=200" alt="유사물건2">
+                                <div class="similar-content">
+                                    <span class="similar-title">도곡렉슬 아파트</span>
+                                    <span class="similar-price">최저가 12억 3,000만원</span>
+                                    <span class="similar-info">109㎡ · 강남구</span>
+                                </div>
+                            </a>
+                            <a href="#" class="similar-item">
+                                <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=200" alt="유사물건3">
+                                <div class="similar-content">
+                                    <span class="similar-title">타워팰리스 2차</span>
+                                    <span class="similar-price">최저가 15억 8,000만원</span>
+                                    <span class="similar-info">134㎡ · 강남구</span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="cta-bg">
+            <div class="cta-pattern"></div>
+        </div>
+        <div class="container">
+            <div class="cta-content" data-aos="fade-up">
+                <h2>이 물건이 마음에 드시나요?</h2>
+                <p>15년 경력의 전문가가 입찰부터 명도까지 원스톱으로 도와드립니다</p>
+                <div class="cta-buttons">
+                    <a href="tel:1588-0000" class="btn-cta-primary">
+                        <i class="fas fa-phone-alt"></i>
+                        <span>1588-0000</span>
+                    </a>
+                    <a href="#consultation-form" class="btn-cta-secondary">
+                        <span>온라인 상담</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-main">
+                <div class="footer-brand">
+                    <a href="/realtycomment/" class="footer-logo">
+                        <div class="logo-icon">
+                            <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect x="4" y="20" width="12" height="16" rx="1" fill="currentColor" opacity="0.8"/>
+                                <rect x="20" y="12" width="16" height="24" rx="1" fill="currentColor"/>
+                                <rect x="8" y="24" width="4" height="4" rx="0.5" fill="#0f172a"/>
+                                <rect x="24" y="16" width="4" height="4" rx="0.5" fill="#0f172a"/>
+                                <rect x="24" y="24" width="4" height="4" rx="0.5" fill="#0f172a"/>
+                                <rect x="30" y="16" width="4" height="4" rx="0.5" fill="#0f172a"/>
+                                <rect x="30" y="24" width="4" height="4" rx="0.5" fill="#0f172a"/>
+                            </svg>
+                        </div>
+                        <span>부코맨트</span>
+                    </a>
+                    <p class="footer-tagline">
+                        복잡한 부동산 경매,<br>
+                        부코맨트가 쉽게 도와드립니다
+                    </p>
+                    <div class="footer-social">
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fas fa-blog"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-links">
+                    <div class="footer-col">
+                        <h4>서비스</h4>
+                        <ul>
+                            <li><a href="#">경매 컨설팅</a></li>
+                            <li><a href="#">공매 컨설팅</a></li>
+                            <li><a href="#">물건 분석</a></li>
+                            <li><a href="#">명도 대행</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h4>고객지원</h4>
+                        <ul>
+                            <li><a href="#">자주 묻는 질문</a></li>
+                            <li><a href="#">상담 신청</a></li>
+                            <li><a href="#">오시는 길</a></li>
+                            <li><a href="#">공지사항</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h4>회사정보</h4>
+                        <ul>
+                            <li><a href="#">회사 소개</a></li>
+                            <li><a href="#">이용약관</a></li>
+                            <li><a href="#">개인정보처리방침</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <div class="footer-info">
+                    <p>
+                        <strong>부코맨트</strong> | 대표: 홍길동 | 사업자등록번호: 123-45-67890<br>
+                        주소: 서울시 강남구 테헤란로 123 부코맨트빌딩 5층 | 전화: 1588-0000
+                    </p>
+                </div>
+                <div class="footer-copyright">
+                    <p>&copy; 2024 BUCOMANT. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top -->
+    <button class="back-to-top" id="backToTop">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/detail.js"></script>
+</body>
+</html>
