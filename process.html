@@ -1,0 +1,940 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>컨설팅 절차 - 부코맨트</title>
+    <meta name="description" content="부코맨트 경매 컨설팅 절차 안내 - 상담신청부터 낙찰성공까지 단계별 프로세스를 확인하세요">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;800;900&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- AOS Animation -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/detail.css">
+    <style>
+        /* Process Page Specific Styles */
+        .process-hero {
+            padding: 160px 0 80px;
+            background: var(--navy-deep);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .process-hero-content {
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .process-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            padding: 8px 20px;
+            border-radius: 30px;
+            color: var(--slate-400);
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 24px;
+        }
+
+        .process-hero-title {
+            font-size: clamp(32px, 5vw, 48px);
+            font-weight: 800;
+            color: #fff;
+            margin-bottom: 20px;
+            line-height: 1.3;
+        }
+
+        .process-hero-desc {
+            font-size: 18px;
+            color: rgba(255, 255, 255, 0.7);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Timeline Section */
+        .process-timeline-section {
+            padding: 100px 0;
+            background: #f8fafc;
+        }
+
+        .process-flow {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .process-flow::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: var(--slate-200);
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+
+        .process-step {
+            display: flex;
+            align-items: flex-start;
+            gap: 40px;
+            position: relative;
+        }
+
+        .process-step:nth-child(odd) {
+            flex-direction: row;
+        }
+
+        .process-step:nth-child(even) {
+            flex-direction: row;
+        }
+
+        .process-step-content {
+            flex: 1;
+            background: #fff;
+            border-radius: 20px;
+            padding: 32px;
+            border: 1px solid var(--slate-200);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+            position: relative;
+        }
+
+        .process-step:nth-child(odd) .process-step-content {
+            text-align: right;
+        }
+
+        .process-step:nth-child(even) .process-step-content {
+            text-align: left;
+        }
+
+        .process-step:nth-child(odd) .process-step-details {
+            justify-content: flex-end;
+        }
+
+        .process-step:nth-child(even) .process-step-details {
+            justify-content: flex-start;
+        }
+
+        .process-step-marker {
+            width: 60px;
+            height: 60px;
+            background: var(--navy);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 24px;
+            font-weight: 700;
+            position: relative;
+            z-index: 2;
+            flex-shrink: 0;
+        }
+
+        .process-step:nth-child(even) .process-step-marker {
+            background: var(--navy-muted);
+        }
+
+        .process-step-number {
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--navy);
+            margin-bottom: 8px;
+        }
+
+        .process-step:nth-child(even) .process-step-number {
+            color: var(--navy-muted);
+        }
+
+        .process-step-title {
+            font-size: 22px;
+            font-weight: 700;
+            color: #0f172a;
+            margin-bottom: 12px;
+        }
+
+        .process-step-desc {
+            color: #64748b;
+            line-height: 1.7;
+            margin-bottom: 16px;
+        }
+
+        .process-step-details {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .process-step-tag {
+            background: #f1f5f9;
+            color: #475569;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 13px;
+        }
+
+        .process-step-placeholder {
+            flex: 1;
+        }
+
+        /* Dual Process Section */
+        .dual-process-section {
+            padding: 100px 0;
+            background: #f8f9fa;
+        }
+
+        .dual-process-wrapper {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            gap: 40px;
+            align-items: start;
+        }
+
+        .dual-column {
+            background: white;
+            border: 1px solid var(--slate-200);
+            border-radius: 24px;
+            padding: 32px;
+        }
+
+        .dual-column-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 32px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--slate-200);
+        }
+
+        .dual-column-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+        }
+
+        .customer-column .dual-column-icon {
+            background: var(--navy);
+            color: #fff;
+        }
+
+        .bucomant-column .dual-column-icon {
+            background: var(--navy-muted);
+            color: #fff;
+        }
+
+        .dual-column-title {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--slate-900);
+        }
+
+        .dual-column-subtitle {
+            font-size: 14px;
+            color: var(--slate-500);
+        }
+
+        .dual-steps {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .dual-step {
+            display: flex;
+            gap: 16px;
+            padding: 20px;
+            background: var(--slate-50);
+            border-radius: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .dual-step:hover {
+            background: var(--slate-100);
+        }
+
+        .dual-step-num {
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .customer-column .dual-step-num {
+            background: rgba(28, 45, 68, 0.1);
+            color: var(--navy);
+        }
+
+        .bucomant-column .dual-step-num {
+            background: rgba(61, 90, 128, 0.1);
+            color: var(--navy-muted);
+        }
+
+        .dual-step-content h4 {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--slate-800);
+            margin-bottom: 6px;
+        }
+
+        .dual-step-content p {
+            font-size: 14px;
+            color: var(--slate-500);
+            line-height: 1.6;
+        }
+
+        .dual-center {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 100px;
+        }
+
+        .dual-center-line {
+            width: 2px;
+            height: 200px;
+            background: var(--slate-300);
+        }
+
+        .dual-center-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--navy);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 18px;
+            margin: 20px 0;
+        }
+
+        /* Result Section */
+        .process-result-section {
+            padding: 80px 0;
+            background: #f8fafc;
+        }
+
+        .result-card-large {
+            max-width: 800px;
+            margin: 0 auto;
+            background: var(--navy);
+            border-radius: 24px;
+            padding: 48px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .result-card-large > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .result-icon-large {
+            width: 80px;
+            height: 80px;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 24px;
+        }
+
+        .result-icon-large i {
+            font-size: 36px;
+            color: #fff;
+        }
+
+        .result-card-large h3 {
+            font-size: 32px;
+            font-weight: 800;
+            color: #fff;
+            margin-bottom: 16px;
+        }
+
+        .result-card-large p {
+            font-size: 18px;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 32px;
+        }
+
+        .result-stats {
+            display: flex;
+            justify-content: center;
+            gap: 48px;
+            flex-wrap: wrap;
+        }
+
+        .result-stat {
+            text-align: center;
+        }
+
+        .result-stat-value {
+            font-size: 36px;
+            font-weight: 800;
+            color: #fff;
+        }
+
+        .result-stat-label {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .process-flow::before {
+                left: 30px;
+            }
+
+            .process-step {
+                flex-direction: row !important;
+                gap: 24px;
+            }
+
+            .process-step-content {
+                text-align: left !important;
+            }
+
+            .process-step-details {
+                justify-content: flex-start !important;
+            }
+
+            .process-step-placeholder {
+                display: none;
+            }
+
+            .process-step-marker {
+                width: 50px;
+                height: 50px;
+                font-size: 20px;
+            }
+
+            .dual-process-wrapper {
+                grid-template-columns: 1fr;
+            }
+
+            .dual-center {
+                flex-direction: row;
+                padding: 20px 0;
+            }
+
+            .dual-center-line {
+                width: 100px;
+                height: 2px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .process-hero {
+                padding: 140px 0 60px;
+            }
+
+            .process-step-content {
+                padding: 24px;
+            }
+
+            .process-step-title {
+                font-size: 18px;
+            }
+
+            .result-card-large {
+                padding: 32px 24px;
+            }
+
+            .result-stats {
+                gap: 24px;
+            }
+
+            .result-stat-value {
+                font-size: 28px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="site-header scrolled" id="siteHeader">
+        <div class="container">
+            <div class="header-inner">
+                <a href="/realtycomment/" class="logo">
+                    <div class="logo-mark">B</div>
+                    <div class="logo-name">부코맨트</div>
+                </a>
+                <nav class="main-nav">
+                    <a href="service.html" class="nav-link">서비스 소개</a>
+                    <a href="process.html" class="nav-link active">컨설팅 절차</a>
+                    <a href="success-detail.html" class="nav-link">성공 사례</a>
+                    <a href="contact.html" class="nav-link">상담 문의</a>
+                </nav>
+                <div class="header-right">
+                    <a href="tel:1588-0000" class="header-phone">
+                        <i class="fas fa-phone-alt"></i> 1588-0000
+                    </a>
+                    <a href="contact.html" class="btn-header">상담 신청</a>
+                </div>
+                <button class="menu-toggle" id="menuToggle" aria-label="메뉴">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu-new" id="mobileMenu">
+        <a href="service.html">서비스 소개</a>
+        <a href="process.html">컨설팅 절차</a>
+        <a href="success-detail.html">성공 사례</a>
+        <a href="contact.html">상담 문의</a>
+        <a href="tel:1588-0000" style="color:#1c2d44;"><i class="fas fa-phone-alt"></i> 1588-0000</a>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="process-hero">
+        <div class="container">
+            <div class="process-hero-content" data-aos="fade-up">
+                <span class="process-badge">
+                    <i class="fas fa-route"></i>
+                    CONSULTING PROCESS
+                </span>
+                <h1 class="process-hero-title">
+                    간단하고 체계적인<br>
+                    컨설팅 절차
+                </h1>
+                <p class="process-hero-desc">
+                    복잡한 경매, 부코맨트가 쉽고 간편하게 도와드립니다.<br>
+                    단계별 맞춤 서비스로 성공적인 낙찰까지 함께합니다.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Timeline Section -->
+    <section class="process-timeline-section">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-label">STEP BY STEP</span>
+                <h2 class="section-title">컨설팅 진행 단계</h2>
+                <p class="section-desc">상담 신청부터 낙찰 성공까지, 전 과정을 안내해드립니다</p>
+            </div>
+
+            <div class="process-flow">
+                <!-- Step 1 -->
+                <div class="process-step" data-aos="fade-up">
+                    <div class="process-step-content">
+                        <span class="process-step-number">STEP 01</span>
+                        <h3 class="process-step-title">무료 상담 신청</h3>
+                        <p class="process-step-desc">
+                            전화 또는 온라인으로 무료 상담을 신청해주세요.
+                            고객님의 예산, 관심 지역, 투자 목적 등을 파악하여 맞춤형 컨설팅을 준비합니다.
+                        </p>
+                        <div class="process-step-details">
+                            <span class="process-step-tag">전화 상담</span>
+                            <span class="process-step-tag">온라인 신청</span>
+                            <span class="process-step-tag">카카오톡 상담</span>
+                        </div>
+                    </div>
+                    <div class="process-step-marker">1</div>
+                    <div class="process-step-placeholder"></div>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="process-step" data-aos="fade-up" data-aos-delay="100">
+                    <div class="process-step-placeholder"></div>
+                    <div class="process-step-marker">2</div>
+                    <div class="process-step-content">
+                        <span class="process-step-number">STEP 02</span>
+                        <h3 class="process-step-title">요구사항 분석</h3>
+                        <p class="process-step-desc">
+                            전문 컨설턴트가 고객님의 투자 목적, 예산, 선호 지역 등을 꼼꼼히 분석합니다.
+                            최적의 물건을 찾기 위한 구체적인 조건을 설정합니다.
+                        </p>
+                        <div class="process-step-details">
+                            <span class="process-step-tag">예산 분석</span>
+                            <span class="process-step-tag">지역 선정</span>
+                            <span class="process-step-tag">투자 목적 파악</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="process-step" data-aos="fade-up" data-aos-delay="200">
+                    <div class="process-step-content">
+                        <span class="process-step-number">STEP 03</span>
+                        <h3 class="process-step-title">맞춤 물건 추천</h3>
+                        <p class="process-step-desc">
+                            조건에 맞는 경매 물건을 선별하여 추천해드립니다.
+                            각 물건의 권리분석, 시세분석, 수익률 분석 리포트를 제공합니다.
+                        </p>
+                        <div class="process-step-details">
+                            <span class="process-step-tag">물건 선별</span>
+                            <span class="process-step-tag">권리분석</span>
+                            <span class="process-step-tag">시세분석</span>
+                        </div>
+                    </div>
+                    <div class="process-step-marker">3</div>
+                    <div class="process-step-placeholder"></div>
+                </div>
+
+                <!-- Step 4 -->
+                <div class="process-step" data-aos="fade-up" data-aos-delay="300">
+                    <div class="process-step-placeholder"></div>
+                    <div class="process-step-marker">4</div>
+                    <div class="process-step-content">
+                        <span class="process-step-number">STEP 04</span>
+                        <h3 class="process-step-title">현장 답사</h3>
+                        <p class="process-step-desc">
+                            관심 물건에 대해 직접 현장을 방문하여 실제 상태를 확인합니다.
+                            주변 환경, 입지 조건, 물건 상태 등을 꼼꼼히 체크합니다.
+                        </p>
+                        <div class="process-step-details">
+                            <span class="process-step-tag">현장 방문</span>
+                            <span class="process-step-tag">상태 확인</span>
+                            <span class="process-step-tag">입지 분석</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 5 -->
+                <div class="process-step" data-aos="fade-up" data-aos-delay="400">
+                    <div class="process-step-content">
+                        <span class="process-step-number">STEP 05</span>
+                        <h3 class="process-step-title">입찰가 결정 및 입찰</h3>
+                        <p class="process-step-desc">
+                            시세 분석과 경쟁 상황을 고려하여 최적의 입찰가를 산정합니다.
+                            입찰 서류 작성부터 법원 입찰까지 대행해드립니다.
+                        </p>
+                        <div class="process-step-details">
+                            <span class="process-step-tag">입찰가 산정</span>
+                            <span class="process-step-tag">서류 작성</span>
+                            <span class="process-step-tag">입찰 대행</span>
+                        </div>
+                    </div>
+                    <div class="process-step-marker">5</div>
+                    <div class="process-step-placeholder"></div>
+                </div>
+
+                <!-- Step 6 -->
+                <div class="process-step" data-aos="fade-up" data-aos-delay="500">
+                    <div class="process-step-placeholder"></div>
+                    <div class="process-step-marker">6</div>
+                    <div class="process-step-content">
+                        <span class="process-step-number">STEP 06</span>
+                        <h3 class="process-step-title">낙찰 및 잔금 납부</h3>
+                        <p class="process-step-desc">
+                            낙찰 성공 후 잔금 납부 및 소유권 이전 절차를 진행합니다.
+                            필요한 서류 준비와 등기 절차를 지원해드립니다.
+                        </p>
+                        <div class="process-step-details">
+                            <span class="process-step-tag">낙찰 확인</span>
+                            <span class="process-step-tag">잔금 납부</span>
+                            <span class="process-step-tag">등기 이전</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 7 -->
+                <div class="process-step" data-aos="fade-up" data-aos-delay="600">
+                    <div class="process-step-content">
+                        <span class="process-step-number">STEP 07</span>
+                        <h3 class="process-step-title">명도 및 인도</h3>
+                        <p class="process-step-desc">
+                            점유자와의 원만한 협상을 통해 명도를 진행합니다.
+                            필요시 법적 절차를 통한 인도명령, 강제집행을 지원합니다.
+                        </p>
+                        <div class="process-step-details">
+                            <span class="process-step-tag">점유자 협상</span>
+                            <span class="process-step-tag">명도 진행</span>
+                            <span class="process-step-tag">인도 완료</span>
+                        </div>
+                    </div>
+                    <div class="process-step-marker">7</div>
+                    <div class="process-step-placeholder"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dual Process Section -->
+    <section class="dual-process-section">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-label">COOPERATION</span>
+                <h2 class="section-title">고객과 부코맨트의 협업</h2>
+                <p class="section-desc">성공적인 낙찰을 위한 역할 분담</p>
+            </div>
+
+            <div class="dual-process-wrapper">
+                <!-- Customer Column -->
+                <div class="dual-column customer-column" data-aos="fade-right">
+                    <div class="dual-column-header">
+                        <div class="dual-column-icon">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div>
+                            <h3 class="dual-column-title">고객</h3>
+                            <p class="dual-column-subtitle">Customer Role</p>
+                        </div>
+                    </div>
+                    <div class="dual-steps">
+                        <div class="dual-step">
+                            <div class="dual-step-num">01</div>
+                            <div class="dual-step-content">
+                                <h4>상담 신청</h4>
+                                <p>온라인 또는 전화로 무료 상담을 신청합니다</p>
+                            </div>
+                        </div>
+                        <div class="dual-step">
+                            <div class="dual-step-num">02</div>
+                            <div class="dual-step-content">
+                                <h4>요구사항 전달</h4>
+                                <p>예산, 지역, 투자 목적 등 조건을 말씀해주세요</p>
+                            </div>
+                        </div>
+                        <div class="dual-step">
+                            <div class="dual-step-num">03</div>
+                            <div class="dual-step-content">
+                                <h4>물건 검토</h4>
+                                <p>추천받은 물건과 분석 리포트를 검토합니다</p>
+                            </div>
+                        </div>
+                        <div class="dual-step">
+                            <div class="dual-step-num">04</div>
+                            <div class="dual-step-content">
+                                <h4>현장 방문</h4>
+                                <p>컨설턴트와 함께 물건 현장을 방문합니다</p>
+                            </div>
+                        </div>
+                        <div class="dual-step">
+                            <div class="dual-step-num">05</div>
+                            <div class="dual-step-content">
+                                <h4>최종 결정</h4>
+                                <p>입찰 여부와 입찰가를 최종 결정합니다</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Center -->
+                <div class="dual-center" data-aos="fade-up">
+                    <div class="dual-center-line"></div>
+                    <div class="dual-center-icon">
+                        <i class="fas fa-exchange-alt"></i>
+                    </div>
+                    <div class="dual-center-line"></div>
+                </div>
+
+                <!-- Bucomant Column -->
+                <div class="dual-column bucomant-column" data-aos="fade-left">
+                    <div class="dual-column-header">
+                        <div class="dual-column-icon">
+                            <i class="fas fa-building"></i>
+                        </div>
+                        <div>
+                            <h3 class="dual-column-title">부코맨트</h3>
+                            <p class="dual-column-subtitle">Bucomant Role</p>
+                        </div>
+                    </div>
+                    <div class="dual-steps">
+                        <div class="dual-step">
+                            <div class="dual-step-num">01</div>
+                            <div class="dual-step-content">
+                                <h4>상담 진행</h4>
+                                <p>전문 컨설턴트가 친절하게 상담을 진행합니다</p>
+                            </div>
+                        </div>
+                        <div class="dual-step">
+                            <div class="dual-step-num">02</div>
+                            <div class="dual-step-content">
+                                <h4>조건 분석</h4>
+                                <p>고객 요구사항을 분석하여 최적의 전략을 수립합니다</p>
+                            </div>
+                        </div>
+                        <div class="dual-step">
+                            <div class="dual-step-num">03</div>
+                            <div class="dual-step-content">
+                                <h4>물건 추천</h4>
+                                <p>조건에 맞는 물건을 선별하고 분석 리포트를 제공합니다</p>
+                            </div>
+                        </div>
+                        <div class="dual-step">
+                            <div class="dual-step-num">04</div>
+                            <div class="dual-step-content">
+                                <h4>현장 안내</h4>
+                                <p>물건 현황과 주변 환경을 상세히 안내해드립니다</p>
+                            </div>
+                        </div>
+                        <div class="dual-step">
+                            <div class="dual-step-num">05</div>
+                            <div class="dual-step-content">
+                                <h4>입찰 대행</h4>
+                                <p>입찰 서류 작성과 법원 입찰을 대행합니다</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Result Section -->
+    <section class="process-result-section">
+        <div class="container">
+            <div class="result-card-large" data-aos="fade-up">
+                <div class="result-icon-large">
+                    <i class="fas fa-trophy"></i>
+                </div>
+                <h3>낙찰 성공!</h3>
+                <p>성공적인 낙찰과 함께 명도, 등기이전까지 원스톱 서비스를 제공합니다</p>
+                <div class="result-stats">
+                    <div class="result-stat">
+                        <div class="result-stat-value">847건</div>
+                        <div class="result-stat-label">누적 낙찰 성공</div>
+                    </div>
+                    <div class="result-stat">
+                        <div class="result-stat-value">20%</div>
+                        <div class="result-stat-label">평균 시세 대비 절감</div>
+                    </div>
+                    <div class="result-stat">
+                        <div class="result-stat-value">94%</div>
+                        <div class="result-stat-label">고객 만족도</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="cta-bg">
+            <div class="cta-pattern"></div>
+        </div>
+        <div class="container">
+            <div class="cta-content" data-aos="fade-up">
+                <h2>지금 바로 무료 상담을 받아보세요</h2>
+                <p>15년 경력의 전문가가 고객님의 성공적인 경매 투자를 도와드립니다</p>
+                <div class="cta-buttons">
+                    <a href="tel:1588-0000" class="btn-cta-primary">
+                        <i class="fas fa-phone-alt"></i>
+                        <span>1588-0000</span>
+                    </a>
+                    <a href="contact.html" class="btn-cta-secondary">
+                        <span>온라인 상담</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <div class="footer-brand">부코맨트</div>
+                    <p class="footer-brand-desc">
+                        부동산 경&middot;공매 전문 컨설팅 기업.<br>
+                        물건 분석부터 명도까지, 전 과정을 책임집니다.
+                    </p>
+                    <div class="footer-social">
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fas fa-blog"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <div class="footer-col-title">서비스</div>
+                    <a href="service.html">경매 컨설팅</a>
+                    <a href="service.html">공매 컨설팅</a>
+                    <a href="detail.html">물건 분석</a>
+                    <a href="service.html">명도 대행</a>
+                </div>
+                <div class="footer-col">
+                    <div class="footer-col-title">고객지원</div>
+                    <a href="service.html#faq">자주 묻는 질문</a>
+                    <a href="contact.html">상담 신청</a>
+                    <a href="#">오시는 길</a>
+                    <a href="#">공지사항</a>
+                </div>
+                <div class="footer-col">
+                    <div class="footer-col-title">회사정보</div>
+                    <a href="service.html">회사 소개</a>
+                    <a href="#">이용약관</a>
+                    <a href="#">개인정보처리방침</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="footer-info">
+                    <strong>부코맨트</strong> | 대표: 홍길동 | 사업자등록번호: 123-45-67890<br>
+                    서울시 강남구 테헤란로 123 부코맨트빌딩 5층 | 1588-0000
+                </div>
+                <div class="footer-copy">&copy; 2025 BUCOMANT. All rights reserved.</div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top -->
+    <button class="back-top" id="backTop"><i class="fas fa-chevron-up"></i></button>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+    (function() {
+        'use strict';
+        AOS.init({ duration: 600, once: true, offset: 50 });
+
+        var header = document.getElementById('siteHeader');
+        if (header) window.addEventListener('scroll', function() {
+            header.classList.toggle('scrolled', window.scrollY > 80);
+        });
+
+        var toggle = document.getElementById('menuToggle');
+        var mobile = document.getElementById('mobileMenu');
+        if (toggle && mobile) {
+            toggle.addEventListener('click', function() {
+                toggle.classList.toggle('active');
+                mobile.classList.toggle('open');
+            });
+            mobile.querySelectorAll('a').forEach(function(a) {
+                a.addEventListener('click', function() {
+                    toggle.classList.remove('active');
+                    mobile.classList.remove('open');
+                });
+            });
+        }
+
+        var bt = document.getElementById('backTop');
+        if (bt) {
+            window.addEventListener('scroll', function() { bt.classList.toggle('visible', window.scrollY > 400); });
+            bt.addEventListener('click', function() { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+        }
+    })();
+    </script>
+</body>
+</html>

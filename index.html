@@ -3,957 +3,1164 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>부코맨트 - 부동산 경매 컨설팅 No.1</title>
-    <meta name="description" content="복잡하고 어려운 부동산 경매, 부코맨트와 함께 간편하게. 15년 경력 전문 컨설턴트가 최적의 물건을 추천해드립니다.">
-
-    <!-- Fonts -->
+    <title>부코맨트 | 부동산 경매 전문 컨설팅</title>
+    <meta name="description" content="부동산 경·공매 전문 컨설팅 기업 부코맨트. 15년 경력의 전문가 집단이 물건분석부터 명도까지 책임집니다.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;800;900&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-
-    <!-- Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;800;900&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        :root {
+            /* Grayscale */
+            --white: #ffffff;
+            --gray-50: #f8f9fa;
+            --gray-100: #f1f3f5;
+            --gray-200: #e9ecef;
+            --gray-300: #dee2e6;
+            --gray-400: #ced4da;
+            --gray-500: #adb5bd;
+            --gray-600: #868e96;
+            --gray-700: #495057;
+            --gray-800: #343a40;
+            --gray-900: #212529;
+            --black: #111111;
 
-    <!-- AOS Animation -->
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+            /* Navy accent - very limited use */
+            --navy: #1c2d44;
+            --navy-deep: #0f1a2e;
+            --navy-light: #2a4060;
+            --navy-muted: #3d5a80;
 
-    <!-- Swiper CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+            --bg-primary: var(--white);
+            --bg-section: var(--gray-50);
+            --bg-dark: var(--navy-deep);
+            --text-primary: var(--gray-900);
+            --text-body: var(--gray-700);
+            --text-muted: var(--gray-600);
+            --text-light: var(--gray-500);
+            --border-color: var(--gray-200);
 
-    <link rel="stylesheet" href="css/style.css">
+            --radius: 12px;
+            --radius-sm: 8px;
+            --radius-lg: 20px;
+
+            --font-kr: 'Noto Sans KR', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-en: 'Outfit', var(--font-kr);
+            --transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+        html { scroll-behavior:smooth; font-size:16px; }
+        body {
+            font-family: var(--font-kr);
+            color: var(--text-primary);
+            background: var(--bg-primary);
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+            line-height:1.7;
+        }
+        ::selection { background: var(--navy); color: var(--white); }
+        a { text-decoration:none; color:inherit; }
+        ul { list-style:none; }
+        img { max-width:100%; display:block; }
+        button { border:none; background:none; cursor:pointer; font-family:inherit; color:inherit; }
+        .container { max-width:1140px; margin:0 auto; padding:0 24px; }
+
+        /* ========== HEADER ========== */
+        .site-header {
+            position:fixed; top:0; left:0; right:0; z-index:100;
+            transition: var(--transition);
+            background: transparent;
+        }
+        .site-header.scrolled {
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--border-color);
+        }
+        .header-inner {
+            display:flex; align-items:center; justify-content:space-between;
+            height:72px;
+        }
+        .logo { display:flex; align-items:center; gap:10px; }
+        .logo-mark {
+            width:34px; height:34px; background:var(--navy);
+            border-radius:8px; display:flex; align-items:center; justify-content:center;
+            font-family:var(--font-en); font-weight:800; font-size:0.85rem; color:var(--white);
+            letter-spacing:-0.5px;
+        }
+        .logo-name {
+            font-size:1.05rem; font-weight:800; color:var(--gray-900);
+            letter-spacing:-0.03em;
+        }
+        /* Hero 위에서는 흰 텍스트 */
+        .site-header:not(.scrolled) .logo-name { color:var(--white); }
+        .site-header:not(.scrolled) .logo-mark { background:rgba(255,255,255,0.15); backdrop-filter:blur(4px); }
+        .site-header:not(.scrolled) .nav-link { color:rgba(255,255,255,0.8); }
+        .site-header:not(.scrolled) .nav-link:hover { color:var(--white); }
+        .site-header:not(.scrolled) .header-phone { color:rgba(255,255,255,0.7); }
+        .site-header:not(.scrolled) .btn-header { border-color:rgba(255,255,255,0.3); color:var(--white); }
+        .site-header:not(.scrolled) .btn-header:hover { background:var(--white); color:var(--navy); }
+        .site-header:not(.scrolled) .menu-toggle span { background:var(--white); }
+
+        .main-nav { display:flex; gap:32px; }
+        .nav-link {
+            font-size:0.88rem; font-weight:500; color:var(--text-body);
+            transition: var(--transition); position:relative;
+        }
+        .nav-link:hover { color:var(--navy); }
+
+        .header-right { display:flex; align-items:center; gap:20px; }
+        .header-phone {
+            display:flex; align-items:center; gap:6px;
+            font-size:0.85rem; color:var(--text-muted); font-weight:500;
+        }
+        .header-phone i { font-size:0.75rem; }
+        .btn-header {
+            padding:9px 22px; border-radius:6px;
+            border:1px solid var(--gray-300); color:var(--text-primary);
+            font-size:0.85rem; font-weight:600;
+            transition: var(--transition);
+        }
+        .btn-header:hover { background:var(--navy); color:var(--white); border-color:var(--navy); }
+
+        .menu-toggle { display:none; flex-direction:column; gap:5px; padding:4px; }
+        .menu-toggle span {
+            width:20px; height:1.5px; background:var(--gray-900);
+            transition: var(--transition);
+        }
+        .menu-toggle.active span:nth-child(1) { transform:rotate(45deg) translate(4px,4px); }
+        .menu-toggle.active span:nth-child(2) { opacity:0; }
+        .menu-toggle.active span:nth-child(3) { transform:rotate(-45deg) translate(4px,-4px); }
+
+        .mobile-menu {
+            display:none; position:fixed; inset:0; top:72px; z-index:99;
+            background:rgba(255,255,255,0.98); backdrop-filter:blur(20px);
+            padding:32px 24px; flex-direction:column; gap:0;
+        }
+        .mobile-menu.open { display:flex; }
+        .mobile-menu a {
+            display:block; padding:18px 0; font-size:1.05rem; font-weight:600;
+            color:var(--text-primary); border-bottom:1px solid var(--border-color);
+        }
+        .mobile-menu a:hover { color:var(--navy); }
+
+        /* ========== HERO ========== */
+        .hero {
+            position:relative; min-height:100vh; display:flex; align-items:center;
+            background:var(--navy-deep); overflow:hidden;
+        }
+        .hero-slides {
+            position:absolute; inset:0; z-index:0;
+        }
+        .hero-slide {
+            position:absolute; inset:0;
+            opacity:0; transition: opacity 1.5s ease;
+        }
+        .hero-slide.active { opacity:1; }
+        .hero-slide img {
+            width:100%; height:100%; object-fit:cover;
+            filter: brightness(0.35) saturate(0.7);
+        }
+        .hero-overlay {
+            position:absolute; inset:0;
+            background: linear-gradient(135deg, rgba(15,26,46,0.7) 0%, rgba(28,45,68,0.4) 100%);
+        }
+        .hero-content {
+            position:relative; z-index:2; text-align:center;
+            max-width:720px; margin:0 auto; padding:120px 24px 100px;
+        }
+        .hero-label {
+            display:inline-block; padding:6px 18px; border-radius:4px;
+            background:rgba(255,255,255,0.08);
+            border:1px solid rgba(255,255,255,0.12);
+            font-size:0.78rem; font-weight:500; color:rgba(255,255,255,0.7);
+            letter-spacing:1.5px; text-transform:uppercase;
+            margin-bottom:28px;
+        }
+        .hero-title {
+            font-size:clamp(2rem, 4.2vw, 3.2rem);
+            font-weight:800; color:var(--white);
+            line-height:1.3; letter-spacing:-0.03em;
+            margin-bottom:20px;
+        }
+        .hero-desc {
+            font-size:1.05rem; color:rgba(255,255,255,0.65);
+            line-height:1.8; margin-bottom:40px;
+            max-width:540px; margin-left:auto; margin-right:auto;
+        }
+        .hero-actions { display:flex; gap:14px; justify-content:center; flex-wrap:wrap; }
+        .btn-solid {
+            display:inline-flex; align-items:center; gap:8px;
+            padding:15px 34px; border-radius:6px;
+            background:var(--white); color:var(--navy-deep);
+            font-size:0.92rem; font-weight:700;
+            transition: var(--transition);
+        }
+        .btn-solid:hover { background:var(--gray-100); transform:translateY(-2px); box-shadow:0 8px 24px rgba(0,0,0,0.15); }
+        .btn-ghost {
+            display:inline-flex; align-items:center; gap:8px;
+            padding:15px 34px; border-radius:6px;
+            border:1px solid rgba(255,255,255,0.25); color:var(--white);
+            font-size:0.92rem; font-weight:600;
+            transition: var(--transition);
+        }
+        .btn-ghost:hover { border-color:rgba(255,255,255,0.5); background:rgba(255,255,255,0.06); }
+
+        .hero-scroll {
+            position:absolute; bottom:40px; left:50%; transform:translateX(-50%);
+            z-index:2; text-align:center;
+        }
+        .hero-scroll-line {
+            width:1px; height:48px; background:rgba(255,255,255,0.2);
+            margin:0 auto 8px; position:relative; overflow:hidden;
+        }
+        .hero-scroll-line::after {
+            content:''; position:absolute; top:-100%; left:0; width:100%; height:50%;
+            background:rgba(255,255,255,0.6);
+            animation: scrollDown 2s ease-in-out infinite;
+        }
+        @keyframes scrollDown { 0%{top:-50%} 100%{top:110%} }
+        .hero-scroll-text { font-size:0.68rem; color:rgba(255,255,255,0.35); letter-spacing:2px; text-transform:uppercase; }
+
+        /* ========== TRUST BAR ========== */
+        .trust-bar {
+            padding:48px 0;
+            border-bottom:1px solid var(--border-color);
+        }
+        .trust-grid {
+            display:grid; grid-template-columns:repeat(4,1fr); gap:32px;
+            text-align:center;
+        }
+        .trust-item {}
+        .trust-number {
+            font-family:var(--font-en); font-size:2rem; font-weight:800;
+            color:var(--navy); display:block; letter-spacing:-0.02em;
+        }
+        .trust-label {
+            font-size:0.82rem; color:var(--text-muted); margin-top:4px;
+        }
+
+        /* ========== SECTION COMMON ========== */
+        .section { padding:100px 0; }
+        .section.bg-gray { background:var(--bg-section); }
+        .section.bg-dark { background:var(--navy-deep); color:var(--white); }
+
+        .section-label {
+            font-family:var(--font-en); font-size:0.72rem; font-weight:600;
+            text-transform:uppercase; letter-spacing:3px;
+            color:var(--navy-muted); margin-bottom:14px;
+        }
+        .section.bg-dark .section-label { color:rgba(255,255,255,0.4); }
+        .section-title {
+            font-size:clamp(1.6rem, 2.6vw, 2.2rem);
+            font-weight:800; line-height:1.35; letter-spacing:-0.03em;
+            margin-bottom:14px;
+        }
+        .section-desc {
+            font-size:0.98rem; color:var(--text-muted); line-height:1.8;
+            max-width:480px;
+        }
+        .section.bg-dark .section-desc { color:rgba(255,255,255,0.5); }
+        .section-header { margin-bottom:56px; }
+        .section-header.center { text-align:center; }
+        .section-header.center .section-desc { margin:0 auto; }
+
+        /* Reveal */
+        .reveal {
+            opacity:0; transform:translateY(32px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+        .reveal.visible { opacity:1; transform:translateY(0); }
+        .reveal-d1 { transition-delay:0.08s; }
+        .reveal-d2 { transition-delay:0.16s; }
+        .reveal-d3 { transition-delay:0.24s; }
+        .reveal-d4 { transition-delay:0.32s; }
+        .reveal-d5 { transition-delay:0.40s; }
+
+        /* ========== ABOUT ========== */
+        .about-grid {
+            display:grid; grid-template-columns:1fr 1fr; gap:72px; align-items:center;
+        }
+        .about-text .section-desc { margin-bottom:32px; }
+        .about-list { display:flex; flex-direction:column; gap:16px; }
+        .about-list-item {
+            display:flex; align-items:flex-start; gap:14px;
+            font-size:0.92rem; color:var(--text-body); line-height:1.7;
+        }
+        .about-list-item i {
+            margin-top:5px; font-size:0.72rem; color:var(--navy);
+        }
+        .about-image {
+            position:relative;
+        }
+        .about-image-main {
+            border-radius:var(--radius-lg); overflow:hidden;
+            aspect-ratio:4/3;
+        }
+        .about-image-main img {
+            width:100%; height:100%; object-fit:cover;
+        }
+        .about-image-badge {
+            position:absolute; bottom:-20px; right:-20px;
+            background:var(--navy); color:var(--white);
+            padding:24px 28px; border-radius:var(--radius);
+            text-align:center;
+        }
+        .about-image-badge-num {
+            display:block; font-family:var(--font-en);
+            font-size:2rem; font-weight:800; letter-spacing:-0.02em;
+        }
+        .about-image-badge-text { font-size:0.78rem; opacity:0.7; }
+
+        /* ========== SERVICE CARDS ========== */
+        .service-grid {
+            display:grid; grid-template-columns:repeat(4,1fr); gap:24px;
+        }
+        .service-card {
+            padding:36px 28px;
+            border:1px solid var(--border-color);
+            border-radius:var(--radius);
+            transition: var(--transition);
+            background:var(--white);
+        }
+        .service-card:hover {
+            border-color:var(--navy);
+            transform:translateY(-6px);
+            box-shadow:0 16px 48px rgba(0,0,0,0.06);
+        }
+        .service-icon {
+            width:52px; height:52px; border-radius:var(--radius-sm);
+            display:flex; align-items:center; justify-content:center;
+            font-size:1.2rem; margin-bottom:24px;
+            background:var(--gray-50); color:var(--navy);
+        }
+        .service-card:hover .service-icon { background:var(--navy); color:var(--white); }
+        .service-num {
+            font-family:var(--font-en); font-size:0.7rem; font-weight:700;
+            color:var(--text-light); letter-spacing:2px; margin-bottom:12px;
+        }
+        .service-title { font-size:1.08rem; font-weight:700; margin-bottom:10px; }
+        .service-desc { font-size:0.85rem; color:var(--text-muted); line-height:1.7; }
+
+        /* ========== PROCESS ========== */
+        .process-flow {
+            position:relative; padding:20px 0;
+        }
+        .process-line {
+            position:absolute; top:48px; left:0; right:0;
+            height:2px; background:var(--gray-200);
+        }
+        .process-line-fill {
+            height:100%; width:0; background:var(--navy);
+            transition: width 1.5s ease;
+        }
+        .process-line-fill.animate { width:100%; }
+        .process-steps {
+            display:grid; grid-template-columns:repeat(5,1fr); gap:0;
+            position:relative;
+        }
+        .process-step {
+            text-align:center; position:relative;
+        }
+        .step-marker {
+            width:96px; height:96px; border-radius:50%;
+            background:var(--white); border:2px solid var(--gray-200);
+            display:flex; align-items:center; justify-content:center;
+            margin:0 auto 24px; position:relative; z-index:2;
+            transition: var(--transition);
+        }
+        .step-marker i { font-size:1.5rem; color:var(--gray-500); transition: var(--transition); }
+        .process-step:hover .step-marker { border-color:var(--navy); background:var(--navy); }
+        .process-step:hover .step-marker i { color:var(--white); }
+        .step-num {
+            font-family:var(--font-en); font-size:0.68rem; font-weight:700;
+            letter-spacing:2px; color:var(--text-light); margin-bottom:8px;
+        }
+        .step-title { font-size:0.98rem; font-weight:700; margin-bottom:6px; color:var(--text-primary); }
+        .step-desc { font-size:0.82rem; color:var(--text-muted); line-height:1.6; padding:0 8px; }
+
+        /* ========== STRENGTH (WHY US) ========== */
+        .strength-grid {
+            display:grid; grid-template-columns:1fr 1fr; gap:20px;
+        }
+        .strength-card {
+            display:flex; gap:20px; padding:32px;
+            background:rgba(255,255,255,0.04);
+            border:1px solid rgba(255,255,255,0.08);
+            border-radius:var(--radius);
+            transition: var(--transition);
+        }
+        .strength-card:hover {
+            background:rgba(255,255,255,0.07);
+            border-color:rgba(255,255,255,0.15);
+        }
+        .strength-icon {
+            width:52px; height:52px; min-width:52px; border-radius:var(--radius-sm);
+            display:flex; align-items:center; justify-content:center;
+            background:rgba(255,255,255,0.06); color:var(--white); font-size:1.2rem;
+        }
+        .strength-title { font-size:1rem; font-weight:700; margin-bottom:6px; color:var(--white); }
+        .strength-desc { font-size:0.85rem; color:rgba(255,255,255,0.5); line-height:1.6; }
+
+        /* ========== CASES ========== */
+        .cases-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
+        .case-card {
+            border:1px solid var(--border-color); border-radius:var(--radius);
+            overflow:hidden; transition: var(--transition); background:var(--white);
+        }
+        .case-card:hover {
+            transform:translateY(-6px);
+            box-shadow:0 20px 48px rgba(0,0,0,0.07);
+        }
+        .case-img { height:200px; overflow:hidden; position:relative; }
+        .case-img img { width:100%; height:100%; object-fit:cover; transition:transform 0.5s ease; }
+        .case-card:hover .case-img img { transform:scale(1.04); }
+        .case-badge {
+            position:absolute; top:14px; left:14px;
+            padding:5px 12px; border-radius:4px;
+            background:var(--navy); color:var(--white);
+            font-size:0.72rem; font-weight:600;
+        }
+        .case-body { padding:24px; }
+        .case-type { font-size:0.75rem; color:var(--navy-muted); font-weight:600; margin-bottom:6px; letter-spacing:0.5px; }
+        .case-title { font-size:1.05rem; font-weight:700; margin-bottom:6px; }
+        .case-location { font-size:0.82rem; color:var(--text-muted); margin-bottom:16px; }
+        .case-location i { margin-right:4px; font-size:0.72rem; }
+        .case-meta {
+            display:grid; grid-template-columns:repeat(3,1fr); gap:12px;
+            padding-top:16px; border-top:1px solid var(--border-color);
+        }
+        .case-meta-label { display:block; font-size:0.7rem; color:var(--text-light); margin-bottom:2px; }
+        .case-meta-value { font-size:0.88rem; font-weight:700; color:var(--navy); }
+
+        /* ========== CTA BAND ========== */
+        .cta-band {
+            padding:64px 0; background:var(--navy-deep); text-align:center;
+        }
+        .cta-band-title {
+            font-size:clamp(1.3rem, 2.2vw, 1.7rem);
+            font-weight:800; color:var(--white); margin-bottom:12px;
+        }
+        .cta-band-desc {
+            font-size:0.92rem; color:rgba(255,255,255,0.5); margin-bottom:28px;
+        }
+        .cta-band-actions { display:flex; gap:14px; justify-content:center; flex-wrap:wrap; }
+        .btn-white {
+            display:inline-flex; align-items:center; gap:8px;
+            padding:14px 30px; border-radius:6px;
+            background:var(--white); color:var(--navy-deep);
+            font-size:0.88rem; font-weight:700;
+            transition: var(--transition);
+        }
+        .btn-white:hover { transform:translateY(-2px); box-shadow:0 8px 24px rgba(0,0,0,0.2); }
+        .btn-white-outline {
+            display:inline-flex; align-items:center; gap:8px;
+            padding:14px 30px; border-radius:6px;
+            border:1px solid rgba(255,255,255,0.2); color:var(--white);
+            font-size:0.88rem; font-weight:600;
+            transition: var(--transition);
+        }
+        .btn-white-outline:hover { border-color:rgba(255,255,255,0.4); background:rgba(255,255,255,0.05); }
+
+        /* ========== TESTIMONIALS ========== */
+        .testimonial-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
+        .testimonial-card {
+            padding:36px; border:1px solid var(--border-color);
+            border-radius:var(--radius); background:var(--white);
+            transition: var(--transition);
+        }
+        .testimonial-card:hover { box-shadow:0 12px 36px rgba(0,0,0,0.05); }
+        .testimonial-quote {
+            font-size:2rem; color:var(--gray-300); line-height:1; margin-bottom:16px;
+        }
+        .testimonial-text {
+            font-size:0.92rem; color:var(--text-body); line-height:1.8;
+            margin-bottom:24px;
+        }
+        .testimonial-author { display:flex; align-items:center; gap:12px; }
+        .testimonial-avatar {
+            width:44px; height:44px; border-radius:50%; overflow:hidden;
+            border:2px solid var(--gray-200);
+        }
+        .testimonial-avatar img { width:100%; height:100%; object-fit:cover; }
+        .testimonial-name { font-size:0.88rem; font-weight:700; }
+        .testimonial-role { font-size:0.78rem; color:var(--text-muted); }
+
+        /* ========== CONTACT ========== */
+        .contact-grid {
+            display:grid; grid-template-columns:1fr 1fr; gap:72px; align-items:start;
+        }
+        .contact-info-list { display:flex; flex-direction:column; gap:24px; margin-top:32px; }
+        .contact-info-item { display:flex; gap:16px; align-items:center; }
+        .contact-info-icon {
+            width:48px; height:48px; min-width:48px; border-radius:var(--radius-sm);
+            display:flex; align-items:center; justify-content:center;
+            background:var(--gray-50); color:var(--navy); font-size:1rem;
+        }
+        .contact-info-label { font-size:0.78rem; color:var(--text-muted); }
+        .contact-info-value { font-size:0.95rem; font-weight:700; }
+
+        .contact-form-card {
+            padding:40px; border:1px solid var(--border-color);
+            border-radius:var(--radius-lg); background:var(--white);
+        }
+        .form-card-title { font-size:1.15rem; font-weight:700; margin-bottom:4px; }
+        .form-card-sub { font-size:0.85rem; color:var(--text-muted); margin-bottom:28px; }
+        .form-row { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+        .form-group { margin-bottom:14px; }
+        .form-group label {
+            display:block; font-size:0.8rem; font-weight:600;
+            color:var(--text-body); margin-bottom:6px;
+        }
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width:100%; padding:12px 16px;
+            border:1px solid var(--border-color); border-radius:6px;
+            font-family:var(--font-kr); font-size:0.88rem;
+            color:var(--text-primary); background:var(--white);
+            transition: var(--transition); outline:none;
+        }
+        .form-group input::placeholder,
+        .form-group textarea::placeholder { color:var(--gray-400); }
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color:var(--navy);
+        }
+        .form-group textarea { resize:vertical; min-height:90px; }
+        .form-group select { cursor:pointer; }
+        .form-check {
+            display:flex; align-items:center; gap:8px; margin-bottom:20px;
+            font-size:0.8rem; color:var(--text-muted);
+        }
+        .form-check input { width:16px; height:16px; accent-color:var(--navy); cursor:pointer; }
+        .form-submit {
+            width:100%; padding:14px; border:none; border-radius:6px;
+            background:var(--navy); color:var(--white);
+            font-size:0.92rem; font-weight:700;
+            cursor:pointer; transition: var(--transition);
+            display:flex; align-items:center; justify-content:center; gap:8px;
+        }
+        .form-submit:hover { background:var(--navy-deep); }
+
+        /* ========== FOOTER ========== */
+        .site-footer {
+            padding:56px 0 28px; border-top:1px solid var(--border-color);
+            background:var(--gray-50);
+        }
+        .footer-grid {
+            display:grid; grid-template-columns:2fr 1fr 1fr 1fr; gap:40px;
+            margin-bottom:40px;
+        }
+        .footer-brand { font-size:1.05rem; font-weight:800; margin-bottom:12px; }
+        .footer-brand-desc { font-size:0.82rem; color:var(--text-muted); line-height:1.7; margin-bottom:16px; }
+        .footer-social { display:flex; gap:10px; }
+        .footer-social a {
+            width:36px; height:36px; border-radius:8px;
+            border:1px solid var(--border-color); background:var(--white);
+            display:flex; align-items:center; justify-content:center;
+            color:var(--text-muted); font-size:0.82rem;
+            transition: var(--transition);
+        }
+        .footer-social a:hover { border-color:var(--navy); color:var(--navy); }
+        .footer-col-title { font-size:0.82rem; font-weight:700; margin-bottom:16px; }
+        .footer-col a {
+            display:block; font-size:0.82rem; color:var(--text-muted);
+            padding:5px 0; transition: var(--transition);
+        }
+        .footer-col a:hover { color:var(--navy); }
+        .footer-bottom {
+            padding-top:20px; border-top:1px solid var(--border-color);
+            display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px;
+        }
+        .footer-info { font-size:0.75rem; color:var(--text-light); line-height:1.8; }
+        .footer-copy { font-size:0.75rem; color:var(--text-light); }
+
+        /* ========== BACK TO TOP ========== */
+        .back-top {
+            position:fixed; bottom:28px; right:28px; z-index:90;
+            width:44px; height:44px; border-radius:10px;
+            background:var(--white); border:1px solid var(--border-color);
+            display:flex; align-items:center; justify-content:center;
+            color:var(--navy); font-size:0.85rem;
+            box-shadow:0 4px 12px rgba(0,0,0,0.06);
+            opacity:0; visibility:hidden; transform:translateY(16px);
+            transition: var(--transition);
+        }
+        .back-top.visible { opacity:1; visibility:visible; transform:translateY(0); }
+        .back-top:hover { background:var(--navy); color:var(--white); }
+
+        /* ========== RESPONSIVE ========== */
+        @media (max-width:1024px) {
+            .about-grid { grid-template-columns:1fr; gap:48px; }
+            .service-grid { grid-template-columns:1fr 1fr; }
+            .process-steps { grid-template-columns:repeat(3,1fr); gap:20px; }
+            .process-line { display:none; }
+            .process-step:nth-child(n+4) { margin-top:24px; }
+            .strength-grid { grid-template-columns:1fr; }
+            .contact-grid { grid-template-columns:1fr; gap:48px; }
+            .footer-grid { grid-template-columns:1fr 1fr; }
+        }
+        @media (max-width:768px) {
+            .main-nav, .header-phone, .btn-header { display:none; }
+            .menu-toggle { display:flex; }
+            .hero-content { padding:100px 24px 80px; }
+            .trust-grid { grid-template-columns:1fr 1fr; gap:24px; }
+            .section { padding:72px 0; }
+            .service-grid { grid-template-columns:1fr; }
+            .process-steps { grid-template-columns:1fr; gap:16px; }
+            .process-step { flex-direction:row; text-align:left; gap:20px; display:flex; align-items:center; }
+            .step-marker { width:64px; height:64px; min-width:64px; margin:0; }
+            .step-marker i { font-size:1.2rem; }
+            .process-step:nth-child(n+4) { margin-top:0; }
+            .cases-grid { grid-template-columns:1fr; }
+            .testimonial-grid { grid-template-columns:1fr; }
+            .form-row { grid-template-columns:1fr; }
+            .footer-grid { grid-template-columns:1fr; gap:28px; }
+            .footer-bottom { flex-direction:column; text-align:center; }
+        }
+    </style>
 </head>
 <body>
-    <!-- Preloader -->
-    <div class="preloader">
-        <div class="loader">
-            <div class="loader-inner"></div>
-            <span>BUCOMANT</span>
-        </div>
-    </div>
 
-    <!-- Floating Particles -->
-    <div class="particles" id="particles"></div>
-
-    <!-- Header -->
-    <header class="header" id="header">
-        <div class="container">
-            <div class="header-inner">
-                <a href="/realtycomment/" class="logo">
-                    <div class="logo-icon">
-                        <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <rect x="4" y="20" width="12" height="16" rx="1" fill="currentColor" opacity="0.8"/>
-                            <rect x="20" y="12" width="16" height="24" rx="1" fill="currentColor"/>
-                            <rect x="8" y="24" width="4" height="4" rx="0.5" fill="white"/>
-                            <rect x="24" y="16" width="4" height="4" rx="0.5" fill="white"/>
-                            <rect x="24" y="24" width="4" height="4" rx="0.5" fill="white"/>
-                            <rect x="30" y="16" width="4" height="4" rx="0.5" fill="white"/>
-                            <rect x="30" y="24" width="4" height="4" rx="0.5" fill="white"/>
-                        </svg>
-                    </div>
-                    <div class="logo-text">
-                        <span class="logo-main">부코맨트</span>
-                        <span class="logo-sub">BUCOMANT</span>
-                    </div>
-                </a>
-
-                <nav class="nav" id="nav">
-                    <ul class="nav-list">
-                        <li><a href="service.html" class="nav-link">서비스 소개</a></li>
-                        <li><a href="service.html#process" class="nav-link">컨설팅 절차</a></li>
-                        <li><a href="success-detail.html" class="nav-link">성공 사례</a></li>
-                        <li><a href="#contact" class="nav-link">상담 문의</a></li>
-                    </ul>
-                </nav>
-
-                <div class="header-right">
-                    <a href="tel:1588-0000" class="header-phone">
-                        <div class="phone-icon pulse">
-                            <i class="fas fa-phone-alt"></i>
-                        </div>
-                        <div class="phone-info">
-                            <span class="phone-label">무료상담</span>
-                            <span class="phone-number">1588-0000</span>
-                        </div>
-                    </a>
-                    <a href="#contact" class="btn-consultation">
-                        <span>상담신청</span>
-                        <i class="fas fa-arrow-right"></i>
-                    </a>
-                </div>
-
-                <button class="menu-toggle" id="menuToggle" aria-label="메뉴">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </button>
-            </div>
-        </div>
-    </header>
-
-    <!-- Mobile Menu -->
-    <div class="mobile-menu" id="mobileMenu">
-        <div class="mobile-menu-inner">
-            <nav class="mobile-nav">
-                <a href="service.html" class="mobile-nav-link">서비스 소개</a>
-                <a href="service.html#process" class="mobile-nav-link">컨설팅 절차</a>
-                <a href="success-detail.html" class="mobile-nav-link">성공 사례</a>
-                <a href="#contact" class="mobile-nav-link">상담 문의</a>
+<!-- Header -->
+<header class="site-header" id="siteHeader">
+    <div class="container">
+        <div class="header-inner">
+            <a href="/realtycomment/index.html" class="logo">
+                <div class="logo-mark">B</div>
+                <div class="logo-name">부코맨트</div>
+            </a>
+            <nav class="main-nav">
+                <a href="service.html" class="nav-link">서비스 소개</a>
+                <a href="process.html" class="nav-link">컨설팅 절차</a>
+                <a href="success-detail.html" class="nav-link">성공 사례</a>
+                <a href="contact.html" class="nav-link">상담 문의</a>
             </nav>
-            <div class="mobile-contact">
-                <a href="tel:1588-0000" class="mobile-phone">
-                    <i class="fas fa-phone-alt"></i>
-                    <span>1588-0000</span>
+            <div class="header-right">
+                <a href="tel:1588-0000" class="header-phone">
+                    <i class="fas fa-phone-alt"></i> 1588-0000
                 </a>
+                <a href="contact.html" class="btn-header">상담 신청</a>
+            </div>
+            <button class="menu-toggle" id="menuToggle" aria-label="메뉴">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </div>
+</header>
+
+<!-- Mobile Menu -->
+<div class="mobile-menu" id="mobileMenu">
+    <a href="service.html">서비스 소개</a>
+    <a href="process.html">컨설팅 절차</a>
+    <a href="success-detail.html">성공 사례</a>
+    <a href="contact.html">상담 문의</a>
+    <a href="tel:1588-0000" style="color:var(--navy);"><i class="fas fa-phone-alt"></i> 1588-0000</a>
+</div>
+
+<!-- Hero -->
+<section class="hero">
+    <div class="hero-slides" id="heroSlides">
+        <div class="hero-slide active">
+            <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1600&q=80" alt="">
+        </div>
+        <div class="hero-slide">
+            <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=1600&q=80" alt="">
+        </div>
+        <div class="hero-slide">
+            <img src="https://images.unsplash.com/photo-1560179707-f14e90ef3623?w=1600&q=80" alt="">
+        </div>
+    </div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+        <div class="hero-label reveal">Real Estate Auction Consulting</div>
+        <h1 class="hero-title reveal reveal-d1">
+            부동산 경매,<br>전문가에게 맡기세요
+        </h1>
+        <p class="hero-desc reveal reveal-d2">
+            15년간 847건의 낙찰 실적으로 검증된 전문가 집단.<br>
+            물건 분석부터 명도까지, 전 과정을 책임집니다.
+        </p>
+        <div class="hero-actions reveal reveal-d3">
+            <a href="contact.html" class="btn-solid">
+                무료 상담 신청
+                <i class="fas fa-arrow-right"></i>
+            </a>
+            <a href="#process" class="btn-ghost">
+                진행 절차 보기
+            </a>
+        </div>
+    </div>
+    <div class="hero-scroll">
+        <div class="hero-scroll-line"></div>
+        <div class="hero-scroll-text">Scroll</div>
+    </div>
+</section>
+
+<!-- Trust Bar -->
+<div class="trust-bar">
+    <div class="container">
+        <div class="trust-grid">
+            <div class="trust-item reveal">
+                <span class="trust-number" data-count="15" data-suffix="년+">0</span>
+                <div class="trust-label">전문 경력</div>
+            </div>
+            <div class="trust-item reveal reveal-d1">
+                <span class="trust-number" data-count="847" data-suffix="건">0</span>
+                <div class="trust-label">누적 낙찰</div>
+            </div>
+            <div class="trust-item reveal reveal-d2">
+                <span class="trust-number" data-count="94" data-suffix="%">0</span>
+                <div class="trust-label">고객 만족도</div>
+            </div>
+            <div class="trust-item reveal reveal-d3">
+                <span class="trust-number" data-count="1200" data-suffix="+">0</span>
+                <div class="trust-label">누적 상담</div>
             </div>
         </div>
     </div>
+</div>
 
-    <!-- Hero Section -->
-    <section class="hero" id="hero">
-        <div class="hero-bg">
-            <div class="hero-gradient"></div>
-            <div class="hero-pattern"></div>
-            <div class="hero-glow"></div>
-        </div>
-
-        <div class="hero-content">
-            <div class="container">
-                <div class="hero-text" data-aos="fade-up" data-aos-duration="1000">
-                    <div class="hero-badge">
-                        <span class="badge-dot"></span>
-                        <span>부동산 경매 컨설팅 전문 기업</span>
-                    </div>
-                    <h1 class="hero-title">
-                        <span class="nowrap">부동산 경매,</span> <span class="nowrap"><span class="gradient-text">부코맨트</span>가 해결합니다</span>
-                    </h1>
-                    <p class="hero-desc">
-                        15년 이상 경력의 전문 컨설턴트가 고객님께 꼭 맞는 최적의 물건을 추천해드립니다
-                    </p>
-                    <div class="hero-cta">
-                        <a href="#contact" class="btn-primary-hero">
-                            <span>무료 상담받기</span>
-                            <div class="btn-shine"></div>
-                        </a>
-                        <a href="#about" class="btn-secondary-hero">
-                            <i class="fas fa-play-circle"></i>
-                            <span>서비스 알아보기</span>
-                        </a>
-                    </div>
-                    <div class="hero-trust">
-                        <div class="trust-avatars">
-                            <img src="https://i.pravatar.cc/100?img=1" alt="고객1">
-                            <img src="https://i.pravatar.cc/100?img=2" alt="고객2">
-                            <img src="https://i.pravatar.cc/100?img=3" alt="고객3">
-                            <img src="https://i.pravatar.cc/100?img=4" alt="고객4">
-                            <span class="trust-more">+</span>
-                        </div>
-                        <div class="trust-text">
-                            <strong>1,200+</strong> 고객이 신뢰하는 서비스
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Search Box -->
-                <div class="hero-search" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
-                    <div class="search-card">
-                        <div class="search-header">
-                            <div class="search-tabs">
-                                <button class="search-tab active" data-tab="auction">
-                                    <i class="fas fa-gavel"></i>
-                                    <span>경매물건</span>
-                                </button>
-                                <button class="search-tab" data-tab="public">
-                                    <i class="fas fa-landmark"></i>
-                                    <span>공매물건</span>
-                                </button>
-                            </div>
-                        </div>
-                        <div class="search-body">
-                            <div class="search-field">
-                                <div class="field-icon">
-                                    <i class="fas fa-map-marker-alt"></i>
-                                </div>
-                                <div class="field-content">
-                                    <label>지역선택</label>
-                                    <select>
-                                        <option>전체 지역</option>
-                                        <option>서울특별시</option>
-                                        <option>경기도</option>
-                                        <option>인천광역시</option>
-                                        <option>부산광역시</option>
-                                        <option>대구광역시</option>
-                                        <option>광주광역시</option>
-                                        <option>대전광역시</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="search-divider"></div>
-                            <div class="search-field">
-                                <div class="field-icon">
-                                    <i class="fas fa-building"></i>
-                                </div>
-                                <div class="field-content">
-                                    <label>물건종류</label>
-                                    <select>
-                                        <option>전체</option>
-                                        <option>아파트</option>
-                                        <option>빌라/다세대</option>
-                                        <option>오피스텔</option>
-                                        <option>상가/사무실</option>
-                                        <option>토지</option>
-                                        <option>공장/창고</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="search-divider"></div>
-                            <div class="search-field">
-                                <div class="field-icon">
-                                    <i class="fas fa-won-sign"></i>
-                                </div>
-                                <div class="field-content">
-                                    <label>감정가</label>
-                                    <select>
-                                        <option>전체</option>
-                                        <option>1억 이하</option>
-                                        <option>1억 ~ 3억</option>
-                                        <option>3억 ~ 5억</option>
-                                        <option>5억 ~ 10억</option>
-                                        <option>10억 이상</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <a href="/realtycomment/detail.html" class="search-submit">
-                                <i class="fas fa-search"></i>
-                                <span>검색하기</span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Scroll Indicator -->
-        <div class="scroll-indicator">
-            <div class="mouse">
-                <div class="wheel"></div>
-            </div>
-            <span>Scroll Down</span>
-        </div>
-    </section>
-
-    <!-- Stats Bar -->
-    <section class="stats-bar">
-        <div class="container">
-            <div class="stats-grid">
-                <div class="stat-item" data-aos="fade-up" data-aos-delay="0">
-                    <div class="stat-value">
-                        <span class="counter" data-target="1200">0</span>
-                        <span class="stat-plus">+</span>
-                    </div>
-                    <div class="stat-label">누적 상담건수</div>
-                </div>
-                <div class="stat-item" data-aos="fade-up" data-aos-delay="100">
-                    <div class="stat-value">
-                        <span class="counter" data-target="847">0</span>
-                        <span class="stat-unit">건</span>
-                    </div>
-                    <div class="stat-label">낙찰 성공</div>
-                </div>
-                <div class="stat-item" data-aos="fade-up" data-aos-delay="200">
-                    <div class="stat-value">
-                        <span class="counter" data-target="94">0</span>
-                        <span class="stat-unit">%</span>
-                    </div>
-                    <div class="stat-label">고객 만족도</div>
-                </div>
-                <div class="stat-item" data-aos="fade-up" data-aos-delay="300">
-                    <div class="stat-value">
-                        <span class="counter" data-target="15">0</span>
-                        <span class="stat-unit">년</span>
-                    </div>
-                    <div class="stat-label">전문 경력</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about" class="about-section">
-        <div class="container">
-            <div class="section-header" data-aos="fade-up">
-                <span class="section-label">OUR SERVICE</span>
-                <h2 class="section-title">
-                    컨설팅 의뢰만 해주시면, 고객님께 꼭 맞는 <span class="text-gradient">최적의 물건</span>을 추천드립니다
-                </h2>
-                <p class="section-desc">
-                    15년 이상 경력의 전문컨설턴트가 직접 상담해드립니다
+<!-- About -->
+<section class="section" id="about">
+    <div class="container">
+        <div class="about-grid">
+            <div class="about-text">
+                <div class="section-label reveal">About</div>
+                <h2 class="section-title reveal reveal-d1">경매를 대신 맡길 수 있는<br>전문가 집단</h2>
+                <p class="section-desc reveal reveal-d2">
+                    부코맨트는 부동산 경&middot;공매 전문 컨설팅 기업입니다.
+                    체계적인 분석 시스템과 풍부한 현장 경험을 바탕으로,
+                    고객의 성공적인 투자를 이끌어냅니다.
                 </p>
-            </div>
-
-            <div class="services-grid">
-                <a href="/realtycomment/service.html" class="service-card" data-aos="fade-up" data-aos-delay="0">
-                    <div class="card-glow"></div>
-                    <div class="card-content">
-                        <div class="card-icon">
-                            <div class="icon-bg"></div>
-                            <i class="fas fa-search-dollar"></i>
-                        </div>
-                        <h3 class="card-title">물건 분석</h3>
-                        <p class="card-desc">
-                            권리분석부터 시세분석까지<br>
-                            전문가가 꼼꼼히 분석합니다
-                        </p>
-                        <ul class="card-features">
-                            <li>
-                                <i class="fas fa-check-circle"></i>
-                                <span>등기부등본 권리분석</span>
-                            </li>
-                            <li>
-                                <i class="fas fa-check-circle"></i>
-                                <span>실거래가 시세분석</span>
-                            </li>
-                            <li>
-                                <i class="fas fa-check-circle"></i>
-                                <span>임대수익률 계산</span>
-                            </li>
-                        </ul>
-                        <div class="card-number">01</div>
-                    </div>
-                </a>
-
-                <a href="/realtycomment/service.html" class="service-card" data-aos="fade-up" data-aos-delay="100">
-                    <div class="card-glow"></div>
-                    <div class="card-content">
-                        <div class="card-icon">
-                            <div class="icon-bg"></div>
-                            <i class="fas fa-gavel"></i>
-                        </div>
-                        <h3 class="card-title">입찰 대행</h3>
-                        <p class="card-desc">
-                            적정 입찰가 산정부터<br>
-                            입찰까지 대행해드립니다
-                        </p>
-                        <ul class="card-features">
-                            <li>
-                                <i class="fas fa-check-circle"></i>
-                                <span>적정 입찰가 산정</span>
-                            </li>
-                            <li>
-                                <i class="fas fa-check-circle"></i>
-                                <span>입찰서류 작성</span>
-                            </li>
-                            <li>
-                                <i class="fas fa-check-circle"></i>
-                                <span>법원 입찰 대행</span>
-                            </li>
-                        </ul>
-                        <div class="card-number">02</div>
-                    </div>
-                </a>
-
-                <a href="/realtycomment/service.html" class="service-card" data-aos="fade-up" data-aos-delay="200">
-                    <div class="card-glow"></div>
-                    <div class="card-content">
-                        <div class="card-icon">
-                            <div class="icon-bg"></div>
-                            <i class="fas fa-handshake"></i>
-                        </div>
-                        <h3 class="card-title">명도 지원</h3>
-                        <p class="card-desc">
-                            낙찰 후 명도까지<br>
-                            원스톱으로 지원합니다
-                        </p>
-                        <ul class="card-features">
-                            <li>
-                                <i class="fas fa-check-circle"></i>
-                                <span>점유자 협상 대행</span>
-                            </li>
-                            <li>
-                                <i class="fas fa-check-circle"></i>
-                                <span>명도소송 지원</span>
-                            </li>
-                            <li>
-                                <i class="fas fa-check-circle"></i>
-                                <span>인도명령 신청</span>
-                            </li>
-                        </ul>
-                        <div class="card-number">03</div>
-                    </div>
-                </a>
-
-                <a href="/realtycomment/service.html" class="service-card" data-aos="fade-up" data-aos-delay="300">
-                    <div class="card-glow"></div>
-                    <div class="card-content">
-                        <div class="card-icon">
-                            <div class="icon-bg"></div>
-                            <i class="fas fa-file-signature"></i>
-                        </div>
-                        <h3 class="card-title">사후 관리</h3>
-                        <p class="card-desc">
-                            등기이전부터 임대관리까지<br>
-                            끝까지 책임집니다
-                        </p>
-                        <ul class="card-features">
-                            <li>
-                                <i class="fas fa-check-circle"></i>
-                                <span>소유권이전등기</span>
-                            </li>
-                            <li>
-                                <i class="fas fa-check-circle"></i>
-                                <span>임대차 관리</span>
-                            </li>
-                            <li>
-                                <i class="fas fa-check-circle"></i>
-                                <span>세무 상담 연계</span>
-                            </li>
-                        </ul>
-                        <div class="card-number">04</div>
-                    </div>
-                </a>
-            </div>
-
-            <div class="about-cta" data-aos="fade-up">
-                <a href="#contact" class="btn-primary-large">
-                    <i class="fas fa-comments"></i>
-                    <span>무료 상담 신청하기</span>
-                </a>
-                <a href="tel:1588-0000" class="btn-outline-large">
-                    <i class="fas fa-phone-alt"></i>
-                    <span>전화 문의 1588-0000</span>
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Process Section -->
-    <section id="process" class="process-section">
-        <div class="container">
-            <div class="section-header light" data-aos="fade-up">
-                <span class="section-label">PROCESS</span>
-                <h2 class="section-title">간단한 경매 컨설팅 절차</h2>
-                <p class="section-desc">복잡한 경매, 부코맨트가 쉽고 간편하게 도와드립니다</p>
-            </div>
-
-            <div class="process-wrapper">
-                <!-- Customer Flow -->
-                <div class="process-column" data-aos="fade-right">
-                    <div class="column-header customer">
-                        <div class="column-icon">
-                            <i class="fas fa-user"></i>
-                        </div>
-                        <h3>고객</h3>
-                    </div>
-                    <div class="process-steps">
-                        <div class="step-card">
-                            <div class="step-num">01</div>
-                            <div class="step-content">
-                                <h4>상담 신청</h4>
-                                <p>온라인 또는 전화로<br>무료 상담을 신청합니다</p>
-                            </div>
-                            <div class="step-connector"></div>
-                        </div>
-                        <div class="step-card">
-                            <div class="step-num">02</div>
-                            <div class="step-content">
-                                <h4>물건 검토</h4>
-                                <p>추천받은 물건을<br>검토하고 현장을 방문합니다</p>
-                            </div>
-                            <div class="step-connector"></div>
-                        </div>
-                        <div class="step-card">
-                            <div class="step-num">03</div>
-                            <div class="step-content">
-                                <h4>입찰 결정</h4>
-                                <p>입찰 여부와<br>입찰가를 최종 결정합니다</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Center Connection -->
-                <div class="process-center" data-aos="fade-up">
-                    <div class="center-line"></div>
-                    <div class="center-icon">
-                        <i class="fas fa-exchange-alt"></i>
-                    </div>
-                    <div class="center-line"></div>
-                </div>
-
-                <!-- Bucomant Flow -->
-                <div class="process-column" data-aos="fade-left">
-                    <div class="column-header bucomant">
-                        <div class="column-icon">
-                            <i class="fas fa-building"></i>
-                        </div>
-                        <h3>부코맨트</h3>
-                    </div>
-                    <div class="process-steps">
-                        <div class="step-card accent">
-                            <div class="step-num">01</div>
-                            <div class="step-content">
-                                <h4>요구사항 분석</h4>
-                                <p>예산, 지역, 용도 등<br>고객 니즈를 파악합니다</p>
-                            </div>
-                            <div class="step-connector"></div>
-                        </div>
-                        <div class="step-card accent">
-                            <div class="step-num">02</div>
-                            <div class="step-content">
-                                <h4>물건 추천</h4>
-                                <p>조건에 맞는 물건을<br>선별하고 분석을 제공합니다</p>
-                            </div>
-                            <div class="step-connector"></div>
-                        </div>
-                        <div class="step-card accent">
-                            <div class="step-num">03</div>
-                            <div class="step-content">
-                                <h4>입찰 진행</h4>
-                                <p>입찰서류 작성과<br>법원 입찰을 대행합니다</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Result -->
-            <div class="process-result" data-aos="fade-up">
-                <div class="result-arrow">
-                    <svg viewBox="0 0 24 80" fill="none">
-                        <path d="M12 0V60M12 60L2 50M12 60L22 50" stroke="url(#arrow-gradient)" stroke-width="2"/>
-                        <defs>
-                            <linearGradient id="arrow-gradient" x1="12" y1="0" x2="12" y2="60">
-                                <stop offset="0%" stop-color="#3b82f6"/>
-                                <stop offset="100%" stop-color="#f59e0b"/>
-                            </linearGradient>
-                        </defs>
-                    </svg>
-                </div>
-                <div class="result-card">
-                    <div class="result-glow"></div>
-                    <div class="result-icon">
-                        <i class="fas fa-trophy"></i>
-                    </div>
-                    <h3>낙찰 성공</h3>
-                    <p>성공적인 낙찰과 함께 명도, 등기이전까지 원스톱 서비스를 제공합니다</p>
-                    <div class="result-badge">
+                <div class="about-list reveal reveal-d3">
+                    <div class="about-list-item">
                         <i class="fas fa-check"></i>
-                        <span>평균 낙찰가 시세대비 20% 절감</span>
+                        <span>권리분석, 시세분석, 수익률 분석을 통한 정밀한 물건 선별</span>
+                    </div>
+                    <div class="about-list-item">
+                        <i class="fas fa-check"></i>
+                        <span>고객별 전담 컨설턴트 배정, 맞춤형 1:1 서비스</span>
+                    </div>
+                    <div class="about-list-item">
+                        <i class="fas fa-check"></i>
+                        <span>낙찰 성공 후 보수 정산 &mdash; 성공보수 시스템</span>
+                    </div>
+                    <div class="about-list-item">
+                        <i class="fas fa-check"></i>
+                        <span>입찰부터 명도, 등기이전까지 원스톱 관리</span>
+                    </div>
+                </div>
+            </div>
+            <div class="about-image reveal reveal-d2">
+                <div class="about-image-main">
+                    <img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=800&q=80" alt="사무실">
+                </div>
+                <div class="about-image-badge">
+                    <span class="about-image-badge-num">15+</span>
+                    <span class="about-image-badge-text">Years of Experience</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Services -->
+<section class="section bg-gray">
+    <div class="container">
+        <div class="section-header center reveal">
+            <div class="section-label">Services</div>
+            <h2 class="section-title">경매의 처음부터 끝까지</h2>
+            <p class="section-desc">물건 분석, 입찰, 명도, 사후관리. 모든 과정을 하나의 서비스로 제공합니다.</p>
+        </div>
+        <div class="service-grid">
+            <div class="service-card reveal reveal-d1">
+                <div class="service-icon"><i class="fas fa-search-dollar"></i></div>
+                <div class="service-num">01</div>
+                <div class="service-title">물건 분석</div>
+                <div class="service-desc">등기부등본 권리분석, 시세분석, 임대수익률 분석, 현장답사까지 투자 가치를 꼼꼼하게 검증합니다.</div>
+            </div>
+            <div class="service-card reveal reveal-d2">
+                <div class="service-icon"><i class="fas fa-gavel"></i></div>
+                <div class="service-num">02</div>
+                <div class="service-title">입찰 대행</div>
+                <div class="service-desc">경쟁 분석 기반의 적정 입찰가 산정부터 서류 작성, 법원 입찰까지 대행합니다.</div>
+            </div>
+            <div class="service-card reveal reveal-d3">
+                <div class="service-icon"><i class="fas fa-handshake"></i></div>
+                <div class="service-num">03</div>
+                <div class="service-title">명도 지원</div>
+                <div class="service-desc">점유자 협상, 인도명령, 명도소송 등 낙찰 후 가장 어려운 과정을 전문가가 함께합니다.</div>
+            </div>
+            <div class="service-card reveal reveal-d4">
+                <div class="service-icon"><i class="fas fa-file-signature"></i></div>
+                <div class="service-num">04</div>
+                <div class="service-title">사후 관리</div>
+                <div class="service-desc">소유권이전등기, 세무 상담, 임대관리, 매도 전략까지. 끝까지 책임집니다.</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA Band -->
+<div class="cta-band">
+    <div class="container">
+        <div class="cta-band-title reveal">서비스가 궁금하시다면, 부담없이 문의하세요</div>
+        <div class="cta-band-desc reveal reveal-d1">전문 컨설턴트가 친절하게 안내해드립니다</div>
+        <div class="cta-band-actions reveal reveal-d2">
+            <a href="contact.html" class="btn-white">상담 신청하기 <i class="fas fa-arrow-right"></i></a>
+            <a href="tel:1588-0000" class="btn-white-outline"><i class="fas fa-phone-alt"></i> 1588-0000</a>
+        </div>
+    </div>
+</div>
+
+<!-- Process -->
+<section class="section" id="process">
+    <div class="container">
+        <div class="section-header center reveal">
+            <div class="section-label">Process</div>
+            <h2 class="section-title">컨설팅 진행 절차</h2>
+            <p class="section-desc">맡기시면, 아래 절차대로 진행됩니다</p>
+        </div>
+        <div class="process-flow reveal">
+            <div class="process-line"><div class="process-line-fill" id="processLineFill"></div></div>
+            <div class="process-steps">
+                <div class="process-step reveal reveal-d1">
+                    <div class="step-marker"><i class="fas fa-phone-alt"></i></div>
+                    <div>
+                        <div class="step-num">STEP 01</div>
+                        <div class="step-title">상담 신청</div>
+                        <div class="step-desc">온라인 또는 전화로<br>무료 상담을 신청합니다</div>
+                    </div>
+                </div>
+                <div class="process-step reveal reveal-d2">
+                    <div class="step-marker"><i class="fas fa-clipboard-list"></i></div>
+                    <div>
+                        <div class="step-num">STEP 02</div>
+                        <div class="step-title">조건 확인</div>
+                        <div class="step-desc">예산, 지역, 용도 등<br>고객 요구사항을 파악합니다</div>
+                    </div>
+                </div>
+                <div class="process-step reveal reveal-d3">
+                    <div class="step-marker"><i class="fas fa-search"></i></div>
+                    <div>
+                        <div class="step-num">STEP 03</div>
+                        <div class="step-title">물건 분석 &middot; 입찰</div>
+                        <div class="step-desc">물건 선별, 권리분석 후<br>입찰을 대행합니다</div>
+                    </div>
+                </div>
+                <div class="process-step reveal reveal-d4">
+                    <div class="step-marker"><i class="fas fa-key"></i></div>
+                    <div>
+                        <div class="step-num">STEP 04</div>
+                        <div class="step-title">낙찰 &middot; 명도</div>
+                        <div class="step-desc">낙찰 후 명도 협상 및<br>법적 절차를 지원합니다</div>
+                    </div>
+                </div>
+                <div class="process-step reveal reveal-d5">
+                    <div class="step-marker"><i class="fas fa-check-circle"></i></div>
+                    <div>
+                        <div class="step-num">STEP 05</div>
+                        <div class="step-title">완료 &middot; 수익실현</div>
+                        <div class="step-desc">등기이전, 임대 또는<br>매도를 통한 수익 실현</div>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- Success Section -->
-    <section id="success" class="success-section">
-        <div class="container">
-            <div class="section-header" data-aos="fade-up">
-                <span class="section-label">SUCCESS SYSTEM</span>
-                <h2 class="section-title">
-                    <span class="text-gradient">낙찰가능</span> 서비스가 있습니다
-                </h2>
-                <p class="section-desc">
-                    최종 성공한 뒤에 수익률을 공유합니다. 고객의 성공이 곧 우리의 성공입니다
+<!-- Why Us (Dark) -->
+<section class="section bg-dark">
+    <div class="container">
+        <div class="section-header center reveal">
+            <div class="section-label">Why Bucomant</div>
+            <h2 class="section-title">왜 부코맨트인가</h2>
+            <p class="section-desc">경매 컨설팅, 아무에게나 맡기지 마세요</p>
+        </div>
+        <div class="strength-grid">
+            <div class="strength-card reveal reveal-d1">
+                <div class="strength-icon"><i class="fas fa-award"></i></div>
+                <div>
+                    <div class="strength-title">15년 전문 경력</div>
+                    <div class="strength-desc">2009년부터 부동산 경매 시장에서 축적한 노하우와 데이터. 현장 경험에서 나오는 정확한 판단력.</div>
+                </div>
+            </div>
+            <div class="strength-card reveal reveal-d2">
+                <div class="strength-icon"><i class="fas fa-chart-line"></i></div>
+                <div>
+                    <div class="strength-title">847건 낙찰 실적</div>
+                    <div class="strength-desc">숫자로 검증된 능력. 평균 시세 대비 20% 이상 절감된 가격으로 낙찰을 이끌어냅니다.</div>
+                </div>
+            </div>
+            <div class="strength-card reveal reveal-d3">
+                <div class="strength-icon"><i class="fas fa-user-shield"></i></div>
+                <div>
+                    <div class="strength-title">성공보수 시스템</div>
+                    <div class="strength-desc">낙찰에 성공한 후에 보수를 정산합니다. 고객의 성공이 곧 부코맨트의 성공입니다.</div>
+                </div>
+            </div>
+            <div class="strength-card reveal reveal-d4">
+                <div class="strength-icon"><i class="fas fa-hands-helping"></i></div>
+                <div>
+                    <div class="strength-title">원스톱 책임 관리</div>
+                    <div class="strength-desc">물건 분석부터 명도, 등기이전, 임대관리까지. 전 과정을 전담 컨설턴트가 책임집니다.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Success Cases -->
+<section class="section bg-gray">
+    <div class="container">
+        <div class="section-header center reveal">
+            <div class="section-label">Cases</div>
+            <h2 class="section-title">최근 낙찰 사례</h2>
+            <p class="section-desc">부코맨트와 함께 성공적인 투자를 이루어낸 사례입니다</p>
+        </div>
+        <div class="cases-grid">
+            <a href="success-detail.html" class="case-card reveal reveal-d1">
+                <div class="case-img">
+                    <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=600&q=80" alt="">
+                    <span class="case-badge">낙찰 완료</span>
+                </div>
+                <div class="case-body">
+                    <div class="case-type">APT &middot; 경매</div>
+                    <div class="case-title">래미안 퍼스티지 84㎡</div>
+                    <div class="case-location"><i class="fas fa-map-marker-alt"></i> 서울 강남구 도곡동</div>
+                    <div class="case-meta">
+                        <div><span class="case-meta-label">감정가</span><span class="case-meta-value">15.8억</span></div>
+                        <div><span class="case-meta-label">낙찰가</span><span class="case-meta-value">10.1억</span></div>
+                        <div><span class="case-meta-label">절감</span><span class="case-meta-value">36%</span></div>
+                    </div>
+                </div>
+            </a>
+            <a href="success-detail.html" class="case-card reveal reveal-d2">
+                <div class="case-img">
+                    <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=600&q=80" alt="">
+                    <span class="case-badge">낙찰 완료</span>
+                </div>
+                <div class="case-body">
+                    <div class="case-type">상가 &middot; 경매</div>
+                    <div class="case-title">수원역 근린상가 1층</div>
+                    <div class="case-location"><i class="fas fa-map-marker-alt"></i> 경기 수원시 팔달구</div>
+                    <div class="case-meta">
+                        <div><span class="case-meta-label">감정가</span><span class="case-meta-value">8.2억</span></div>
+                        <div><span class="case-meta-label">낙찰가</span><span class="case-meta-value">5.7억</span></div>
+                        <div><span class="case-meta-label">절감</span><span class="case-meta-value">30%</span></div>
+                    </div>
+                </div>
+            </a>
+            <a href="success-detail.html" class="case-card reveal reveal-d3">
+                <div class="case-img">
+                    <img src="https://images.unsplash.com/photo-1580587771525-78b9dba3b914?w=600&q=80" alt="">
+                    <span class="case-badge">낙찰 완료</span>
+                </div>
+                <div class="case-body">
+                    <div class="case-type">빌라 &middot; 경매</div>
+                    <div class="case-title">인천 신축 빌라 59㎡</div>
+                    <div class="case-location"><i class="fas fa-map-marker-alt"></i> 인천 남동구 구월동</div>
+                    <div class="case-meta">
+                        <div><span class="case-meta-label">감정가</span><span class="case-meta-value">3.5억</span></div>
+                        <div><span class="case-meta-label">낙찰가</span><span class="case-meta-value">2.4억</span></div>
+                        <div><span class="case-meta-label">절감</span><span class="case-meta-value">31%</span></div>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Testimonials -->
+<section class="section">
+    <div class="container">
+        <div class="section-header center reveal">
+            <div class="section-label">Clients</div>
+            <h2 class="section-title">고객 후기</h2>
+        </div>
+        <div class="testimonial-grid">
+            <div class="testimonial-card reveal reveal-d1">
+                <div class="testimonial-quote">"</div>
+                <p class="testimonial-text">처음 경매를 시작하면서 막막했는데, 전문가 분석 리포트를 받고 확신을 가지고 투자할 수 있었습니다. 시세보다 30% 저렴하게 낙찰받았습니다.</p>
+                <div class="testimonial-author">
+                    <div class="testimonial-avatar"><img src="https://i.pravatar.cc/100?img=11" alt=""></div>
+                    <div>
+                        <div class="testimonial-name">김** 님</div>
+                        <div class="testimonial-role">서울 강남구 아파트 낙찰</div>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card reveal reveal-d2">
+                <div class="testimonial-quote">"</div>
+                <p class="testimonial-text">복잡한 권리관계 때문에 망설였는데, 정확한 분석으로 안전하게 투자할 수 있었습니다. 현재 월 150만원 임대수익이 발생하고 있습니다.</p>
+                <div class="testimonial-author">
+                    <div class="testimonial-avatar"><img src="https://i.pravatar.cc/100?img=12" alt=""></div>
+                    <div>
+                        <div class="testimonial-name">이** 님</div>
+                        <div class="testimonial-role">경기 수원시 상가 낙찰</div>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card reveal reveal-d3">
+                <div class="testimonial-quote">"</div>
+                <p class="testimonial-text">3번의 유찰을 거쳐 최저가에 낙찰받을 수 있도록 전략을 세워주셨습니다. 명도까지 깔끔하게 마무리해주셔서 감사합니다.</p>
+                <div class="testimonial-author">
+                    <div class="testimonial-avatar"><img src="https://i.pravatar.cc/100?img=15" alt=""></div>
+                    <div>
+                        <div class="testimonial-name">박** 님</div>
+                        <div class="testimonial-role">인천 빌라 낙찰</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="site-footer">
+    <div class="container">
+        <div class="footer-grid">
+            <div>
+                <div class="footer-brand">부코맨트</div>
+                <p class="footer-brand-desc">
+                    부동산 경&middot;공매 전문 컨설팅 기업.<br>
+                    물건 분석부터 명도까지, 전 과정을 책임집니다.
                 </p>
-            </div>
-
-            <div class="success-timeline" data-aos="fade-up">
-                <div class="timeline-track"></div>
-
-                <div class="timeline-step">
-                    <div class="step-marker">
-                        <div class="marker-ring"></div>
-                        <div class="marker-dot"></div>
-                    </div>
-                    <div class="step-card">
-                        <div class="step-icon">
-                            <i class="fas fa-clipboard-list"></i>
-                        </div>
-                        <span class="step-label">STEP 01</span>
-                        <h4>상담 및 계약</h4>
-                        <p>고객 요구사항 파악 및 컨설팅 계약 체결</p>
-                    </div>
-                </div>
-
-                <div class="timeline-step">
-                    <div class="step-marker">
-                        <div class="marker-ring"></div>
-                        <div class="marker-dot"></div>
-                    </div>
-                    <div class="step-card">
-                        <div class="step-icon">
-                            <i class="fas fa-chart-line"></i>
-                        </div>
-                        <span class="step-label">STEP 02</span>
-                        <h4>물건 분석</h4>
-                        <p>권리분석, 시세분석, 수익률 분석 진행</p>
-                    </div>
-                </div>
-
-                <div class="timeline-step">
-                    <div class="step-marker">
-                        <div class="marker-ring"></div>
-                        <div class="marker-dot"></div>
-                    </div>
-                    <div class="step-card">
-                        <div class="step-icon">
-                            <i class="fas fa-gavel"></i>
-                        </div>
-                        <span class="step-label">STEP 03</span>
-                        <h4>입찰 진행</h4>
-                        <p>적정 입찰가 산정 및 입찰 대행</p>
-                    </div>
-                </div>
-
-                <div class="timeline-step">
-                    <div class="step-marker">
-                        <div class="marker-ring"></div>
-                        <div class="marker-dot"></div>
-                    </div>
-                    <div class="step-card">
-                        <div class="step-icon">
-                            <i class="fas fa-key"></i>
-                        </div>
-                        <span class="step-label">STEP 04</span>
-                        <h4>명도 및 인도</h4>
-                        <p>점유자 협상 및 명도 완료</p>
-                    </div>
-                </div>
-
-                <div class="timeline-step highlight">
-                    <div class="step-marker">
-                        <div class="marker-ring"></div>
-                        <div class="marker-dot"></div>
-                    </div>
-                    <div class="step-card">
-                        <div class="step-icon">
-                            <i class="fas fa-hand-holding-usd"></i>
-                        </div>
-                        <span class="step-label">STEP 05</span>
-                        <h4>수익 실현</h4>
-                        <p>임대 또는 매도를 통한 수익 실현</p>
-                    </div>
+                <div class="footer-social">
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fas fa-blog"></i></a>
                 </div>
             </div>
-
-            <div class="success-guarantee" data-aos="fade-up">
-                <div class="guarantee-card">
-                    <div class="guarantee-icon">
-                        <i class="fas fa-shield-alt"></i>
-                    </div>
-                    <div class="guarantee-content">
-                        <h4>"입찰·시세·수익률·리스크를 종합적으로 분석"</h4>
-                        <p>"낙찰 이후까지 책임감" 있게 컨설팅을 진행합니다</p>
-                    </div>
-                </div>
+            <div class="footer-col">
+                <div class="footer-col-title">서비스</div>
+                <a href="service.html">경매 컨설팅</a>
+                <a href="service.html">공매 컨설팅</a>
+                <a href="detail.html">물건 분석</a>
+                <a href="service.html">명도 대행</a>
+            </div>
+            <div class="footer-col">
+                <div class="footer-col-title">고객지원</div>
+                <a href="service.html#faq">자주 묻는 질문</a>
+                <a href="contact.html">상담 신청</a>
+                <a href="#">오시는 길</a>
+                <a href="#">공지사항</a>
+            </div>
+            <div class="footer-col">
+                <div class="footer-col-title">회사정보</div>
+                <a href="service.html">회사 소개</a>
+                <a href="#">이용약관</a>
+                <a href="#">개인정보처리방침</a>
             </div>
         </div>
-    </section>
-
-    <!-- Testimonials Section -->
-    <section class="testimonials-section">
-        <div class="container">
-            <div class="section-header light" data-aos="fade-up">
-                <span class="section-label">TESTIMONIALS</span>
-                <h2 class="section-title">고객 후기</h2>
-                <p class="section-desc">부코맨트와 함께한 고객들의 생생한 후기입니다</p>
+        <div class="footer-bottom">
+            <div class="footer-info">
+                <strong>부코맨트</strong> | 대표: 홍길동 | 사업자등록번호: 123-45-67890<br>
+                서울시 강남구 테헤란로 123 부코맨트빌딩 5층 | 1588-0000
             </div>
-
-            <div class="testimonials-slider" data-aos="fade-up">
-                <div class="swiper testimonials-swiper">
-                    <div class="swiper-wrapper">
-                        <div class="swiper-slide">
-                            <a href="/realtycomment/success-detail.html" class="testimonial-card">
-                                <div class="testimonial-rating">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                </div>
-                                <p class="testimonial-text">
-                                    "처음 경매를 시작하는데 부코맨트 덕분에 시세보다 30% 저렴하게 아파트를 낙찰받았습니다. 명도까지 깔끔하게 처리해주셔서 정말 감사합니다."
-                                </p>
-                                <div class="testimonial-author">
-                                    <img src="https://i.pravatar.cc/100?img=11" alt="고객">
-                                    <div class="author-info">
-                                        <strong>김○○ 님</strong>
-                                        <span>서울 강남구 아파트 낙찰</span>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="swiper-slide">
-                            <a href="/realtycomment/success-detail.html" class="testimonial-card">
-                                <div class="testimonial-rating">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                </div>
-                                <p class="testimonial-text">
-                                    "복잡한 권리관계 때문에 망설였는데, 전문가의 정확한 분석으로 안전하게 투자할 수 있었습니다. 현재 월 150만원 임대수익 발생중입니다."
-                                </p>
-                                <div class="testimonial-author">
-                                    <img src="https://i.pravatar.cc/100?img=12" alt="고객">
-                                    <div class="author-info">
-                                        <strong>이○○ 님</strong>
-                                        <span>경기 수원시 상가 낙찰</span>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="swiper-slide">
-                            <a href="/realtycomment/success-detail.html" class="testimonial-card">
-                                <div class="testimonial-rating">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                </div>
-                                <p class="testimonial-text">
-                                    "3번의 유찰을 거쳐 최저가에 낙찰받을 수 있도록 전략을 세워주셨어요. 덕분에 예산보다 훨씬 좋은 물건을 얻었습니다!"
-                                </p>
-                                <div class="testimonial-author">
-                                    <img src="https://i.pravatar.cc/100?img=15" alt="고객">
-                                    <div class="author-info">
-                                        <strong>박○○ 님</strong>
-                                        <span>인천 빌라 낙찰</span>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="swiper-pagination"></div>
-                </div>
-                <div class="swiper-nav">
-                    <button class="swiper-prev"><i class="fas fa-chevron-left"></i></button>
-                    <button class="swiper-next"><i class="fas fa-chevron-right"></i></button>
-                </div>
-            </div>
+            <div class="footer-copy">&copy; 2025 BUCOMANT. All rights reserved.</div>
         </div>
-    </section>
+    </div>
+</footer>
 
-    <!-- Contact Section -->
-    <section id="contact" class="contact-section">
-        <div class="container">
-            <div class="contact-wrapper">
-                <div class="contact-info" data-aos="fade-right">
-                    <span class="section-label">CONTACT US</span>
-                    <h2 class="contact-title">무료 상담 신청</h2>
-                    <p class="contact-desc">
-                        전문 컨설턴트가 친절하게 상담해드립니다. 부담없이 문의해주세요.
-                    </p>
+<!-- Back to Top -->
+<button class="back-top" id="backTop"><i class="fas fa-chevron-up"></i></button>
 
-                    <div class="contact-cards">
-                        <div class="contact-card">
-                            <div class="contact-icon">
-                                <i class="fas fa-phone-alt"></i>
-                            </div>
-                            <div class="contact-text">
-                                <span>전화 상담</span>
-                                <strong>1588-0000</strong>
-                            </div>
-                        </div>
-                        <div class="contact-card">
-                            <div class="contact-icon">
-                                <i class="fas fa-clock"></i>
-                            </div>
-                            <div class="contact-text">
-                                <span>상담 시간</span>
-                                <strong>평일 09:00 ~ 18:00</strong>
-                            </div>
-                        </div>
-                        <div class="contact-card">
-                            <div class="contact-icon">
-                                <i class="fas fa-map-marker-alt"></i>
-                            </div>
-                            <div class="contact-text">
-                                <span>오시는 길</span>
-                                <strong>서울시 강남구 테헤란로 123</strong>
-                            </div>
-                        </div>
-                    </div>
+<script>
+(function() {
+    'use strict';
 
-                    <div class="contact-social">
-                        <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" class="social-link"><i class="fas fa-blog"></i></a>
-                    </div>
-                </div>
+    /* === Hero Slideshow === */
+    const slides = document.querySelectorAll('.hero-slide');
+    let current = 0;
+    if (slides.length > 1) {
+        setInterval(() => {
+            slides[current].classList.remove('active');
+            current = (current + 1) % slides.length;
+            slides[current].classList.add('active');
+        }, 5000);
+    }
 
-                <div class="contact-form-wrapper" data-aos="fade-left">
-                    <form class="contact-form" id="contactForm">
-                        <div class="form-header">
-                            <h3>상담 신청서</h3>
-                            <p>아래 양식을 작성해주시면 빠르게 연락드리겠습니다</p>
-                        </div>
+    /* === Header scroll === */
+    const header = document.getElementById('siteHeader');
+    window.addEventListener('scroll', () => {
+        header.classList.toggle('scrolled', window.scrollY > 80);
+    });
 
-                        <div class="form-grid">
-                            <div class="form-group">
-                                <label>
-                                    <i class="fas fa-user"></i>
-                                    이름 <span class="required">*</span>
-                                </label>
-                                <input type="text" name="name" placeholder="이름을 입력하세요" required>
-                            </div>
-                            <div class="form-group">
-                                <label>
-                                    <i class="fas fa-phone"></i>
-                                    연락처 <span class="required">*</span>
-                                </label>
-                                <input type="tel" name="phone" placeholder="010-0000-0000" required>
-                            </div>
-                        </div>
+    /* === Mobile menu === */
+    const toggle = document.getElementById('menuToggle');
+    const mobile = document.getElementById('mobileMenu');
+    toggle.addEventListener('click', () => {
+        toggle.classList.toggle('active');
+        mobile.classList.toggle('open');
+    });
+    mobile.querySelectorAll('a').forEach(a =>
+        a.addEventListener('click', () => {
+            toggle.classList.remove('active');
+            mobile.classList.remove('open');
+        })
+    );
 
-                        <div class="form-group">
-                            <label>
-                                <i class="fas fa-map-marker-alt"></i>
-                                관심 지역
-                            </label>
-                            <select name="region">
-                                <option value="">지역을 선택하세요</option>
-                                <option value="서울">서울</option>
-                                <option value="경기">경기</option>
-                                <option value="인천">인천</option>
-                                <option value="기타">기타 지역</option>
-                            </select>
-                        </div>
+    /* === Scroll reveal === */
+    const reveals = document.querySelectorAll('.reveal');
+    const ro = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+            if (e.isIntersecting) { e.target.classList.add('visible'); ro.unobserve(e.target); }
+        });
+    }, { threshold: 0.12, rootMargin: '0px 0px -30px 0px' });
+    reveals.forEach(el => ro.observe(el));
 
-                        <div class="form-group">
-                            <label>
-                                <i class="fas fa-edit"></i>
-                                문의 내용
-                            </label>
-                            <textarea name="message" rows="4" placeholder="문의하실 내용을 입력하세요"></textarea>
-                        </div>
+    /* === Counter === */
+    const counters = document.querySelectorAll('[data-count]');
+    const co = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+            if (!e.isIntersecting) return;
+            const el = e.target;
+            const target = parseInt(el.dataset.count);
+            const suffix = el.dataset.suffix || '';
+            const dur = 2000;
+            const start = performance.now();
+            (function tick(now) {
+                const p = Math.min((now - start) / dur, 1);
+                const eased = 1 - Math.pow(1 - p, 3);
+                el.textContent = Math.round(target * eased).toLocaleString() + (p >= 1 ? suffix : '');
+                if (p < 1) requestAnimationFrame(tick);
+            })(start);
+            co.unobserve(el);
+        });
+    }, { threshold: 0.5 });
+    counters.forEach(el => co.observe(el));
 
-                        <div class="form-check">
-                            <input type="checkbox" id="privacy" name="privacy" required>
-                            <label for="privacy">
-                                개인정보 수집 및 이용에 동의합니다 <span class="required">*</span>
-                            </label>
-                        </div>
+    /* === Process line fill === */
+    const pfill = document.getElementById('processLineFill');
+    if (pfill) {
+        const po = new IntersectionObserver((entries) => {
+            entries.forEach(e => {
+                if (e.isIntersecting) { pfill.classList.add('animate'); po.unobserve(e.target); }
+            });
+        }, { threshold: 0.3 });
+        po.observe(pfill.parentElement);
+    }
 
-                        <button type="submit" class="form-submit">
-                            <span>상담 신청하기</span>
-                            <i class="fas fa-paper-plane"></i>
-                        </button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </section>
+    /* === Back to top === */
+    const bt = document.getElementById('backTop');
+    window.addEventListener('scroll', () => bt.classList.toggle('visible', window.scrollY > 400));
+    bt.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 
-    <!-- CTA Section -->
-    <section class="cta-section">
-        <div class="cta-bg">
-            <div class="cta-pattern"></div>
-        </div>
-        <div class="container">
-            <div class="cta-content" data-aos="fade-up">
-                <h2>지금 바로 무료 상담을 받아보세요</h2>
-                <p>15년 경력의 전문가가 고객님의 성공적인 경매 투자를 도와드립니다</p>
-                <div class="cta-buttons">
-                    <a href="tel:1588-0000" class="btn-cta-primary">
-                        <i class="fas fa-phone-alt"></i>
-                        <span>1588-0000</span>
-                    </a>
-                    <a href="#contact" class="btn-cta-secondary">
-                        <span>온라인 상담</span>
-                        <i class="fas fa-arrow-right"></i>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-main">
-                <div class="footer-brand">
-                    <a href="/realtycomment/" class="footer-logo">
-                        <div class="logo-icon">
-                            <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <rect x="4" y="20" width="12" height="16" rx="1" fill="currentColor" opacity="0.8"/>
-                                <rect x="20" y="12" width="16" height="24" rx="1" fill="currentColor"/>
-                                <rect x="8" y="24" width="4" height="4" rx="0.5" fill="#0f172a"/>
-                                <rect x="24" y="16" width="4" height="4" rx="0.5" fill="#0f172a"/>
-                                <rect x="24" y="24" width="4" height="4" rx="0.5" fill="#0f172a"/>
-                                <rect x="30" y="16" width="4" height="4" rx="0.5" fill="#0f172a"/>
-                                <rect x="30" y="24" width="4" height="4" rx="0.5" fill="#0f172a"/>
-                            </svg>
-                        </div>
-                        <span>부코맨트</span>
-                    </a>
-                    <p class="footer-tagline">
-                        복잡한 부동산 경매,<br>
-                        부코맨트가 쉽게 도와드립니다
-                    </p>
-                    <div class="footer-social">
-                        <a href="#"><i class="fab fa-youtube"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fas fa-blog"></i></a>
-                    </div>
-                </div>
-
-                <div class="footer-links">
-                    <div class="footer-col">
-                        <h4>서비스</h4>
-                        <ul>
-                            <li><a href="/realtycomment/service.html">경매 컨설팅</a></li>
-                            <li><a href="/realtycomment/service.html">공매 컨설팅</a></li>
-                            <li><a href="/realtycomment/detail.html">물건 분석</a></li>
-                            <li><a href="/realtycomment/service.html">명도 대행</a></li>
-                        </ul>
-                    </div>
-                    <div class="footer-col">
-                        <h4>고객지원</h4>
-                        <ul>
-                            <li><a href="/realtycomment/service.html#faq">자주 묻는 질문</a></li>
-                            <li><a href="#contact">상담 신청</a></li>
-                            <li><a href="#contact">오시는 길</a></li>
-                            <li><a href="#">공지사항</a></li>
-                        </ul>
-                    </div>
-                    <div class="footer-col">
-                        <h4>회사정보</h4>
-                        <ul>
-                            <li><a href="/realtycomment/service.html">회사 소개</a></li>
-                            <li><a href="#">이용약관</a></li>
-                            <li><a href="#">개인정보처리방침</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <div class="footer-bottom">
-                <div class="footer-info">
-                    <p>
-                        <strong>부코맨트</strong> | 대표: 홍길동 | 사업자등록번호: 123-45-67890<br>
-                        주소: 서울시 강남구 테헤란로 123 부코맨트빌딩 5층 | 전화: 1588-0000
-                    </p>
-                </div>
-                <div class="footer-copyright">
-                    <p>&copy; 2024 BUCOMANT. All rights reserved.</p>
-                </div>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Back to Top -->
-    <button class="back-to-top" id="backToTop">
-        <i class="fas fa-chevron-up"></i>
-    </button>
-
-    <!-- Scripts -->
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    <script src="js/main.js"></script>
+    /* === Smooth scroll === */
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+        a.addEventListener('click', function(e) {
+            const h = this.getAttribute('href');
+            if (h === '#') return;
+            const t = document.querySelector(h);
+            if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+        });
+    });
+})();
+</script>
 </body>
 </html>
