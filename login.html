@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>로그인 - 부코멘트</title>
+    <meta name="description" content="부코멘트 로그인 및 회원가입 - 카카오, 네이버 간편 로그인 지원">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;800;900&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/detail.css">
+    <style>
+        .login-page {
+            min-height: 100vh; display: flex; flex-direction: column;
+        }
+        .login-main {
+            flex: 1; display: flex; align-items: center; justify-content: center;
+            padding: 120px 24px 60px;
+            background: #f8fafc;
+        }
+        .login-card {
+            width: 100%; max-width: 440px;
+            background: #fff; border-radius: 20px;
+            border: 1px solid var(--slate-200);
+            padding: 48px 40px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+        }
+        .login-card h1 {
+            font-size: 1.5rem; font-weight: 800;
+            color: var(--slate-900); margin-bottom: 8px;
+        }
+        .login-card .login-sub {
+            font-size: 0.88rem; color: var(--slate-500);
+            margin-bottom: 32px; line-height: 1.6;
+        }
+
+        /* Kakao Button */
+        .btn-kakao {
+            display: flex; align-items: center; justify-content: center; gap: 10px;
+            width: 100%; padding: 14px; border-radius: 10px;
+            background: #FEE500; color: #191919;
+            font-size: 0.95rem; font-weight: 700;
+            transition: all 0.3s ease; border: none; cursor: pointer;
+            font-family: inherit;
+        }
+        .btn-kakao:hover { background: #F5DC00; }
+        .btn-kakao .kakao-icon {
+            width: 22px; height: 22px;
+            background: #191919; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+        }
+        .btn-kakao .kakao-icon i { color: #FEE500; font-size: 0.7rem; }
+
+        /* Divider */
+        .login-divider {
+            display: flex; align-items: center; gap: 16px;
+            margin: 28px 0;
+        }
+        .login-divider::before, .login-divider::after {
+            content: ''; flex: 1; height: 1px; background: var(--slate-200);
+        }
+        .login-divider span {
+            font-size: 0.78rem; color: var(--slate-400); white-space: nowrap;
+        }
+
+        /* Traditional Login */
+        .login-traditional-header {
+            width: 100%; padding: 12px; border-radius: 10px;
+            background: var(--slate-900); color: #fff;
+            font-size: 0.92rem; font-weight: 600;
+            text-align: center; margin-bottom: 20px;
+            border: none; cursor: default; font-family: inherit;
+        }
+        .login-form-group {
+            margin-bottom: 14px;
+        }
+        .login-form-group label {
+            display: block; font-size: 0.78rem; font-weight: 500;
+            color: var(--slate-500); margin-bottom: 6px;
+        }
+        .login-form-group input {
+            width: 100%; padding: 12px 16px;
+            border: 1px solid var(--slate-200); border-radius: 8px;
+            font-size: 0.88rem; font-family: inherit;
+            color: var(--slate-900); outline: none;
+            transition: border-color 0.3s ease;
+        }
+        .login-form-group input:focus { border-color: var(--navy); }
+        .login-form-group input::placeholder { color: var(--slate-400); }
+
+        .login-options {
+            display: flex; align-items: center; justify-content: space-between;
+            margin: 12px 0 20px;
+        }
+        .login-remember {
+            display: flex; align-items: center; gap: 6px;
+            font-size: 0.82rem; color: var(--slate-500);
+        }
+        .login-remember input { width: 16px; height: 16px; accent-color: var(--navy); }
+
+        .btn-login {
+            width: 100%; padding: 14px; border-radius: 10px;
+            background: var(--slate-900); color: #fff;
+            font-size: 0.92rem; font-weight: 700;
+            border: none; cursor: pointer; font-family: inherit;
+            transition: all 0.3s ease;
+        }
+        .btn-login:hover { background: var(--navy); }
+
+        .login-links {
+            display: flex; justify-content: center; gap: 16px;
+            margin-top: 16px;
+        }
+        .login-links a {
+            font-size: 0.82rem; color: var(--slate-500);
+            transition: color 0.3s ease;
+        }
+        .login-links a:hover { color: var(--navy); }
+        .login-links .separator { color: var(--slate-300); }
+
+        /* Naver */
+        .btn-naver {
+            display: flex; align-items: center; justify-content: center;
+            width: 52px; height: 52px; border-radius: 50%;
+            background: #03C75A; margin: 0 auto;
+            transition: all 0.3s ease; border: none; cursor: pointer;
+        }
+        .btn-naver:hover { transform: scale(1.05); }
+        .btn-naver span {
+            color: #fff; font-size: 1.3rem; font-weight: 800;
+            font-family: 'Outfit', sans-serif;
+        }
+
+        @media (max-width: 480px) {
+            .login-card { padding: 36px 24px; }
+        }
+    </style>
+</head>
+<body class="login-page">
+    <!-- Header -->
+    <header class="site-header scrolled" id="siteHeader">
+        <div class="container">
+            <div class="header-inner">
+                <a href="/realtycomment/" class="logo">
+                    <div class="logo-mark">B</div>
+                    <div class="logo-name">부코멘트</div>
+                </a>
+                <nav class="main-nav">
+                    <div class="nav-item">
+                        <a href="process.html" class="nav-link">부동산&경매 컨설팅 <i class="fas fa-chevron-down"></i></a>
+                        <div class="nav-dropdown">
+                            <a href="process.html#flowchart">컨설팅 내용</a>
+                            <a href="process.html#timeline">컨설팅 절차</a>
+                            <a href="process.html#why">왜 부코멘트인가</a>
+                        </div>
+                    </div>
+                    <a href="success-detail.html" class="nav-link">성공 사례</a>
+                    <div class="nav-item">
+                        <a href="service.html" class="nav-link">컨설팅 종류/비용 안내 <i class="fas fa-chevron-down"></i></a>
+                        <div class="nav-dropdown">
+                            <a href="service.html#fee">수수료 안내</a>
+                            <a href="service.html#faq">자주 묻는 질문</a>
+                        </div>
+                    </div>
+                    <div class="nav-item">
+                        <a href="lecture.html" class="nav-link">경매강의 <i class="fas fa-chevron-down"></i></a>
+                        <div class="nav-dropdown">
+                            <a href="lecture.html">교육 내역</a>
+                            <a href="lecture.html">수강 안내</a>
+                        </div>
+                    </div>
+                    <div class="nav-item">
+                        <a href="about.html" class="nav-link">회사소개 <i class="fas fa-chevron-down"></i></a>
+                        <div class="nav-dropdown">
+                            <a href="about.html">회사 소개</a>
+                            <a href="about.html">대표 소개</a>
+                        </div>
+                    </div>
+                </nav>
+                <div class="header-right">
+                    <a href="login.html" class="header-phone">
+                        <i class="fas fa-user"></i> 로그인/회원가입
+                    </a>
+                    <a href="contact.html" class="btn-header">상담 신청</a>
+                </div>
+                <button class="menu-toggle" id="menuToggle" aria-label="메뉴">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu-new" id="mobileMenu">
+        <a href="process.html">부동산&경매 컨설팅</a>
+        <a href="success-detail.html">성공 사례</a>
+        <a href="service.html">컨설팅 종류/비용 안내</a>
+        <a href="lecture.html">경매강의</a>
+        <a href="about.html">회사소개</a>
+        <a href="login.html" style="color:#1c2d44;"><i class="fas fa-user"></i> 로그인/회원가입</a>
+    </div>
+
+    <!-- Login Main -->
+    <main class="login-main">
+        <div class="login-card">
+            <h1>로그인</h1>
+            <p class="login-sub">
+                아이디와 비밀번호를 입력하기 귀찮으시죠?<br>
+                1초 회원가입으로 간편하게 로그인 하세요.
+            </p>
+
+            <!-- Kakao Login -->
+            <button class="btn-kakao" type="button">
+                <span class="kakao-icon"><i class="fas fa-comment"></i></span>
+                카카오 1초 로그인/회원가입
+            </button>
+
+            <div class="login-divider"><span>또는</span></div>
+
+            <!-- Traditional Login -->
+            <div class="login-traditional-header">기존 회원 이세요?</div>
+
+            <form id="loginForm">
+                <div class="login-form-group">
+                    <label>아이디</label>
+                    <input type="text" name="username" placeholder="아이디를 입력하세요">
+                </div>
+                <div class="login-form-group">
+                    <label>비밀번호</label>
+                    <input type="password" name="password" placeholder="비밀번호를 입력하세요">
+                </div>
+
+                <div class="login-options">
+                    <label class="login-remember">
+                        <input type="checkbox"> 아이디저장
+                    </label>
+                </div>
+
+                <button type="submit" class="btn-login">기존 회원 로그인</button>
+            </form>
+
+            <div class="login-links">
+                <a href="#">아이디 찾기</a>
+                <span class="separator">|</span>
+                <a href="#">비밀번호 찾기</a>
+                <span class="separator">|</span>
+                <a href="#">회원가입</a>
+            </div>
+
+            <div class="login-divider"><span>또는</span></div>
+
+            <!-- Naver Login -->
+            <button class="btn-naver" type="button">
+                <span>N</span>
+            </button>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <div class="footer-brand">부코멘트</div>
+                    <p class="footer-brand-desc">
+                        부동산 경&middot;공매 전문 컨설팅 기업.<br>
+                        물건 분석부터 명도까지, 전 과정을 책임집니다.
+                    </p>
+                    <div class="footer-social">
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fas fa-blog"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <div class="footer-col-title">서비스</div>
+                    <a href="process.html">부동산&경매 컨설팅</a>
+                    <a href="service.html">컨설팅 종류/비용 안내</a>
+                    <a href="lecture.html">경매강의</a>
+                    <a href="success-detail.html">성공 사례</a>
+                </div>
+                <div class="footer-col">
+                    <div class="footer-col-title">고객지원</div>
+                    <a href="service.html#faq">자주 묻는 질문</a>
+                    <a href="contact.html">상담 신청</a>
+                    <a href="#">오시는 길</a>
+                    <a href="#">공지사항</a>
+                </div>
+                <div class="footer-col">
+                    <div class="footer-col-title">회사정보</div>
+                    <a href="about.html">회사 소개</a>
+                    <a href="#">이용약관</a>
+                    <a href="#">개인정보처리방침</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="footer-info">
+                    <strong>부코멘트</strong> | 대표: 홍길동 | 사업자등록번호: 123-45-67890<br>
+                    서울시 강남구 테헤란로 123 부코멘트빌딩 5층 | 1588-0000
+                </div>
+                <div class="footer-copy">&copy; 2025 BUCOMANT. All rights reserved.</div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+    (function() {
+        'use strict';
+        var toggle = document.getElementById('menuToggle');
+        var mobile = document.getElementById('mobileMenu');
+        if (toggle && mobile) {
+            toggle.addEventListener('click', function() {
+                toggle.classList.toggle('active');
+                mobile.classList.toggle('open');
+            });
+            mobile.querySelectorAll('a').forEach(function(a) {
+                a.addEventListener('click', function() {
+                    toggle.classList.remove('active');
+                    mobile.classList.remove('open');
+                });
+            });
+        }
+
+        var form = document.getElementById('loginForm');
+        if (form) {
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                alert('로그인 기능은 준비 중입니다.');
+            });
+        }
+    })();
+    </script>
+</body>
+</html>

@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>경매강의 - 부코멘트</title>
+    <meta name="description" content="부코멘트 경매강의 - 실전 전 과정 케어반. 입찰부터 명도, 수익실현까지 경매의 전 과정을 배우세요.">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;800;900&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- AOS Animation -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/detail.css">
+    <style>
+        /* Lecture Hero */
+        .lecture-hero {
+            padding: 160px 0 80px;
+            background: var(--navy-deep);
+            text-align: center;
+            position: relative;
+        }
+        .lecture-hero-badge {
+            display: inline-flex; align-items: center; gap: 8px;
+            background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15);
+            padding: 8px 20px; border-radius: 30px;
+            color: rgba(255,255,255,0.6); font-size: 14px; font-weight: 500; margin-bottom: 24px;
+        }
+        .lecture-hero h1 {
+            font-size: clamp(28px, 4vw, 42px); font-weight: 800;
+            color: #fff; line-height: 1.4; margin-bottom: 20px;
+        }
+        .lecture-hero p {
+            font-size: 18px; color: rgba(255,255,255,0.7);
+            max-width: 600px; margin: 0 auto;
+        }
+
+        /* Intro Section */
+        .lecture-intro { padding: 100px 0; background: #f8fafc; }
+        .intro-message {
+            max-width: 700px; margin: 0 auto; text-align: center;
+        }
+        .intro-message h2 {
+            font-size: clamp(1.3rem, 2.5vw, 1.8rem); font-weight: 800;
+            color: var(--slate-900); line-height: 1.5; margin-bottom: 24px;
+        }
+        .intro-message .highlight-text {
+            color: var(--navy); font-weight: 700;
+        }
+        .intro-message p {
+            font-size: 0.95rem; color: var(--slate-600);
+            line-height: 1.8; margin-bottom: 16px;
+        }
+
+        /* Curriculum Cards */
+        .curriculum-section { padding: 100px 0; }
+        .curriculum-grid {
+            display: grid; grid-template-columns: repeat(3, 1fr);
+            gap: 24px; margin-bottom: 48px;
+        }
+        .curriculum-card {
+            padding: 36px 28px; text-align: center;
+            border: 1px solid var(--slate-200); border-radius: 16px;
+            background: #fff; transition: all 0.3s ease;
+        }
+        .curriculum-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 36px rgba(0,0,0,0.06);
+        }
+        .curriculum-step {
+            display: inline-flex; align-items: center; justify-content: center;
+            width: 40px; height: 40px; border-radius: 50%;
+            background: var(--navy); color: #fff;
+            font-size: 0.85rem; font-weight: 700; margin-bottom: 16px;
+        }
+        .curriculum-icon {
+            width: 56px; height: 56px; border-radius: 12px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.3rem; margin: 0 auto 16px;
+            background: var(--slate-50); color: var(--navy);
+        }
+        .curriculum-card h3 {
+            font-size: 1.05rem; font-weight: 700; margin-bottom: 8px;
+            color: var(--slate-900);
+        }
+        .curriculum-card p {
+            font-size: 0.85rem; color: var(--slate-500); line-height: 1.6;
+        }
+
+        /* Pricing Box */
+        .lecture-pricing { padding: 80px 0; background: #f8fafc; }
+        .pricing-box {
+            max-width: 600px; margin: 0 auto;
+            background: #fff; border-radius: 20px;
+            border: 1px solid var(--slate-200);
+            overflow: hidden;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+        }
+        .pricing-box-header {
+            background: var(--navy); color: #fff;
+            padding: 24px 32px; text-align: center;
+        }
+        .pricing-box-header h3 {
+            font-size: 1.2rem; font-weight: 700; margin-bottom: 4px;
+        }
+        .pricing-box-header p {
+            font-size: 0.85rem; color: rgba(255,255,255,0.7);
+        }
+        .pricing-box-body { padding: 32px; }
+        .pricing-row {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 16px 0; border-bottom: 1px solid var(--slate-100);
+        }
+        .pricing-row:last-child { border-bottom: none; }
+        .pricing-label { font-size: 0.92rem; color: var(--slate-600); font-weight: 500; }
+        .pricing-original {
+            font-size: 1rem; color: var(--slate-400);
+            text-decoration: line-through; font-weight: 500;
+        }
+        .pricing-discount {
+            font-size: 1.3rem; color: #e74c3c;
+            font-weight: 800;
+        }
+
+        /* Info Grid */
+        .lecture-info-grid {
+            display: grid; grid-template-columns: 1fr 1fr;
+            gap: 16px; margin-top: 24px;
+        }
+        .lecture-info-item {
+            padding: 20px; background: var(--slate-50);
+            border-radius: 12px; text-align: center;
+        }
+        .lecture-info-item .info-label {
+            font-size: 0.78rem; color: var(--slate-500);
+            margin-bottom: 6px; font-weight: 500;
+        }
+        .lecture-info-item .info-value {
+            font-size: 0.95rem; color: var(--slate-900); font-weight: 700;
+        }
+
+        /* Benefits Section */
+        .benefits-section { padding: 100px 0; background: #0f172a; color: #fff; }
+        .benefits-grid {
+            display: grid; grid-template-columns: 1fr 1fr;
+            gap: 16px; max-width: 800px; margin: 0 auto;
+        }
+        .benefit-item {
+            padding: 20px 24px; background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 12px;
+            font-size: 0.88rem; color: rgba(255,255,255,0.8);
+            line-height: 1.6; display: flex; align-items: center; gap: 12px;
+        }
+        .benefit-item i {
+            color: #60a5fa; font-size: 0.85rem; flex-shrink: 0;
+        }
+
+        /* CTA Bottom */
+        .lecture-cta {
+            text-align: center; max-width: 600px; margin: 48px auto 0;
+        }
+        .lecture-cta p {
+            font-size: 0.92rem; color: rgba(255,255,255,0.5);
+            line-height: 1.8; margin-bottom: 28px;
+        }
+        .lecture-cta .btn-apply {
+            display: inline-flex; align-items: center; gap: 8px;
+            padding: 16px 40px; border-radius: 8px;
+            background: #fff; color: #0f172a;
+            font-size: 0.95rem; font-weight: 700;
+            transition: all 0.3s ease;
+        }
+        .lecture-cta .btn-apply:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .lecture-hero { padding: 140px 0 60px; }
+            .curriculum-grid { grid-template-columns: 1fr; }
+            .lecture-info-grid { grid-template-columns: 1fr; }
+            .benefits-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="site-header scrolled" id="siteHeader">
+        <div class="container">
+            <div class="header-inner">
+                <a href="/realtycomment/" class="logo">
+                    <div class="logo-mark">B</div>
+                    <div class="logo-name">부코멘트</div>
+                </a>
+                <nav class="main-nav">
+                    <div class="nav-item">
+                        <a href="process.html" class="nav-link">부동산&경매 컨설팅 <i class="fas fa-chevron-down"></i></a>
+                        <div class="nav-dropdown">
+                            <a href="process.html#flowchart">컨설팅 내용</a>
+                            <a href="process.html#timeline">컨설팅 절차</a>
+                            <a href="process.html#why">왜 부코멘트인가</a>
+                        </div>
+                    </div>
+                    <a href="success-detail.html" class="nav-link">성공 사례</a>
+                    <div class="nav-item">
+                        <a href="service.html" class="nav-link">컨설팅 종류/비용 안내 <i class="fas fa-chevron-down"></i></a>
+                        <div class="nav-dropdown">
+                            <a href="service.html#fee">수수료 안내</a>
+                            <a href="service.html#faq">자주 묻는 질문</a>
+                        </div>
+                    </div>
+                    <div class="nav-item">
+                        <a href="lecture.html" class="nav-link active">경매강의 <i class="fas fa-chevron-down"></i></a>
+                        <div class="nav-dropdown">
+                            <a href="lecture.html">교육 내역</a>
+                            <a href="lecture.html">수강 안내</a>
+                        </div>
+                    </div>
+                    <div class="nav-item">
+                        <a href="about.html" class="nav-link">회사소개 <i class="fas fa-chevron-down"></i></a>
+                        <div class="nav-dropdown">
+                            <a href="about.html">회사 소개</a>
+                            <a href="about.html">대표 소개</a>
+                        </div>
+                    </div>
+                </nav>
+                <div class="header-right">
+                    <a href="login.html" class="header-phone">
+                        <i class="fas fa-user"></i> 로그인/회원가입
+                    </a>
+                    <a href="contact.html" class="btn-header">상담 신청</a>
+                </div>
+                <button class="menu-toggle" id="menuToggle" aria-label="메뉴">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu-new" id="mobileMenu">
+        <a href="process.html">부동산&경매 컨설팅</a>
+        <a href="success-detail.html">성공 사례</a>
+        <a href="service.html">컨설팅 종류/비용 안내</a>
+        <a href="lecture.html">경매강의</a>
+        <a href="about.html">회사소개</a>
+        <a href="login.html" style="color:#1c2d44;"><i class="fas fa-user"></i> 로그인/회원가입</a>
+    </div>
+
+    <!-- Hero -->
+    <section class="lecture-hero">
+        <div class="container">
+            <div data-aos="fade-up">
+                <span class="lecture-hero-badge">
+                    <i class="fas fa-graduation-cap"></i> AUCTION LECTURE
+                </span>
+                <h1>경매는 각 단계마다<br>진입기준이 다릅니다.</h1>
+                <p>부코멘트의 체계적인 교육으로 실전 경매 전문가가 되세요.<br>입찰부터 명도, 수익실현까지 전 과정을 배웁니다.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Intro -->
+    <section class="lecture-intro">
+        <div class="container">
+            <div class="intro-message" data-aos="fade-up">
+                <h2>부코멘트를 통한 교육 내역</h2>
+                <p>
+                    <span class="highlight-text">낙찰이 끝이라고 생각하시나요?</span><br>
+                    낙찰은 시작에 불과합니다.
+                </p>
+                <p>
+                    실제로 진행하는 관리를 통해서,<br>
+                    경매의 진짜 흐름을 배워보세요.
+                </p>
+                <p>
+                    부코멘트 경매교육을 통해<br>
+                    <span class="highlight-text">실전 전문가를 양성합니다.</span>
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Curriculum -->
+    <section class="curriculum-section">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-label">CURRICULUM</span>
+                <h2 class="section-title">실습 진행 교육 내역</h2>
+                <p class="section-desc">3단계 커리큘럼으로 실전 경매의 전 과정을 체계적으로 배웁니다</p>
+            </div>
+
+            <div class="curriculum-grid" data-aos="fade-up">
+                <div class="curriculum-card">
+                    <div class="curriculum-step">1</div>
+                    <div class="curriculum-icon"><i class="fas fa-gavel"></i></div>
+                    <h3>입찰 실전</h3>
+                    <p>물건 검색, 권리분석, 시세분석, 적정 입찰가 산정, 입찰서류 작성 등 입찰에 필요한 모든 과정을 실습합니다.</p>
+                </div>
+                <div class="curriculum-card">
+                    <div class="curriculum-step">2</div>
+                    <div class="curriculum-icon"><i class="fas fa-key"></i></div>
+                    <h3>명도 실전</h3>
+                    <p>낙찰 후 점유자 협상, 인도명령 신청, 강제집행까지. 실제 사례를 통해 명도 전 과정을 학습합니다.</p>
+                </div>
+                <div class="curriculum-card">
+                    <div class="curriculum-step">3</div>
+                    <div class="curriculum-icon"><i class="fas fa-chart-line"></i></div>
+                    <h3>수익실현</h3>
+                    <p>등기이전, 세무처리, 임대관리, 매도 타이밍 판단까지. 실질적인 수익을 만드는 방법을 배웁니다.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing -->
+    <section class="lecture-pricing">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-label">PRICING</span>
+                <h2 class="section-title">강의 안내</h2>
+            </div>
+
+            <div class="pricing-box" data-aos="fade-up">
+                <div class="pricing-box-header">
+                    <h3>실전 전 과정 케어반</h3>
+                    <p>소수 정예 프리미엄 강의</p>
+                </div>
+                <div class="pricing-box-body">
+                    <div class="pricing-row">
+                        <span class="pricing-label">정상가</span>
+                        <span class="pricing-original">7,200,000 원</span>
+                    </div>
+                    <div class="pricing-row">
+                        <span class="pricing-label">할인가</span>
+                        <span class="pricing-discount">3,300,000 원</span>
+                    </div>
+
+                    <div class="lecture-info-grid">
+                        <div class="lecture-info-item">
+                            <div class="info-label"><i class="fas fa-clock"></i> 수강 시간</div>
+                            <div class="info-value">매주 토요일</div>
+                        </div>
+                        <div class="lecture-info-item">
+                            <div class="info-label"><i class="fas fa-users"></i> 정원</div>
+                            <div class="info-value">소수 정예 운영</div>
+                        </div>
+                        <div class="lecture-info-item">
+                            <div class="info-label"><i class="fas fa-map-marker-alt"></i> 장소</div>
+                            <div class="info-value">서울 중구 필동3가 3층</div>
+                        </div>
+                        <div class="lecture-info-item">
+                            <div class="info-label"><i class="fas fa-calendar-alt"></i> 기간</div>
+                            <div class="info-value">총 8주 과정</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits -->
+    <section class="benefits-section">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-label" style="color:rgba(255,255,255,0.4);">BENEFITS</span>
+                <h2 class="section-title">수강 완료 후 이렇게 달라집니다</h2>
+            </div>
+
+            <div class="benefits-grid" data-aos="fade-up">
+                <div class="benefit-item">
+                    <i class="fas fa-check-circle"></i>
+                    <span>경매 법적 프로세스를 스스로 판단하게 됩니다</span>
+                </div>
+                <div class="benefit-item">
+                    <i class="fas fa-check-circle"></i>
+                    <span>권리분석을 독자적으로 수행할 수 있게 됩니다</span>
+                </div>
+                <div class="benefit-item">
+                    <i class="fas fa-check-circle"></i>
+                    <span>현재 투자 중이신 분도 실전 사례를 통해 수익을 높일 수 있습니다</span>
+                </div>
+                <div class="benefit-item">
+                    <i class="fas fa-check-circle"></i>
+                    <span>기존 부동산 지식에 경매를 더한 투자 스킬을 보유하게 됩니다</span>
+                </div>
+                <div class="benefit-item">
+                    <i class="fas fa-check-circle"></i>
+                    <span>미리 돈을 잃지 않는 케이스를 쌓을 수 있습니다</span>
+                </div>
+                <div class="benefit-item">
+                    <i class="fas fa-check-circle"></i>
+                    <span>어떤 시장 환경에서도 흔들리지 않는 투자 기준을 갖추게 됩니다</span>
+                </div>
+            </div>
+
+            <div class="lecture-cta" data-aos="fade-up">
+                <p>
+                    부코멘트에서 7년간 교육을 진행하며 쌓아온 노하우를 바탕으로,<br>
+                    앞으로 어떤 시장 환경에서도 흔들리지 않는 실전 전문가를 양성합니다.
+                </p>
+                <a href="contact.html" class="btn-apply">
+                    수강 신청하기 <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="cta-bg">
+            <div class="cta-pattern"></div>
+        </div>
+        <div class="container">
+            <div class="cta-content" data-aos="fade-up">
+                <h2>경매강의에 대해 더 궁금하신가요?</h2>
+                <p>전문 상담원이 친절하게 안내해드립니다</p>
+                <div class="cta-buttons">
+                    <a href="tel:1588-0000" class="btn-cta-primary">
+                        <i class="fas fa-phone-alt"></i>
+                        <span>1588-0000</span>
+                    </a>
+                    <a href="contact.html" class="btn-cta-secondary">
+                        <span>온라인 문의</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <div class="footer-brand">부코멘트</div>
+                    <p class="footer-brand-desc">
+                        부동산 경&middot;공매 전문 컨설팅 기업.<br>
+                        물건 분석부터 명도까지, 전 과정을 책임집니다.
+                    </p>
+                    <div class="footer-social">
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fas fa-blog"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <div class="footer-col-title">서비스</div>
+                    <a href="process.html">부동산&경매 컨설팅</a>
+                    <a href="service.html">컨설팅 종류/비용 안내</a>
+                    <a href="lecture.html">경매강의</a>
+                    <a href="success-detail.html">성공 사례</a>
+                </div>
+                <div class="footer-col">
+                    <div class="footer-col-title">고객지원</div>
+                    <a href="service.html#faq">자주 묻는 질문</a>
+                    <a href="contact.html">상담 신청</a>
+                    <a href="#">오시는 길</a>
+                    <a href="#">공지사항</a>
+                </div>
+                <div class="footer-col">
+                    <div class="footer-col-title">회사정보</div>
+                    <a href="about.html">회사 소개</a>
+                    <a href="#">이용약관</a>
+                    <a href="#">개인정보처리방침</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="footer-info">
+                    <strong>부코멘트</strong> | 대표: 홍길동 | 사업자등록번호: 123-45-67890<br>
+                    서울시 강남구 테헤란로 123 부코멘트빌딩 5층 | 1588-0000
+                </div>
+                <div class="footer-copy">&copy; 2025 BUCOMANT. All rights reserved.</div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top -->
+    <button class="back-top" id="backTop"><i class="fas fa-chevron-up"></i></button>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+    (function() {
+        'use strict';
+        AOS.init({ duration: 600, once: true, offset: 50 });
+
+        var header = document.getElementById('siteHeader');
+        if (header) window.addEventListener('scroll', function() {
+            header.classList.toggle('scrolled', window.scrollY > 80);
+        });
+
+        var toggle = document.getElementById('menuToggle');
+        var mobile = document.getElementById('mobileMenu');
+        if (toggle && mobile) {
+            toggle.addEventListener('click', function() {
+                toggle.classList.toggle('active');
+                mobile.classList.toggle('open');
+            });
+            mobile.querySelectorAll('a').forEach(function(a) {
+                a.addEventListener('click', function() {
+                    toggle.classList.remove('active');
+                    mobile.classList.remove('open');
+                });
+            });
+        }
+
+        var bt = document.getElementById('backTop');
+        if (bt) {
+            window.addEventListener('scroll', function() { bt.classList.toggle('visible', window.scrollY > 400); });
+            bt.addEventListener('click', function() { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+        }
+    })();
+    </script>
+</body>
+</html>

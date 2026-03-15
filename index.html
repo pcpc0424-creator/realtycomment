@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>부코맨트 | 부동산 경매 전문 컨설팅</title>
-    <meta name="description" content="부동산 경·공매 전문 컨설팅 기업 부코맨트. 15년 경력의 전문가 집단이 물건분석부터 명도까지 책임집니다.">
+    <title>부코멘트 | 부동산 경매 전문 컨설팅</title>
+    <meta name="description" content="부동산 경·공매 전문 컨설팅 기업 부코멘트. 15년 경력의 전문가 집단이 물건분석부터 명도까지 책임집니다.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;800;900&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -102,9 +102,31 @@
         .site-header:not(.scrolled) .btn-header:hover { background:var(--white); color:var(--navy); }
         .site-header:not(.scrolled) .menu-toggle span { background:var(--white); }
 
-        .main-nav { display:flex; gap:32px; }
+        .main-nav { display:flex; gap:24px; align-items:center; }
+        .nav-item {
+            position:relative; display:flex; align-items:center; height:72px;
+        }
+        .nav-item .nav-link { display:flex; align-items:center; gap:4px; height:100%; }
+        .nav-item .nav-link .fa-chevron-down { font-size:0.55rem; transition:transform 0.3s ease; }
+        .nav-item:hover .fa-chevron-down { transform:rotate(180deg); }
+        .nav-dropdown {
+            position:absolute; top:100%; left:50%; transform:translateX(-50%);
+            min-width:180px; padding:8px 0;
+            background:#fff; border:1px solid var(--border-color); border-radius:10px;
+            box-shadow:0 8px 32px rgba(0,0,0,0.1);
+            opacity:0; visibility:hidden; pointer-events:none;
+            transition:all 0.25s ease; z-index:200;
+        }
+        .nav-item:hover .nav-dropdown { opacity:1; visibility:visible; pointer-events:auto; }
+        .nav-dropdown::before { content:''; position:absolute; top:-10px; left:0; right:0; height:10px; }
+        .nav-dropdown a {
+            display:block; padding:9px 20px;
+            font-size:0.82rem; font-weight:500; color:var(--text-body);
+            transition:all 0.2s ease; white-space:nowrap;
+        }
+        .nav-dropdown a:hover { background:var(--gray-50); color:var(--navy); }
         .nav-link {
-            font-size:0.88rem; font-weight:500; color:var(--text-body);
+            font-size:0.85rem; font-weight:500; color:var(--text-body); white-space:nowrap;
             transition: var(--transition); position:relative;
         }
         .nav-link:hover { color:var(--navy); }
@@ -188,7 +210,21 @@
             line-height:1.8; margin-bottom:40px;
             max-width:540px; margin-left:auto; margin-right:auto;
         }
-        .hero-actions { display:flex; gap:14px; justify-content:center; flex-wrap:wrap; }
+        .hero-actions { display:flex; gap:14px; justify-content:center; flex-wrap:wrap; margin-bottom:32px; }
+        .hero-filter {
+            display:flex; gap:0; justify-content:center; flex-wrap:wrap;
+            background:rgba(255,255,255,0.08); border-radius:8px; overflow:hidden;
+            border:1px solid rgba(255,255,255,0.12);
+        }
+        .hero-filter-tab {
+            padding:10px 20px; font-size:0.82rem; font-weight:600;
+            color:rgba(255,255,255,0.6); transition:var(--transition);
+            border-right:1px solid rgba(255,255,255,0.08);
+        }
+        .hero-filter-tab:last-child { border-right:none; }
+        .hero-filter-tab:hover, .hero-filter-tab.active {
+            background:rgba(255,255,255,0.15); color:var(--white);
+        }
         .btn-solid {
             display:inline-flex; align-items:center; gap:8px;
             padding:15px 34px; border-radius:6px;
@@ -300,6 +336,33 @@
         .about-image-main img {
             width:100%; height:100%; object-fit:cover;
         }
+        /* ========== QUOTE & BRANDING ========== */
+        .quote-block {
+            text-align:center; max-width:700px; margin:0 auto 48px;
+        }
+        .quote-icon { font-size:1.5rem; color:rgba(255,255,255,0.2); margin-bottom:20px; }
+        .quote-text {
+            font-size:clamp(1.1rem, 2vw, 1.4rem); font-weight:700;
+            color:var(--white); line-height:1.8; font-style:italic;
+        }
+        .branding-block {
+            display:flex; align-items:center; gap:24px;
+            max-width:600px; margin:0 auto;
+            padding:32px; background:rgba(255,255,255,0.04);
+            border:1px solid rgba(255,255,255,0.08); border-radius:var(--radius);
+        }
+        .branding-mark {
+            width:56px; height:56px; min-width:56px; background:rgba(255,255,255,0.1);
+            border-radius:12px; display:flex; align-items:center; justify-content:center;
+            font-family:var(--font-en); font-weight:800; font-size:1.2rem; color:var(--white);
+        }
+        .branding-name { font-size:1.1rem; font-weight:800; color:var(--white); margin-bottom:6px; }
+        .branding-desc { font-size:0.85rem; color:rgba(255,255,255,0.5); line-height:1.7; margin-bottom:8px; }
+        .branding-tagline {
+            font-size:0.92rem; font-weight:700; color:rgba(255,255,255,0.8);
+            letter-spacing:0.5px;
+        }
+
         .about-image-badge {
             position:absolute; bottom:-20px; right:-20px;
             background:var(--navy); color:var(--white);
@@ -342,65 +405,136 @@
         .service-title { font-size:1.08rem; font-weight:700; margin-bottom:10px; }
         .service-desc { font-size:0.85rem; color:var(--text-muted); line-height:1.7; }
 
-        /* ========== PROCESS ========== */
-        .process-flow {
-            position:relative; padding:20px 0;
-        }
-        .process-line {
-            position:absolute; top:48px; left:0; right:0;
-            height:2px; background:var(--gray-200);
-        }
-        .process-line-fill {
-            height:100%; width:0; background:var(--navy);
-            transition: width 1.5s ease;
-        }
-        .process-line-fill.animate { width:100%; }
-        .process-steps {
-            display:grid; grid-template-columns:repeat(5,1fr); gap:0;
-            position:relative;
-        }
-        .process-step {
-            text-align:center; position:relative;
-        }
-        .step-marker {
-            width:96px; height:96px; border-radius:50%;
-            background:var(--white); border:2px solid var(--gray-200);
-            display:flex; align-items:center; justify-content:center;
-            margin:0 auto 24px; position:relative; z-index:2;
-            transition: var(--transition);
-        }
-        .step-marker i { font-size:1.5rem; color:var(--gray-500); transition: var(--transition); }
-        .process-step:hover .step-marker { border-color:var(--navy); background:var(--navy); }
-        .process-step:hover .step-marker i { color:var(--white); }
-        .step-num {
-            font-family:var(--font-en); font-size:0.68rem; font-weight:700;
-            letter-spacing:2px; color:var(--text-light); margin-bottom:8px;
-        }
-        .step-title { font-size:0.98rem; font-weight:700; margin-bottom:6px; color:var(--text-primary); }
-        .step-desc { font-size:0.82rem; color:var(--text-muted); line-height:1.6; padding:0 8px; }
-
-        /* ========== STRENGTH (WHY US) ========== */
-        .strength-grid {
+        /* ========== CONSULTING NECESSITY ========== */
+        .necessity-grid {
             display:grid; grid-template-columns:1fr 1fr; gap:20px;
         }
-        .strength-card {
+        .necessity-card {
+            padding:32px;
+            background:rgba(255,255,255,0.04);
+            border:1px solid rgba(255,255,255,0.08);
+            border-radius:var(--radius);
+            transition: var(--transition);
+        }
+        .necessity-card:hover {
+            background:rgba(255,255,255,0.07);
+            border-color:rgba(255,255,255,0.15);
+        }
+        .necessity-icon {
+            width:52px; height:52px; border-radius:var(--radius-sm);
+            display:flex; align-items:center; justify-content:center;
+            background:rgba(255,255,255,0.06); color:var(--white); font-size:1.2rem;
+            margin-bottom:20px;
+        }
+        .necessity-title { font-size:1rem; font-weight:700; margin-bottom:8px; color:var(--white); }
+        .necessity-desc { font-size:0.85rem; color:rgba(255,255,255,0.5); line-height:1.7; }
+
+        /* ========== STATS HIGHLIGHT ========== */
+        .stats-big-number {
+            text-align:center; margin-bottom:48px;
+        }
+        .stats-big {
+            font-family:var(--font-en); font-size:clamp(3rem, 6vw, 5rem);
+            font-weight:900; color:var(--navy); display:block;
+            letter-spacing:-0.03em; line-height:1.1;
+        }
+        .stats-big-label {
+            font-size:0.92rem; color:var(--text-muted); margin-top:8px; display:block;
+        }
+        .stats-detail-grid {
+            display:grid; grid-template-columns:repeat(4,1fr); gap:24px;
+        }
+        .stats-detail-item {
+            text-align:center; padding:28px 20px;
+            border:1px solid var(--border-color); border-radius:var(--radius);
+            background:var(--gray-50);
+        }
+        .stats-detail-num {
+            font-size:1.1rem; font-weight:800; color:var(--navy); margin-bottom:6px;
+        }
+        .stats-detail-desc {
+            font-size:0.82rem; color:var(--text-muted);
+        }
+
+        /* ========== PROFIT SECTION ========== */
+        .profit-grid {
+            display:grid; grid-template-columns:repeat(3,1fr); gap:24px;
+        }
+        .profit-card {
+            padding:32px; border:1px solid var(--border-color);
+            border-radius:var(--radius); background:var(--white);
+            transition: var(--transition);
+        }
+        .profit-card:hover {
+            transform:translateY(-4px);
+            box-shadow:0 12px 36px rgba(0,0,0,0.06);
+        }
+        .profit-badge {
+            display:inline-block; padding:4px 12px;
+            background:var(--navy); color:var(--white);
+            border-radius:4px; font-size:0.72rem; font-weight:600;
+            margin-bottom:16px;
+        }
+        .profit-title {
+            font-size:1.05rem; font-weight:700; margin-bottom:20px;
+        }
+        .profit-table { display:flex; flex-direction:column; gap:0; }
+        .profit-row {
+            display:flex; justify-content:space-between; align-items:center;
+            padding:12px 0; border-bottom:1px solid var(--border-color);
+            font-size:0.88rem; color:var(--text-body);
+        }
+        .profit-row:last-child { border-bottom:none; }
+        .profit-row.highlight { background:var(--gray-50); margin:0 -16px; padding:12px 16px; border-radius:6px; border-bottom:none; }
+        .profit-value { font-weight:700; color:var(--navy); }
+        .profit-value.accent { color:#e74c3c; font-size:1rem; }
+
+        /* ========== CONSULTING AREAS ========== */
+        .area-grid {
+            display:grid; grid-template-columns:repeat(3,1fr); gap:24px;
+        }
+        .area-card {
+            border-radius:var(--radius); overflow:hidden;
+            transition: var(--transition); position:relative;
+        }
+        .area-card-img {
+            height:220px; position:relative;
+        }
+        .area-card-img img {
+            width:100%; height:100%; object-fit:cover;
+            transition:transform 0.5s ease;
+        }
+        .area-card-img:hover img { transform:scale(1.05); }
+        .area-card-overlay {
+            position:absolute; inset:0;
+            background:linear-gradient(to top, rgba(15,26,46,0.85) 0%, rgba(15,26,46,0.2) 100%);
+            display:flex; flex-direction:column; justify-content:flex-end;
+            padding:24px;
+        }
+        .area-title { font-size:1.02rem; font-weight:700; color:var(--white); margin-bottom:4px; }
+        .area-desc { font-size:0.82rem; color:rgba(255,255,255,0.7); line-height:1.5; }
+
+        /* ========== ONE-STOP STRENGTH ========== */
+        .onestop-grid {
+            display:grid; grid-template-columns:1fr 1fr; gap:20px;
+        }
+        .onestop-card {
             display:flex; gap:20px; padding:32px;
             background:rgba(255,255,255,0.04);
             border:1px solid rgba(255,255,255,0.08);
             border-radius:var(--radius);
             transition: var(--transition);
         }
-        .strength-card:hover {
+        .onestop-card:hover {
             background:rgba(255,255,255,0.07);
             border-color:rgba(255,255,255,0.15);
         }
-        .strength-icon {
-            width:52px; height:52px; min-width:52px; border-radius:var(--radius-sm);
-            display:flex; align-items:center; justify-content:center;
-            background:rgba(255,255,255,0.06); color:var(--white); font-size:1.2rem;
+        .onestop-num {
+            font-family:var(--font-en); font-size:1.5rem; font-weight:800;
+            color:rgba(255,255,255,0.15); min-width:40px;
         }
-        .strength-title { font-size:1rem; font-weight:700; margin-bottom:6px; color:var(--white); }
-        .strength-desc { font-size:0.85rem; color:rgba(255,255,255,0.5); line-height:1.6; }
+        .onestop-title { font-size:1rem; font-weight:700; margin-bottom:8px; color:var(--white); }
+        .onestop-desc { font-size:0.85rem; color:rgba(255,255,255,0.5); line-height:1.7; }
 
         /* ========== CASES ========== */
         .cases-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
@@ -595,10 +729,11 @@
         @media (max-width:1024px) {
             .about-grid { grid-template-columns:1fr; gap:48px; }
             .service-grid { grid-template-columns:1fr 1fr; }
-            .process-steps { grid-template-columns:repeat(3,1fr); gap:20px; }
-            .process-line { display:none; }
-            .process-step:nth-child(n+4) { margin-top:24px; }
-            .strength-grid { grid-template-columns:1fr; }
+            .necessity-grid { grid-template-columns:1fr; }
+            .stats-detail-grid { grid-template-columns:1fr 1fr; }
+            .profit-grid { grid-template-columns:1fr 1fr; }
+            .area-grid { grid-template-columns:1fr 1fr; }
+            .onestop-grid { grid-template-columns:1fr; }
             .contact-grid { grid-template-columns:1fr; gap:48px; }
             .footer-grid { grid-template-columns:1fr 1fr; }
         }
@@ -609,11 +744,11 @@
             .trust-grid { grid-template-columns:1fr 1fr; gap:24px; }
             .section { padding:72px 0; }
             .service-grid { grid-template-columns:1fr; }
-            .process-steps { grid-template-columns:1fr; gap:16px; }
-            .process-step { flex-direction:row; text-align:left; gap:20px; display:flex; align-items:center; }
-            .step-marker { width:64px; height:64px; min-width:64px; margin:0; }
-            .step-marker i { font-size:1.2rem; }
-            .process-step:nth-child(n+4) { margin-top:0; }
+            .necessity-grid { grid-template-columns:1fr; }
+            .stats-detail-grid { grid-template-columns:1fr 1fr; }
+            .profit-grid { grid-template-columns:1fr; }
+            .area-grid { grid-template-columns:1fr; }
+            .onestop-grid { grid-template-columns:1fr; }
             .cases-grid { grid-template-columns:1fr; }
             .testimonial-grid { grid-template-columns:1fr; }
             .form-row { grid-template-columns:1fr; }
@@ -630,17 +765,43 @@
         <div class="header-inner">
             <a href="/realtycomment/index.html" class="logo">
                 <div class="logo-mark">B</div>
-                <div class="logo-name">부코맨트</div>
+                <div class="logo-name">부코멘트</div>
             </a>
             <nav class="main-nav">
-                <a href="service.html" class="nav-link">서비스 소개</a>
-                <a href="process.html" class="nav-link">컨설팅 절차</a>
+                <div class="nav-item">
+                    <a href="process.html" class="nav-link">부동산&경매 컨설팅 <i class="fas fa-chevron-down"></i></a>
+                    <div class="nav-dropdown">
+                        <a href="process.html#flowchart">컨설팅 내용</a>
+                        <a href="process.html#timeline">컨설팅 절차</a>
+                        <a href="process.html#why">왜 부코멘트인가</a>
+                    </div>
+                </div>
                 <a href="success-detail.html" class="nav-link">성공 사례</a>
-                <a href="contact.html" class="nav-link">상담 문의</a>
+                <div class="nav-item">
+                    <a href="service.html" class="nav-link">컨설팅 종류/비용 안내 <i class="fas fa-chevron-down"></i></a>
+                    <div class="nav-dropdown">
+                        <a href="service.html#fee">수수료 안내</a>
+                        <a href="service.html#faq">자주 묻는 질문</a>
+                    </div>
+                </div>
+                <div class="nav-item">
+                    <a href="lecture.html" class="nav-link">경매강의 <i class="fas fa-chevron-down"></i></a>
+                    <div class="nav-dropdown">
+                        <a href="lecture.html">교육 내역</a>
+                        <a href="lecture.html">수강 안내</a>
+                    </div>
+                </div>
+                <div class="nav-item">
+                    <a href="about.html" class="nav-link">회사소개 <i class="fas fa-chevron-down"></i></a>
+                    <div class="nav-dropdown">
+                        <a href="about.html">회사 소개</a>
+                        <a href="about.html">대표 소개</a>
+                    </div>
+                </div>
             </nav>
             <div class="header-right">
-                <a href="tel:1588-0000" class="header-phone">
-                    <i class="fas fa-phone-alt"></i> 1588-0000
+                <a href="login.html" class="header-phone">
+                    <i class="fas fa-user"></i> 로그인/회원가입
                 </a>
                 <a href="contact.html" class="btn-header">상담 신청</a>
             </div>
@@ -653,11 +814,12 @@
 
 <!-- Mobile Menu -->
 <div class="mobile-menu" id="mobileMenu">
-    <a href="service.html">서비스 소개</a>
-    <a href="process.html">컨설팅 절차</a>
+    <a href="process.html">부동산&경매 컨설팅</a>
     <a href="success-detail.html">성공 사례</a>
-    <a href="contact.html">상담 문의</a>
-    <a href="tel:1588-0000" style="color:var(--navy);"><i class="fas fa-phone-alt"></i> 1588-0000</a>
+    <a href="service.html">컨설팅 종류/비용 안내</a>
+    <a href="lecture.html">경매강의</a>
+    <a href="about.html">회사소개</a>
+    <a href="login.html" style="color:var(--navy);"><i class="fas fa-user"></i> 로그인/회원가입</a>
 </div>
 
 <!-- Hero -->
@@ -688,9 +850,19 @@
                 무료 상담 신청
                 <i class="fas fa-arrow-right"></i>
             </a>
-            <a href="#process" class="btn-ghost">
-                진행 절차 보기
+            <a href="process.html" class="btn-ghost">
+                컨설팅 절차 보기
             </a>
+        </div>
+        <!-- Location Filter Tabs -->
+        <div class="hero-filter reveal reveal-d4">
+            <a href="#" class="hero-filter-tab active">전체</a>
+            <a href="#" class="hero-filter-tab">서울</a>
+            <a href="#" class="hero-filter-tab">부산</a>
+            <a href="#" class="hero-filter-tab">대구</a>
+            <a href="#" class="hero-filter-tab">대전</a>
+            <a href="#" class="hero-filter-tab">광주</a>
+            <a href="#" class="hero-filter-tab">울산</a>
         </div>
     </div>
     <div class="hero-scroll">
@@ -731,7 +903,7 @@
                 <div class="section-label reveal">About</div>
                 <h2 class="section-title reveal reveal-d1">경매를 대신 맡길 수 있는<br>전문가 집단</h2>
                 <p class="section-desc reveal reveal-d2">
-                    부코맨트는 부동산 경&middot;공매 전문 컨설팅 기업입니다.
+                    부코멘트는 부동산 경&middot;공매 전문 컨설팅 기업입니다.
                     체계적인 분석 시스템과 풍부한 현장 경험을 바탕으로,
                     고객의 성공적인 투자를 이끌어냅니다.
                 </p>
@@ -762,6 +934,24 @@
                     <span class="about-image-badge-num">15+</span>
                     <span class="about-image-badge-text">Years of Experience</span>
                 </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Quote & Branding -->
+<section class="section bg-dark" id="quote">
+    <div class="container">
+        <div class="quote-block reveal">
+            <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
+            <p class="quote-text">교수는 그렇게 만만하지 않습니다.<br>낙찰가보다 현재 보는 건 매도 가능성과 수익율입니다.</p>
+        </div>
+        <div class="branding-block reveal reveal-d1">
+            <div class="branding-mark">B</div>
+            <div class="branding-info">
+                <div class="branding-name">부코멘트</div>
+                <p class="branding-desc">15년 동안 부동산 경매 시장에서 축적한 노하우와 데이터를 바탕으로,<br>고객의 성공적인 투자를 이끌어냅니다.</p>
+                <div class="branding-tagline">처음부터 끝까지 함께 하겠습니다</div>
             </div>
         </div>
     </div>
@@ -807,7 +997,7 @@
 <!-- CTA Band -->
 <div class="cta-band">
     <div class="container">
-        <div class="cta-band-title reveal">서비스가 궁금하시다면, 부담없이 문의하세요</div>
+        <div class="cta-band-title reveal">상담이 필요하다면, 클릭하세요</div>
         <div class="cta-band-desc reveal reveal-d1">전문 컨설턴트가 친절하게 안내해드립니다</div>
         <div class="cta-band-actions reveal reveal-d2">
             <a href="contact.html" class="btn-white">상담 신청하기 <i class="fas fa-arrow-right"></i></a>
@@ -816,97 +1006,201 @@
     </div>
 </div>
 
-<!-- Process -->
-<section class="section" id="process">
+<!-- Consulting Necessity -->
+<section class="section bg-dark" id="necessity">
     <div class="container">
         <div class="section-header center reveal">
-            <div class="section-label">Process</div>
-            <h2 class="section-title">컨설팅 진행 절차</h2>
-            <p class="section-desc">맡기시면, 아래 절차대로 진행됩니다</p>
+            <div class="section-label">Why Consulting</div>
+            <h2 class="section-title">전문 컨설팅의 필수성</h2>
+            <p class="section-desc">경매는 단순한 부동산 거래가 아닙니다. 법률, 권리분석, 시세 판단, 명도 등 전문 지식 없이는 큰 손실로 이어질 수 있습니다.</p>
         </div>
-        <div class="process-flow reveal">
-            <div class="process-line"><div class="process-line-fill" id="processLineFill"></div></div>
-            <div class="process-steps">
-                <div class="process-step reveal reveal-d1">
-                    <div class="step-marker"><i class="fas fa-phone-alt"></i></div>
-                    <div>
-                        <div class="step-num">STEP 01</div>
-                        <div class="step-title">상담 신청</div>
-                        <div class="step-desc">온라인 또는 전화로<br>무료 상담을 신청합니다</div>
-                    </div>
+        <div class="necessity-grid">
+            <div class="necessity-card reveal reveal-d1">
+                <div class="necessity-icon"><i class="fas fa-exclamation-triangle"></i></div>
+                <div class="necessity-title">권리분석 실패 위험</div>
+                <div class="necessity-desc">등기부등본의 복잡한 권리관계를 정확히 파악하지 못하면 낙찰 후 큰 손실이 발생할 수 있습니다.</div>
+            </div>
+            <div class="necessity-card reveal reveal-d2">
+                <div class="necessity-icon"><i class="fas fa-balance-scale"></i></div>
+                <div class="necessity-title">법적 리스크</div>
+                <div class="necessity-desc">유치권, 법정지상권, 선순위 임차인 등 법적 하자를 사전에 파악하지 못하면 예상치 못한 비용이 발생합니다.</div>
+            </div>
+            <div class="necessity-card reveal reveal-d3">
+                <div class="necessity-icon"><i class="fas fa-chart-bar"></i></div>
+                <div class="necessity-title">적정가 산정의 어려움</div>
+                <div class="necessity-desc">시세 대비 적정 입찰가를 산정하지 못하면 너무 비싸게 낙찰받거나 계속 유찰될 수 있습니다.</div>
+            </div>
+            <div class="necessity-card reveal reveal-d4">
+                <div class="necessity-icon"><i class="fas fa-user-lock"></i></div>
+                <div class="necessity-title">명도의 복잡성</div>
+                <div class="necessity-desc">점유자 협상, 인도명령, 강제집행 등 명도 과정에서의 시간과 비용을 전문가가 최소화합니다.</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Stats Highlight -->
+<section class="section" id="stats-highlight">
+    <div class="container">
+        <div class="section-header center reveal">
+            <div class="section-label">No.1 Consulting</div>
+            <h2 class="section-title">국내 1위 경매 전문 컨설팅, 부코멘트</h2>
+            <p class="section-desc">국내 1,200건 이상의 경매 컨설팅을 성공적으로 수행하며<br>수많은 투자자의 든든한 파트너가 되어 왔습니다.</p>
+        </div>
+        <div class="stats-big-number reveal">
+            <span class="stats-big" data-count="1200" data-suffix="+">0</span>
+            <span class="stats-big-label">누적 경매 컨설팅</span>
+        </div>
+        <div class="stats-detail-grid reveal reveal-d1">
+            <div class="stats-detail-item">
+                <div class="stats-detail-num">전문 컨설턴트</div>
+                <div class="stats-detail-desc">경매 전문 인력 보유</div>
+            </div>
+            <div class="stats-detail-item">
+                <div class="stats-detail-num">1,200건+</div>
+                <div class="stats-detail-desc">누적 상담 건수</div>
+            </div>
+            <div class="stats-detail-item">
+                <div class="stats-detail-num">4,000건 이상</div>
+                <div class="stats-detail-desc">물건 분석 건수</div>
+            </div>
+            <div class="stats-detail-item">
+                <div class="stats-detail-num">전문 21%+</div>
+                <div class="stats-detail-desc">평균 수익률 달성</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Profit Section -->
+<section class="section bg-gray" id="profit">
+    <div class="container">
+        <div class="section-header center reveal">
+            <div class="section-label">Profit</div>
+            <h2 class="section-title">낙찰가는 성공의 시작일 뿐입니다.<br>최종 성과는 매도 수익으로 증명.</h2>
+        </div>
+        <div class="profit-grid reveal reveal-d1">
+            <div class="profit-card">
+                <div class="profit-badge">사례 1</div>
+                <div class="profit-title">서울 강남구 아파트</div>
+                <div class="profit-table">
+                    <div class="profit-row"><span>낙찰가 기준</span><span class="profit-value">10.7억</span></div>
+                    <div class="profit-row"><span>낙찰가 대비</span><span class="profit-value">68%</span></div>
+                    <div class="profit-row highlight"><span>매도 수익</span><span class="profit-value accent">+3.7억</span></div>
                 </div>
-                <div class="process-step reveal reveal-d2">
-                    <div class="step-marker"><i class="fas fa-clipboard-list"></i></div>
-                    <div>
-                        <div class="step-num">STEP 02</div>
-                        <div class="step-title">조건 확인</div>
-                        <div class="step-desc">예산, 지역, 용도 등<br>고객 요구사항을 파악합니다</div>
-                    </div>
+            </div>
+            <div class="profit-card">
+                <div class="profit-badge">사례 2</div>
+                <div class="profit-title">경기 수원시 상가</div>
+                <div class="profit-table">
+                    <div class="profit-row"><span>낙찰가 기준</span><span class="profit-value">5.7억</span></div>
+                    <div class="profit-row"><span>낙찰가 대비</span><span class="profit-value">70%</span></div>
+                    <div class="profit-row highlight"><span>매도 수익</span><span class="profit-value accent">+2.5억</span></div>
                 </div>
-                <div class="process-step reveal reveal-d3">
-                    <div class="step-marker"><i class="fas fa-search"></i></div>
-                    <div>
-                        <div class="step-num">STEP 03</div>
-                        <div class="step-title">물건 분석 &middot; 입찰</div>
-                        <div class="step-desc">물건 선별, 권리분석 후<br>입찰을 대행합니다</div>
-                    </div>
-                </div>
-                <div class="process-step reveal reveal-d4">
-                    <div class="step-marker"><i class="fas fa-key"></i></div>
-                    <div>
-                        <div class="step-num">STEP 04</div>
-                        <div class="step-title">낙찰 &middot; 명도</div>
-                        <div class="step-desc">낙찰 후 명도 협상 및<br>법적 절차를 지원합니다</div>
-                    </div>
-                </div>
-                <div class="process-step reveal reveal-d5">
-                    <div class="step-marker"><i class="fas fa-check-circle"></i></div>
-                    <div>
-                        <div class="step-num">STEP 05</div>
-                        <div class="step-title">완료 &middot; 수익실현</div>
-                        <div class="step-desc">등기이전, 임대 또는<br>매도를 통한 수익 실현</div>
-                    </div>
+            </div>
+            <div class="profit-card">
+                <div class="profit-badge">사례 3</div>
+                <div class="profit-title">인천 남동구 빌라</div>
+                <div class="profit-table">
+                    <div class="profit-row"><span>낙찰가 기준</span><span class="profit-value">2.4억</span></div>
+                    <div class="profit-row"><span>낙찰가 대비</span><span class="profit-value">69%</span></div>
+                    <div class="profit-row highlight"><span>매도 수익</span><span class="profit-value accent">+1.1억</span></div>
                 </div>
             </div>
         </div>
     </div>
 </section>
 
-<!-- Why Us (Dark) -->
-<section class="section bg-dark">
+<!-- Consulting Areas -->
+<section class="section" id="consulting-areas">
     <div class="container">
         <div class="section-header center reveal">
-            <div class="section-label">Why Bucomant</div>
-            <h2 class="section-title">왜 부코맨트인가</h2>
-            <p class="section-desc">경매 컨설팅, 아무에게나 맡기지 마세요</p>
+            <div class="section-label">Areas</div>
+            <h2 class="section-title">컨설팅 영역</h2>
+            <p class="section-desc">부코멘트가 제공하는 전문 컨설팅 서비스 영역입니다</p>
         </div>
-        <div class="strength-grid">
-            <div class="strength-card reveal reveal-d1">
-                <div class="strength-icon"><i class="fas fa-award"></i></div>
-                <div>
-                    <div class="strength-title">15년 전문 경력</div>
-                    <div class="strength-desc">2009년부터 부동산 경매 시장에서 축적한 노하우와 데이터. 현장 경험에서 나오는 정확한 판단력.</div>
+        <div class="area-grid reveal reveal-d1">
+            <div class="area-card area-card-img">
+                <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=600&q=80" alt="아파트">
+                <div class="area-card-overlay">
+                    <div class="area-title">아파트 경매</div>
+                    <div class="area-desc">서울·수도권 아파트 경매 전문 분석 및 입찰 대행</div>
                 </div>
             </div>
-            <div class="strength-card reveal reveal-d2">
-                <div class="strength-icon"><i class="fas fa-chart-line"></i></div>
-                <div>
-                    <div class="strength-title">847건 낙찰 실적</div>
-                    <div class="strength-desc">숫자로 검증된 능력. 평균 시세 대비 20% 이상 절감된 가격으로 낙찰을 이끌어냅니다.</div>
+            <div class="area-card area-card-img">
+                <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=600&q=80" alt="상가">
+                <div class="area-card-overlay">
+                    <div class="area-title">상가 경매</div>
+                    <div class="area-desc">수익형 상가 물건 발굴 및 임대수익률 분석</div>
                 </div>
             </div>
-            <div class="strength-card reveal reveal-d3">
-                <div class="strength-icon"><i class="fas fa-user-shield"></i></div>
-                <div>
-                    <div class="strength-title">성공보수 시스템</div>
-                    <div class="strength-desc">낙찰에 성공한 후에 보수를 정산합니다. 고객의 성공이 곧 부코맨트의 성공입니다.</div>
+            <div class="area-card area-card-img">
+                <img src="https://images.unsplash.com/photo-1580587771525-78b9dba3b914?w=600&q=80" alt="주택">
+                <div class="area-card-overlay">
+                    <div class="area-title">주택·빌라 경매</div>
+                    <div class="area-desc">실거주 및 투자 목적 주택·빌라 경매 컨설팅</div>
                 </div>
             </div>
-            <div class="strength-card reveal reveal-d4">
-                <div class="strength-icon"><i class="fas fa-hands-helping"></i></div>
+            <div class="area-card area-card-img">
+                <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=600&q=80" alt="토지">
+                <div class="area-card-overlay">
+                    <div class="area-title">토지·공매</div>
+                    <div class="area-desc">토지, 임야, 공매 물건 분석 및 개발 가능성 검토</div>
+                </div>
+            </div>
+            <div class="area-card area-card-img">
+                <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=600&q=80" alt="권리분석">
+                <div class="area-card-overlay">
+                    <div class="area-title">권리분석</div>
+                    <div class="area-desc">등기부등본, 임차인, 유치권 등 권리관계 정밀 분석</div>
+                </div>
+            </div>
+            <div class="area-card area-card-img">
+                <img src="https://images.unsplash.com/photo-1560179707-f14e90ef3623?w=600&q=80" alt="명도">
+                <div class="area-card-overlay">
+                    <div class="area-title">명도·사후관리</div>
+                    <div class="area-desc">명도 협상, 등기이전, 세무상담, 매도 전략 수립</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- One-Stop Strength -->
+<section class="section bg-dark" id="onestop">
+    <div class="container">
+        <div class="section-header center reveal">
+            <div class="section-label">Strength</div>
+            <h2 class="section-title">부코멘트 원스톱 컨설팅 강점</h2>
+            <p class="section-desc">처음부터 끝까지, 하나의 팀이 책임지는 컨설팅</p>
+        </div>
+        <div class="onestop-grid">
+            <div class="onestop-card reveal reveal-d1">
+                <div class="onestop-num">01</div>
                 <div>
-                    <div class="strength-title">원스톱 책임 관리</div>
-                    <div class="strength-desc">물건 분석부터 명도, 등기이전, 임대관리까지. 전 과정을 전담 컨설턴트가 책임집니다.</div>
+                    <div class="onestop-title">물건 발굴부터 입찰까지</div>
+                    <div class="onestop-desc">시장 데이터 기반 물건 선별, 권리분석, 현장조사, 적정가 산출, 입찰 대행까지 한번에 진행합니다.</div>
+                </div>
+            </div>
+            <div class="onestop-card reveal reveal-d2">
+                <div class="onestop-num">02</div>
+                <div>
+                    <div class="onestop-title">낙찰 후 명도·인도</div>
+                    <div class="onestop-desc">점유자 협상, 인도명령 신청, 강제집행까지. 가장 까다로운 과정을 전담팀이 처리합니다.</div>
+                </div>
+            </div>
+            <div class="onestop-card reveal reveal-d3">
+                <div class="onestop-num">03</div>
+                <div>
+                    <div class="onestop-title">등기이전·세무 지원</div>
+                    <div class="onestop-desc">소유권이전등기, 취득세 신고, 양도세 절세 전략까지 전문 네트워크를 통해 지원합니다.</div>
+                </div>
+            </div>
+            <div class="onestop-card reveal reveal-d4">
+                <div class="onestop-num">04</div>
+                <div>
+                    <div class="onestop-title">임대관리·매도 전략</div>
+                    <div class="onestop-desc">낙찰 후 임대 관리, 시세 모니터링, 최적 매도 타이밍 제안으로 수익 극대화를 돕습니다.</div>
                 </div>
             </div>
         </div>
@@ -919,7 +1213,7 @@
         <div class="section-header center reveal">
             <div class="section-label">Cases</div>
             <h2 class="section-title">최근 낙찰 사례</h2>
-            <p class="section-desc">부코맨트와 함께 성공적인 투자를 이루어낸 사례입니다</p>
+            <p class="section-desc">부코멘트와 함께 성공적인 투자를 이루어낸 사례입니다</p>
         </div>
         <div class="cases-grid">
             <a href="success-detail.html" class="case-card reveal reveal-d1">
@@ -1024,7 +1318,7 @@
     <div class="container">
         <div class="footer-grid">
             <div>
-                <div class="footer-brand">부코맨트</div>
+                <div class="footer-brand">부코멘트</div>
                 <p class="footer-brand-desc">
                     부동산 경&middot;공매 전문 컨설팅 기업.<br>
                     물건 분석부터 명도까지, 전 과정을 책임집니다.
@@ -1038,10 +1332,10 @@
             </div>
             <div class="footer-col">
                 <div class="footer-col-title">서비스</div>
-                <a href="service.html">경매 컨설팅</a>
-                <a href="service.html">공매 컨설팅</a>
-                <a href="detail.html">물건 분석</a>
-                <a href="service.html">명도 대행</a>
+                <a href="process.html">부동산&경매 컨설팅</a>
+                <a href="service.html">컨설팅 종류/비용 안내</a>
+                <a href="lecture.html">경매강의</a>
+                <a href="success-detail.html">성공 사례</a>
             </div>
             <div class="footer-col">
                 <div class="footer-col-title">고객지원</div>
@@ -1052,15 +1346,15 @@
             </div>
             <div class="footer-col">
                 <div class="footer-col-title">회사정보</div>
-                <a href="service.html">회사 소개</a>
+                <a href="about.html">회사 소개</a>
                 <a href="#">이용약관</a>
                 <a href="#">개인정보처리방침</a>
             </div>
         </div>
         <div class="footer-bottom">
             <div class="footer-info">
-                <strong>부코맨트</strong> | 대표: 홍길동 | 사업자등록번호: 123-45-67890<br>
-                서울시 강남구 테헤란로 123 부코맨트빌딩 5층 | 1588-0000
+                <strong>부코멘트</strong> | 대표: 홍길동 | 사업자등록번호: 123-45-67890<br>
+                서울시 강남구 테헤란로 123 부코멘트빌딩 5층 | 1588-0000
             </div>
             <div class="footer-copy">&copy; 2025 BUCOMANT. All rights reserved.</div>
         </div>

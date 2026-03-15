@@ -2711,3 +2711,138 @@
         grid-template-columns: 1fr;
     }
 }
+
+/* ============================================
+   Fee Table Section
+   ============================================ */
+.fee-section { padding: 100px 0; background: #f8fafc; }
+
+/* Fee Tile Grid */
+.fee-tile-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 16px; max-width: 800px; margin: 0 auto;
+}
+.fee-tile {
+    background: #fff; border: 1px solid #e2e8f0;
+    border-radius: 16px; padding: 28px 20px;
+    text-align: center; transition: all 0.3s ease;
+}
+.fee-tile:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(0,0,0,0.06); }
+.fee-tile.featured { border-color: var(--navy); background: var(--navy); color: #fff; }
+.fee-tile-header {
+    font-size: 0.82rem; font-weight: 600; color: #64748b;
+    margin-bottom: 12px;
+}
+.fee-tile.featured .fee-tile-header { color: rgba(255,255,255,0.7); }
+.fee-tile-rate {
+    font-family: 'Outfit', sans-serif; font-size: 1.8rem;
+    font-weight: 800; color: var(--navy); margin-bottom: 8px;
+}
+.fee-tile.featured .fee-tile-rate { color: #fff; }
+.fee-tile-sub { font-size: 0.78rem; color: #94a3b8; }
+.fee-tile.featured .fee-tile-sub { color: rgba(255,255,255,0.5); }
+.fee-note {
+    display: flex; align-items: flex-start; gap: 10px;
+    margin-top: 20px; padding: 16px 20px;
+    background: #fff; border-radius: 12px;
+    border: 1px solid #e2e8f0;
+}
+.fee-note i { color: #3b82f6; margin-top: 2px; flex-shrink: 0; }
+.fee-note p { font-size: 0.82rem; color: #64748b; line-height: 1.6; margin: 0; }
+
+/* ============================================
+   Contract Ratio Section
+   ============================================ */
+.ratio-section { padding: 100px 0; }
+
+/* Horizontal Bar Chart */
+.ratio-bar-horizontal {
+    display: flex; height: 56px; border-radius: 12px;
+    overflow: hidden; max-width: 700px; margin: 0 auto 24px;
+}
+.ratio-h-segment {
+    display: flex; align-items: center; justify-content: center;
+    transition: width 1.5s ease;
+}
+.ratio-h-segment.premium { background: var(--navy); }
+.ratio-h-segment.basic { background: var(--navy-muted); }
+.ratio-h-segment.analysis { background: #94a3b8; }
+.ratio-h-pct {
+    font-family: 'Outfit', sans-serif; font-size: 0.88rem;
+    font-weight: 700; color: #fff; white-space: nowrap;
+}
+.ratio-legend {
+    display: flex; justify-content: center; gap: 32px;
+    flex-wrap: wrap;
+}
+.ratio-legend-item {
+    display: flex; align-items: center; gap: 8px;
+    font-size: 0.82rem; color: #64748b;
+}
+.ratio-dot {
+    width: 12px; height: 12px; border-radius: 3px; flex-shrink: 0;
+}
+.ratio-dot.premium { background: var(--navy); }
+.ratio-dot.basic { background: var(--navy-muted); }
+.ratio-dot.analysis { background: #94a3b8; }
+
+/* ============================================
+   Lecture Promo Section
+   ============================================ */
+.lecture-promo-section { padding: 100px 0; background: #0f172a; }
+.lecture-promo-card {
+    max-width: 700px; margin: 0 auto; text-align: center; color: #fff;
+}
+.lecture-promo-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.15);
+    padding: 8px 20px; border-radius: 30px;
+    color: rgba(255,255,255,0.7); font-size: 0.85rem; font-weight: 500;
+    margin-bottom: 32px;
+}
+.lecture-promo-card h2 {
+    font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 800;
+    line-height: 1.4; margin-bottom: 24px;
+}
+.lecture-promo-answer {
+    font-size: 1.3rem; font-weight: 700; color: #60a5fa;
+    margin-bottom: 24px;
+}
+.lecture-promo-sub {
+    font-size: 1rem; color: rgba(255,255,255,0.6); margin-bottom: 16px;
+}
+.lecture-promo-detail {
+    font-size: 0.95rem; color: rgba(255,255,255,0.5);
+    line-height: 1.8; margin-bottom: 16px;
+}
+.lecture-promo-yes {
+    font-size: 1.2rem; font-weight: 700; color: #34d399;
+    margin-bottom: 24px;
+}
+.lecture-promo-desc {
+    font-size: 0.95rem; color: rgba(255,255,255,0.6);
+    line-height: 1.8; margin-bottom: 32px;
+}
+.lecture-promo-highlight {
+    font-size: 1.1rem; color: #fbbf24; font-weight: 600;
+    margin-bottom: 32px; letter-spacing: 0.5px;
+}
+.lecture-promo-highlight strong { font-weight: 800; }
+.lecture-promo-btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 14px 32px; border-radius: 8px;
+    background: #fff; color: #0f172a;
+    font-size: 0.92rem; font-weight: 700;
+    transition: all 0.3s ease;
+}
+.lecture-promo-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+}
+
+@media (max-width: 768px) {
+    .fee-table thead th,
+    .fee-table tbody td { padding: 12px 16px; font-size: 0.82rem; }
+    .ratio-grid { gap: 24px; }
+    .ratio-bar-wrap { width: 60px; height: 150px; }
+}

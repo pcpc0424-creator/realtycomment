@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회사소개 - 부코멘트</title>
+    <meta name="description" content="부코멘트 회사소개 - 부동산 경·공매 전문 컨설팅 기업. 15년 경력의 전문가 집단이 함께합니다.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;800;900&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/detail.css">
+    <style>
+        /* About Hero */
+        .about-hero {
+            padding: 160px 0 80px; background: var(--navy-deep);
+            text-align: center; position: relative; overflow: hidden;
+        }
+        .about-hero::before {
+            content: ''; position: absolute; inset: 0;
+            background: url('https://images.unsplash.com/photo-1497366216548-37526070297c?w=1600&q=80') center/cover no-repeat;
+            opacity: 0.15;
+        }
+        .about-hero .container { position: relative; z-index: 1; }
+        .about-hero-badge {
+            display: inline-flex; align-items: center; gap: 8px;
+            background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15);
+            padding: 8px 20px; border-radius: 30px;
+            color: rgba(255,255,255,0.6); font-size: 14px; font-weight: 500; margin-bottom: 24px;
+        }
+        .about-hero h1 {
+            font-size: clamp(32px, 5vw, 48px); font-weight: 800;
+            color: #fff; margin-bottom: 20px; line-height: 1.3;
+        }
+        .about-hero p {
+            font-size: 18px; color: rgba(255,255,255,0.7);
+            max-width: 600px; margin: 0 auto; line-height: 1.8;
+        }
+
+        /* Company Intro */
+        .company-intro { padding: 100px 0; }
+        .company-intro-inner {
+            max-width: 800px; margin: 0 auto; text-align: center;
+        }
+        .company-intro h2 {
+            font-size: clamp(1.4rem, 2.5vw, 1.8rem); font-weight: 800;
+            color: var(--slate-900); margin-bottom: 24px;
+        }
+        .company-intro p {
+            font-size: 0.95rem; color: var(--slate-600);
+            line-height: 2; margin-bottom: 16px;
+        }
+
+        /* Vision */
+        .vision-section { padding: 100px 0; background: #f8fafc; }
+        .vision-content {
+            max-width: 700px; margin: 0 auto; text-align: center;
+        }
+        .vision-content blockquote {
+            font-size: clamp(1.1rem, 2vw, 1.4rem); font-weight: 700;
+            color: var(--navy); line-height: 1.7;
+            border-left: 4px solid var(--navy); padding-left: 24px;
+            text-align: left; margin: 0;
+        }
+
+        /* Services & Values Grid */
+        .icon-grid-section { padding: 100px 0; }
+        .icon-grid-section.alt-bg { background: #f8fafc; }
+        .icon-grid {
+            display: grid; grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+        }
+        .icon-grid-card {
+            text-align: center; padding: 36px 20px;
+            border: 1px solid var(--slate-200); border-radius: 16px;
+            background: #fff; transition: all 0.3s ease;
+        }
+        .icon-grid-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 36px rgba(0,0,0,0.06);
+        }
+        .icon-grid-icon {
+            width: 56px; height: 56px; border-radius: 12px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.3rem; margin: 0 auto 16px;
+            background: var(--slate-50); color: var(--navy);
+            transition: all 0.3s ease;
+        }
+        .icon-grid-card:hover .icon-grid-icon {
+            background: var(--navy); color: #fff;
+        }
+        .icon-grid-card h3 {
+            font-size: 0.95rem; font-weight: 700; margin-bottom: 8px;
+            color: var(--slate-900);
+        }
+        .icon-grid-card p {
+            font-size: 0.82rem; color: var(--slate-500); line-height: 1.6;
+        }
+
+        /* Together Section */
+        .together-section { padding: 100px 0; }
+        .together-gallery {
+            display: grid; grid-template-columns: repeat(3, 1fr);
+            gap: 16px; margin-top: 48px;
+        }
+        .together-img {
+            border-radius: 12px; overflow: hidden;
+            aspect-ratio: 4/3;
+        }
+        .together-img img {
+            width: 100%; height: 100%; object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        .together-img:hover img { transform: scale(1.05); }
+
+        /* CEO Section */
+        .ceo-section {
+            padding: 100px 0; background: var(--navy-deep); color: #fff;
+        }
+        .ceo-grid {
+            display: grid; grid-template-columns: auto 1fr;
+            gap: 48px; align-items: center;
+            max-width: 800px; margin: 0 auto;
+        }
+        .ceo-photo {
+            width: 200px; height: 200px; border-radius: 20px;
+            overflow: hidden; border: 3px solid rgba(255,255,255,0.1);
+        }
+        .ceo-photo img { width: 100%; height: 100%; object-fit: cover; }
+        .ceo-info h3 {
+            font-size: 1.3rem; font-weight: 800; margin-bottom: 4px;
+        }
+        .ceo-info .ceo-title {
+            font-size: 0.85rem; color: rgba(255,255,255,0.5);
+            margin-bottom: 20px;
+        }
+        .ceo-info p {
+            font-size: 0.92rem; color: rgba(255,255,255,0.7);
+            line-height: 1.8;
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .icon-grid { grid-template-columns: 1fr 1fr; }
+            .together-gallery { grid-template-columns: 1fr 1fr; }
+            .ceo-grid { grid-template-columns: 1fr; text-align: center; }
+            .ceo-photo { margin: 0 auto; }
+        }
+        @media (max-width: 600px) {
+            .about-hero { padding: 140px 0 60px; }
+            .icon-grid { grid-template-columns: 1fr; }
+            .together-gallery { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="site-header scrolled" id="siteHeader">
+        <div class="container">
+            <div class="header-inner">
+                <a href="/realtycomment/" class="logo">
+                    <div class="logo-mark">B</div>
+                    <div class="logo-name">부코멘트</div>
+                </a>
+                <nav class="main-nav">
+                    <div class="nav-item">
+                        <a href="process.html" class="nav-link">부동산&경매 컨설팅 <i class="fas fa-chevron-down"></i></a>
+                        <div class="nav-dropdown">
+                            <a href="process.html#flowchart">컨설팅 내용</a>
+                            <a href="process.html#timeline">컨설팅 절차</a>
+                            <a href="process.html#why">왜 부코멘트인가</a>
+                        </div>
+                    </div>
+                    <a href="success-detail.html" class="nav-link">성공 사례</a>
+                    <div class="nav-item">
+                        <a href="service.html" class="nav-link">컨설팅 종류/비용 안내 <i class="fas fa-chevron-down"></i></a>
+                        <div class="nav-dropdown">
+                            <a href="service.html#fee">수수료 안내</a>
+                            <a href="service.html#faq">자주 묻는 질문</a>
+                        </div>
+                    </div>
+                    <div class="nav-item">
+                        <a href="lecture.html" class="nav-link">경매강의 <i class="fas fa-chevron-down"></i></a>
+                        <div class="nav-dropdown">
+                            <a href="lecture.html">교육 내역</a>
+                            <a href="lecture.html">수강 안내</a>
+                        </div>
+                    </div>
+                    <div class="nav-item">
+                        <a href="about.html" class="nav-link active">회사소개 <i class="fas fa-chevron-down"></i></a>
+                        <div class="nav-dropdown">
+                            <a href="about.html">회사 소개</a>
+                            <a href="about.html">대표 소개</a>
+                        </div>
+                    </div>
+                </nav>
+                <div class="header-right">
+                    <a href="login.html" class="header-phone">
+                        <i class="fas fa-user"></i> 로그인/회원가입
+                    </a>
+                    <a href="contact.html" class="btn-header">상담 신청</a>
+                </div>
+                <button class="menu-toggle" id="menuToggle" aria-label="메뉴">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu-new" id="mobileMenu">
+        <a href="process.html">부동산&경매 컨설팅</a>
+        <a href="success-detail.html">성공 사례</a>
+        <a href="service.html">컨설팅 종류/비용 안내</a>
+        <a href="lecture.html">경매강의</a>
+        <a href="about.html">회사소개</a>
+        <a href="login.html" style="color:#1c2d44;"><i class="fas fa-user"></i> 로그인/회원가입</a>
+    </div>
+
+    <!-- Hero -->
+    <section class="about-hero">
+        <div class="container">
+            <div data-aos="fade-up">
+                <span class="about-hero-badge"><i class="fas fa-building"></i> ABOUT US</span>
+                <h1>회사 소개</h1>
+                <p>
+                    부코멘트는 부동산 경매를 통해 올바른 투자 문화를 선도하는<br>
+                    전문 컨설팅 기업입니다. 15년간 축적된 경험과 데이터를 바탕으로<br>
+                    투자자의 성공적인 자산 형성을 돕습니다.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Company Intro -->
+    <section class="company-intro">
+        <div class="container">
+            <div class="company-intro-inner" data-aos="fade-up">
+                <h2>부코멘트 소개</h2>
+                <p>
+                    '부동산 코멘트'의 줄임말인 부코멘트는 부동산에 관한 전문적이고 신뢰할 수 있는
+                    의견(코멘트)을 제공하겠다는 의지를 담고 있습니다.
+                </p>
+                <p>
+                    전문가가 아닌 투자자도 올바른 정보와 분석을 기반으로 현명한 투자 결정을 내릴 수 있도록,
+                    체계적인 분석 시스템과 풍부한 현장 경험을 바탕으로 컨설팅을 제공하고 있습니다.
+                </p>
+                <p>
+                    부코멘트는 단순한 입찰 대행을 넘어, 고객의 자산 형성 파트너로서
+                    처음부터 끝까지 함께하는 원스톱 서비스를 지향합니다.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Vision -->
+    <section class="vision-section">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-label">VISION</span>
+                <h2 class="section-title">우리의 비전</h2>
+            </div>
+            <div class="vision-content" data-aos="fade-up">
+                <blockquote>
+                    "모든 투자자가 전문가 수준의 분석과 지원을 받을 수 있는 세상.<br>
+                    부코멘트는 경매 투자의 진입 장벽을 낮추고,<br>
+                    누구나 안전하고 수익성 있는 투자를 할 수 있도록 돕겠습니다."
+                </blockquote>
+            </div>
+        </div>
+    </section>
+
+    <!-- Core Services -->
+    <section class="icon-grid-section">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-label">SERVICES</span>
+                <h2 class="section-title">핵심 서비스</h2>
+            </div>
+            <div class="icon-grid" data-aos="fade-up">
+                <div class="icon-grid-card">
+                    <div class="icon-grid-icon"><i class="fas fa-gavel"></i></div>
+                    <h3>경매 컨설팅</h3>
+                    <p>권리분석부터 명도까지 전 과정 원스톱 서비스</p>
+                </div>
+                <div class="icon-grid-card">
+                    <div class="icon-grid-icon"><i class="fas fa-graduation-cap"></i></div>
+                    <h3>경매 교육</h3>
+                    <p>실전 중심 커리큘럼으로 경매 전문가 양성</p>
+                </div>
+                <div class="icon-grid-card">
+                    <div class="icon-grid-icon"><i class="fas fa-chart-pie"></i></div>
+                    <h3>부동산 컨설팅</h3>
+                    <p>시세분석, 임대수익률, 매도 전략 수립</p>
+                </div>
+                <div class="icon-grid-card">
+                    <div class="icon-grid-icon"><i class="fas fa-handshake"></i></div>
+                    <h3>사후 관리</h3>
+                    <p>등기이전, 세무, 임대관리까지 완벽 지원</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Core Values -->
+    <section class="icon-grid-section alt-bg">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-label">VALUES</span>
+                <h2 class="section-title">핵심 가치</h2>
+            </div>
+            <div class="icon-grid" data-aos="fade-up">
+                <div class="icon-grid-card">
+                    <div class="icon-grid-icon"><i class="fas fa-shield-alt"></i></div>
+                    <h3>신뢰</h3>
+                    <p>투명한 정보 공개와 정직한 분석으로 고객 신뢰 구축</p>
+                </div>
+                <div class="icon-grid-card">
+                    <div class="icon-grid-icon"><i class="fas fa-microscope"></i></div>
+                    <h3>전문성</h3>
+                    <p>15년 축적된 데이터와 현장 경험 기반의 정밀 분석</p>
+                </div>
+                <div class="icon-grid-card">
+                    <div class="icon-grid-icon"><i class="fas fa-users"></i></div>
+                    <h3>동반성장</h3>
+                    <p>고객의 성공이 곧 부코멘트의 성공, 성공보수 시스템</p>
+                </div>
+                <div class="icon-grid-card">
+                    <div class="icon-grid-icon"><i class="fas fa-infinity"></i></div>
+                    <h3>책임</h3>
+                    <p>입찰부터 수익실현까지, 끝까지 책임지는 원스톱 관리</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Together -->
+    <section class="together-section">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-label">TOGETHER</span>
+                <h2 class="section-title">부코멘트와 함께</h2>
+            </div>
+            <div class="together-gallery" data-aos="fade-up">
+                <div class="together-img">
+                    <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&q=80" alt="사무실">
+                </div>
+                <div class="together-img">
+                    <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?w=600&q=80" alt="미팅">
+                </div>
+                <div class="together-img">
+                    <img src="https://images.unsplash.com/photo-1560179707-f14e90ef3623?w=600&q=80" alt="건물">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CEO -->
+    <section class="ceo-section">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-label" style="color:rgba(255,255,255,0.4);">CEO</span>
+                <h2 class="section-title">대표 소개</h2>
+            </div>
+            <div class="ceo-grid" data-aos="fade-up">
+                <div class="ceo-photo">
+                    <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&q=80" alt="대표">
+                </div>
+                <div class="ceo-info">
+                    <h3>홍길동</h3>
+                    <div class="ceo-title">부코멘트 대표이사</div>
+                    <p>
+                        15년간 부동산 경매 시장에서 활동하며 847건 이상의 성공적인 낙찰을 이끌어왔습니다.
+                        수많은 투자자들의 성공 파트너로서, 단순한 입찰 대행을 넘어
+                        고객의 자산 형성에 진정한 가치를 더하는 컨설팅을 제공하고 있습니다.
+                    </p>
+                    <p>
+                        "올바른 분석과 투명한 정보를 바탕으로,
+                        모든 고객이 경매를 통해 성공적인 투자를 이룰 수 있도록 돕겠습니다."
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 업무 제휴 -->
+    <section style="padding:80px 0; background:#f8fafc;">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-label">PARTNERSHIP</span>
+                <h2 class="section-title">업무 제휴</h2>
+            </div>
+            <div style="max-width:700px; margin:0 auto; background:#fff; border:1px solid #e2e8f0; border-radius:16px; padding:40px; text-align:center;" data-aos="fade-up">
+                <p style="font-size:0.95rem; color:#475569; line-height:1.8; margin-bottom:24px;">
+                    부코멘트는 법무사, 세무사, 공인중개사, 인테리어 업체 등<br>
+                    부동산 관련 전문가 및 기업과의 업무 제휴를 환영합니다.
+                </p>
+                <div style="display:flex; justify-content:center; gap:24px; flex-wrap:wrap; margin-bottom:24px;">
+                    <div style="display:flex; align-items:center; gap:8px; font-size:0.88rem; color:#1c2d44; font-weight:600;">
+                        <i class="fas fa-envelope" style="color:#3d5a80;"></i> info@bucomant.co.kr
+                    </div>
+                    <div style="display:flex; align-items:center; gap:8px; font-size:0.88rem; color:#1c2d44; font-weight:600;">
+                        <i class="fas fa-phone-alt" style="color:#3d5a80;"></i> 1588-0000
+                    </div>
+                </div>
+                <a href="contact.html" style="display:inline-flex; align-items:center; gap:8px; padding:12px 28px; border-radius:8px; background:#1c2d44; color:#fff; font-size:0.88rem; font-weight:600; transition:all 0.3s ease;">
+                    제휴 문의하기 <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="cta-bg">
+            <div class="cta-pattern"></div>
+        </div>
+        <div class="container">
+            <div class="cta-content" data-aos="fade-up">
+                <h2>부코멘트와 함께 성공적인 투자를 시작하세요</h2>
+                <p>전문 컨설턴트가 친절하게 안내해드립니다</p>
+                <div class="cta-buttons">
+                    <a href="tel:1588-0000" class="btn-cta-primary">
+                        <i class="fas fa-phone-alt"></i>
+                        <span>1588-0000</span>
+                    </a>
+                    <a href="contact.html" class="btn-cta-secondary">
+                        <span>상담 신청</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <div class="footer-brand">부코멘트</div>
+                    <p class="footer-brand-desc">
+                        부동산 경&middot;공매 전문 컨설팅 기업.<br>
+                        물건 분석부터 명도까지, 전 과정을 책임집니다.
+                    </p>
+                    <div class="footer-social">
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fas fa-blog"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <div class="footer-col-title">서비스</div>
+                    <a href="process.html">부동산&경매 컨설팅</a>
+                    <a href="service.html">컨설팅 종류/비용 안내</a>
+                    <a href="lecture.html">경매강의</a>
+                    <a href="success-detail.html">성공 사례</a>
+                </div>
+                <div class="footer-col">
+                    <div class="footer-col-title">고객지원</div>
+                    <a href="service.html#faq">자주 묻는 질문</a>
+                    <a href="contact.html">상담 신청</a>
+                    <a href="#">오시는 길</a>
+                    <a href="#">공지사항</a>
+                </div>
+                <div class="footer-col">
+                    <div class="footer-col-title">회사정보</div>
+                    <a href="about.html">회사 소개</a>
+                    <a href="#">이용약관</a>
+                    <a href="#">개인정보처리방침</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="footer-info">
+                    <strong>부코멘트</strong> | 대표: 홍길동 | 사업자등록번호: 123-45-67890<br>
+                    서울시 강남구 테헤란로 123 부코멘트빌딩 5층 | 1588-0000
+                </div>
+                <div class="footer-copy">&copy; 2025 BUCOMANT. All rights reserved.</div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top -->
+    <button class="back-top" id="backTop"><i class="fas fa-chevron-up"></i></button>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+    (function() {
+        'use strict';
+        AOS.init({ duration: 600, once: true, offset: 50 });
+
+        var header = document.getElementById('siteHeader');
+        if (header) window.addEventListener('scroll', function() {
+            header.classList.toggle('scrolled', window.scrollY > 80);
+        });
+
+        var toggle = document.getElementById('menuToggle');
+        var mobile = document.getElementById('mobileMenu');
+        if (toggle && mobile) {
+            toggle.addEventListener('click', function() {
+                toggle.classList.toggle('active');
+                mobile.classList.toggle('open');
+            });
+            mobile.querySelectorAll('a').forEach(function(a) {
+                a.addEventListener('click', function() {
+                    toggle.classList.remove('active');
+                    mobile.classList.remove('open');
+                });
+            });
+        }
+
+        var bt = document.getElementById('backTop');
+        if (bt) {
+            window.addEventListener('scroll', function() { bt.classList.toggle('visible', window.scrollY > 400); });
+            bt.addEventListener('click', function() { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+        }
+    })();
+    </script>
+</body>
+</html>

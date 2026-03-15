@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>상담 문의 - 부코맨트</title>
-    <meta name="description" content="부코맨트 경매 컨설팅 상담 문의 - 경매물건상담, 입찰의뢰, 컨설팅 등 전문 상담을 받아보세요">
+    <title>상담 문의 - 부코멘트</title>
+    <meta name="description" content="부코멘트 경매 컨설팅 상담 문의 - 경매물건상담, 입찰의뢰, 컨설팅 등 전문 상담을 받아보세요">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -126,17 +126,43 @@
             <div class="header-inner">
                 <a href="/realtycomment/" class="logo">
                     <div class="logo-mark">B</div>
-                    <div class="logo-name">부코맨트</div>
+                    <div class="logo-name">부코멘트</div>
                 </a>
                 <nav class="main-nav">
-                    <a href="service.html" class="nav-link">서비스 소개</a>
-                    <a href="process.html" class="nav-link">컨설팅 절차</a>
+                    <div class="nav-item">
+                        <a href="process.html" class="nav-link">부동산&경매 컨설팅 <i class="fas fa-chevron-down"></i></a>
+                        <div class="nav-dropdown">
+                            <a href="process.html#flowchart">컨설팅 내용</a>
+                            <a href="process.html#timeline">컨설팅 절차</a>
+                            <a href="process.html#why">왜 부코멘트인가</a>
+                        </div>
+                    </div>
                     <a href="success-detail.html" class="nav-link">성공 사례</a>
-                    <a href="contact.html" class="nav-link active">상담 문의</a>
+                    <div class="nav-item">
+                        <a href="service.html" class="nav-link">컨설팅 종류/비용 안내 <i class="fas fa-chevron-down"></i></a>
+                        <div class="nav-dropdown">
+                            <a href="service.html#fee">수수료 안내</a>
+                            <a href="service.html#faq">자주 묻는 질문</a>
+                        </div>
+                    </div>
+                    <div class="nav-item">
+                        <a href="lecture.html" class="nav-link">경매강의 <i class="fas fa-chevron-down"></i></a>
+                        <div class="nav-dropdown">
+                            <a href="lecture.html">교육 내역</a>
+                            <a href="lecture.html">수강 안내</a>
+                        </div>
+                    </div>
+                    <div class="nav-item">
+                        <a href="about.html" class="nav-link">회사소개 <i class="fas fa-chevron-down"></i></a>
+                        <div class="nav-dropdown">
+                            <a href="about.html">회사 소개</a>
+                            <a href="about.html">대표 소개</a>
+                        </div>
+                    </div>
                 </nav>
                 <div class="header-right">
-                    <a href="tel:1588-0000" class="header-phone">
-                        <i class="fas fa-phone-alt"></i> 1588-0000
+                    <a href="login.html" class="header-phone">
+                        <i class="fas fa-user"></i> 로그인/회원가입
                     </a>
                     <a href="contact.html" class="btn-header">상담 신청</a>
                 </div>
@@ -149,11 +175,12 @@
 
     <!-- Mobile Menu -->
     <div class="mobile-menu-new" id="mobileMenu">
-        <a href="service.html">서비스 소개</a>
-        <a href="process.html">컨설팅 절차</a>
+        <a href="process.html">부동산&경매 컨설팅</a>
         <a href="success-detail.html">성공 사례</a>
-        <a href="contact.html">상담 문의</a>
-        <a href="tel:1588-0000" style="color:#1c2d44;"><i class="fas fa-phone-alt"></i> 1588-0000</a>
+        <a href="service.html">컨설팅 종류/비용 안내</a>
+        <a href="lecture.html">경매강의</a>
+        <a href="about.html">회사소개</a>
+        <a href="login.html" style="color:#1c2d44;"><i class="fas fa-user"></i> 로그인/회원가입</a>
     </div>
 
     <!-- Hero Section -->
@@ -166,7 +193,7 @@
             <div class="service-hero-content" data-aos="fade-up">
                 <span class="service-badge">CONTACT US</span>
                 <h1 class="service-hero-title">
-                    경매 상담,<br>
+                    경매 상담, 권리분석 서비스, 부동산 종합 상담 서비스 등<br>
                     부담없이 문의하세요
                 </h1>
                 <p class="service-hero-desc">
@@ -256,8 +283,8 @@
 
                         <!-- 이메일 -->
                         <div class="form-group">
-                            <label>이메일</label>
-                            <input type="email" name="email" placeholder="example@email.com">
+                            <label>이메일 *</label>
+                            <input type="email" name="email" placeholder="example@email.com" required>
                         </div>
 
                         <!-- 관심지역 / 물건유형 -->
@@ -291,6 +318,23 @@
                             </div>
                         </div>
 
+                        <!-- 금액대 -->
+                        <div class="form-group">
+                            <label>금액대 *</label>
+                            <input type="text" name="budget" placeholder="예: 3억~5억" required>
+                        </div>
+
+                        <!-- 투자목적 -->
+                        <div class="form-group">
+                            <label>투자목적 *</label>
+                            <select name="investPurpose" required>
+                                <option value="">투자목적을 선택하세요</option>
+                                <option>실거주</option>
+                                <option>단기매도</option>
+                                <option>장기투자</option>
+                            </select>
+                        </div>
+
                         <!-- 사건번호 -->
                         <div class="form-group">
                             <label>사건번호 (선택)</label>
@@ -300,7 +344,7 @@
                         <!-- 상담내용 -->
                         <div class="form-group">
                             <label>상담 내용 *</label>
-                            <textarea name="message" placeholder="상담하실 내용을 자세히 입력해주세요" rows="5" required></textarea>
+                            <textarea name="message" placeholder="상담하실 내용을 자세히 입력해주세요" rows="8" required></textarea>
                         </div>
 
                         <!-- 개인정보 동의 -->
@@ -346,7 +390,7 @@
         <div class="container">
             <div class="footer-grid">
                 <div>
-                    <div class="footer-brand">부코맨트</div>
+                    <div class="footer-brand">부코멘트</div>
                     <p class="footer-brand-desc">
                         부동산 경&middot;공매 전문 컨설팅 기업.<br>
                         물건 분석부터 명도까지, 전 과정을 책임집니다.
@@ -360,10 +404,10 @@
                 </div>
                 <div class="footer-col">
                     <div class="footer-col-title">서비스</div>
-                    <a href="service.html">경매 컨설팅</a>
-                    <a href="service.html">공매 컨설팅</a>
-                    <a href="detail.html">물건 분석</a>
-                    <a href="service.html">명도 대행</a>
+                    <a href="process.html">부동산&경매 컨설팅</a>
+                    <a href="service.html">컨설팅 종류/비용 안내</a>
+                    <a href="lecture.html">경매강의</a>
+                    <a href="success-detail.html">성공 사례</a>
                 </div>
                 <div class="footer-col">
                     <div class="footer-col-title">고객지원</div>
@@ -374,15 +418,15 @@
                 </div>
                 <div class="footer-col">
                     <div class="footer-col-title">회사정보</div>
-                    <a href="service.html">회사 소개</a>
+                    <a href="about.html">회사 소개</a>
                     <a href="#">이용약관</a>
                     <a href="#">개인정보처리방침</a>
                 </div>
             </div>
             <div class="footer-bottom">
                 <div class="footer-info">
-                    <strong>부코맨트</strong> | 대표: 홍길동 | 사업자등록번호: 123-45-67890<br>
-                    서울시 강남구 테헤란로 123 부코맨트빌딩 5층 | 1588-0000
+                    <strong>부코멘트</strong> | 대표: 홍길동 | 사업자등록번호: 123-45-67890<br>
+                    서울시 강남구 테헤란로 123 부코멘트빌딩 5층 | 1588-0000
                 </div>
                 <div class="footer-copy">&copy; 2025 BUCOMANT. All rights reserved.</div>
             </div>

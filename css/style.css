@@ -2610,9 +2610,9 @@ button { cursor: pointer; }
 .site-header:not(.scrolled) .btn-header:hover { background:#fff; color:#1c2d44; }
 .site-header:not(.scrolled) .menu-toggle span { background:#fff; }
 
-.site-header .main-nav { display:flex; gap:32px; }
+.site-header .main-nav { display:flex; gap:24px; }
 .site-header .nav-link {
-    font-size:0.88rem; font-weight:500; color:#495057;
+    font-size:0.85rem; font-weight:500; color:#495057; white-space:nowrap;
     transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     position:relative; padding:0;
 }
@@ -2634,6 +2634,37 @@ button { cursor: pointer; }
     text-decoration:none; display:inline-block;
 }
 .site-header .btn-header:hover { background:#1c2d44; color:#fff; border-color:#1c2d44; }
+
+/* Dropdown Sub-menus */
+.nav-item {
+    position:relative;
+    display:flex; align-items:center;
+    height:72px;
+}
+.nav-item .nav-link {
+    display:flex; align-items:center; gap:4px;
+    height:100%;
+}
+.nav-item .nav-link .fa-chevron-down { font-size:0.55rem; transition:transform 0.3s ease; }
+.nav-item:hover .fa-chevron-down { transform:rotate(180deg); }
+.nav-dropdown {
+    position:absolute; top:100%; left:50%; transform:translateX(-50%);
+    min-width:180px; padding:8px 0;
+    background:#fff; border:1px solid #e9ecef; border-radius:10px;
+    box-shadow:0 8px 32px rgba(0,0,0,0.1);
+    opacity:0; visibility:hidden; pointer-events:none;
+    transition:all 0.25s ease; z-index:200;
+}
+.nav-item:hover .nav-dropdown { opacity:1; visibility:visible; pointer-events:auto; }
+.nav-dropdown::before {
+    content:''; position:absolute; top:-10px; left:0; right:0; height:10px;
+}
+.nav-dropdown a {
+    display:block; padding:9px 20px;
+    font-size:0.82rem; font-weight:500; color:#495057;
+    transition:all 0.2s ease; white-space:nowrap;
+}
+.nav-dropdown a:hover { background:#f8f9fa; color:#1c2d44; }
 
 .site-header .menu-toggle { display:none; flex-direction:column; gap:5px; padding:4px; cursor:pointer; border:none; background:none; }
 .site-header .menu-toggle span {

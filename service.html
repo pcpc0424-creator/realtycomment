@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>서비스 안내 - 부코맨트</title>
-    <meta name="description" content="부코맨트 경매 컨설팅 서비스 안내 - 물건분석, 입찰대행, 명도지원, 사후관리까지 원스톱 서비스">
+    <title>컨설팅 종류/비용 안내 - 부코멘트</title>
+    <meta name="description" content="부코멘트 경매 컨설팅 종류 및 비용 안내 - 낙찰시 수수료, 컨설팅 계약 비율, 경매강의 안내">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -27,17 +27,43 @@
             <div class="header-inner">
                 <a href="/realtycomment/" class="logo">
                     <div class="logo-mark">B</div>
-                    <div class="logo-name">부코맨트</div>
+                    <div class="logo-name">부코멘트</div>
                 </a>
                 <nav class="main-nav">
-                    <a href="service.html" class="nav-link active">서비스 소개</a>
-                    <a href="process.html" class="nav-link">컨설팅 절차</a>
+                    <div class="nav-item">
+                        <a href="process.html" class="nav-link">부동산&경매 컨설팅 <i class="fas fa-chevron-down"></i></a>
+                        <div class="nav-dropdown">
+                            <a href="process.html#flowchart">컨설팅 내용</a>
+                            <a href="process.html#timeline">컨설팅 절차</a>
+                            <a href="process.html#why">왜 부코멘트인가</a>
+                        </div>
+                    </div>
                     <a href="success-detail.html" class="nav-link">성공 사례</a>
-                    <a href="contact.html" class="nav-link">상담 문의</a>
+                    <div class="nav-item">
+                        <a href="service.html" class="nav-link active">컨설팅 종류/비용 안내 <i class="fas fa-chevron-down"></i></a>
+                        <div class="nav-dropdown">
+                            <a href="service.html#fee">수수료 안내</a>
+                            <a href="service.html#faq">자주 묻는 질문</a>
+                        </div>
+                    </div>
+                    <div class="nav-item">
+                        <a href="lecture.html" class="nav-link">경매강의 <i class="fas fa-chevron-down"></i></a>
+                        <div class="nav-dropdown">
+                            <a href="lecture.html">교육 내역</a>
+                            <a href="lecture.html">수강 안내</a>
+                        </div>
+                    </div>
+                    <div class="nav-item">
+                        <a href="about.html" class="nav-link">회사소개 <i class="fas fa-chevron-down"></i></a>
+                        <div class="nav-dropdown">
+                            <a href="about.html">회사 소개</a>
+                            <a href="about.html">대표 소개</a>
+                        </div>
+                    </div>
                 </nav>
                 <div class="header-right">
-                    <a href="tel:1588-0000" class="header-phone">
-                        <i class="fas fa-phone-alt"></i> 1588-0000
+                    <a href="login.html" class="header-phone">
+                        <i class="fas fa-user"></i> 로그인/회원가입
                     </a>
                     <a href="contact.html" class="btn-header">상담 신청</a>
                 </div>
@@ -50,11 +76,12 @@
 
     <!-- Mobile Menu -->
     <div class="mobile-menu-new" id="mobileMenu">
-        <a href="service.html">서비스 소개</a>
-        <a href="process.html">컨설팅 절차</a>
+        <a href="process.html">부동산&경매 컨설팅</a>
         <a href="success-detail.html">성공 사례</a>
-        <a href="contact.html">상담 문의</a>
-        <a href="tel:1588-0000" style="color:#1c2d44;"><i class="fas fa-phone-alt"></i> 1588-0000</a>
+        <a href="service.html">컨설팅 종류/비용 안내</a>
+        <a href="lecture.html">경매강의</a>
+        <a href="about.html">회사소개</a>
+        <a href="login.html" style="color:#1c2d44;"><i class="fas fa-user"></i> 로그인/회원가입</a>
     </div>
 
     <!-- Service Hero -->
@@ -65,312 +92,133 @@
         </div>
         <div class="container">
             <div class="service-hero-content" data-aos="fade-up">
-                <span class="service-badge">OUR SERVICE</span>
+                <span class="service-badge">PRICING & PLANS</span>
                 <h1 class="service-hero-title">
-                    부동산 경매의 모든 것,<br>
-                    부코맨트가 함께합니다
+                    경매 컨설팅 낙찰시 수수료 안내
                 </h1>
                 <p class="service-hero-desc">
-                    15년 경력의 전문가가 물건분석부터 명도까지<br>
-                    원스톱으로 도와드립니다
+                    투명하고 합리적인 수수료 체계로 운영합니다
                 </p>
-                <div class="service-hero-stats">
-                    <div class="hero-stat">
-                        <span class="hero-stat-value">1,200+</span>
-                        <span class="hero-stat-label">누적 상담</span>
-                    </div>
-                    <div class="hero-stat">
-                        <span class="hero-stat-value">847건</span>
-                        <span class="hero-stat-label">낙찰 성공</span>
-                    </div>
-                    <div class="hero-stat">
-                        <span class="hero-stat-value">94%</span>
-                        <span class="hero-stat-label">만족도</span>
-                    </div>
-                </div>
             </div>
         </div>
     </section>
 
-    <!-- Service List -->
-    <section class="service-list-section" id="process">
+    <!-- Fee Schedule -->
+    <section class="fee-section" id="fee">
         <div class="container">
             <div class="section-header" data-aos="fade-up">
-                <span class="section-label">SERVICES</span>
-                <h2 class="section-title">부코맨트 컨설팅 서비스</h2>
-                <p class="section-desc">경매의 시작부터 끝까지, 전 과정을 책임집니다</p>
+                <span class="section-label">FEE SCHEDULE</span>
+                <h2 class="section-title">경매 컨설팅 낙찰시 수수료 안내</h2>
+                <p class="section-desc">낙찰 시 낙찰가를 기준으로 아래 수수료가 발생합니다.</p>
             </div>
 
-            <!-- Service 1: 물건 분석 -->
-            <div class="service-detail-card" data-aos="fade-up">
-                <div class="service-detail-icon">
-                    <div class="icon-bg"></div>
-                    <i class="fas fa-search-dollar"></i>
-                    <span class="service-number">01</span>
+            <div class="fee-tile-grid" data-aos="fade-up">
+                <div class="fee-tile">
+                    <div class="fee-tile-header">감정가 1억 미만</div>
+                    <div class="fee-tile-rate">협의</div>
+                    <div class="fee-tile-sub">소액 물건 별도 협의</div>
                 </div>
-                <div class="service-detail-content">
-                    <h3>물건 분석 서비스</h3>
-                    <p class="service-summary">
-                        권리분석부터 시세분석까지, 투자 가치를 꼼꼼하게 분석해드립니다
-                    </p>
-                    <div class="service-features">
-                        <div class="feature-item">
-                            <i class="fas fa-check-circle"></i>
-                            <div class="feature-content">
-                                <h4>등기부등본 권리분석</h4>
-                                <p>갑구, 을구 분석을 통한 권리관계 파악 및 인수 부담 여부 검토</p>
-                            </div>
-                        </div>
-                        <div class="feature-item">
-                            <i class="fas fa-check-circle"></i>
-                            <div class="feature-content">
-                                <h4>임차인 분석</h4>
-                                <p>전입일자, 확정일자, 배당요구 여부를 통한 대항력 분석</p>
-                            </div>
-                        </div>
-                        <div class="feature-item">
-                            <i class="fas fa-check-circle"></i>
-                            <div class="feature-content">
-                                <h4>실거래가 시세분석</h4>
-                                <p>국토부 실거래가, 인근 중개업소 시세 조사를 통한 적정가 산정</p>
-                            </div>
-                        </div>
-                        <div class="feature-item">
-                            <i class="fas fa-check-circle"></i>
-                            <div class="feature-content">
-                                <h4>임대수익률 분석</h4>
-                                <p>전세가, 월세 시세 조사를 통한 투자 수익률 계산</p>
-                            </div>
-                        </div>
-                        <div class="feature-item">
-                            <i class="fas fa-check-circle"></i>
-                            <div class="feature-content">
-                                <h4>현장 답사</h4>
-                                <p>물건 상태, 입지, 주변 환경 등 직접 방문을 통한 현황 파악</p>
-                            </div>
-                        </div>
-                    </div>
+                <div class="fee-tile">
+                    <div class="fee-tile-header">감정가 1억 ~ 3억</div>
+                    <div class="fee-tile-rate">1.7%</div>
+                    <div class="fee-tile-sub">낙찰가 기준</div>
+                </div>
+                <div class="fee-tile">
+                    <div class="fee-tile-header">감정가 3억 ~ 5억</div>
+                    <div class="fee-tile-rate">1.5%</div>
+                    <div class="fee-tile-sub">낙찰가 기준</div>
+                </div>
+                <div class="fee-tile featured">
+                    <div class="fee-tile-header">감정가 5억 ~ 10억</div>
+                    <div class="fee-tile-rate">1.2%</div>
+                    <div class="fee-tile-sub">낙찰가 기준</div>
+                </div>
+                <div class="fee-tile">
+                    <div class="fee-tile-header">감정가 10억 ~ 30억</div>
+                    <div class="fee-tile-rate">0.9%</div>
+                    <div class="fee-tile-sub">낙찰가 기준</div>
+                </div>
+                <div class="fee-tile">
+                    <div class="fee-tile-header">감정가 30억 이상</div>
+                    <div class="fee-tile-rate">0.8%</div>
+                    <div class="fee-tile-sub">고액 물건 별도 협의</div>
                 </div>
             </div>
-
-            <!-- Service 2: 입찰 대행 -->
-            <div class="service-detail-card reverse" data-aos="fade-up">
-                <div class="service-detail-icon">
-                    <div class="icon-bg"></div>
-                    <i class="fas fa-gavel"></i>
-                    <span class="service-number">02</span>
-                </div>
-                <div class="service-detail-content">
-                    <h3>입찰 대행 서비스</h3>
-                    <p class="service-summary">
-                        적정 입찰가 산정부터 법원 입찰까지 대행해드립니다
-                    </p>
-                    <div class="service-features">
-                        <div class="feature-item">
-                            <i class="fas fa-check-circle"></i>
-                            <div class="feature-content">
-                                <h4>적정 입찰가 산정</h4>
-                                <p>경쟁 분석, 시세 분석을 바탕으로 최적의 입찰가 제안</p>
-                            </div>
-                        </div>
-                        <div class="feature-item">
-                            <i class="fas fa-check-circle"></i>
-                            <div class="feature-content">
-                                <h4>입찰 서류 작성</h4>
-                                <p>입찰표, 보증금 제공 등 입찰에 필요한 서류 준비</p>
-                            </div>
-                        </div>
-                        <div class="feature-item">
-                            <i class="fas fa-check-circle"></i>
-                            <div class="feature-content">
-                                <h4>법원 입찰 대행</h4>
-                                <p>기일입찰, 기간입찰 모두 대리 입찰 가능</p>
-                            </div>
-                        </div>
-                        <div class="feature-item">
-                            <i class="fas fa-check-circle"></i>
-                            <div class="feature-content">
-                                <h4>입찰 결과 안내</h4>
-                                <p>실시간 입찰 결과 확인 및 차순위 매수 전략 수립</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Service 3: 명도 지원 -->
-            <div class="service-detail-card" data-aos="fade-up">
-                <div class="service-detail-icon">
-                    <div class="icon-bg"></div>
-                    <i class="fas fa-handshake"></i>
-                    <span class="service-number">03</span>
-                </div>
-                <div class="service-detail-content">
-                    <h3>명도 지원 서비스</h3>
-                    <p class="service-summary">
-                        낙찰 후 가장 어려운 명도 과정, 전문가가 함께합니다
-                    </p>
-                    <div class="service-features">
-                        <div class="feature-item">
-                            <i class="fas fa-check-circle"></i>
-                            <div class="feature-content">
-                                <h4>점유자 협상 대행</h4>
-                                <p>임차인, 채무자 등 점유자와의 원만한 합의 진행</p>
-                            </div>
-                        </div>
-                        <div class="feature-item">
-                            <i class="fas fa-check-circle"></i>
-                            <div class="feature-content">
-                                <h4>인도명령 신청</h4>
-                                <p>협의가 어려운 경우 법적 절차를 통한 인도명령 신청 지원</p>
-                            </div>
-                        </div>
-                        <div class="feature-item">
-                            <i class="fas fa-check-circle"></i>
-                            <div class="feature-content">
-                                <h4>명도소송 지원</h4>
-                                <p>필요시 전문 법무사, 변호사 연계를 통한 명도소송 진행</p>
-                            </div>
-                        </div>
-                        <div class="feature-item">
-                            <i class="fas fa-check-circle"></i>
-                            <div class="feature-content">
-                                <h4>강제집행 지원</h4>
-                                <p>최종 단계의 강제집행 절차 진행 지원</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Service 4: 사후 관리 -->
-            <div class="service-detail-card reverse" data-aos="fade-up">
-                <div class="service-detail-icon">
-                    <div class="icon-bg"></div>
-                    <i class="fas fa-file-signature"></i>
-                    <span class="service-number">04</span>
-                </div>
-                <div class="service-detail-content">
-                    <h3>사후 관리 서비스</h3>
-                    <p class="service-summary">
-                        등기이전부터 임대관리까지 끝까지 책임집니다
-                    </p>
-                    <div class="service-features">
-                        <div class="feature-item">
-                            <i class="fas fa-check-circle"></i>
-                            <div class="feature-content">
-                                <h4>소유권이전등기</h4>
-                                <p>잔금 납부 후 소유권 이전 등기 절차 지원</p>
-                            </div>
-                        </div>
-                        <div class="feature-item">
-                            <i class="fas fa-check-circle"></i>
-                            <div class="feature-content">
-                                <h4>세금 상담 연계</h4>
-                                <p>취득세, 양도소득세 등 세무 전문가 상담 연계</p>
-                            </div>
-                        </div>
-                        <div class="feature-item">
-                            <i class="fas fa-check-circle"></i>
-                            <div class="feature-content">
-                                <h4>임대차 관리</h4>
-                                <p>임대 시 적정 임대료 산정, 임차인 모집 지원</p>
-                            </div>
-                        </div>
-                        <div class="feature-item">
-                            <i class="fas fa-check-circle"></i>
-                            <div class="feature-content">
-                                <h4>매도 전략 수립</h4>
-                                <p>투자 물건 매도 시 적정 시점 및 매도가 자문</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Pricing Section -->
-    <section class="pricing-section">
-        <div class="container">
-            <div class="section-header" data-aos="fade-up">
-                <span class="section-label">PRICING</span>
-                <h2 class="section-title">투명한 요금 안내</h2>
-                <p class="section-desc">합리적인 가격으로 전문 컨설팅을 받으세요</p>
-            </div>
-
-            <div class="pricing-grid" data-aos="fade-up">
-                <div class="pricing-card">
-                    <div class="pricing-header">
-                        <h3>기본 컨설팅</h3>
-                        <p>처음 경매를 시작하시는 분</p>
-                    </div>
-                    <div class="pricing-price">
-                        <span class="price-amount">상담 후 협의</span>
-                    </div>
-                    <ul class="pricing-features">
-                        <li><i class="fas fa-check"></i>물건 추천 (최대 5건)</li>
-                        <li><i class="fas fa-check"></i>권리분석 리포트</li>
-                        <li><i class="fas fa-check"></i>시세분석 리포트</li>
-                        <li><i class="fas fa-check"></i>입찰가 산정</li>
-                        <li><i class="fas fa-check"></i>입찰 대행</li>
-                        <li class="disabled"><i class="fas fa-times"></i>명도 지원 (별도)</li>
-                        <li class="disabled"><i class="fas fa-times"></i>사후 관리 (별도)</li>
-                    </ul>
-                    <a href="contact.html" class="pricing-btn">상담 신청</a>
-                </div>
-
-                <div class="pricing-card featured">
-                    <div class="pricing-badge">BEST</div>
-                    <div class="pricing-header">
-                        <h3>프리미엄 컨설팅</h3>
-                        <p>원스톱 토탈 서비스</p>
-                    </div>
-                    <div class="pricing-price">
-                        <span class="price-amount">상담 후 협의</span>
-                    </div>
-                    <ul class="pricing-features">
-                        <li><i class="fas fa-check"></i>무제한 물건 추천</li>
-                        <li><i class="fas fa-check"></i>권리분석 리포트</li>
-                        <li><i class="fas fa-check"></i>시세분석 리포트</li>
-                        <li><i class="fas fa-check"></i>입찰가 산정</li>
-                        <li><i class="fas fa-check"></i>입찰 대행</li>
-                        <li><i class="fas fa-check"></i>명도 지원 포함</li>
-                        <li><i class="fas fa-check"></i>사후 관리 포함</li>
-                    </ul>
-                    <a href="contact.html" class="pricing-btn featured">상담 신청</a>
-                </div>
-
-                <div class="pricing-card">
-                    <div class="pricing-header">
-                        <h3>물건 분석</h3>
-                        <p>직접 입찰하시는 분</p>
-                    </div>
-                    <div class="pricing-price">
-                        <span class="price-amount">상담 후 협의</span>
-                    </div>
-                    <ul class="pricing-features">
-                        <li><i class="fas fa-check"></i>지정 물건 분석</li>
-                        <li><i class="fas fa-check"></i>권리분석 리포트</li>
-                        <li><i class="fas fa-check"></i>시세분석 리포트</li>
-                        <li><i class="fas fa-check"></i>입찰가 산정</li>
-                        <li class="disabled"><i class="fas fa-times"></i>입찰 대행 (별도)</li>
-                        <li class="disabled"><i class="fas fa-times"></i>명도 지원 (별도)</li>
-                        <li class="disabled"><i class="fas fa-times"></i>사후 관리 (별도)</li>
-                    </ul>
-                    <a href="contact.html" class="pricing-btn">상담 신청</a>
-                </div>
-            </div>
-
-            <div class="pricing-note" data-aos="fade-up">
+            <div class="fee-note" data-aos="fade-up">
                 <i class="fas fa-info-circle"></i>
-                <p>정확한 요금은 물건 종류, 감정가, 권리관계 복잡도에 따라 달라질 수 있습니다. 무료 상담을 통해 맞춤 견적을 받아보세요.</p>
+                <p>VAT 별도 / 상기 수수료는 기준이며, 물건의 종류 및 복잡도에 따라 협의 가능합니다.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contract Ratio -->
+    <section class="ratio-section">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-label">CONTRACT</span>
+                <h2 class="section-title">경매 컨설팅 계약 비율</h2>
+                <p class="section-desc">현재 부코멘트 고객의 컨설팅 계약 비율입니다</p>
+            </div>
+
+            <div class="ratio-bar-horizontal" data-aos="fade-up">
+                <div class="ratio-h-segment premium" style="width:75%">
+                    <span class="ratio-h-pct">75%</span>
+                </div>
+                <div class="ratio-h-segment basic" style="width:18%">
+                    <span class="ratio-h-pct">18%</span>
+                </div>
+                <div class="ratio-h-segment analysis" style="width:7%">
+                    <span class="ratio-h-pct">7%</span>
+                </div>
+            </div>
+            <div class="ratio-legend" data-aos="fade-up">
+                <div class="ratio-legend-item">
+                    <span class="ratio-dot premium"></span>
+                    <span>프리미엄 컨설팅 (원스톱 토탈)</span>
+                </div>
+                <div class="ratio-legend-item">
+                    <span class="ratio-dot basic"></span>
+                    <span>기본 컨설팅 (입찰 대행 중심)</span>
+                </div>
+                <div class="ratio-legend-item">
+                    <span class="ratio-dot analysis"></span>
+                    <span>물건 분석만 (직접 입찰)</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lecture Promo -->
+    <section class="lecture-promo-section">
+        <div class="container">
+            <div class="lecture-promo-card" data-aos="fade-up">
+                <div class="lecture-promo-content">
+                    <span class="lecture-promo-badge"><i class="fas fa-graduation-cap"></i> 경매 강의</span>
+                    <h2>부동산 한 곳에서 이 모든 게<br>가능한 곳이 있다고 합니까?</h2>
+                    <p class="lecture-promo-answer">그렇지 않습니다.</p>
+                    <p class="lecture-promo-sub">어떻게 가능할까요?</p>
+                    <p class="lecture-promo-detail">
+                        권리 분석, 명도, 사후 관리...<br>
+                        이것들이 진짜 가능하다고요?
+                    </p>
+                    <p class="lecture-promo-yes">네, 가능합니다.</p>
+                    <p class="lecture-promo-desc">
+                        그래서, 받은 기술을 분석하고 적용하는<br>
+                        구조를 만들었습니다.
+                    </p>
+                    <div class="lecture-promo-highlight">
+                        부코멘트 <strong>"실전 전 과정 케어반"</strong>
+                    </div>
+                    <a href="lecture.html" class="lecture-promo-btn">
+                        경매강의 자세히 보기 <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- FAQ Section -->
-    <section class="faq-section">
+    <section class="faq-section" id="faq">
         <div class="container">
             <div class="section-header" data-aos="fade-up">
                 <span class="section-label">FAQ</span>
@@ -384,125 +232,44 @@
                         <i class="fas fa-chevron-down"></i>
                     </button>
                     <div class="faq-answer">
-                        <p>
-                            경매에 처음 도전하시는 초보자부터 경험이 있지만 전문적인 권리분석이 필요하신 분,
-                            바쁜 일정으로 직접 물건을 찾고 입찰하기 어려우신 분들께 추천드립니다.
-                            특히 복잡한 권리관계가 있는 물건이나 고가의 물건 투자 시 전문가의 분석이 큰 도움이 됩니다.
-                        </p>
+                        <p>경매에 처음 도전하시는 초보자부터 전문적인 권리분석이 필요하신 분, 바쁜 일정으로 직접 입찰하기 어려우신 분들께 추천드립니다.</p>
                     </div>
                 </div>
-
                 <div class="faq-item">
                     <button class="faq-question">
                         <span>컨설팅 비용은 언제 지불하나요?</span>
                         <i class="fas fa-chevron-down"></i>
                     </button>
                     <div class="faq-answer">
-                        <p>
-                            상담은 무료로 진행됩니다. 컨설팅 계약 후 계약금을 납부하시고,
-                            낙찰 성공 시 잔금을 납부하는 방식입니다.
-                            낙찰에 실패하셔도 추가 비용 없이 재입찰을 지원해드립니다.
-                        </p>
+                        <p>상담은 무료입니다. 계약 후 계약금을 납부하시고, 낙찰 성공 시 잔금을 납부합니다. 낙찰 실패 시 추가 비용 없이 재입찰을 지원합니다.</p>
                     </div>
                 </div>
-
                 <div class="faq-item">
                     <button class="faq-question">
-                        <span>경매 투자에 필요한 최소 자금은 얼마인가요?</span>
+                        <span>경매 투자에 필요한 최소 자금은?</span>
                         <i class="fas fa-chevron-down"></i>
                     </button>
                     <div class="faq-answer">
-                        <p>
-                            입찰 시 최저매각가격의 10%를 보증금으로 납부해야 합니다.
-                            낙찰 후에는 잔금과 취득세 등 부대비용이 필요합니다.
-                            지역과 물건 종류에 따라 다르지만, 일반적으로 최소 5천만원 이상의 자금이 있으시면 경매 투자를 시작하실 수 있습니다.
-                        </p>
+                        <p>입찰 시 최저매각가격의 10%를 보증금으로 납부합니다. 일반적으로 최소 5천만원 이상의 자금이 있으시면 경매 투자를 시작하실 수 있습니다.</p>
                     </div>
                 </div>
-
                 <div class="faq-item">
                     <button class="faq-question">
                         <span>명도가 잘 안 되면 어떻게 하나요?</span>
                         <i class="fas fa-chevron-down"></i>
                     </button>
                     <div class="faq-answer">
-                        <p>
-                            부코맨트는 명도 지원 서비스를 통해 점유자와의 원만한 협상을 진행합니다.
-                            협상이 어려운 경우 인도명령, 명도소송, 강제집행 등 법적 절차를 순차적으로 진행하며,
-                            전문 법무사, 변호사와 연계하여 신속하게 명도를 완료할 수 있도록 도와드립니다.
-                        </p>
+                        <p>점유자와의 원만한 협상을 진행하며, 어려운 경우 인도명령, 명도소송, 강제집행 등 법적 절차를 순차적으로 진행합니다.</p>
                     </div>
                 </div>
-
-                <div class="faq-item">
-                    <button class="faq-question">
-                        <span>권리분석에서 위험한 물건은 어떤 것인가요?</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </button>
-                    <div class="faq-answer">
-                        <p>
-                            말소되지 않는 선순위 권리(지상권, 유치권 주장, 법정지상권 등)가 있는 물건,
-                            대항력 있는 임차인의 보증금이 낙찰가를 초과하는 물건,
-                            토지와 건물 소유자가 다른 경우 등이 위험한 물건에 해당합니다.
-                            부코맨트는 이러한 위험 물건을 사전에 걸러내어 안전한 투자를 도와드립니다.
-                        </p>
-                    </div>
-                </div>
-
                 <div class="faq-item">
                     <button class="faq-question">
                         <span>지방 물건도 컨설팅이 가능한가요?</span>
                         <i class="fas fa-chevron-down"></i>
                     </button>
                     <div class="faq-answer">
-                        <p>
-                            네, 전국 어디든 컨설팅 가능합니다.
-                            서울, 경기, 인천 외 지방 물건도 현장 답사를 진행하며,
-                            기간입찰의 경우 전자입찰로 편리하게 대행해드립니다.
-                            지방 물건은 출장비가 별도로 발생할 수 있으니 상담 시 문의해주세요.
-                        </p>
+                        <p>네, 전국 어디든 가능합니다. 지방 물건은 출장비가 별도 발생할 수 있으니 상담 시 문의해주세요.</p>
                     </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Why Choose Us -->
-    <section class="why-section">
-        <div class="container">
-            <div class="section-header" data-aos="fade-up">
-                <span class="section-label">WHY BUCOMANT</span>
-                <h2 class="section-title">왜 부코맨트인가요?</h2>
-            </div>
-
-            <div class="why-grid" data-aos="fade-up">
-                <div class="why-card">
-                    <div class="why-icon">
-                        <i class="fas fa-award"></i>
-                    </div>
-                    <h3>15년 경력</h3>
-                    <p>15년 이상의 경매 컨설팅 경력으로 쌓은 노하우와 전문성</p>
-                </div>
-                <div class="why-card">
-                    <div class="why-icon">
-                        <i class="fas fa-chart-line"></i>
-                    </div>
-                    <h3>847건 낙찰</h3>
-                    <p>847건 이상의 성공적인 낙찰 실적으로 검증된 능력</p>
-                </div>
-                <div class="why-card">
-                    <div class="why-icon">
-                        <i class="fas fa-smile"></i>
-                    </div>
-                    <h3>94% 만족도</h3>
-                    <p>고객 만족도 94%의 신뢰받는 서비스</p>
-                </div>
-                <div class="why-card">
-                    <div class="why-icon">
-                        <i class="fas fa-hands-helping"></i>
-                    </div>
-                    <h3>원스톱 서비스</h3>
-                    <p>물건 분석부터 명도까지 전 과정 책임 관리</p>
                 </div>
             </div>
         </div>
@@ -536,7 +303,7 @@
         <div class="container">
             <div class="footer-grid">
                 <div>
-                    <div class="footer-brand">부코맨트</div>
+                    <div class="footer-brand">부코멘트</div>
                     <p class="footer-brand-desc">
                         부동산 경&middot;공매 전문 컨설팅 기업.<br>
                         물건 분석부터 명도까지, 전 과정을 책임집니다.
@@ -550,10 +317,10 @@
                 </div>
                 <div class="footer-col">
                     <div class="footer-col-title">서비스</div>
-                    <a href="service.html">경매 컨설팅</a>
-                    <a href="service.html">공매 컨설팅</a>
-                    <a href="detail.html">물건 분석</a>
-                    <a href="service.html">명도 대행</a>
+                    <a href="process.html">부동산&경매 컨설팅</a>
+                    <a href="service.html">컨설팅 종류/비용 안내</a>
+                    <a href="lecture.html">경매강의</a>
+                    <a href="success-detail.html">성공 사례</a>
                 </div>
                 <div class="footer-col">
                     <div class="footer-col-title">고객지원</div>
@@ -564,15 +331,15 @@
                 </div>
                 <div class="footer-col">
                     <div class="footer-col-title">회사정보</div>
-                    <a href="service.html">회사 소개</a>
+                    <a href="about.html">회사 소개</a>
                     <a href="#">이용약관</a>
                     <a href="#">개인정보처리방침</a>
                 </div>
             </div>
             <div class="footer-bottom">
                 <div class="footer-info">
-                    <strong>부코맨트</strong> | 대표: 홍길동 | 사업자등록번호: 123-45-67890<br>
-                    서울시 강남구 테헤란로 123 부코맨트빌딩 5층 | 1588-0000
+                    <strong>부코멘트</strong> | 대표: 홍길동 | 사업자등록번호: 123-45-67890<br>
+                    서울시 강남구 테헤란로 123 부코멘트빌딩 5층 | 1588-0000
                 </div>
                 <div class="footer-copy">&copy; 2025 BUCOMANT. All rights reserved.</div>
             </div>
