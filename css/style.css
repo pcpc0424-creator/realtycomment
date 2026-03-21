@@ -2610,7 +2610,7 @@ button { cursor: pointer; }
 .site-header:not(.scrolled) .btn-header:hover { background:#fff; color:#1c2d44; }
 .site-header:not(.scrolled) .menu-toggle span { background:#fff; }
 
-.site-header .main-nav { display:flex; gap:24px; }
+.site-header .main-nav { display:flex; gap:24px; align-items:center; }
 .site-header .nav-link {
     font-size:0.85rem; font-weight:500; color:#495057; white-space:nowrap;
     transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
