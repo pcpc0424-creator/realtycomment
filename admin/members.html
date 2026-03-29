@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>회원 관리 - 부코멘트 관리자</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+<div class="admin-layout">
+  <aside class="sidebar">
+    <div class="sidebar-logo"><img src="../img/logo.png" alt="부코멘트"> Admin</div>
+    <nav class="sidebar-nav">
+      <a href="dashboard.html"><i class="fas fa-tachometer-alt"></i> 대시보드</a>
+      <a href="consultations.html"><i class="fas fa-comments"></i> 상담 관리</a>
+      <a href="lectures.html"><i class="fas fa-graduation-cap"></i> 강의 신청</a>
+      <a href="cases.html"><i class="fas fa-trophy"></i> 성공 사례</a>
+      <a href="members.html" class="active"><i class="fas fa-users"></i> 회원 관리</a>
+    </nav>
+    <div class="sidebar-bottom"><a href="#" onclick="logout()"><i class="fas fa-sign-out-alt"></i> 로그아웃</a></div>
+  </aside>
+  <main class="main-content">
+    <div class="page-header">
+      <h2>회원 관리</h2>
+      <div class="filter-bar">
+        <select id="filterType" onchange="loadData()">
+          <option value="">전체 유형</option>
+          <option value="일반">일반</option>
+          <option value="VIP">VIP</option>
+        </select>
+        <select id="filterStatus" onchange="loadData()">
+          <option value="">전체 상태</option>
+          <option value="활성">활성</option>
+          <option value="비활성">비활성</option>
+        </select>
+        <button class="btn btn-primary" onclick="openAddModal()"><i class="fas fa-plus"></i> 회원 등록</button>
+      </div>
+    </div>
+    <div class="table-card">
+      <table>
+        <thead><tr><th>번호</th><th>이름</th><th>연락처</th><th>이메일</th><th>회원유형</th><th>상태</th><th>가입일</th><th>관리</th></tr></thead>
+        <tbody id="dataList"></tbody>
+      </table>
+      <div class="pagination" id="pagination"></div>
+    </div>
+  </main>
+</div>
+
+<div class="modal-overlay" id="formModal">
+  <div class="modal">
+    <h3 id="formTitle">회원 등록</h3>
+    <form id="memberForm" onsubmit="saveMember(event)">
+      <div class="form-row">
+        <div class="form-group"><label>이름</label><input type="text" id="f_name" required></div>
+        <div class="form-group"><label>연락처</label><input type="text" id="f_phone" required></div>
+      </div>
+      <div class="form-row">
+        <div class="form-group"><label>이메일</label><input type="email" id="f_email" required></div>
+        <div class="form-group"><label>비밀번호</label><input type="password" id="f_password" placeholder="신규 등록 시 필수, 수정 시 빈칸이면 유지"></div>
+      </div>
+      <div class="form-row">
+        <div class="form-group"><label>회원유형</label><select id="f_member_type"><option value="일반">일반</option><option value="VIP">VIP</option></select></div>
+      <div class="form-group"><label>상태</label><select id="f_status"><option value="활성">활성</option><option value="비활성">비활성</option></select></div>
+      <div class="form-group"><label>메모</label><textarea id="f_memo" rows="3"></textarea></div>
+      <div class="modal-actions">
+        <button type="submit" class="btn btn-primary">저장</button>
+        <button type="button" class="btn btn-outline" onclick="closeModal()">취소</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script src="js/admin.js"></script>
+<script>
+if (!checkAuth()) throw '';
+let currentPage = 1, editId = null;
+
+async function loadData() {
+  const type = document.getElementById('filterType').value;
+  const status = document.getElementById('filterStatus').value;
+  let q = '/members?page=' + currentPage;
+  if (type) q += '&member_type=' + type;
+  if (status) q += '&status=' + status;
+  const d = await api(q);
+  if (!d) return;
+  document.getElementById('dataList').innerHTML = d.data.map(r => `
+    <tr>
+      <td>${r.id}</td><td>${r.name}</td><td>${r.phone}</td>
+      <td>${r.email||'-'}</td><td>${badge(r.member_type||'일반')}</td>
+      <td>${badge(r.status)}</td><td>${formatDate(r.created_at)}</td>
+      <td>
+        <button class="btn btn-sm btn-outline" onclick="openEditModal(${r.id})">수정</button>
+        <button class="btn btn-sm btn-danger" onclick="deleteItem(${r.id})">삭제</button>
+      </td>
+    </tr>
+  `).join('') || '<tr><td colspan="8" style="text-align:center;color:#94a3b8;">데이터가 없습니다</td></tr>';
+
+  const pages = Math.ceil(d.total / d.limit);
+  document.getElementById('pagination').innerHTML = Array.from({length: pages}, (_, i) =>
+    `<button class="${i+1===d.page?'active':''}" onclick="currentPage=${i+1};loadData()">${i+1}</button>`
+  ).join('');
+}
+
+function openAddModal() {
+  editId = null;
+  document.getElementById('formTitle').textContent = '회원 등록';
+  document.getElementById('memberForm').reset();
+  document.getElementById('formModal').classList.add('active');
+}
+
+async function openEditModal(id) {
+  editId = id;
+  const d = await api('/members/' + id);
+  if (!d) return;
+  document.getElementById('formTitle').textContent = '회원 수정';
+  document.getElementById('f_name').value = d.name || '';
+  document.getElementById('f_phone').value = d.phone || '';
+  document.getElementById('f_email').value = d.email || '';
+  document.getElementById('f_member_type').value = d.member_type || '일반';
+  document.getElementById('f_status').value = d.status || '활성';
+  document.getElementById('f_memo').value = d.notes || d.memo || '';
+  document.getElementById('f_password').value = '';
+  document.getElementById('formModal').classList.add('active');
+}
+
+async function saveMember(e) {
+  e.preventDefault();
+  const data = {
+    name: document.getElementById('f_name').value,
+    phone: document.getElementById('f_phone').value,
+    email: document.getElementById('f_email').value,
+    member_type: document.getElementById('f_member_type').value,
+    status: document.getElementById('f_status').value,
+    notes: document.getElementById('f_memo').value
+  };
+  const pw = document.getElementById('f_password').value;
+  if (pw) data.password = pw;
+  if (!editId && !pw) { alert('신규 회원은 비밀번호를 입력해주세요'); return; }
+  const body = JSON.stringify(data);
+  if (editId) {
+    await api('/members/' + editId, { method: 'PUT', body });
+  } else {
+    await api('/members', { method: 'POST', body });
+  }
+  closeModal(); loadData();
+}
+
+async function deleteItem(id) {
+  if (!confirm('정말 삭제하시겠습니까?')) return;
+  await api('/members/' + id, { method: 'DELETE' });
+  loadData();
+}
+
+function closeModal() { document.getElementById('formModal').classList.remove('active'); }
+loadData();
+</script>
+</body>
+</html>

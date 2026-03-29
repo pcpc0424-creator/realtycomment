@@ -23,9 +23,11 @@
         /* Contact Page Layout */
         .contact-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: 1fr 1.4fr;
             gap: 72px;
             align-items: start;
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
         .contact-info-list {
@@ -66,7 +68,7 @@
         }
 
         .contact-form-card {
-            padding: 40px;
+            padding: 48px 56px;
             border: 1px solid var(--slate-200);
             border-radius: var(--radius-xl);
             background: #fff;
@@ -104,6 +106,56 @@
             }
         }
 
+        .contact-form-card input[type="text"],
+        .contact-form-card input[type="email"],
+        .contact-form-card input[type="tel"],
+        .contact-form-card select,
+        .contact-form-card textarea {
+            width: 100%;
+            box-sizing: border-box;
+            font-size: 0.95rem;
+        }
+
+        .contact-form-card textarea {
+            min-height: 220px;
+            resize: vertical;
+        }
+
+        .invest-purpose-group {
+            display: flex;
+            gap: 24px;
+            flex-wrap: wrap;
+            margin-top: 8px;
+        }
+
+        .invest-purpose-group label {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.93rem;
+            color: var(--slate-700);
+            cursor: pointer;
+            padding: 8px 16px;
+            border: 1px solid var(--slate-200);
+            border-radius: 8px;
+            transition: all 0.2s;
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+
+        .invest-purpose-group label:hover {
+            border-color: var(--navy);
+            background: var(--slate-50);
+        }
+
+        .invest-purpose-group input[type="radio"]:checked + span {
+            font-weight: 600;
+        }
+
+        .invest-purpose-group input[type="radio"] {
+            accent-color: var(--navy);
+        }
+
         @media (max-width: 768px) {
             .form-row {
                 grid-template-columns: 1fr;
@@ -114,7 +166,11 @@
             }
 
             .contact-form-card {
-                padding: 28px;
+                padding: 28px 20px;
+            }
+
+            .invest-purpose-group {
+                gap: 12px;
             }
         }
     </style>
@@ -125,40 +181,14 @@
         <div class="container">
             <div class="header-inner">
                 <a href="/realtycomment/" class="logo">
-                    <div class="logo-mark">B</div>
-                    <div class="logo-name">부코멘트</div>
+                    <img src="img/logo.png" alt="부코멘트" class="logo-img">
                 </a>
                 <nav class="main-nav">
-                    <div class="nav-item">
-                        <a href="process.html" class="nav-link">부동산&경매 컨설팅 <i class="fas fa-chevron-down"></i></a>
-                        <div class="nav-dropdown">
-                            <a href="process.html#flowchart">컨설팅 내용</a>
-                            <a href="process.html#timeline">컨설팅 절차</a>
-                            <a href="process.html#why">왜 부코멘트인가</a>
-                        </div>
-                    </div>
+                    <a href="process.html" class="nav-link">부동산&경매 컨설팅</a>
                     <a href="success-detail.html" class="nav-link">성공 사례</a>
-                    <div class="nav-item">
-                        <a href="service.html" class="nav-link">컨설팅 종류/비용 안내 <i class="fas fa-chevron-down"></i></a>
-                        <div class="nav-dropdown">
-                            <a href="service.html#fee">수수료 안내</a>
-                            <a href="service.html#faq">자주 묻는 질문</a>
-                        </div>
-                    </div>
-                    <div class="nav-item">
-                        <a href="lecture.html" class="nav-link">경매강의 <i class="fas fa-chevron-down"></i></a>
-                        <div class="nav-dropdown">
-                            <a href="lecture.html">교육 내역</a>
-                            <a href="lecture.html">수강 안내</a>
-                        </div>
-                    </div>
-                    <div class="nav-item">
-                        <a href="about.html" class="nav-link">회사소개 <i class="fas fa-chevron-down"></i></a>
-                        <div class="nav-dropdown">
-                            <a href="about.html">회사 소개</a>
-                            <a href="about.html">대표 소개</a>
-                        </div>
-                    </div>
+                    <a href="service.html" class="nav-link">컨설팅 종류/비용 안내</a>
+                    <a href="lecture.html" class="nav-link">경매강의</a>
+                    <a href="about.html" class="nav-link">회사소개</a>
                 </nav>
                 <div class="header-right">
                     <a href="login.html" class="header-phone">
@@ -192,9 +222,8 @@
         <div class="container">
             <div class="service-hero-content" data-aos="fade-up">
                 <span class="service-badge">CONTACT US</span>
-                <h1 class="service-hero-title">
-                    경매 상담, 권리분석 서비스, 부동산 종합 상담 서비스 등<br>
-                    부담없이 문의하세요
+                <h1 class="service-hero-title" style="max-width:900px; margin-left:auto; margin-right:auto; word-break:keep-all; font-size:clamp(20px, 2.6vw, 30px);">
+                    경매 상담, 권리분석 서비스, 부동산 종합 상담 서비스 등<br>부담없이 문의하세요
                 </h1>
                 <p class="service-hero-desc">
                     15년 경력의 전문 컨설턴트가 고객님의 궁금증을 해결해드립니다.<br>
@@ -321,18 +350,17 @@
                         <!-- 금액대 -->
                         <div class="form-group">
                             <label>금액대 *</label>
-                            <input type="text" name="budget" placeholder="예: 3억~5억" required>
+                            <input type="text" name="budget" placeholder="예) 5천만원~1억원" required>
                         </div>
 
                         <!-- 투자목적 -->
                         <div class="form-group">
                             <label>투자목적 *</label>
-                            <select name="investPurpose" required>
-                                <option value="">투자목적을 선택하세요</option>
-                                <option>실거주</option>
-                                <option>단기매도</option>
-                                <option>장기투자</option>
-                            </select>
+                            <div class="invest-purpose-group">
+                                <label><input type="radio" name="investPurpose" value="실거주" required> <span>실거주</span></label>
+                                <label><input type="radio" name="investPurpose" value="단기매도"> <span>단기매도</span></label>
+                                <label><input type="radio" name="investPurpose" value="장기투자"> <span>장기투자</span></label>
+                            </div>
                         </div>
 
                         <!-- 사건번호 -->
@@ -344,7 +372,7 @@
                         <!-- 상담내용 -->
                         <div class="form-group">
                             <label>상담 내용 *</label>
-                            <textarea name="message" placeholder="상담하실 내용을 자세히 입력해주세요" rows="12" required></textarea>
+                            <textarea name="message" placeholder="상담하실 내용을 자세히 입력해주세요" rows="16" style="min-height:280px;" required></textarea>
                         </div>
 
                         <!-- 개인정보 동의 -->
@@ -443,25 +471,7 @@
         'use strict';
         AOS.init({ duration: 600, once: true, offset: 50 });
 
-        var header = document.getElementById('siteHeader');
-        if (header) window.addEventListener('scroll', function() {
-            header.classList.toggle('scrolled', window.scrollY > 80);
-        });
-
-        var toggle = document.getElementById('menuToggle');
-        var mobile = document.getElementById('mobileMenu');
-        if (toggle && mobile) {
-            toggle.addEventListener('click', function() {
-                toggle.classList.toggle('active');
-                mobile.classList.toggle('open');
-            });
-            mobile.querySelectorAll('a').forEach(function(a) {
-                a.addEventListener('click', function() {
-                    toggle.classList.remove('active');
-                    mobile.classList.remove('open');
-                });
-            });
-        }
+        // Header & Mobile menu → js/header.js로 통합
 
         var bt = document.getElementById('backTop');
         if (bt) {
@@ -483,5 +493,6 @@
         }
     })();
     </script>
+<script src="js/header.js"></script>
 </body>
 </html>

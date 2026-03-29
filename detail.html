@@ -29,40 +29,14 @@
         <div class="container">
             <div class="header-inner">
                 <a href="/realtycomment/" class="logo">
-                    <div class="logo-mark">B</div>
-                    <div class="logo-name">부코멘트</div>
+                    <img src="img/logo.png" alt="부코멘트" class="logo-img">
                 </a>
                 <nav class="main-nav">
-                    <div class="nav-item">
-                        <a href="process.html" class="nav-link">부동산&경매 컨설팅 <i class="fas fa-chevron-down"></i></a>
-                        <div class="nav-dropdown">
-                            <a href="process.html#flowchart">컨설팅 내용</a>
-                            <a href="process.html#timeline">컨설팅 절차</a>
-                            <a href="process.html#why">왜 부코멘트인가</a>
-                        </div>
-                    </div>
+                    <a href="process.html" class="nav-link">부동산&경매 컨설팅</a>
                     <a href="success-detail.html" class="nav-link">성공 사례</a>
-                    <div class="nav-item">
-                        <a href="service.html" class="nav-link">컨설팅 종류/비용 안내 <i class="fas fa-chevron-down"></i></a>
-                        <div class="nav-dropdown">
-                            <a href="service.html#fee">수수료 안내</a>
-                            <a href="service.html#faq">자주 묻는 질문</a>
-                        </div>
-                    </div>
-                    <div class="nav-item">
-                        <a href="lecture.html" class="nav-link">경매강의 <i class="fas fa-chevron-down"></i></a>
-                        <div class="nav-dropdown">
-                            <a href="lecture.html">교육 내역</a>
-                            <a href="lecture.html">수강 안내</a>
-                        </div>
-                    </div>
-                    <div class="nav-item">
-                        <a href="about.html" class="nav-link">회사소개 <i class="fas fa-chevron-down"></i></a>
-                        <div class="nav-dropdown">
-                            <a href="about.html">회사 소개</a>
-                            <a href="about.html">대표 소개</a>
-                        </div>
-                    </div>
+                    <a href="service.html" class="nav-link">컨설팅 종류/비용 안내</a>
+                    <a href="lecture.html" class="nav-link">경매강의</a>
+                    <a href="about.html" class="nav-link">회사소개</a>
                 </nav>
                 <div class="header-right">
                     <a href="login.html" class="header-phone">
@@ -1031,27 +1005,7 @@
             });
         }
 
-        // Header scroll
-        var header = document.getElementById('siteHeader');
-        if (header) window.addEventListener('scroll', function() {
-            header.classList.toggle('scrolled', window.scrollY > 80);
-        });
-
-        // Mobile menu
-        var toggle = document.getElementById('menuToggle');
-        var mobile = document.getElementById('mobileMenu');
-        if (toggle && mobile) {
-            toggle.addEventListener('click', function() {
-                toggle.classList.toggle('active');
-                mobile.classList.toggle('open');
-            });
-            mobile.querySelectorAll('a').forEach(function(a) {
-                a.addEventListener('click', function() {
-                    toggle.classList.remove('active');
-                    mobile.classList.remove('open');
-                });
-            });
-        }
+        // Header & Mobile menu → js/header.js로 통합
 
         // Back to top
         var bt = document.getElementById('backTop');
@@ -1071,5 +1025,6 @@
         });
     })();
     </script>
+<script src="js/header.js"></script>
 </body>
 </html>

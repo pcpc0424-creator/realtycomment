@@ -35,132 +35,424 @@
         }
         .lecture-hero h1 {
             font-size: clamp(28px, 4vw, 42px); font-weight: 800;
-            color: #fff; line-height: 1.4; margin-bottom: 20px;
+            color: #fff; line-height: 1.4; margin-bottom: 8px;
+        }
+        .lecture-hero .hero-subtitle {
+            font-size: 16px; color: rgba(255,255,255,0.5);
+            margin-bottom: 20px; font-weight: 400;
         }
         .lecture-hero p {
             font-size: 18px; color: rgba(255,255,255,0.7);
             max-width: 600px; margin: 0 auto;
         }
 
-        /* Intro Section */
-        .lecture-intro { padding: 100px 0; background: #f8fafc; }
-        .intro-message {
-            max-width: 700px; margin: 0 auto; text-align: center;
+        /* Intro Section - Dark Panel */
+        .lecture-intro { padding:72px 20px; background:#e0e0e0; }
+        .lec-panel {
+            max-width:620px; margin:0 auto;
+            background:#141628; border-radius:32px;
+            padding:60px 44px 56px;
+            color:#fff; text-align:center;
         }
-        .intro-message h2 {
-            font-size: clamp(1.3rem, 2.5vw, 1.8rem); font-weight: 800;
-            color: var(--slate-900); line-height: 1.5; margin-bottom: 24px;
+        .lec-panel__q {
+            font-family:var(--font-en); font-size:1.1rem; font-weight:700;
+            color:rgba(255,255,255,0.5); margin-bottom:8px;
         }
-        .intro-message .highlight-text {
-            color: var(--navy); font-weight: 700;
+        .lec-panel__question {
+            font-size:clamp(1.2rem,2.6vw,1.55rem); font-weight:800;
+            color:#fff; margin-bottom:32px; line-height:1.5;
         }
-        .intro-message p {
-            font-size: 0.95rem; color: var(--slate-600);
-            line-height: 1.8; margin-bottom: 16px;
+        .lec-panel__a {
+            font-family:var(--font-en); font-size:2.2rem; font-weight:800;
+            color:rgba(255,255,255,0.3); margin-bottom:8px;
+        }
+        .lec-panel__big {
+            font-size:clamp(1.5rem,3vw,2rem); font-weight:800;
+            color:#fff; margin-bottom:18px; line-height:1.4;
+        }
+        .lec-panel__sub {
+            font-size:0.92rem; color:rgba(255,255,255,0.5);
+            line-height:1.9;
+        }
+        .lec-panel__divider { height:56px; }
+        .lec-panel__hl {
+            font-size:0.95rem; font-weight:700;
+            color:#fff; line-height:2.1;
+        }
+        .lec-panel__hl .yellow { color:#f0d050; font-weight:800; }
+        .lec-panel__pin {
+            margin-top:48px; margin-bottom:52px;
+            font-size:0.85rem; color:rgba(255,255,255,0.45); line-height:1.8;
+        }
+        .lec-panel__headline {
+            font-size:clamp(1.4rem,2.8vw,1.85rem); font-weight:800;
+            color:#fff; line-height:1.5; margin-bottom:18px;
+        }
+        .lec-panel__desc {
+            font-size:0.92rem; color:rgba(255,255,255,0.55); line-height:1.8;
+        }
+        .lec-panel__desc .yellow { color:#f0d050; font-weight:700; }
+        .lec-panel__bullets {
+            margin-top:36px; text-align:left; display:inline-block;
+        }
+        .lec-panel__bullets li {
+            font-size:0.88rem; color:rgba(255,255,255,0.65);
+            line-height:2.1; list-style:disc inside;
+        }
+        @media (max-width:768px) {
+            .lec-panel { padding:40px 24px 40px; border-radius:20px; }
+        }
+        /* 다크 CTA 카피 섹션 */
+        .lec-cta {
+            padding:80px 20px 72px;
+            background:#181a30;
+            text-align:center; color:#fff;
+        }
+        .lec-cta__inner {
+            max-width:700px; margin:0 auto;
+        }
+        .lec-cta__white {
+            font-size:0.95rem; color:rgba(255,255,255,0.7);
+            line-height:1.9; margin-bottom:28px;
+        }
+        .lec-cta__sky {
+            color:#5cb8e6; font-weight:800;
+        }
+        .lec-cta__sky-block {
+            font-size:clamp(1.3rem,2.8vw,1.8rem); font-weight:800;
+            color:#5cb8e6; line-height:1.6; margin-bottom:40px;
+        }
+        .lec-cta__mid {
+            font-size:0.92rem; color:rgba(255,255,255,0.6);
+            line-height:1.9; margin-bottom:28px;
+        }
+        .lec-cta__gold-block {
+            margin-bottom:36px;
+        }
+        .lec-cta__gold {
+            color:#d4a853; font-weight:800;
+        }
+        .lec-cta__gold-name {
+            font-size:clamp(1.2rem,2.4vw,1.6rem); font-weight:800;
+            color:#d4a853; margin-bottom:4px;
+        }
+        .lec-cta__gold-title {
+            font-size:clamp(1.6rem,3.2vw,2.2rem); font-weight:800;
+            color:#d4a853; line-height:1.4;
+        }
+        .lec-cta__desc {
+            font-size:0.92rem; color:rgba(255,255,255,0.6);
+            line-height:1.9; margin-bottom:32px;
+        }
+        .lec-cta__sky-final {
+            font-size:0.95rem; font-weight:700;
+            color:#5cb8e6; line-height:1.8; margin-bottom:40px;
+        }
+        .lec-cta__btn {
+            display:inline-block;
+            padding:16px 44px; border-radius:30px;
+            background:#3a7bd5; color:#fff;
+            font-size:0.95rem; font-weight:700;
+            text-decoration:none;
+            box-shadow:0 4px 16px rgba(58,123,213,0.3);
+        }
+        .btn-cta-main {
+            display: inline-flex; align-items: center; gap: 8px;
+            padding: 16px 40px; border-radius: 8px;
+            background: #fff; color: var(--navy-deep);
+            font-size: 0.95rem; font-weight: 700;
+            transition: all 0.3s ease; margin-top: 28px;
+            text-decoration: none;
+        }
+        .btn-cta-main:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.3);
         }
 
-        /* Curriculum Cards */
-        .curriculum-section { padding: 100px 0; }
-        .curriculum-grid {
-            display: grid; grid-template-columns: repeat(3, 1fr);
-            gap: 24px; margin-bottom: 48px;
+        /* 6단계 판단 흐름 */
+        /* ========== 판단 흐름 + 커리큘럼 통합 ========== */
+        .lec-flow { padding:72px 20px; background:#f0f0f0; }
+        .lec-flow__box {
+            max-width:860px; margin:0 auto 48px;
+            background:#f7f7f7; border-radius:20px;
+            padding:48px 36px 40px;
+            box-shadow:0 2px 12px rgba(0,0,0,0.04);
         }
-        .curriculum-card {
-            padding: 36px 28px; text-align: center;
-            border: 1px solid var(--slate-200); border-radius: 16px;
-            background: #fff; transition: all 0.3s ease;
+        .lec-flow__title {
+            font-size:clamp(1.1rem,2.2vw,1.4rem); font-weight:800;
+            color:#111; margin-bottom:12px;
         }
-        .curriculum-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 12px 36px rgba(0,0,0,0.06);
+        .lec-flow__desc {
+            font-size:0.88rem; color:#555; line-height:1.8; margin-bottom:24px;
         }
-        .curriculum-step {
-            display: inline-flex; align-items: center; justify-content: center;
-            width: 40px; height: 40px; border-radius: 50%;
-            background: var(--navy); color: #fff;
-            font-size: 0.85rem; font-weight: 700; margin-bottom: 16px;
+        .lec-flow__sub-title {
+            font-size:clamp(1.2rem,2.4vw,1.5rem); font-weight:800;
+            color:#111; margin-bottom:8px;
         }
-        .curriculum-icon {
-            width: 56px; height: 56px; border-radius: 12px;
-            display: flex; align-items: center; justify-content: center;
-            font-size: 1.3rem; margin: 0 auto 16px;
-            background: var(--slate-50); color: var(--navy);
+        .lec-flow__sub-desc {
+            font-size:0.88rem; color:#555; line-height:1.8; margin-bottom:32px;
         }
-        .curriculum-card h3 {
-            font-size: 1.05rem; font-weight: 700; margin-bottom: 8px;
-            color: var(--slate-900);
+        .lec-flow__grid {
+            display:grid; grid-template-columns:repeat(3,1fr);
+            gap:16px; margin-bottom:36px;
         }
-        .curriculum-card p {
-            font-size: 0.85rem; color: var(--slate-500); line-height: 1.6;
+        .lec-flow__card {
+            text-align:center;
+        }
+        .lec-flow__card-badge {
+            display:inline-block;
+            background:#2a4ea0; color:#fff;
+            padding:8px 18px; border-radius:20px;
+            font-size:0.8rem; font-weight:700;
+            margin-bottom:8px;
+        }
+        .lec-flow__card-body {
+            background:#fff; border-radius:10px; padding:14px 12px;
+            font-size:0.78rem; color:#555; line-height:1.6;
+            box-shadow:0 1px 4px rgba(0,0,0,0.05);
+        }
+        .lec-flow__closing {
+            text-align:center; margin-bottom:16px;
+        }
+        .lec-flow__closing-blue {
+            font-size:0.95rem; font-weight:700; color:#2a4ea0;
+            line-height:1.7; margin-bottom:12px;
+        }
+        .lec-flow__closing-text {
+            font-size:0.9rem; color:#333; line-height:1.7; margin-bottom:16px;
+        }
+        .lec-flow__closing-strong {
+            font-size:0.95rem; font-weight:800; color:#2a4ea0;
+            line-height:1.7;
+        }
+        /* 원형 5개 */
+        .lec-flow__circles {
+            display:flex; flex-wrap:wrap; justify-content:center;
+            align-items:center; gap:12px;
+            max-width:800px; margin:0 auto 24px;
+        }
+        .lec-flow__circle {
+            width:110px; height:110px; border-radius:50%;
+            background:#2a4ea0; color:#fff;
+            display:flex; align-items:center; justify-content:center;
+            font-size:0.78rem; font-weight:700; text-align:center;
+            line-height:1.4; padding:8px;
+        }
+        .lec-flow__plus {
+            font-size:1.4rem; font-weight:800; color:#2a4ea0;
+        }
+        .lec-flow__circle-desc {
+            text-align:center; font-size:0.92rem; font-weight:700;
+            color:#2a4ea0; line-height:1.8; margin-bottom:48px;
+        }
+        /* 커리큘럼 pill + 박스 */
+        .lec-cur__pill {
+            text-align:center; margin-bottom:-20px; position:relative; z-index:2;
+        }
+        .lec-cur__pill-inner {
+            display:inline-block; background:#2a4ea0; color:#fff;
+            padding:14px 36px; border-radius:28px;
+            font-size:1rem; font-weight:700; line-height:1.5;
+            box-shadow:0 4px 12px rgba(42,78,160,0.3);
+        }
+        .lec-cur__box {
+            max-width:860px; margin:0 auto;
+            border:2px solid #2a4ea0; border-radius:16px;
+            padding:44px 32px 32px;
+            background:#fff;
+        }
+        .lec-cur__item {
+            display:flex; align-items:flex-start; gap:16px;
+            padding:20px 0;
+            border-bottom:1px solid #e8e8e8;
+        }
+        .lec-cur__item:last-child { border-bottom:none; }
+        .lec-cur__week {
+            width:52px; height:52px; min-width:52px; border-radius:50%;
+            background:#1a1a3a; color:#fff;
+            display:flex; align-items:center; justify-content:center;
+            font-size:0.7rem; font-weight:700;
+        }
+        .lec-cur__content { flex:1; }
+        .lec-cur__content h4 {
+            font-size:0.92rem; font-weight:700; color:#111;
+            margin-bottom:4px; line-height:1.5;
+        }
+        .lec-cur__content p {
+            font-size:0.82rem; color:#666; line-height:1.7;
+        }
+        .lec-cur__content .blue {
+            color:#2a4ea0; font-weight:700;
+        }
+        .lec-cur__bottom {
+            text-align:center; font-size:0.9rem; font-weight:700;
+            color:#2a4ea0; margin-top:24px;
+        }
+        @media (max-width:768px) {
+            .lec-flow__grid { grid-template-columns:repeat(2,1fr); }
+            .lec-flow__box { padding:32px 20px 28px; }
+            .lec-flow__circle { width:90px; height:90px; font-size:0.7rem; }
+            .lec-cur__box { padding:36px 16px 24px; }
+            .lec-cur__item { gap:12px; }
         }
 
-        /* Pricing Box */
-        .lecture-pricing { padding: 80px 0; background: #f8fafc; }
-        .pricing-box {
-            max-width: 600px; margin: 0 auto;
-            background: #fff; border-radius: 20px;
-            border: 1px solid var(--slate-200);
-            overflow: hidden;
-            box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+        /* ========== 강의료/시간/장소 ========== */
+        .lec-pricing { padding:72px 20px; background:#1a1c34; }
+        .lec-pricing__card {
+            position:relative; padding-top:22px;
+            max-width:680px; margin:0 auto 40px;
         }
-        .pricing-box-header {
-            background: var(--navy); color: #fff;
-            padding: 24px 32px; text-align: center;
+        .lec-pricing__pill {
+            position:absolute; top:0; left:50%; transform:translateX(-50%);
+            background:#2a4ea0; color:#fff; font-size:1.05rem; font-weight:700;
+            padding:12px 40px; border-radius:28px; z-index:2;
+            box-shadow:0 4px 12px rgba(42,78,160,0.3); white-space:nowrap;
         }
-        .pricing-box-header h3 {
-            font-size: 1.2rem; font-weight: 700; margin-bottom: 4px;
+        .lec-pricing__body {
+            background:#f5f5f5; border-radius:20px;
+            padding:56px 36px 40px; text-align:center;
         }
-        .pricing-box-header p {
-            font-size: 0.85rem; color: rgba(255,255,255,0.7);
+        .lec-pricing__original {
+            font-size:clamp(1.3rem,2.6vw,1.7rem); font-weight:800;
+            color:#333; text-decoration:line-through; margin-bottom:8px;
         }
-        .pricing-box-body { padding: 32px; }
-        .pricing-row {
-            display: flex; justify-content: space-between; align-items: center;
-            padding: 16px 0; border-bottom: 1px solid var(--slate-100);
+        .lec-pricing__discount-row {
+            display:flex; align-items:center; justify-content:center;
+            gap:12px; margin-bottom:28px;
         }
-        .pricing-row:last-child { border-bottom: none; }
-        .pricing-label { font-size: 0.92rem; color: var(--slate-600); font-weight: 500; }
-        .pricing-original {
-            font-size: 1rem; color: var(--slate-400);
-            text-decoration: line-through; font-weight: 500;
+        .lec-pricing__badge {
+            background:#e8552a; color:#fff; font-size:0.82rem; font-weight:700;
+            padding:6px 14px; border-radius:6px;
         }
-        .pricing-discount {
-            font-size: 1.3rem; color: #e74c3c;
-            font-weight: 800;
+        .lec-pricing__price {
+            font-size:clamp(1.6rem,3.2vw,2.2rem); font-weight:800;
+            color:#e8552a;
+        }
+        .lec-pricing__label {
+            font-size:clamp(1.1rem,2.2vw,1.4rem); font-weight:800;
+            color:#111; margin-bottom:12px;
+        }
+        .lec-pricing__note {
+            font-size:0.88rem; color:#666; line-height:1.8;
+        }
+        /* 하단 2카드 */
+        .lec-pricing__grid {
+            display:grid; grid-template-columns:1fr 1fr;
+            gap:28px; max-width:680px; margin:0 auto;
+        }
+        .lec-pricing__sub-card {
+            position:relative; padding-top:22px;
+            display:flex; flex-direction:column;
+        }
+        .lec-pricing__sub-pill {
+            position:absolute; top:0; left:50%; transform:translateX(-50%);
+            background:#2a4ea0; color:#fff; font-size:0.95rem; font-weight:700;
+            padding:10px 32px; border-radius:24px; z-index:2;
+            box-shadow:0 4px 12px rgba(42,78,160,0.3); white-space:nowrap;
+        }
+        .lec-pricing__sub-body {
+            background:#f5f5f5; border-radius:20px;
+            padding:48px 24px 32px; text-align:center;
+            flex:1;
+        }
+        .lec-pricing__sub-main {
+            font-size:clamp(1.1rem,2.2vw,1.4rem); font-weight:800;
+            color:#111; margin-bottom:4px; line-height:1.5;
+        }
+        .lec-pricing__sub-time {
+            font-size:clamp(1.2rem,2.4vw,1.5rem); font-weight:800;
+            color:#111; margin-bottom:14px;
+        }
+        .lec-pricing__sub-hl {
+            font-size:0.95rem; font-weight:700; color:#e8552a;
+            margin-bottom:14px;
+        }
+        .lec-pricing__sub-desc {
+            font-size:0.85rem; color:#555; line-height:1.7;
+        }
+        @media (max-width:768px) {
+            .lec-pricing__grid { grid-template-columns:1fr; max-width:400px; }
+            .lec-pricing__body { padding:48px 20px 32px; }
+            .lec-pricing__sub-body { padding:44px 16px 28px; }
         }
 
-        /* Info Grid */
-        .lecture-info-grid {
-            display: grid; grid-template-columns: 1fr 1fr;
-            gap: 16px; margin-top: 24px;
+        /* ========== 수강 완료 후 변화 ========== */
+        .lec-benefits { padding:72px 20px; background:#f0f0f0; }
+        .lec-benefits__header {
+            display:flex; align-items:flex-start; gap:12px;
+            margin-bottom:32px; max-width:720px; margin-left:auto; margin-right:auto;
         }
-        .lecture-info-item {
-            padding: 20px; background: var(--slate-50);
-            border-radius: 12px; text-align: center;
+        .lec-benefits__header-icon { font-size:1.8rem; flex-shrink:0; }
+        .lec-benefits__header-text {
+            font-size:clamp(1.4rem,2.6vw,1.8rem); font-weight:800;
+            color:#111; line-height:1.4;
         }
-        .lecture-info-item .info-label {
-            font-size: 0.78rem; color: var(--slate-500);
-            margin-bottom: 6px; font-weight: 500;
+        .lec-benefits__cards {
+            max-width:720px; margin:0 auto 32px;
+            display:flex; flex-direction:column; gap:16px;
         }
-        .lecture-info-item .info-value {
-            font-size: 0.95rem; color: var(--slate-900); font-weight: 700;
+        .lec-benefits__card {
+            background:#1a1c34; border-radius:12px;
+            padding:28px 28px 24px; text-align:center;
         }
-
-        /* Benefits Section */
-        .benefits-section { padding: 100px 0; background: #0f172a; color: #fff; }
-        .benefits-grid {
-            display: grid; grid-template-columns: 1fr 1fr;
-            gap: 16px; max-width: 800px; margin: 0 auto;
+        .lec-benefits__card-title {
+            font-size:1.05rem; font-weight:800; color:#f0d050;
+            margin-bottom:6px;
         }
-        .benefit-item {
-            padding: 20px 24px; background: rgba(255,255,255,0.05);
-            border: 1px solid rgba(255,255,255,0.08);
-            border-radius: 12px;
-            font-size: 0.88rem; color: rgba(255,255,255,0.8);
-            line-height: 1.6; display: flex; align-items: center; gap: 12px;
+        .lec-benefits__card-sub {
+            font-size:0.85rem; font-weight:600; color:#5cb8e6;
+            margin-bottom:10px;
         }
-        .benefit-item i {
-            color: #60a5fa; font-size: 0.85rem; flex-shrink: 0;
+        .lec-benefits__card-body {
+            font-size:0.88rem; color:rgba(255,255,255,0.7);
+            line-height:1.8;
+        }
+        .lec-benefits__highlight {
+            text-align:center; font-size:1.05rem; font-weight:800;
+            color:#111; margin-bottom:32px;
+        }
+        .lec-benefits__closing {
+            text-align:center; max-width:600px; margin:0 auto 32px;
+        }
+        .lec-benefits__closing p {
+            font-size:0.95rem; font-weight:700; color:#111;
+            line-height:1.9; margin-bottom:16px;
+        }
+        .lec-benefits__btn {
+            display:inline-block;
+            padding:16px 44px; border-radius:30px;
+            background:#3a7bd5; color:#fff;
+            font-size:1rem; font-weight:700;
+            text-decoration:none;
+            box-shadow:0 4px 16px rgba(58,123,213,0.3);
+        }
+        .lec-benefits__btn-note {
+            text-align:center; font-size:0.82rem; color:#888;
+            margin-top:12px; margin-bottom:48px;
+        }
+        .lec-refund {
+            max-width:720px; margin:0 auto;
+            padding-top:40px; border-top:1px solid #ddd;
+        }
+        .lec-refund__title {
+            font-size:0.92rem; font-weight:700; color:#111;
+            margin-bottom:16px;
+        }
+        .lec-refund__sub {
+            font-size:0.78rem; font-weight:700; color:#333;
+            margin-top:16px; margin-bottom:6px;
+        }
+        .lec-refund__text {
+            font-size:0.75rem; color:#666; line-height:1.8;
+        }
+        }
+        .refund-notice {
+            padding: 24px; background: #fff; border-radius: 12px;
+            border: 1px solid var(--slate-200); margin-top: 24px;
+        }
+        .refund-notice p {
+            font-size: 0.85rem; color: var(--slate-600); line-height: 1.9;
+            margin-bottom: 0;
         }
 
         /* CTA Bottom */
@@ -186,9 +478,9 @@
         /* Responsive */
         @media (max-width: 768px) {
             .lecture-hero { padding: 140px 0 60px; }
-            .curriculum-grid { grid-template-columns: 1fr; }
+            .time-location-grid { grid-template-columns: 1fr; }
             .lecture-info-grid { grid-template-columns: 1fr; }
-            .benefits-grid { grid-template-columns: 1fr; }
+            .care-badges { flex-direction: column; align-items: center; }
         }
     </style>
 </head>
@@ -198,40 +490,14 @@
         <div class="container">
             <div class="header-inner">
                 <a href="/realtycomment/" class="logo">
-                    <div class="logo-mark">B</div>
-                    <div class="logo-name">부코멘트</div>
+                    <img src="img/logo.png" alt="부코멘트" class="logo-img">
                 </a>
                 <nav class="main-nav">
-                    <div class="nav-item">
-                        <a href="process.html" class="nav-link">부동산&경매 컨설팅 <i class="fas fa-chevron-down"></i></a>
-                        <div class="nav-dropdown">
-                            <a href="process.html#flowchart">컨설팅 내용</a>
-                            <a href="process.html#timeline">컨설팅 절차</a>
-                            <a href="process.html#why">왜 부코멘트인가</a>
-                        </div>
-                    </div>
+                    <a href="process.html" class="nav-link">부동산&경매 컨설팅</a>
                     <a href="success-detail.html" class="nav-link">성공 사례</a>
-                    <div class="nav-item">
-                        <a href="service.html" class="nav-link">컨설팅 종류/비용 안내 <i class="fas fa-chevron-down"></i></a>
-                        <div class="nav-dropdown">
-                            <a href="service.html#fee">수수료 안내</a>
-                            <a href="service.html#faq">자주 묻는 질문</a>
-                        </div>
-                    </div>
-                    <div class="nav-item">
-                        <a href="lecture.html" class="nav-link active">경매강의 <i class="fas fa-chevron-down"></i></a>
-                        <div class="nav-dropdown">
-                            <a href="lecture.html">교육 내역</a>
-                            <a href="lecture.html">수강 안내</a>
-                        </div>
-                    </div>
-                    <div class="nav-item">
-                        <a href="about.html" class="nav-link">회사소개 <i class="fas fa-chevron-down"></i></a>
-                        <div class="nav-dropdown">
-                            <a href="about.html">회사 소개</a>
-                            <a href="about.html">대표 소개</a>
-                        </div>
-                    </div>
+                    <a href="service.html" class="nav-link">컨설팅 종류/비용 안내</a>
+                    <a href="lecture.html" class="nav-link active">경매강의</a>
+                    <a href="about.html" class="nav-link">회사소개</a>
                 </nav>
                 <div class="header-right">
                     <a href="login.html" class="header-phone">
@@ -263,154 +529,300 @@
                 <span class="lecture-hero-badge">
                     <i class="fas fa-graduation-cap"></i> AUCTION LECTURE
                 </span>
-                <h1>경매는 각 단계마다<br>진입기준이 다릅니다.</h1>
-                <p>부코멘트의 체계적인 교육으로 실전 경매 전문가가 되세요.<br>입찰부터 명도, 수익실현까지 전 과정을 배웁니다.</p>
+                <h1>경매 강의</h1>
+                <div class="hero-subtitle">Real Estate Auction Course</div>
+                <p>경매의 전 과정을 기준으로 판단할 수 있게 설계된 실전형 교육</p>
             </div>
         </div>
     </section>
 
-    <!-- Intro -->
-    <section class="lecture-intro">
+    <!-- Sub Navigation -->
+    <div class="sub-nav" id="subNav">
+        <div class="sub-nav-inner">
+            <a href="#lecture-intro" class="sub-nav-link active">경매강의</a>
+            <a href="#curriculum" class="sub-nav-link">커리큘럼</a>
+            <a href="#pricing" class="sub-nav-link">강의 안내</a>
+            <a href="#refund" class="sub-nav-link">환불 규정</a>
+        </div>
+    </div>
+    <div class="sub-nav-placeholder" id="subNavPlaceholder"></div>
+
+    <!-- 경매강의 도입 (5-4-6) -->
+    <section class="lecture-intro" id="lecture-intro">
         <div class="container">
-            <div class="intro-message" data-aos="fade-up">
-                <h2>부코멘트를 통한 교육 내역</h2>
-                <p>
-                    <span class="highlight-text">낙찰이 끝이라고 생각하시나요?</span><br>
-                    낙찰은 시작에 불과합니다.
+
+            <!-- 다크 Q/A 패널 -->
+            <div class="lec-panel" data-aos="fade-up">
+                <div class="lec-panel__q">Q.</div>
+                <div class="lec-panel__question">부동산 투자는 자본이 커야만 가능한 걸까요? 🤔</div>
+                <div class="lec-panel__a">A.</div>
+                <div class="lec-panel__big">그렇지 않습니다.</div>
+                <p class="lec-panel__sub">실제로 많은 분들이<br>5천만 원 이하의 자금으로<br>첫 번째 경매 투자에 성공하고 있습니다.</p>
+
+                <div class="lec-panel__divider"></div>
+
+                <div class="lec-panel__q">Q.</div>
+                <div class="lec-panel__big">어떻게 가능할까요?</div>
+                <div class="lec-panel__a">A.</div>
+                <div class="lec-panel__hl">
+                    <span class="yellow">시세 대비 합리적인 가격으로 낙찰</span>을 받고<br>
+                    <span class="yellow">매매 사업자 구조를 활용</span>한 경락잔금<br>
+                    금융 전략을 적용하기 때문입니다.
+                </div>
+
+                <div class="lec-panel__pin">
+                    📌 입찰가 판단 기준부터 금융 활용 전략까지<br>
+                    실전에서 바로 쓰이는 방법을 안내합니다.
+                </div>
+
+                <div class="lec-panel__headline">권리 분석, 명도, 사후 절차…<br>처음이라 막막하신가요?</div>
+                <p class="lec-panel__desc">
+                    초보자도 끝까지 따라올 수 있도록<br>
+                    <span class="yellow">전 과정을 함께하는 1:1 밀착 케어 시스템</span>을 구축했습니다.
                 </p>
-                <p>
-                    실제로 진행하는 관리를 통해서,<br>
-                    경매의 진짜 흐름을 배워보세요.
-                </p>
-                <p>
-                    부코멘트 경매교육을 통해<br>
-                    <span class="highlight-text">실전 전문가를 양성합니다.</span>
-                </p>
+
+                <ul class="lec-panel__bullets">
+                    <li>실제 입찰 가능한 물건으로 반복 학습</li>
+                    <li>권리검토 → 입찰가 산정 → 낙찰 이후 절차까지</li>
+                    <li>무제한 1:1 상담으로 끝까지 책임 관리</li>
+                </ul>
             </div>
+
         </div>
     </section>
 
-    <!-- Curriculum -->
-    <section class="curriculum-section">
-        <div class="container">
-            <div class="section-header" data-aos="fade-up">
-                <span class="section-label">CURRICULUM</span>
-                <h2 class="section-title">실습 진행 교육 내역</h2>
-                <p class="section-desc">3단계 커리큘럼으로 실전 경매의 전 과정을 체계적으로 배웁니다</p>
+    <!-- 다크 CTA 카피 섹션 -->
+    <section class="lec-cta">
+        <div class="lec-cta__inner">
+            <p class="lec-cta__white">경매 정보는<br>누구나 검색하면 찾을 수 있습니다.</p>
+
+            <div class="lec-cta__sky-block">하지만,<br>이 물건을 해도 되는지,<br>안 되는지를 판단하는 기준은<br>아무도 알려주지 않습니다.</div>
+
+            <p class="lec-cta__mid">자료는 많은데, 그래서 어떻게 해야 할지 모르겠고…<br>다야한 경매 강의는 들었는데, 막상 물건 앞에서는 손이 안 나가고…</p>
+
+            <p class="lec-cta__mid">낙찰 이후는 전부 혼자 감당해야 하는 구조<br>이게 기존 경매 교육의 현실입니다.</p>
+
+            <div class="lec-cta__sky-block">그래서,<br>부코멘트는<br>판단 기준을 끝까지 적용하는<br>구조를 만들었습니다.</div>
+
+            <div class="lec-cta__gold-block">
+                <div class="lec-cta__gold-name">부코멘트</div>
+                <div class="lec-cta__gold-title">"실전 전 과정 케어반"</div>
             </div>
 
-            <div class="curriculum-grid" data-aos="fade-up">
-                <div class="curriculum-card">
-                    <div class="curriculum-step">1</div>
-                    <div class="curriculum-icon"><i class="fas fa-gavel"></i></div>
-                    <h3>입찰 실전</h3>
-                    <p>물건 검색, 권리분석, 시세분석, 적정 입찰가 산정, 입찰서류 작성 등 입찰에 필요한 모든 과정을 실습합니다.</p>
-                </div>
-                <div class="curriculum-card">
-                    <div class="curriculum-step">2</div>
-                    <div class="curriculum-icon"><i class="fas fa-key"></i></div>
-                    <h3>명도 실전</h3>
-                    <p>낙찰 후 점유자 협상, 인도명령 신청, 강제집행까지. 실제 사례를 통해 명도 전 과정을 학습합니다.</p>
-                </div>
-                <div class="curriculum-card">
-                    <div class="curriculum-step">3</div>
-                    <div class="curriculum-icon"><i class="fas fa-chart-line"></i></div>
-                    <h3>수익실현</h3>
-                    <p>등기이전, 세무처리, 임대관리, 매도 타이밍 판단까지. 실질적인 수익을 만드는 방법을 배웁니다.</p>
-                </div>
-            </div>
+            <p class="lec-cta__desc">대부분의 타 경매 교육은 "이걸 보세요"에서 끝납니다.</p>
+
+            <p class="lec-cta__desc">정보는 누구나 줍니다.<br>기준을 정리해주는 곳은 많지 않습니다.</p>
+
+            <div class="lec-cta__sky-final">부코멘트는<br>"그래서, 어떻게 판단해야 하는지"자세히 알려드립니다.</div>
+
+            <a href="contact.html" class="lec-cta__btn">소수정예 강의 신청하기</a>
         </div>
     </section>
 
-    <!-- Pricing -->
-    <section class="lecture-pricing">
+    <!-- 판단 흐름 6단계 + 원형 프로세스 + 커리큘럼 -->
+    <section class="lec-flow" id="curriculum">
         <div class="container">
-            <div class="section-header" data-aos="fade-up">
-                <span class="section-label">PRICING</span>
-                <h2 class="section-title">강의 안내</h2>
-            </div>
+            <!-- 상단 라운드 박스 -->
+            <div class="lec-flow__box">
+                <div class="lec-flow__title">경매의 각 단계마다 판단기준은 다릅니다.</div>
+                <p class="lec-flow__desc">부코멘트는 실전에서 반복적으로 사용되는 기준만 선별해<br>이 6가지로 경매의 시작부터 낙찰 이후까지<br>필요한 판단을 모두 할 수 있도록 설계했습니다.</p>
+                <div class="lec-flow__sub-title">부코멘트 판단 흐름 6단계</div>
+                <p class="lec-flow__sub-desc">정보는 검색하면 됩니다. 판단 기준을 정리해주는 곳이 필요합니다.<br>이 6단계만 반복해도 경매의 판단은 흔들리지 않습니다.</p>
 
-            <div class="pricing-box" data-aos="fade-up">
-                <div class="pricing-box-header">
-                    <h3>실전 전 과정 케어반</h3>
-                    <p>소수 정예 프리미엄 강의</p>
-                </div>
-                <div class="pricing-box-body">
-                    <div class="pricing-row">
-                        <span class="pricing-label">정상가</span>
-                        <span class="pricing-original">7,200,000 원</span>
+                <div class="lec-flow__grid">
+                    <div class="lec-flow__card">
+                        <div class="lec-flow__card-badge">① 판단의 출발점</div>
+                        <div class="lec-flow__card-body">경매의 전체 흐름과 구조</div>
                     </div>
-                    <div class="pricing-row">
-                        <span class="pricing-label">할인가</span>
-                        <span class="pricing-discount">3,300,000 원</span>
+                    <div class="lec-flow__card">
+                        <div class="lec-flow__card-badge">② 해도 되는지, 안 되는지</div>
+                        <div class="lec-flow__card-body">말소기준·임차인·리스크 판단</div>
                     </div>
+                    <div class="lec-flow__card">
+                        <div class="lec-flow__card-badge">③ 핵심이 아닌 현장</div>
+                        <div class="lec-flow__card-body">현장 조사 시 반드시 확인할 것</div>
+                    </div>
+                    <div class="lec-flow__card">
+                        <div class="lec-flow__card-badge">④ 가장 중요한 결정</div>
+                        <div class="lec-flow__card-body">입찰가 판단 기준</div>
+                    </div>
+                    <div class="lec-flow__card">
+                        <div class="lec-flow__card-badge">⑤ 낙찰 이후의 현실</div>
+                        <div class="lec-flow__card-body">낙찰 후 절차 판단</div>
+                    </div>
+                    <div class="lec-flow__card">
+                        <div class="lec-flow__card-badge">⑥ 마지막 단계</div>
+                        <div class="lec-flow__card-body">명도와 이후 상황에<br>대비한 사후 대응 기준</div>
+                    </div>
+                </div>
 
-                    <div class="lecture-info-grid">
-                        <div class="lecture-info-item">
-                            <div class="info-label"><i class="fas fa-clock"></i> 수강 시간</div>
-                            <div class="info-value">매주 토요일</div>
-                        </div>
-                        <div class="lecture-info-item">
-                            <div class="info-label"><i class="fas fa-users"></i> 정원</div>
-                            <div class="info-value">소수 정예 운영</div>
-                        </div>
-                        <div class="lecture-info-item">
-                            <div class="info-label"><i class="fas fa-map-marker-alt"></i> 장소</div>
-                            <div class="info-value">서울 중구 필동3가 3층</div>
-                        </div>
-                        <div class="lecture-info-item">
-                            <div class="info-label"><i class="fas fa-calendar-alt"></i> 기간</div>
-                            <div class="info-value">총 8주 과정</div>
-                        </div>
+                <div class="lec-flow__closing">
+                    <div class="lec-flow__closing-blue">낙찰이 목표가 아닙니다.<br>실전의 끝까지 함께하는 경매 케어 프로그램</div>
+                    <div class="lec-flow__closing-text">혼자 판단하지 않도록, 기준을 세워드립니다.</div>
+                    <div class="lec-flow__closing-strong">부코멘트는<br>단순히 경매를 가르치지 않습니다.<br>판단하는 법을 만듭니다.</div>
+                </div>
+            </div>
+
+            <!-- 원형 5개 프로세스 -->
+            <div class="lec-flow__circles">
+                <div class="lec-flow__circle">실전 과제</div>
+                <span class="lec-flow__plus">+</span>
+                <div class="lec-flow__circle">1:1 개인<br>밀착 코칭</div>
+                <span class="lec-flow__plus">+</span>
+                <div class="lec-flow__circle">현장 임장<br>동행</div>
+                <span class="lec-flow__plus">+</span>
+                <div class="lec-flow__circle">법원 방문<br>실습</div>
+                <span class="lec-flow__plus">+</span>
+                <div class="lec-flow__circle">실전 입찰<br>시뮬레이션</div>
+            </div>
+            <div class="lec-flow__circle-desc">강의실에서 끝나지 않습니다.<br>직접 보고, 판단하고, 입찰까지 경험하는<br>현장 중심 경매 실습 프로젝트로 운영됩니다.</div>
+
+            <!-- 커리큘럼 pill + 박스 -->
+            <div class="lec-cur__pill">
+                <div class="lec-cur__pill-inner">"실전 전 과정 케어반"<br>커리큘럼</div>
+            </div>
+            <div class="lec-cur__box">
+                <div class="lec-cur__item">
+                    <div class="lec-cur__week">1주차</div>
+                    <div class="lec-cur__content">
+                        <h4>경매 첫걸음, 권리분석과 부동산 규제 완전 정복</h4>
+                        <p>이것만 알면 입찰 물건 즉시 입찰 가능한 핵심 권리분석<span class="blue">+ 지금 바로 입찰 가능한 추천물건</span></p>
+                    </div>
+                </div>
+                <div class="lec-cur__item">
+                    <div class="lec-cur__week">2주차</div>
+                    <div class="lec-cur__content">
+                        <h4>임지분석, 이것만 알고 투자하자</h4>
+                        <p>오를 동네 구분법 + 교통·학군·개발 호재 읽기 + 호가에 속지 않는 진짜 시세 분석<span class="blue">+ 지금 바로 입찰 가능한 추천물건</span></p>
+                    </div>
+                </div>
+                <div class="lec-cur__item">
+                    <div class="lec-cur__week">3주차</div>
+                    <div class="lec-cur__content">
+                        <h4>내 자산+자본으로 가능한 물건 찾기</h4>
+                        <p>물건 검색 실습 + 적정 입찰가 산출 + 수익률 계산<span class="blue">+ 지금 바로 입찰 가능한 추천물건</span></p>
+                    </div>
+                </div>
+                <div class="lec-cur__item">
+                    <div class="lec-cur__week">4주차</div>
+                    <div class="lec-cur__content">
+                        <h4>낙찰 후가 진짜 시작, 명도·수리·매도 실무</h4>
+                        <p>점유자 협상 스크립트 + 최소 비용으로 빠르게 파는 노하우<span class="blue">+ 지금 바로 입찰 가능한 추천물건</span></p>
+                    </div>
+                </div>
+                <div class="lec-cur__item">
+                    <div class="lec-cur__week">5주차</div>
+                    <div class="lec-cur__content">
+                        <h4>전문가와 함께하는 현장 임장 + 법원 모의 입찰</h4>
+                        <p>실제 물건지 방문 + 입찰표 작성 실습 + 전 과정 총정리 <span class="blue">+ 지금 바로 입찰 가능한 추천물건</span></p>
+                    </div>
+                </div>
+            </div>
+            <div class="lec-cur__bottom">매주 입찰 가능한 물건 제공해드립니다.</div>
+        </div>
+    </section>
+
+    <!-- 강의료/시간/장소 -->
+    <section class="lec-pricing" id="pricing">
+        <div class="container">
+            <!-- 상단 큰 카드: 강의료 안내 -->
+            <div class="lec-pricing__card">
+                <div class="lec-pricing__pill">강의료 안내</div>
+                <div class="lec-pricing__body">
+                    <div class="lec-pricing__original">3,300,000 원</div>
+                    <div class="lec-pricing__discount-row">
+                        <span class="lec-pricing__badge">33% 할인중</span>
+                        <span class="lec-pricing__price">2,200,000 원</span>
+                    </div>
+                    <div class="lec-pricing__label">소수정예 과외식 강의</div>
+                    <p class="lec-pricing__note">본 과정은 소수정예 과외식으로 운영되며,<br>기수별 참여 인원은 운영 상황에 따라 달라질 수 있습니다.</p>
+                </div>
+            </div>
+
+            <!-- 하단 2카드: 시간 + 장소 -->
+            <div class="lec-pricing__grid">
+                <div class="lec-pricing__sub-card">
+                    <div class="lec-pricing__sub-pill">강의 시간</div>
+                    <div class="lec-pricing__sub-body">
+                        <div class="lec-pricing__sub-main">👉 매주 토요일</div>
+                        <div class="lec-pricing__sub-time">10:00 AM ~ 01:00 PM</div>
+                        <div class="lec-pricing__sub-hl">주1회 / 5주 / 1회 당 3시간</div>
+                        <p class="lec-pricing__sub-desc">현장임장 &amp; 법원 모의 입찰 수업일은<br>평일 중 상호 협의</p>
+                    </div>
+                </div>
+                <div class="lec-pricing__sub-card">
+                    <div class="lec-pricing__sub-pill">강의 장소</div>
+                    <div class="lec-pricing__sub-body">
+                        <div class="lec-pricing__sub-main">👉 서울 중구 을지로 3가</div>
+                        <p class="lec-pricing__sub-desc" style="margin-top:20px;">본 과정은 소수정예로 운영되어<br>강의 장소의 상세 정보는<br>결제 완료자에 한해 별도로 안내드립니다.</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Benefits -->
-    <section class="benefits-section">
+    <!-- 수강 완료 후 변화 + CTA + 환불 규정 -->
+    <section class="lec-benefits" id="benefits">
         <div class="container">
-            <div class="section-header" data-aos="fade-up">
-                <span class="section-label" style="color:rgba(255,255,255,0.4);">BENEFITS</span>
-                <h2 class="section-title">수강 완료 후 이렇게 달라집니다</h2>
+            <div class="lec-benefits__header">
+                <span class="lec-benefits__header-icon">📌</span>
+                <div class="lec-benefits__header-text">수강 완료 후<br>이렇게 달라집니다</div>
             </div>
 
-            <div class="benefits-grid" data-aos="fade-up">
-                <div class="benefit-item">
-                    <i class="fas fa-check-circle"></i>
-                    <span>경매 법적 프로세스를 스스로 판단하게 됩니다</span>
+            <div class="lec-benefits__cards">
+                <div class="lec-benefits__card">
+                    <div class="lec-benefits__card-title">입찰 대상이 명확해집니다</div>
+                    <div class="lec-benefits__card-sub">내가 실제로 들어갈 수 있는 물건이 분명해집니다</div>
+                    <div class="lec-benefits__card-body">내 자금·리스크·목표 수익률에 맞는<br>입찰 가능 물건만 선별하는 기준이 생깁니다.</div>
                 </div>
-                <div class="benefit-item">
-                    <i class="fas fa-check-circle"></i>
-                    <span>권리분석을 독자적으로 수행할 수 있게 됩니다</span>
+                <div class="lec-benefits__card">
+                    <div class="lec-benefits__card-title">입찰 여부를 스스로 판단할 수 있게 됩니다</div>
+                    <div class="lec-benefits__card-sub">남의 의견이 아닌, 내 기준으로 입찰을 결정합니다</div>
+                    <div class="lec-benefits__card-body">권리·시세·입지·변수를 종합해<br>들어갈지 말지를 스스로 판단하는 기준을 만듭니다.</div>
                 </div>
-                <div class="benefit-item">
-                    <i class="fas fa-check-circle"></i>
-                    <span>현재 투자 중이신 분도 실전 사례를 통해 수익을 높일 수 있습니다</span>
+                <div class="lec-benefits__card">
+                    <div class="lec-benefits__card-title">최상의 물건을 선별할 수 있게 됩니다</div>
+                    <div class="lec-benefits__card-sub">입찰 가능한 물건 중 가장 좋은 한 개를 골라낼 수 있는 능력</div>
+                    <div class="lec-benefits__card-body">부코멘트의 입지 강의를 통해, 같은 가격대에서도<br>결과가 달라지는 입지 차이를 읽어냅니다.</div>
                 </div>
-                <div class="benefit-item">
-                    <i class="fas fa-check-circle"></i>
-                    <span>기존 부동산 지식에 경매를 더한 투자 스킬을 보유하게 됩니다</span>
+                <div class="lec-benefits__card">
+                    <div class="lec-benefits__card-title">내 자금에 맞는 최선의 전략을 알게 됩니다</div>
+                    <div class="lec-benefits__card-sub">자금 상황에 맞는 현실적인 입찰 전략이 완성됩니다</div>
+                    <div class="lec-benefits__card-body">무리한 금액이 아닌, 지금 내가 감당할 수 있는 범위에서,<br>가장 효율적인 전략을 설계합니다.</div>
                 </div>
-                <div class="benefit-item">
-                    <i class="fas fa-check-circle"></i>
-                    <span>미리 돈을 잃지 않는 케이스를 쌓을 수 있습니다</span>
-                </div>
-                <div class="benefit-item">
-                    <i class="fas fa-check-circle"></i>
-                    <span>어떤 시장 환경에서도 흔들리지 않는 투자 기준을 갖추게 됩니다</span>
+                <div class="lec-benefits__card">
+                    <div class="lec-benefits__card-title">단타 수익 &amp; 실거주 두마리 토끼</div>
+                    <div class="lec-benefits__card-sub">경매를 '투자'와 '내 집 마련' 두 방향으로 활용합니다</div>
+                    <div class="lec-benefits__card-body">단기 전략과 실거주 전략을 나누어 이해하고,<br>내 상황에 맞는 방향을 선택할 수 있도록 기준을 정리합니다.</div>
                 </div>
             </div>
 
-            <div class="lecture-cta" data-aos="fade-up">
-                <p>
-                    부코멘트에서 7년간 교육을 진행하며 쌓아온 노하우를 바탕으로,<br>
-                    앞으로 어떤 시장 환경에서도 흔들리지 않는 실전 전문가를 양성합니다.
-                </p>
-                <a href="contact.html" class="btn-apply">
-                    수강 신청하기 <i class="fas fa-arrow-right"></i>
-                </a>
+            <div class="lec-benefits__highlight">👉 이 모든 것을 5주만에!</div>
+
+            <div class="lec-benefits__closing">
+                <p>'실전 전 과정 케어반'은<br>경매를 아는 수준에서 끝내지 않고,<br>직접 판단하고 움직일 수 있도록 만드는 실전 과정입니다.</p>
+                <p>경매에서 가장 비싼 선택은 '미루는 것'입니다.<br>더 늦기 전에, 오늘 바로 시작하세요.</p>
+            </div>
+
+            <div style="text-align:center;">
+                <a href="contact.html" class="lec-benefits__btn">실전 케어반 참여하기</a>
+            </div>
+            <div class="lec-benefits__btn-note">👉 지금 시작하지 않으면, 다음 기회는 남의 것이 됩니다.</div>
+
+            <div class="lec-refund" id="refund">
+                <div class="lec-refund__title">환불 규정 및 이용 안내</div>
+
+                <div class="lec-refund__sub">[중요사항]</div>
+                <div class="lec-refund__text">수강 시작일을 경과한 경우, 수강환불이 부득이한 경우를 제외한 환불이 불가합니다.<br>수강 환불은 환불 당시의 일정에 따라 추가 비용이 발생할 수 있습니다.</div>
+
+                <div class="lec-refund__sub">[결제/계약/제공 관련]</div>
+                <div class="lec-refund__text">결제 관련 정책은 운영사와의 절차에 따라 진행되며<br>자세한 내용은 운영자와의 현장/사전 안내에 따라 진행됩니다.</div>
+
+                <div class="lec-refund__sub">[환불 규정]</div>
+                <div class="lec-refund__text">기준 (동일)<br>'실전케어반 등 세미나·실전자료집 포함' 전형 특성 상<br>실전/강의/자료 제공 등 운영상 일부 절차가 발생한 경우 이후 환불이 제한될 수 있으며, 운영 안내와 실제 제공 상태를 기준으로 처리합니다.<br>강의 시작, 자료 제공, 과제, 피드백 등 제공 상태에 따라 일정 부분은 차감될 수 있습니다.<br>자료 일부 제공 시 환불 제외 조항이 적용될 수 있습니다.<br>단, 결제 오류, 중복결제, 기타 운영진의 명백한 제공 오류, 계약 수강조건 불일치 등은 별도 검토합니다.</div>
+
+                <div class="lec-refund__sub">[이용안내]</div>
+                <div class="lec-refund__text">수강은 개인별 운영 시스템/오픈채팅 안내를 기준으로 진행되며 운영상 이유로 일정이나 운영 공지가 변동될 수 있습니다.<br>수강 중 개인 사정으로 인한 미참여, 지각, 불참, 미숙지 등 사유로 인한 운영상 손실은 환불 대상에 포함되지 않습니다.<br>기타 운영 관련 세부 안내는 추후 운영 공지 및 계약 안내에 따릅니다.</div>
             </div>
         </div>
     </section>
@@ -491,30 +903,14 @@
 
     <!-- Scripts -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="js/subnav.js?v=3"></script>
     <script>
     (function() {
         'use strict';
         AOS.init({ duration: 600, once: true, offset: 50 });
+        initHeaderAndSubNav();
 
-        var header = document.getElementById('siteHeader');
-        if (header) window.addEventListener('scroll', function() {
-            header.classList.toggle('scrolled', window.scrollY > 80);
-        });
-
-        var toggle = document.getElementById('menuToggle');
-        var mobile = document.getElementById('mobileMenu');
-        if (toggle && mobile) {
-            toggle.addEventListener('click', function() {
-                toggle.classList.toggle('active');
-                mobile.classList.toggle('open');
-            });
-            mobile.querySelectorAll('a').forEach(function(a) {
-                a.addEventListener('click', function() {
-                    toggle.classList.remove('active');
-                    mobile.classList.remove('open');
-                });
-            });
-        }
+        // Header & Mobile menu → js/header.js로 통합
 
         var bt = document.getElementById('backTop');
         if (bt) {
@@ -523,5 +919,6 @@
         }
     })();
     </script>
+<script src="js/header.js"></script>
 </body>
 </html>

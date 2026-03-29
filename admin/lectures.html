@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>강의 신청 관리 - 부코멘트 관리자</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+<div class="admin-layout">
+  <aside class="sidebar">
+    <div class="sidebar-logo"><img src="../img/logo.png" alt="부코멘트"> Admin</div>
+    <nav class="sidebar-nav">
+      <a href="dashboard.html"><i class="fas fa-tachometer-alt"></i> 대시보드</a>
+      <a href="consultations.html"><i class="fas fa-comments"></i> 상담 관리</a>
+      <a href="lectures.html" class="active"><i class="fas fa-graduation-cap"></i> 강의 신청</a>
+      <a href="cases.html"><i class="fas fa-trophy"></i> 성공 사례</a>
+      <a href="members.html"><i class="fas fa-users"></i> 회원 관리</a>
+    </nav>
+    <div class="sidebar-bottom"><a href="#" onclick="logout()"><i class="fas fa-sign-out-alt"></i> 로그아웃</a></div>
+  </aside>
+  <main class="main-content">
+    <div class="page-header">
+      <h2>강의 신청 관리</h2>
+      <div class="filter-bar">
+        <select id="filterStatus" onchange="loadData()">
+          <option value="">전체</option>
+          <option value="접수">접수</option>
+          <option value="진행">진행</option>
+          <option value="완료">완료</option>
+        </select>
+      </div>
+    </div>
+    <div class="table-card">
+      <table>
+        <thead><tr><th>번호</th><th>이름</th><th>연락처</th><th>이메일</th><th>상품유형</th><th>상태</th><th>신청일</th><th>관리</th></tr></thead>
+        <tbody id="dataList"></tbody>
+      </table>
+      <div class="pagination" id="pagination"></div>
+    </div>
+  </main>
+</div>
+
+<div class="modal-overlay" id="detailModal">
+  <div class="modal">
+    <h3>강의 신청 상세</h3>
+    <div id="detailContent"></div>
+    <div class="modal-actions">
+      <select id="statusSelect" class="btn btn-outline">
+        <option value="접수">접수</option>
+        <option value="진행">진행</option>
+        <option value="완료">완료</option>
+      </select>
+      <button class="btn btn-primary" onclick="updateStatus()">상태 변경</button>
+      <button class="btn btn-outline" onclick="closeModal()">닫기</button>
+    </div>
+  </div>
+</div>
+
+<script src="js/admin.js"></script>
+<script>
+if (!checkAuth()) throw '';
+let currentPage = 1, currentId = null;
+
+async function loadData() {
+  const status = document.getElementById('filterStatus').value;
+  const d = await api('/lectures?page=' + currentPage + (status ? '&status=' + status : ''));
+  if (!d) return;
+  document.getElementById('dataList').innerHTML = d.data.map(r => `
+    <tr>
+      <td>${r.id}</td><td>${r.name}</td><td>${r.phone}</td>
+      <td>${r.email||'-'}</td><td>${r.product_type||'-'}</td>
+      <td>${badge(r.status)}</td><td>${formatDate(r.created_at)}</td>
+      <td>
+        <button class="btn btn-sm btn-outline" onclick="showDetail(${r.id})">상세</button>
+        <button class="btn btn-sm btn-danger" onclick="deleteItem(${r.id})">삭제</button>
+      </td>
+    </tr>
+  `).join('') || '<tr><td colspan="8" style="text-align:center;color:#94a3b8;">데이터가 없습니다</td></tr>';
+
+  const pages = Math.ceil(d.total / d.limit);
+  document.getElementById('pagination').innerHTML = Array.from({length: pages}, (_, i) =>
+    `<button class="${i+1===d.page?'active':''}" onclick="currentPage=${i+1};loadData()">${i+1}</button>`
+  ).join('');
+}
+
+async function showDetail(id) {
+  currentId = id;
+  const d = await api('/lectures/' + id);
+  if (!d) return;
+  document.getElementById('detailContent').innerHTML = `
+    <div class="form-row"><div class="form-group"><label>이름</label><p>${d.name}</p></div><div class="form-group"><label>연락처</label><p>${d.phone}</p></div></div>
+    <div class="form-row"><div class="form-group"><label>이메일</label><p>${d.email||'-'}</p></div><div class="form-group"><label>상품유형</label><p>${d.product_type||'-'}</p></div></div>
+    <div class="form-group"><label>메시지</label><p style="white-space:pre-wrap;background:#f8fafc;padding:12px;border-radius:8px;">${d.message||'-'}</p></div>
+    <div class="form-group"><label>신청일</label><p>${formatDate(d.created_at)}</p></div>
+  `;
+  document.getElementById('statusSelect').value = d.status;
+  document.getElementById('detailModal').classList.add('active');
+}
+
+async function updateStatus() {
+  await api('/lectures/' + currentId, { method: 'PATCH', body: JSON.stringify({ status: document.getElementById('statusSelect').value }) });
+  closeModal(); loadData();
+}
+
+async function deleteItem(id) {
+  if (!confirm('정말 삭제하시겠습니까?')) return;
+  await api('/lectures/' + id, { method: 'DELETE' });
+  loadData();
+}
+
+function closeModal() { document.getElementById('detailModal').classList.remove('active'); }
+loadData();
+</script>
+</body>
+</html>

@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>성공 사례 관리 - 부코멘트 관리자</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+<div class="admin-layout">
+  <aside class="sidebar">
+    <div class="sidebar-logo"><img src="../img/logo.png" alt="부코멘트"> Admin</div>
+    <nav class="sidebar-nav">
+      <a href="dashboard.html"><i class="fas fa-tachometer-alt"></i> 대시보드</a>
+      <a href="consultations.html"><i class="fas fa-comments"></i> 상담 관리</a>
+      <a href="lectures.html"><i class="fas fa-graduation-cap"></i> 강의 신청</a>
+      <a href="cases.html" class="active"><i class="fas fa-trophy"></i> 성공 사례</a>
+      <a href="members.html"><i class="fas fa-users"></i> 회원 관리</a>
+    </nav>
+    <div class="sidebar-bottom"><a href="#" onclick="logout()"><i class="fas fa-sign-out-alt"></i> 로그아웃</a></div>
+  </aside>
+  <main class="main-content">
+    <div class="page-header">
+      <h2>성공 사례 관리</h2>
+      <div class="filter-bar">
+        <button class="btn btn-primary" onclick="openAddModal()"><i class="fas fa-plus"></i> 새 사례 등록</button>
+      </div>
+    </div>
+    <div class="table-card">
+      <table>
+        <thead><tr><th>번호</th><th>제목</th><th>지역</th><th>물건유형</th><th>감정가</th><th>낙찰가</th><th>수익률</th><th>공개</th><th>관리</th></tr></thead>
+        <tbody id="dataList"></tbody>
+      </table>
+      <div class="pagination" id="pagination"></div>
+    </div>
+  </main>
+</div>
+
+<div class="modal-overlay" id="formModal">
+  <div class="modal">
+    <h3 id="formTitle">새 사례 등록</h3>
+    <form id="caseForm" onsubmit="saveCase(event)">
+      <div class="form-group"><label>제목</label><input type="text" id="f_title" required></div>
+      <div class="form-group"><label>설명</label><textarea id="f_description" rows="4"></textarea></div>
+      <div class="form-row">
+        <div class="form-group"><label>지역</label><input type="text" id="f_location"></div>
+        <div class="form-group"><label>물건유형</label><input type="text" id="f_property_type"></div>
+      </div>
+      <div class="form-row">
+        <div class="form-group"><label>감정가</label><input type="number" id="f_appraisal_price"></div>
+        <div class="form-group"><label>낙찰가</label><input type="number" id="f_winning_price"></div>
+      </div>
+      <div class="form-row">
+        <div class="form-group"><label>수익률 (%)</label><input type="text" id="f_profit_rate"></div>
+        <div class="form-group">
+          <label>이미지 첨부</label>
+          <input type="file" id="f_image_file" accept="image/*" onchange="uploadImage(this)">
+          <input type="hidden" id="f_image_url">
+          <div id="imagePreview" style="margin-top:8px;"></div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>상세 이미지 (여러 장)</label>
+        <input type="file" id="f_detail_images" accept="image/*" multiple onchange="uploadDetailImages(this)">
+        <input type="hidden" id="f_images">
+        <div id="detailImagesPreview" style="margin-top:8px;display:flex;flex-wrap:wrap;gap:8px;"></div>
+      </div>
+      <div class="form-group"><label>공개 여부</label><select id="f_is_published"><option value="1">공개</option><option value="0">비공개</option></select></div>
+      <div class="modal-actions">
+        <button type="submit" class="btn btn-primary">저장</button>
+        <button type="button" class="btn btn-outline" onclick="closeModal()">취소</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script src="js/admin.js"></script>
+<script>
+if (!checkAuth()) throw '';
+let currentPage = 1, editId = null;
+
+async function loadData() {
+  const d = await api('/cases');
+  if (!d) return;
+  const list = Array.isArray(d) ? d : (d.data || []);
+  document.getElementById('dataList').innerHTML = list.map(r => `
+    <tr>
+      <td>${r.id}</td><td>${r.title}</td><td>${r.location||'-'}</td><td>${r.property_type||'-'}</td>
+      <td>${r.appraisal_price ? Number(r.appraisal_price).toLocaleString() + '원' : '-'}</td>
+      <td>${r.winning_price ? Number(r.winning_price).toLocaleString() + '원' : '-'}</td>
+      <td>${r.profit_rate ? r.profit_rate + '%' : '-'}</td>
+      <td>${r.is_published ? badge('활성') : badge('비활성')}</td>
+      <td>
+        <button class="btn btn-sm btn-outline" onclick="openEditModal(${r.id})">수정</button>
+        <button class="btn btn-sm btn-danger" onclick="deleteItem(${r.id})">삭제</button>
+      </td>
+    </tr>
+  `).join('') || '<tr><td colspan="9" style="text-align:center;color:#94a3b8;">데이터가 없습니다</td></tr>';
+
+  const pages = Math.ceil(d.total / d.limit);
+  document.getElementById('pagination').innerHTML = Array.from({length: pages}, (_, i) =>
+    `<button class="${i+1===d.page?'active':''}" onclick="currentPage=${i+1};loadData()">${i+1}</button>`
+  ).join('');
+}
+
+let detailImageUrls = [];
+
+function openAddModal() {
+  editId = null;
+  detailImageUrls = [];
+  document.getElementById('formTitle').textContent = '새 사례 등록';
+  document.getElementById('caseForm').reset();
+  document.getElementById('f_image_url').value = '';
+  document.getElementById('f_images').value = '';
+  document.getElementById('imagePreview').innerHTML = '';
+  document.getElementById('detailImagesPreview').innerHTML = '';
+  document.getElementById('formModal').classList.add('active');
+}
+
+async function openEditModal(id) {
+  editId = id;
+  const d = await api('/cases/' + id);
+  if (!d) return;
+  document.getElementById('formTitle').textContent = '사례 수정';
+  document.getElementById('f_title').value = d.title || '';
+  document.getElementById('f_description').value = d.description || '';
+  document.getElementById('f_location').value = d.location || '';
+  document.getElementById('f_property_type').value = d.property_type || '';
+  document.getElementById('f_appraisal_price').value = d.appraisal_price || '';
+  document.getElementById('f_winning_price').value = d.winning_price || '';
+  document.getElementById('f_profit_rate').value = d.profit_rate || '';
+  document.getElementById('f_image_url').value = d.image_url || '';
+  document.getElementById('f_image_file').value = '';
+  document.getElementById('imagePreview').innerHTML = d.image_url ? '<img src="'+d.image_url+'" style="max-width:200px;border-radius:8px;">' : '';
+  detailImageUrls = d.images ? JSON.parse(d.images) : [];
+  renderDetailPreviews();
+  document.getElementById('f_is_published').value = d.is_published ? '1' : '0';
+  document.getElementById('formModal').classList.add('active');
+}
+
+function renderDetailPreviews() {
+  document.getElementById('detailImagesPreview').innerHTML = detailImageUrls.map((url, i) =>
+    '<div style="position:relative;display:inline-block;">' +
+      '<img src="'+url+'" style="width:100px;height:100px;object-fit:cover;border-radius:8px;border:1px solid #e2e8f0;">' +
+      '<button type="button" onclick="removeDetailImage('+i+')" style="position:absolute;top:-6px;right:-6px;width:20px;height:20px;border-radius:50%;background:#ef4444;color:#fff;border:none;font-size:11px;cursor:pointer;line-height:20px;text-align:center;">×</button>' +
+    '</div>'
+  ).join('');
+}
+
+function removeDetailImage(idx) {
+  detailImageUrls.splice(idx, 1);
+  renderDetailPreviews();
+}
+
+async function saveCase(e) {
+  e.preventDefault();
+  const body = JSON.stringify({
+    title: document.getElementById('f_title').value,
+    description: document.getElementById('f_description').value,
+    location: document.getElementById('f_location').value,
+    property_type: document.getElementById('f_property_type').value,
+    appraisal_price: document.getElementById('f_appraisal_price').value || null,
+    winning_price: document.getElementById('f_winning_price').value || null,
+    profit_rate: document.getElementById('f_profit_rate').value || null,
+    image_url: document.getElementById('f_image_url').value,
+    images: JSON.stringify(detailImageUrls),
+    is_published: document.getElementById('f_is_published').value === '1'
+  });
+  if (editId) {
+    await api('/cases/' + editId, { method: 'PUT', body });
+  } else {
+    await api('/cases', { method: 'POST', body });
+  }
+  closeModal(); loadData();
+}
+
+async function deleteItem(id) {
+  if (!confirm('정말 삭제하시겠습니까?')) return;
+  await api('/cases/' + id, { method: 'DELETE' });
+  loadData();
+}
+
+function closeModal() { document.getElementById('formModal').classList.remove('active'); }
+
+async function doUpload(file) {
+  const fd = new FormData();
+  fd.append('file', file);
+  const res = await fetch('/realtycomment/api/upload', {
+    method: 'POST',
+    headers: { 'Authorization': 'Bearer ' + getToken() },
+    body: fd
+  });
+  return res.json();
+}
+
+async function uploadImage(input) {
+  if (!input.files[0]) return;
+  const data = await doUpload(input.files[0]);
+  if (data.url) {
+    document.getElementById('f_image_url').value = data.url;
+    document.getElementById('imagePreview').innerHTML = '<img src="'+data.url+'" style="max-width:200px;border-radius:8px;">';
+  } else {
+    alert('업로드 실패');
+  }
+}
+
+async function uploadDetailImages(input) {
+  for (const file of input.files) {
+    const data = await doUpload(file);
+    if (data.url) detailImageUrls.push(data.url);
+  }
+  input.value = '';
+  renderDetailPreviews();
+}
+loadData();
+</script>
+</body>
+</html>

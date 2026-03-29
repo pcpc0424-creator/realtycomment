@@ -306,13 +306,41 @@ const ContactForm = {
         submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> <span>전송 중...</span>';
         submitBtn.disabled = true;
 
-        // Simulate submission
-        setTimeout(() => {
-            this.showMessage('상담 신청이 완료되었습니다.<br>빠른 시일 내에 연락드리겠습니다.', 'success');
-            this.form.reset();
+        // API 전송
+        const formData = {
+            category: this.form.querySelector('[name="category"]')?.value || '',
+            name: name.value,
+            phone: phone.value,
+            email: this.form.querySelector('[name="email"]')?.value || '',
+            region: this.form.querySelector('[name="region"]')?.value || '',
+            property_type: this.form.querySelector('[name="propertyType"]')?.value || '',
+            budget: this.form.querySelector('[name="budget"]')?.value || '',
+            invest_purpose: this.form.querySelector('[name="investPurpose"]:checked')?.value || '',
+            case_number: this.form.querySelector('[name="caseNumber"]')?.value || '',
+            message: this.form.querySelector('[name="message"]')?.value || ''
+        };
+
+        fetch('/realtycomment/api/consultations', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(formData)
+        })
+        .then(res => res.json())
+        .then(data => {
+            if (data.success) {
+                this.showMessage('상담 신청이 완료되었습니다.<br>빠른 시일 내에 연락드리겠습니다.', 'success');
+                this.form.reset();
+            } else {
+                this.showMessage('전송 중 오류가 발생했습니다. 다시 시도해주세요.', 'error');
+            }
             submitBtn.innerHTML = originalContent;
             submitBtn.disabled = false;
-        }, 1500);
+        })
+        .catch(() => {
+            this.showMessage('서버 연결에 실패했습니다. 잠시 후 다시 시도해주세요.', 'error');
+            submitBtn.innerHTML = originalContent;
+            submitBtn.disabled = false;
+        });
     },
 
     showMessage(message, type) {

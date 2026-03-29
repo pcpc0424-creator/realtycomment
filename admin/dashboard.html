@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>대시보드 - 부코멘트 관리자</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+<div class="admin-layout">
+  <aside class="sidebar">
+    <div class="sidebar-logo"><img src="../img/logo.png" alt="부코멘트"> Admin</div>
+    <nav class="sidebar-nav">
+      <a href="dashboard.html" class="active"><i class="fas fa-tachometer-alt"></i> 대시보드</a>
+      <a href="consultations.html"><i class="fas fa-comments"></i> 상담 관리</a>
+      <a href="lectures.html"><i class="fas fa-graduation-cap"></i> 강의 신청</a>
+      <a href="cases.html"><i class="fas fa-trophy"></i> 성공 사례</a>
+      <a href="members.html"><i class="fas fa-users"></i> 회원 관리</a>
+
+    </nav>
+    <div class="sidebar-bottom">
+      <a href="#" onclick="logout()"><i class="fas fa-sign-out-alt"></i> 로그아웃</a>
+    </div>
+  </aside>
+  <main class="main-content">
+    <div class="page-header">
+      <h2>대시보드</h2>
+      <span>안녕하세요, <strong id="adminName"></strong>님</span>
+    </div>
+    <div class="stat-grid" id="stats"></div>
+    <div class="table-card">
+      <div class="table-card-header"><h3>최근 상담 신청</h3></div>
+      <table>
+        <thead><tr><th>번호</th><th>분류</th><th>이름</th><th>연락처</th><th>상태</th><th>신청일</th></tr></thead>
+        <tbody id="recentList"></tbody>
+      </table>
+    </div>
+  </main>
+</div>
+<script src="js/admin.js"></script>
+<script>
+if (!checkAuth()) throw '';
+(async () => {
+  const d = await api('/dashboard');
+  if (!d) return;
+  document.getElementById('stats').innerHTML = `
+    <div class="stat-card"><div class="stat-label">상담 신청</div><div class="stat-value">${d.consultations.total}</div><div class="stat-sub">미처리 ${d.consultations.pending}건</div></div>
+    <div class="stat-card"><div class="stat-label">강의 신청</div><div class="stat-value">${d.lectures.total}</div><div class="stat-sub">미처리 ${d.lectures.pending}건</div></div>
+    <div class="stat-card"><div class="stat-label">회원 수</div><div class="stat-value">${d.members}</div></div>
+    <div class="stat-card"><div class="stat-label">성공 사례</div><div class="stat-value">${d.cases}</div></div>
+  `;
+  document.getElementById('recentList').innerHTML = d.recentConsultations.map(r => `
+    <tr>
+      <td>${r.id}</td><td>${r.category||'-'}</td><td>${r.name}</td><td>${r.phone}</td>
+      <td>${badge(r.status)}</td><td>${formatDate(r.created_at)}</td>
+    </tr>
+  `).join('') || '<tr><td colspan="6" style="text-align:center;color:#94a3b8;">데이터가 없습니다</td></tr>';
+})();
+</script>
+</body>
+</html>

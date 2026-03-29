@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>관리자 로그인 - 부코멘트</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+<div class="login-wrap">
+  <div class="login-box">
+    <h1>부코멘트 관리자</h1>
+    <p>관리자 계정으로 로그인하세요</p>
+    <div class="login-error" id="loginError"></div>
+    <form id="loginForm">
+      <input type="text" id="username" placeholder="아이디" required>
+      <input type="password" id="password" placeholder="비밀번호" required>
+      <button type="submit">로그인</button>
+    </form>
+  </div>
+</div>
+<script>
+const API = '/realtycomment/api';
+document.getElementById('loginForm').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const errEl = document.getElementById('loginError');
+  errEl.style.display = 'none';
+  try {
+    const res = await fetch(API + '/auth/login', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        username: document.getElementById('username').value,
+        password: document.getElementById('password').value
+      })
+    });
+    const data = await res.json();
+    if (data.token) {
+      localStorage.setItem('admin_token', data.token);
+      localStorage.setItem('admin_name', data.name);
+      location.href = 'dashboard.html';
+    } else {
+      errEl.textContent = data.error || '로그인 실패';
+      errEl.style.display = 'block';
+    }
+  } catch (err) {
+    errEl.textContent = '서버 연결 실패';
+    errEl.style.display = 'block';
+  }
+});
+if (localStorage.getItem('admin_token')) location.href = 'dashboard.html';
+</script>
+</body>
+</html>

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>콘텐츠 관리 - 부코멘트 관리자</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="css/admin.css">
+<style>
+.content-item {
+  background: var(--white); border-radius: var(--radius);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.06); padding: 24px;
+  margin-bottom: 16px;
+}
+.content-item .content-header {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-bottom: 12px;
+}
+.content-item .content-key {
+  font-size: 0.85rem; font-weight: 700; color: var(--navy);
+}
+.content-item .content-desc {
+  font-size: 0.78rem; color: var(--text-muted); margin-bottom: 8px;
+}
+.content-item textarea, .content-item input[type="text"] {
+  width: 100%; padding: 10px 14px; border: 1px solid var(--border);
+  border-radius: var(--radius); font-size: 0.88rem; outline: none;
+  font-family: inherit;
+}
+.content-item textarea:focus, .content-item input[type="text"]:focus {
+  border-color: var(--navy);
+}
+.save-status {
+  font-size: 0.78rem; color: var(--success); margin-left: 8px; display: none;
+}
+</style>
+</head>
+<body>
+<div class="admin-layout">
+  <aside class="sidebar">
+    <div class="sidebar-logo"><img src="../img/logo.png" alt="부코멘트"> Admin</div>
+    <nav class="sidebar-nav">
+      <a href="dashboard.html"><i class="fas fa-tachometer-alt"></i> 대시보드</a>
+      <a href="consultations.html"><i class="fas fa-comments"></i> 상담 관리</a>
+      <a href="lectures.html"><i class="fas fa-graduation-cap"></i> 강의 신청</a>
+      <a href="cases.html"><i class="fas fa-trophy"></i> 성공 사례</a>
+      <a href="members.html"><i class="fas fa-users"></i> 회원 관리</a>
+      <a href="content.html" class="active"><i class="fas fa-edit"></i> 콘텐츠 관리</a>
+    </nav>
+    <div class="sidebar-bottom"><a href="#" onclick="logout()"><i class="fas fa-sign-out-alt"></i> 로그아웃</a></div>
+  </aside>
+  <main class="main-content">
+    <div class="page-header">
+      <h2>콘텐츠 관리</h2>
+    </div>
+    <div id="contentList"></div>
+  </main>
+</div>
+
+<script src="js/admin.js"></script>
+<script>
+if (!checkAuth()) throw '';
+
+const contentMeta = {
+  hero_title: { label: '히어로 제목', desc: '메인 페이지 상단 제목', multiline: false },
+  hero_subtitle: { label: '히어로 부제목', desc: '메인 페이지 상단 부제목', multiline: false },
+  phone_number: { label: '대표 전화번호', desc: '사이트 전체에 표시되는 전화번호', multiline: false },
+  email: { label: '대표 이메일', desc: '사이트 전체에 표시되는 이메일', multiline: false },
+  address: { label: '주소', desc: '사이트 하단에 표시되는 주소', multiline: false }
+};
+
+async function loadContent() {
+  const d = await api('/content');
+  if (!d) return;
+
+  const items = {};
+  if (Array.isArray(d)) {
+    d.forEach(r => { items[r.key] = r.value; });
+  } else if (d.data && Array.isArray(d.data)) {
+    d.data.forEach(r => { items[r.key] = r.value; });
+  }
+
+  const allKeys = new Set([...Object.keys(contentMeta), ...Object.keys(items)]);
+  const container = document.getElementById('contentList');
+  container.innerHTML = '';
+
+  allKeys.forEach(key => {
+    const meta = contentMeta[key] || { label: key, desc: '', multiline: false };
+    const value = items[key] || '';
+    const inputId = 'content_' + key;
+    const statusId = 'status_' + key;
+
+    const div = document.createElement('div');
+    div.className = 'content-item';
+    div.innerHTML = `
+      <div class="content-header">
+        <div>
+          <div class="content-key">${meta.label}</div>
+          <div class="content-desc">${meta.desc} (key: ${key})</div>
+        </div>
+        <div>
+          <span class="save-status" id="${statusId}">저장됨</span>
+          <button class="btn btn-primary btn-sm" onclick="saveItem('${key}','${inputId}','${statusId}')">저장</button>
+        </div>
+      </div>
+      ${meta.multiline
+        ? `<textarea id="${inputId}" rows="4">${value}</textarea>`
+        : `<input type="text" id="${inputId}" value="${value.replace(/"/g, '&quot;')}">`
+      }
+    `;
+    container.appendChild(div);
+  });
+}
+
+async function saveItem(key, inputId, statusId) {
+  const value = document.getElementById(inputId).value;
+  await api('/content/' + key, { method: 'PUT', body: JSON.stringify({ value }) });
+  const el = document.getElementById(statusId);
+  el.style.display = 'inline';
+  setTimeout(() => { el.style.display = 'none'; }, 2000);
+}
+
+loadContent();
+</script>
+</body>
+</html>
