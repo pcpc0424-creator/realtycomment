@@ -71,17 +71,17 @@
     </section>
 
     <!-- 상세 보기 (id 파라미터 있을 때) -->
-    <section id="caseDetail" style="display:none; padding:40px 0;">
-        <div class="container" style="max-width:800px;">
+    <section id="caseDetail" class="case-detail-section" style="display:none;">
+        <div class="container case-detail-wrap">
             <div id="caseDetailContent"></div>
-            <div style="text-align:center; margin-top:40px;">
-                <a href="success-detail.html" style="display:inline-block;padding:12px 32px;background:#1c2d44;color:#fff;border-radius:8px;font-weight:600;text-decoration:none;">← 목록으로 돌아가기</a>
+            <div class="case-detail-back">
+                <a href="success-detail.html" class="btn-back-list">← 목록으로 돌아가기</a>
             </div>
         </div>
     </section>
 
     <!-- 목록 보기 (id 파라미터 없을 때) -->
-    <section id="caseListSection" style="padding:60px 0;">
+    <section id="caseListSection" class="case-list-section">
         <div class="container">
             <div class="section-header" style="text-align:center;margin-bottom:40px;">
                 <span class="section-label">SUCCESS STORIES</span>
@@ -110,7 +110,6 @@
                     var ap = c.appraisal_price ? Number(c.appraisal_price).toLocaleString() + '원' : '-';
                     var wp = c.winning_price ? Number(c.winning_price).toLocaleString() + '원' : '-';
                     var rate = c.profit_rate ? c.profit_rate + '%' : '-';
-                    var date = c.created_at ? new Date(c.created_at).toISOString().slice(0,10) : '';
                     var detailImgs = c.images ? JSON.parse(c.images) : [];
                     var gallery = '';
                     if (detailImgs.length) {
@@ -120,17 +119,16 @@
                             }).join('') + '</div>';
                     }
                     document.getElementById('caseDetailContent').innerHTML =
-                        (img ? '<div style="margin-bottom:28px;border-radius:12px;overflow:hidden;"><img src="'+img+'" alt="" style="width:100%;display:block;"></div>' : '') +
-                        '<h1 style="font-size:1.6rem;font-weight:800;color:#1c2d44;margin-bottom:20px;">'+c.title+'</h1>' +
-                        '<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:28px;">' +
-                            '<div style="background:#f8fafc;padding:20px;border-radius:10px;text-align:center;"><div style="font-size:0.78rem;color:#64748b;margin-bottom:4px;">감정가</div><div style="font-size:1.1rem;font-weight:800;color:#1c2d44;">'+ap+'</div></div>' +
-                            '<div style="background:#eef2ff;padding:20px;border-radius:10px;text-align:center;"><div style="font-size:0.78rem;color:#64748b;margin-bottom:4px;">낙찰가</div><div style="font-size:1.1rem;font-weight:800;color:#2a4ea0;">'+wp+'</div></div>' +
-                            '<div style="background:#f0fdf4;padding:20px;border-radius:10px;text-align:center;"><div style="font-size:0.78rem;color:#64748b;margin-bottom:4px;">수익률</div><div style="font-size:1.1rem;font-weight:800;color:#10b981;">'+rate+'</div></div>' +
+                        (img ? '<div class="cd-hero-img"><img src="'+img+'" alt=""></div>' : '') +
+                        '<h1 class="cd-title">'+c.title+'</h1>' +
+                        '<div class="cd-stats-grid">' +
+                            '<div class="cd-stat-item cd-stat-appraisal"><div class="cd-stat-label">감정가</div><div class="cd-stat-value">'+ap+'</div></div>' +
+                            '<div class="cd-stat-item cd-stat-winning"><div class="cd-stat-label">낙찰가</div><div class="cd-stat-value">'+wp+'</div></div>' +
+                            '<div class="cd-stat-item cd-stat-profit"><div class="cd-stat-label">수익률</div><div class="cd-stat-value">'+rate+'</div></div>' +
                         '</div>' +
-                        (c.location ? '<p style="margin-bottom:8px;color:#64748b;"><i class="fas fa-map-marker-alt" style="margin-right:6px;"></i>'+c.location+'</p>' : '') +
-                        (c.property_type ? '<p style="margin-bottom:8px;color:#64748b;"><i class="fas fa-building" style="margin-right:6px;"></i>'+c.property_type+'</p>' : '') +
-                        (date ? '<p style="margin-bottom:20px;color:#64748b;"><i class="fas fa-calendar" style="margin-right:6px;"></i>'+date+'</p>' : '') +
-                        (c.description ? '<div style="background:#f8fafc;padding:28px;border-radius:12px;line-height:1.9;color:#334155;white-space:pre-wrap;">'+c.description+'</div>' : '') +
+                        (c.location ? '<p class="cd-meta"><i class="fas fa-map-marker-alt"></i>'+c.location+'</p>' : '') +
+                        (c.property_type ? '<p class="cd-meta"><i class="fas fa-building"></i>'+c.property_type+'</p>' : '') +
+                        (c.description ? '<div class="cd-description">'+c.description+'</div>' : '') +
                         gallery;
                 })
                 .catch(function() {
@@ -146,16 +144,14 @@
                     var grid = document.getElementById('allCasesGrid');
                     if (!cases.length) { grid.innerHTML = '<p style="text-align:center;color:#94a3b8;grid-column:1/-1;padding:40px 0;">등록된 성공사례가 없습니다.</p>'; return; }
                     grid.innerHTML = cases.map(function(c) {
-                        var rate = c.profit_rate ? '-' + c.profit_rate + '%' : '';
+                        var rate = c.profit_rate ? '+' + c.profit_rate + '%' : '';
                         var price = c.winning_price ? Number(c.winning_price).toLocaleString() + '원' : '';
                         var img = c.image_url || 'https://images.unsplash.com/photo-1580587771525-78b9dba3b914?w=400';
-                        var date = c.created_at ? new Date(c.created_at).toISOString().slice(0,7).replace('-','.') : '';
                         return '<a href="success-detail.html?id='+c.id+'" class="case-card">' +
                             '<div class="case-image"><img src="'+img+'" alt="'+c.title+'">' +
                             (rate ? '<div class="case-overlay"><span class="case-discount">'+rate+'</span></div>' : '') +
                             '</div><div class="case-info"><h3>'+c.title+'</h3>' +
                             (price ? '<p>낙찰가 '+price+'</p>' : '') +
-                            (date ? '<span class="case-date">'+date+'</span>' : '') +
                             '</div></a>';
                     }).join('');
                 })
@@ -608,7 +604,6 @@
                   const rate = c.profit_rate ? '-' + c.profit_rate + '%' : '';
                   const price = c.winning_price ? Number(c.winning_price).toLocaleString() + '원' : '';
                   const img = c.image_url || 'https://images.unsplash.com/photo-1580587771525-78b9dba3b914?w=400';
-                  const date = c.created_at ? new Date(c.created_at).toISOString().slice(0,7).replace('-','.') : '';
                   return `<div class="case-card">
                     <div class="case-image">
                       <img src="${img}" alt="${c.title}">
@@ -617,7 +612,6 @@
                     <div class="case-info">
                       <h3>${c.title}</h3>
                       ${price ? '<p>낙찰가 ' + price + '</p>' : ''}
-                      ${date ? '<span class="case-date">' + date + '</span>' : ''}
                     </div>
                   </div>`;
                 }).join('');

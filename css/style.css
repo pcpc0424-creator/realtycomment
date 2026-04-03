@@ -2339,6 +2339,10 @@ button { cursor: pointer; }
    RESPONSIVE - Mobile (768px)
    ============================================ */
 @media (max-width: 768px) {
+    body {
+        word-break: keep-all;
+        overflow-wrap: break-word;
+    }
     .container { padding: 0 20px; }
 
     .hero {

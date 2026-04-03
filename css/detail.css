@@ -2846,3 +2846,235 @@
     .ratio-grid { gap: 24px; }
     .ratio-bar-wrap { width: 60px; height: 150px; }
 }
+
+/* ============================================
+   Case Detail Page Styles
+   ============================================ */
+.case-detail-section {
+    padding: 40px 0;
+}
+
+.case-detail-wrap {
+    max-width: 800px;
+}
+
+.case-detail-back {
+    text-align: center;
+    margin-top: 40px;
+}
+
+.btn-back-list {
+    display: inline-block;
+    padding: 12px 32px;
+    background: #1c2d44;
+    color: #fff;
+    border-radius: 8px;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.case-list-section {
+    padding: 60px 0;
+}
+
+/* Detail content styles */
+.cd-hero-img {
+    margin-bottom: 28px;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.cd-hero-img img {
+    width: 100%;
+    display: block;
+}
+
+.cd-title {
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: #1c2d44;
+    margin-bottom: 20px;
+}
+
+.cd-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-bottom: 28px;
+}
+
+.cd-stat-item {
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.cd-stat-appraisal { background: #f8fafc; }
+.cd-stat-winning { background: #eef2ff; }
+.cd-stat-profit { background: #f0fdf4; }
+
+.cd-stat-label {
+    font-size: 0.78rem;
+    color: #64748b;
+    margin-bottom: 4px;
+}
+
+.cd-stat-value {
+    font-size: 1.1rem;
+    font-weight: 800;
+    word-break: keep-all;
+}
+
+.cd-stat-appraisal .cd-stat-value { color: #1c2d44; }
+.cd-stat-winning .cd-stat-value { color: #2a4ea0; }
+.cd-stat-profit .cd-stat-value { color: #10b981; }
+
+.cd-meta {
+    margin-bottom: 8px;
+    color: #64748b;
+}
+
+.cd-meta i {
+    margin-right: 6px;
+}
+
+.cd-meta-last {
+    margin-bottom: 20px;
+}
+
+.cd-description {
+    background: #f8fafc;
+    padding: 28px;
+    border-radius: 12px;
+    line-height: 1.9;
+    color: #334155;
+    white-space: pre-wrap;
+}
+
+/* ============================================
+   Mobile: Case List & Detail
+   ============================================ */
+@media (max-width: 768px) {
+    .case-list-section {
+        padding: 40px 0;
+    }
+
+    .case-list-section .section-header {
+        margin-bottom: 28px !important;
+    }
+
+    .case-detail-section {
+        padding: 24px 0;
+    }
+
+    .cd-hero-img {
+        margin-bottom: 20px;
+        border-radius: 10px;
+    }
+
+    .cd-title {
+        font-size: 1.3rem;
+        margin-bottom: 16px;
+    }
+
+    .cd-stats-grid {
+        grid-template-columns: 1fr;
+        gap: 10px;
+        margin-bottom: 20px;
+    }
+
+    .cd-stat-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 14px 18px;
+        text-align: left;
+    }
+
+    .cd-stat-label {
+        font-size: 0.82rem;
+        margin-bottom: 0;
+    }
+
+    .cd-stat-value {
+        font-size: 1rem;
+    }
+
+    .cd-description {
+        padding: 20px;
+        font-size: 0.92rem;
+        line-height: 1.8;
+    }
+
+    .cd-meta {
+        font-size: 0.88rem;
+    }
+
+    .case-detail-back {
+        margin-top: 28px;
+    }
+
+    .btn-back-list {
+        padding: 12px 24px;
+        font-size: 0.9rem;
+        width: 100%;
+        text-align: center;
+        box-sizing: border-box;
+    }
+
+    /* Case card grid - mobile refinements */
+    .case-info {
+        padding: 14px;
+    }
+
+    .case-info h3 {
+        font-size: 14px;
+    }
+
+    .case-info p {
+        font-size: 13px;
+    }
+
+    .case-discount {
+        font-size: 12px;
+        padding: 4px 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .case-list-section {
+        padding: 28px 0;
+    }
+
+    .cd-title {
+        font-size: 1.15rem;
+        margin-bottom: 14px;
+    }
+
+    .cd-stat-item {
+        padding: 12px 14px;
+    }
+
+    .cd-stat-value {
+        font-size: 0.9rem;
+    }
+
+    .cd-description {
+        padding: 16px;
+        font-size: 0.88rem;
+        line-height: 1.75;
+        border-radius: 10px;
+    }
+
+    .cd-meta {
+        font-size: 0.82rem;
+    }
+
+    .cases-grid {
+        gap: 16px;
+    }
+
+    .case-image {
+        aspect-ratio: 16/10;
+    }
+}

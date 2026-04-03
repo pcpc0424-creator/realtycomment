@@ -677,12 +677,152 @@
         }
         @media (max-width: 600px) {
             .process-hero { padding: 140px 0 60px; }
-            .flowchart-header-row, .flowchart-row { grid-template-columns: 1fr 30px 1fr; }
-            .flowchart-step-num { width: 28px; height: 28px; font-size: 0.7rem; }
             .areas-grid { grid-template-columns: 1fr; }
-            .stats-grid { grid-template-columns: 1fr; }
             .onestop-tabs { gap: 8px; }
             .onestop-tab { padding: 8px 14px; font-size: 0.8rem; }
+
+            /* 성능 통계 - specificity 맞춤 */
+            .performance-section .stats-grid {
+                grid-template-columns: 1fr !important;
+                gap: 16px;
+            }
+            .performance-section .stat-card {
+                padding: 24px 20px;
+            }
+            .performance-section .stat-value {
+                font-size: clamp(24px, 6vw, 32px) !important;
+            }
+            .performance-section .stat-desc {
+                font-size: 0.78rem;
+                word-break: keep-all;
+            }
+
+            /* 수익 비교 */
+            .profit-section { padding: 60px 0; }
+            .profit-card { padding: 28px 20px; }
+            .profit-desc { font-size: 0.85rem; }
+
+            /* 섹션 공통 여백 */
+            .difference-section,
+            .necessity-section,
+            .vs-section,
+            .areas-section,
+            .onestop-section,
+            .cases-section,
+            .testimonial-section { padding: 60px 0; }
+
+            /* 차별점 카드 */
+            .diff-card { padding: 24px 20px; }
+
+            /* VS 테이블 → 카드형 */
+            .vs-table { width:100%; }
+            .vs-table thead { display:none; }
+            .vs-table tbody tr {
+                display:block; margin-bottom:14px;
+                border:1px solid var(--slate-200);
+                border-radius:12px; overflow:hidden;
+            }
+            .vs-table tbody td {
+                display:block; text-align:left;
+                padding:12px 16px; border-bottom:none;
+                font-size:0.85rem; line-height:1.7;
+                word-break:keep-all;
+            }
+            .vs-table tbody td:first-child {
+                background:var(--navy); color:#fff;
+                font-size:0.82rem; text-align:left;
+                padding:10px 16px;
+            }
+            .vs-table tbody td:nth-child(2) {
+                background:var(--slate-50);
+                border-bottom:1px solid var(--slate-100);
+            }
+            .vs-table tbody td:nth-child(2)::before {
+                content:'혼자서 경매';
+                display:block; font-size:0.7rem; font-weight:700;
+                color:var(--slate-400); margin-bottom:4px;
+            }
+            .vs-table tbody td:nth-child(3) {
+                background:rgba(30,58,138,0.04);
+            }
+            .vs-table tbody td:nth-child(3)::before {
+                content:'부코멘트';
+                display:block; font-size:0.7rem; font-weight:700;
+                color:var(--navy); margin-bottom:4px;
+            }
+            .vs-conclusion { font-size:0.88rem; }
+
+            /* ── 플로우차트 모바일 ── */
+            .flowchart-section { padding:60px 0; }
+            .flowchart-wrapper { max-width:100%; }
+
+            /* 헤더 → 범례 pill */
+            .flowchart-header-row {
+                display:flex !important;
+                grid-template-columns:none !important;
+                justify-content:center; gap:10px;
+                margin-bottom:20px;
+            }
+            .flowchart-col-header.center-spacer { display:none; }
+            .flowchart-col-header {
+                padding:7px 18px; border-radius:20px;
+                font-size:0.78rem;
+            }
+
+            /* 카드 행 - 900px 그리드 덮어쓰기 */
+            .flowchart-row {
+                display:flex !important; align-items:flex-start;
+                gap:14px; padding:14px 16px;
+                border-radius:12px; margin-bottom:10px;
+                min-height:auto !important; position:static;
+            }
+
+            /* 고객 카드 */
+            .flowchart-row:has(.flowchart-step-num:not(.bucomant-num)) {
+                background:rgba(30,58,138,0.06);
+                border-left:4px solid var(--navy);
+            }
+            /* 부코멘트 카드 */
+            .flowchart-row:has(.bucomant-num) {
+                background:rgba(232,116,12,0.07);
+                border-left:4px solid #e8740c;
+            }
+
+            /* 스텝 넘버 - 왼쪽 고정 */
+            .flowchart-center-cell {
+                flex-shrink:0; order:-1;
+                position:static;
+            }
+            .flowchart-center-cell::before { display:none !important; }
+            .flowchart-step-num {
+                width:34px; height:34px; font-size:0.75rem;
+                box-shadow:0 2px 6px rgba(0,0,0,0.12);
+            }
+
+            /* 콘텐츠 셀 */
+            .flowchart-cell {
+                flex:1; min-width:0;
+                border:none !important;
+                padding:0 !important;
+                background:transparent !important;
+                line-height:1.55;
+            }
+            .flowchart-cell.empty { display:none !important; }
+
+            .flowchart-cell .step-label {
+                font-size:0.88rem; font-weight:700;
+                color:var(--slate-900);
+                display:block; margin-right:0;
+                word-break:keep-all;
+                overflow-wrap:break-word;
+            }
+            .flowchart-cell .step-detail {
+                display:block;
+                font-size:0.76rem; color:var(--slate-500);
+                line-height:1.5; margin-top:3px;
+                word-break:keep-all;
+                overflow-wrap:break-word;
+            }
         }
     </style>
 </head>

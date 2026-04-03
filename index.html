@@ -385,6 +385,7 @@
         }
         /* 설명 - 넓은 반투명 화이트 레이어 */
         .bc-qa__desc {
+            position:relative; z-index:1;
             margin-top:0;
             padding:32px 20px 36px;
             background:rgba(200,195,215,0.28);
@@ -1271,6 +1272,7 @@
             .bc-strength__pills { gap:8px; }
         }
         @media (max-width:768px) {
+            body { word-break:keep-all; overflow-wrap:break-word; }
             .main-nav, .header-phone, .btn-header { display:none; }
             .menu-toggle { display:flex; }
             .hero-content { padding:100px 24px 80px; }
@@ -1292,7 +1294,7 @@
             .bc-qa__upper { padding:36px 12px 32px; }
             .bc-qa__qbox { padding:14px 24px; }
             .bc-qa__abox { padding:24px 20px; width:96%; }
-            .bc-qa__desc { padding:28px 16px 32px; }
+            .bc-qa__desc { padding:28px 16px 68px; }
             .bc-qa__lower { padding:72px 16px 48px; }
             .bc-qa__lower::before { top:-50px; height:100px; }
             .bc-diff { padding:56px 0; }
@@ -1310,19 +1312,43 @@
             .bc-strength { padding:56px 0; }
             .bc-strength__item-body { padding-left:44px; }
             .bc-process { padding:56px 0; }
-            .bc-process__box { padding:28px 12px 40px; }
-            .bc-process__roles { gap:20px; }
-            .bc-process__role { padding:10px 28px; font-size:0.88rem; }
+            .bc-process__box { padding:20px 10px 32px; }
+            .bc-process__roles { gap:16px; margin-bottom:28px; }
+            .bc-process__role { padding:8px 20px; font-size:0.82rem; }
+            .bc-process__tl::before { display:none; }
             .bc-process__row {
-                grid-template-columns:auto 1fr; min-height:auto;
+                display:flex; align-items:flex-start; gap:12px;
+                padding:14px 14px; border-radius:12px; margin-bottom:8px;
             }
-            .bc-process__row-left { display:none; }
-            .bc-process__row-center { margin-right:12px; }
-            .bc-process__row-right { padding-left:0; display:flex !important; }
-            .bc-process__tl::before { left:28px; }
+            .bc-process__row:has(.bc-process__badge--client) {
+                background:rgba(184,154,90,0.12);
+                border-left:3.5px solid #b89a5a;
+            }
+            .bc-process__row:has(.bc-process__badge--bc) {
+                background:rgba(42,64,128,0.09);
+                border-left:3.5px solid #2a4080;
+            }
+            .bc-process__row-center { flex-shrink:0; margin-top:1px; order:1; }
+            .bc-process__badge { padding:4px 10px; font-size:0.62rem; border-radius:10px; }
+            .bc-process__row-left {
+                display:flex !important; flex-direction:column;
+                text-align:left; align-items:flex-start; padding:0;
+                flex:1; min-width:0; order:2;
+            }
+            .bc-process__row-right {
+                display:flex !important; flex-direction:column;
+                text-align:left; padding:0;
+                flex:1; min-width:0; order:2;
+            }
+            .bc-process__row-left[style*="visibility"],
+            .bc-process__row-right[style*="visibility"] { display:none !important; }
+            .bc-process__main { font-size:0.88rem; line-height:1.5; }
+            .bc-process__sub { font-size:0.76rem; line-height:1.45; margin-top:3px; color:#888; }
             .bc-fee__cards { grid-template-columns:1fr; max-width:420px; }
             .bc-fee { padding:48px 0; }
             .bc-darkqa__panel { padding:40px 24px 40px; border-radius:20px; }
+            .dark-cards-grid { grid-template-columns:1fr !important; gap:14px !important; }
+            .area-grid-inline { grid-template-columns:1fr !important; }
         }
     </style>
 </head>
@@ -1409,7 +1435,6 @@
     <div class="container">
         <div class="sub-nav-inner">
             <a href="#differentiator" class="sub-nav-link active">부코멘트만의 차별점</a>
-            <a href="#consulting-areas" class="sub-nav-link">컨설팅 영역</a>
             <a href="#onestop" class="sub-nav-link">원스톱 컨설팅</a>
             <a href="#process" class="sub-nav-link">컨설팅 절차</a>
         </div>
@@ -1949,7 +1974,7 @@
             </div>
         </div>
         <!-- 6개 성과 카드 (다크) -->
-        <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:20px; margin-top:48px;" class="reveal reveal-d2">
+        <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:20px; margin-top:48px;" class="reveal reveal-d2 dark-cards-grid">
             <div style="background:var(--navy-deep); color:var(--white); padding:28px; border-radius:var(--radius);">
                 <p style="font-size:0.85rem; color:rgba(255,255,255,0.7); line-height:1.8; margin-bottom:16px;">경매 시장의 복잡한 권리관계와 리스크를 체계적으로 분석하여, 안전한 투자를 지원합니다.</p>
                 <div style="display:flex; align-items:center; gap:8px;">
@@ -2032,76 +2057,6 @@
     </div>
 </section>
 
-<!-- Consulting Areas -->
-<section class="section" id="consulting-areas">
-    <div class="container">
-        <div class="section-header center reveal">
-            <div class="section-label">Areas</div>
-            <h2 class="section-title">컨설팅 영역</h2>
-            <p class="section-desc">맞춤 컨설팅을 제공합니다.<br>분야별 전담팀을 운영하여 해당 분야에 가장 정통한 담당자가 배정됩니다.</p>
-        </div>
-        <div class="area-grid reveal reveal-d1" style="grid-template-columns:repeat(4,1fr);">
-            <div class="area-card area-card-img">
-                <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=600&q=80" alt="경매">
-                <div class="area-card-overlay">
-                    <div style="font-size:0.72rem; color:var(--text-light); font-weight:600; margin-bottom:4px;">01</div>
-                    <div class="area-title">경매</div>
-                    <div class="area-desc">- 클라이언트 맞춤형 물건 추천<br>- 동산 경매<br>- 권리 분석</div>
-                </div>
-            </div>
-            <div class="area-card area-card-img">
-                <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=600&q=80" alt="공매">
-                <div class="area-card-overlay">
-                    <div style="font-size:0.72rem; color:var(--text-light); font-weight:600; margin-bottom:4px;">02</div>
-                    <div class="area-title">공매</div>
-                    <div class="area-desc">- 일반 공매<br>- 특수 공매<br>- 권리 분석</div>
-                </div>
-            </div>
-            <div class="area-card area-card-img">
-                <img src="https://images.unsplash.com/photo-1580587771525-78b9dba3b914?w=600&q=80" alt="채권">
-                <div class="area-card-overlay">
-                    <div style="font-size:0.72rem; color:var(--text-light); font-weight:600; margin-bottom:4px;">03</div>
-                    <div class="area-title">채권</div>
-                    <div class="area-desc">- 채권 양수/양도<br>- 가압류 채권<br>- 법인 컨설팅</div>
-                </div>
-            </div>
-            <div class="area-card area-card-img">
-                <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=600&q=80" alt="특수물건">
-                <div class="area-card-overlay">
-                    <div style="font-size:0.72rem; color:var(--text-light); font-weight:600; margin-bottom:4px;">04</div>
-                    <div class="area-title">특수물건</div>
-                    <div class="area-desc">- 유치권<br>- 법정지상권, 지분경매 등</div>
-                </div>
-            </div>
-        </div>
-        <div class="area-grid reveal reveal-d2" style="grid-template-columns:repeat(3,1fr); margin-top:24px;">
-            <div class="area-card area-card-img">
-                <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=600&q=80" alt="중개">
-                <div class="area-card-overlay">
-                    <div style="font-size:0.72rem; color:var(--text-light); font-weight:600; margin-bottom:4px;">05</div>
-                    <div class="area-title">중개</div>
-                    <div class="area-desc">- 일반 물건 매매<br>- 경/공매 물건 매매</div>
-                </div>
-            </div>
-            <div class="area-card area-card-img">
-                <img src="https://images.unsplash.com/photo-1560179707-f14e90ef3623?w=600&q=80" alt="문제 해결">
-                <div class="area-card-overlay">
-                    <div style="font-size:0.72rem; color:var(--text-light); font-weight:600; margin-bottom:4px;">06</div>
-                    <div class="area-title">문제 해결</div>
-                    <div class="area-desc">- 부동산 관련 문제 해결<br>- 채무자 컨설팅</div>
-                </div>
-            </div>
-            <div class="area-card area-card-img">
-                <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&q=80" alt="자산 관리">
-                <div class="area-card-overlay">
-                    <div style="font-size:0.72rem; color:var(--text-light); font-weight:600; margin-bottom:4px;">07</div>
-                    <div class="area-title">자산 관리</div>
-                    <div class="area-desc">- 개인사업자 컨설팅<br>- 법인사업자 컨설팅</div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
 
 <!-- One-Stop Strength -->
 <section class="section bg-dark" id="onestop" style="display:none;">
